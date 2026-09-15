@@ -1,0 +1,32 @@
+{
+  "name": "voidborn-cardgen",
+  "version": "1.1.0",
+  "description": "Local dev tool — project-scoped Gemini card rounds for TCG content packs",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "generate": "node src/cli.js generate",
+    "generate-showcase": "node src/cli.js generate-showcase",
+    "generate-images-showcase": "node src/cli.js generate-images-showcase",
+    "generate-round": "node src/cli.js generate-round",
+    "generate-domains": "node src/cli.js generate-domains",
+    "validate": "node src/cli.js validate",
+    "validate-round": "node src/cli.js validate-round",
+    "approve": "node src/cli.js approve",
+    "approve-round": "node src/cli.js approve-round",
+    "generate-images": "node src/cli.js generate-images",
+    "generate-images-round": "node src/cli.js generate-images-round",
+    "apply": "node src/cli.js apply",
+    "apply-round": "node src/cli.js apply-round",
+    "cleanup-staging": "node src/cli.js cleanup-staging",
+    "list": "node src/cli.js list",
+    "list-rounds": "node src/cli.js list-rounds",
+    "image-manifest": "node src/cli.js image-manifest"
+  },
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^16.4.7",
+    "sharp": "^0.35.2"
+  }
+}

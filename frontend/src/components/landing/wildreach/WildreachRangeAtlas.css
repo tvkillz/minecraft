@@ -1,0 +1,566 @@
+/* WILDREACH — Range Atlas (field journal / expedition map) — unique vs FW board / Helix console */
+
+.wr-atlas {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3rem, 7vw, 5rem);
+  overflow: hidden;
+  background: #060a08;
+  color: var(--text-primary, #f0ebe4);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wr-atlas--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.wr-atlas__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wr-atlas__bg-crossfade {
+  position: absolute;
+  inset: 0;
+}
+
+.wr-atlas__bg-photo {
+  object-fit: cover;
+  object-position: center 35%;
+  filter: saturate(0.95) brightness(0.42) contrast(1.05);
+  transform: scale(1.08);
+}
+
+.wr-atlas__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.18;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(196, 154, 58, 0.03) 2px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 3px,
+      rgba(42, 122, 106, 0.025) 3px 4px
+    );
+}
+
+.wr-atlas__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 45% at 85% 70%, rgba(42, 122, 106, 0.1) 0%, transparent 60%),
+    linear-gradient(180deg, #060a08 0%, #0a100e 50%, #060a08 100%);
+}
+
+.wr-atlas__shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3.5vw, 2.5rem);
+  min-height: 0;
+}
+
+.wr-atlas__header {
+  max-width: 42rem;
+  flex-shrink: 0;
+}
+
+.wr-atlas__eyebrow {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.62rem, 1.4vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c49a3a;
+}
+
+.wr-atlas__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.85rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wr-atlas__lead {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(220, 228, 220, 0.82);
+}
+
+.wr-atlas__lead :is(strong, .locations__lore-aether, .locations__lore-null) {
+  color: #e0c878;
+  font-weight: 600;
+}
+
+.wr-atlas__board {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.9fr) minmax(0, 1.55fr);
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+  align-items: start;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Legend — trail of blaze markers */
+.wr-atlas__legend {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+  min-height: 0;
+  overflow: auto;
+  max-height: var(--wr-media-max-h, 28rem);
+}
+
+.wr-atlas__trail {
+  position: absolute;
+  left: 1.35rem;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    rgba(196, 154, 58, 0.15) 0%,
+    rgba(196, 154, 58, 0.45) 50%,
+    rgba(42, 122, 106, 0.35) 100%
+  );
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+.wr-atlas__marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+  padding: 0.5rem 0.7rem 0.5rem 0.45rem;
+  border: 1px solid rgba(196, 154, 58, 0.18);
+  border-radius: 6px;
+  background: rgba(10, 16, 14, 0.55);
+  color: inherit;
+  text-align: left;
+  cursor: default;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.wr-atlas__marker:hover {
+  border-color: color-mix(in srgb, var(--range-glow) 45%, transparent);
+  background: rgba(16, 24, 20, 0.85);
+}
+
+.wr-atlas__marker--active {
+  border-color: color-mix(in srgb, var(--range-glow) 65%, #c49a3a);
+  background: linear-gradient(
+    105deg,
+    color-mix(in srgb, var(--range-glow) 18%, rgba(10, 16, 14, 0.9)) 0%,
+    rgba(10, 16, 14, 0.92) 100%
+  );
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--range-glow) 25%, transparent),
+    0 10px 28px rgba(0, 0, 0, 0.35);
+  transform: translateX(4px);
+}
+
+.wr-atlas__marker-blaze {
+  display: grid;
+  place-items: center;
+  width: 2.35rem;
+  height: 2.75rem;
+  flex-shrink: 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--range-glow) 75%, #f0ebe4) 0%,
+    var(--range-glow) 55%,
+    color-mix(in srgb, var(--range-glow) 55%, #0a100e) 100%
+  );
+  clip-path: polygon(50% 100%, 0 78%, 0 0, 100% 0, 100% 78%);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--range-glow) 35%, transparent);
+}
+
+.wr-atlas__marker-index {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #0a100e;
+  padding-bottom: 3px;
+}
+
+.wr-atlas__marker-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.wr-atlas__marker-name {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wr-atlas__marker-hunt {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(220, 228, 220, 0.65);
+}
+
+.wr-atlas__marker-bearing {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--range-glow) 70%, #f0ebe4);
+  white-space: nowrap;
+}
+
+/* Habitat plate — locked landscape proportion */
+.wr-atlas__plate {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-height: var(--wr-media-max-h, 28rem);
+}
+
+.wr-atlas__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--range-glow) 40%, rgba(196, 154, 58, 0.25));
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.06);
+  background: #0a100e;
+}
+
+.wr-atlas__feed {
+  object-fit: cover;
+  object-position: center;
+}
+
+.wr-atlas__frame-mist {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 10, 8, 0.15) 0%,
+    transparent 35%,
+    rgba(6, 10, 8, 0.55) 68%,
+    rgba(6, 10, 8, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+.wr-atlas__frame-ray {
+  position: absolute;
+  top: -20%;
+  right: 8%;
+  width: 45%;
+  height: 120%;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--range-glow) 35%, transparent) 0%,
+    transparent 70%
+  );
+  clip-path: polygon(40% 0, 65% 0, 90% 100%, 10% 100%);
+  filter: blur(14px);
+  opacity: 0.45;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  animation: wr-atlas-ray 8s ease-in-out infinite;
+}
+
+@keyframes wr-atlas-ray {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.wr-atlas__overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: clamp(0.65rem, 1.8vh, 1.25rem) clamp(0.75rem, 2vw, 1.5rem);
+  pointer-events: none;
+}
+
+.wr-atlas__overlay-epithet {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.58rem, 1.2vh, 0.7rem);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--range-glow) 80%, #f0ebe4);
+}
+
+.wr-atlas__overlay-name {
+  margin: 0 0 0.3rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.15rem, 3vh, 2.1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: #f0ebe4;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.65);
+}
+
+.wr-atlas__overlay-short {
+  margin: 0 0 0.55rem;
+  max-width: 36rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.78rem, 1.4vh, 0.95rem);
+  line-height: 1.4;
+  color: rgba(230, 232, 226, 0.88);
+}
+
+.wr-atlas__telemetry {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+  margin: 0;
+}
+
+.wr-atlas__telemetry > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 5.5rem;
+}
+
+.wr-atlas__telemetry dt {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(220, 228, 220, 0.55);
+}
+
+.wr-atlas__telemetry dd {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #f0ebe4;
+}
+
+@media (max-width: 960px) {
+  .wr-atlas__board {
+    grid-template-columns: minmax(150px, 0.8fr) minmax(0, 1.4fr);
+  }
+
+  .wr-atlas__trail {
+    display: none;
+  }
+
+  .wr-atlas__marker {
+    grid-template-columns: auto 1fr;
+  }
+
+  .wr-atlas__marker-bearing {
+    display: none;
+  }
+
+  .wr-atlas__marker--active {
+    transform: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .wr-atlas {
+    padding-bottom: 0 !important;
+    /* padding: clamp(1.5rem, 5vw, 2.25rem) 0; */
+  }
+
+  .wr-survey {
+    padding-top: 3rem !important;
+  }
+
+  .wr-atlas__shell {
+    gap: 0.85rem;
+  }
+
+  .wr-atlas__header {
+    max-width: none;
+  }
+
+  .wr-atlas__title {
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+    margin-bottom: 0.45rem;
+  }
+
+  .wr-atlas__lead {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Icons row on top, landscape plate below */
+  .wr-atlas__board {
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: none;
+    gap: 0.65rem;
+    min-height: 0;
+  }
+
+  .wr-atlas__legend {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0;
+    overflow: visible;
+    flex: 0 0 auto;
+    max-height: none;
+  }
+
+  .wr-atlas__marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: none;
+    gap: 0.35rem;
+    padding: 0.45rem 0.25rem;
+    min-height: 0;
+  }
+
+  .wr-atlas__marker-copy {
+    align-items: center;
+  }
+
+  .wr-atlas__marker-name {
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    line-height: 1.1;
+  }
+
+  .wr-atlas__marker-hunt,
+  .wr-atlas__marker-bearing {
+    display: none;
+  }
+
+  .wr-atlas__marker-blaze {
+    width: 1.7rem;
+    height: 2rem;
+  }
+
+  .wr-atlas__marker-index {
+    font-size: 0.62rem;
+  }
+
+  .wr-atlas__marker--active {
+    transform: none;
+  }
+
+  .wr-atlas__plate {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: none;
+  }
+
+  .wr-atlas__frame {
+    position: absolute;
+    inset: 0;
+    height: auto;
+    min-height: 0;
+  }
+
+  .wr-atlas__overlay {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .wr-atlas__overlay-name {
+    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
+  }
+
+  .wr-atlas__overlay-short {
+    font-size: 0.8rem;
+  }
+
+  .wr-atlas__telemetry {
+    gap: 0.45rem 1rem;
+  }
+
+  .wr-atlas__telemetry > div:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .wr-atlas__marker-name {
+    font-size: 0.58rem;
+    letter-spacing: 0.04em;
+  }
+
+  .wr-atlas__marker-blaze {
+    width: 1.55rem;
+    height: 1.85rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-atlas,
+  .wr-atlas__frame-ray {
+    animation: none;
+    transition: none;
+  }
+
+  .wr-atlas {
+    opacity: 1;
+    transform: none;
+  }
+}

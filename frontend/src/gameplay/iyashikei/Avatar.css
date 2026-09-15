@@ -1,0 +1,148 @@
+/* KOMOREBI — calm player HUD (soft paper, water, forest tones) */
+
+.iyashikei-avatar {
+  --avatar-ring: #8fb89a;
+  --avatar-glow: rgba(106, 171, 114, 0.35);
+  --avatar-mana: #6a9ec4;
+  --avatar-mana-glow: rgba(106, 158, 196, 0.45);
+  --avatar-health-bg: #c9a87c;
+  --avatar-name-bg: rgba(255, 252, 247, 0.92);
+  --avatar-name-border: rgba(106, 171, 114, 0.45);
+  --avatar-name-text: #3d5244;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 188px;
+  margin: 36px 36px;
+  user-select: none;
+}
+
+.iyashikei-avatar--opponent {
+  --avatar-ring: #d4a574;
+  --avatar-glow: rgba(212, 165, 116, 0.32);
+  --avatar-mana: #c9a87c;
+  --avatar-mana-glow: rgba(201, 168, 124, 0.4);
+  --avatar-health-bg: #c9786a;
+  --avatar-name-border: rgba(201, 120, 106, 0.4);
+  --avatar-name-text: #5c4a3a;
+}
+
+.iyashikei-avatar__portrait {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  padding: 4px;
+  background: linear-gradient(145deg, var(--avatar-ring), color-mix(in srgb, var(--avatar-ring) 55%, white));
+  box-shadow:
+    0 8px 24px rgba(44, 62, 45, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 0 28px var(--avatar-glow);
+}
+
+.iyashikei-avatar__portrait-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.55), transparent 42%),
+    radial-gradient(circle at 50% 62%, rgba(106, 171, 114, 0.18), transparent 58%),
+    linear-gradient(165deg, #f8f4ec 0%, #e8efe4 48%, #dce8df 100%);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+}
+
+.iyashikei-avatar--opponent .iyashikei-avatar__portrait-inner {
+  background:
+    radial-gradient(circle at 35% 28%, rgba(255, 255, 255, 0.5), transparent 42%),
+    radial-gradient(circle at 50% 62%, rgba(212, 165, 116, 0.2), transparent 58%),
+    linear-gradient(165deg, #faf3ea 0%, #f0e4d4 48%, #e8ddd0 100%);
+}
+
+.iyashikei-avatar__health {
+  position: absolute;
+  right: -2px;
+  bottom: 6px;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: var(--avatar-health-bg);
+  color: #fffaf5;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 12px rgba(44, 62, 45, 0.15);
+}
+
+.iyashikei-avatar__mana {
+  position: absolute;
+  left: -28px;
+  bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 5;
+}
+
+.iyashikei-avatar__mana-stack {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: calc(6px * var(--mana-scale, 1));
+}
+
+.iyashikei-avatar__mana-bead {
+  width: calc(18px * var(--mana-scale, 1));
+  height: calc(18px * var(--mana-scale, 1));
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1.5px solid rgba(106, 158, 196, 0.28);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.iyashikei-avatar__mana-bead--active {
+  background: radial-gradient(circle at 35% 30%, #dff3ff 0%, var(--avatar-mana) 72%);
+  border-color: color-mix(in srgb, var(--avatar-mana) 70%, white);
+  box-shadow:
+    0 0 10px var(--avatar-mana-glow),
+    inset 0 1px 3px rgba(255, 255, 255, 0.65);
+  transform: scale(1.06);
+}
+
+.iyashikei-avatar__mana-count {
+  color: #5a7a8a;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.iyashikei-avatar__name {
+  margin-top: 12px;
+  padding: 6px 20px;
+  border-radius: 999px;
+  background: var(--avatar-name-bg);
+  border: 1px solid var(--avatar-name-border);
+  color: var(--avatar-name-text);
+  font-family: var(--font-ui, sans-serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-align: center;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(44, 62, 45, 0.08);
+  backdrop-filter: blur(6px);
+}

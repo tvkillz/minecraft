@@ -1,0 +1,93 @@
+/* FINAL WHISTLE — floodlit stadium night ambience */
+
+.game-arena-ambience {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Pitch-level colour wash — deep dark green */
+.game-arena-ambience__wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 18, 16, 0.42) 0%,
+    rgba(14, 24, 20, 0.12) 46%,
+    rgba(8, 12, 10, 0.55) 100%
+  );
+}
+
+/* Floodlights: two arc lights from top-left & top-right */
+.game-arena-ambience__komorebi {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 44% 52% at 8% 0%, rgba(255, 255, 248, 0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 44% 52% at 92% 0%, rgba(255, 255, 248, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 90% 35% at 50% 0%, rgba(61, 122, 74, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 60% 25% at 50% 100%, rgba(232, 201, 106, 0.05) 0%, transparent 55%);
+  opacity: 0.88;
+  animation: fw-arena-floodlight-pulse 18s ease-in-out infinite alternate;
+}
+
+/* Dark vignette — stadium seats fade to black */
+.game-arena-ambience__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 92% 82% at 50% 46%,
+    transparent 40%,
+    rgba(8, 12, 10, 0.28) 76%,
+    rgba(4, 6, 5, 0.62) 100%
+  );
+}
+
+/* Confetti particles (replaces petals) — ticker-tape */
+.game-arena-ambience__petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.game-arena-ambience__petal {
+  position: absolute;
+  top: -16px;
+  width: 6px;
+  height: 9px;
+  background: color-mix(in srgb, var(--petal-color) 78%, white);
+  border-radius: 1px;
+  opacity: 0;
+  transform: scale(var(--petal-scale, 1));
+  animation: fw-arena-confetti-fall linear infinite;
+}
+
+@keyframes fw-arena-confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(var(--petal-scale, 1));
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.55;
+  }
+  90% {
+    opacity: 0.28;
+  }
+  100% {
+    transform: translateY(1120px) rotate(360deg) scale(var(--petal-scale, 1));
+    opacity: 0;
+  }
+}
+
+@keyframes fw-arena-floodlight-pulse {
+  from {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0.95;
+    transform: scale(1.015);
+  }
+}

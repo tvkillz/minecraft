@@ -1,0 +1,487 @@
+/* WILDREACH — field-dossier modals, auth & cookie consent. Scoped to wildreach only. */
+
+/* ── Shared backdrops ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__backdrop,
+    .credits-modal__backdrop,
+    .withdrawal-modal__backdrop,
+    .payment-method-modal__backdrop,
+    .buy-card-modal__backdrop,
+    .clear-deck-modal__backdrop,
+    .terms-sale-modal__backdrop,
+    .deck-modal__backdrop,
+    .cookie-consent__backdrop,
+    .market-cart__backdrop
+  ) {
+  background: rgba(6, 10, 8, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+/* ── Shared panels — field dossier ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__panel,
+    .credits-modal__panel,
+    .withdrawal-modal__panel,
+    .payment-method-modal__panel,
+    .buy-card-modal__panel,
+    .clear-deck-modal__panel,
+    .terms-sale-modal__panel,
+    .deck-modal__panel,
+    .cookie-consent__panel,
+    .auth-gate__panel
+  ) {
+  border-radius: 6px;
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  background:
+    radial-gradient(ellipse 80% 55% at 12% 0%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 100% 100%, rgba(42, 122, 106, 0.1) 0%, transparent 50%),
+    linear-gradient(165deg, rgba(16, 24, 20, 0.97) 0%, rgba(8, 12, 10, 0.98) 100%);
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.55),
+    0 0 28px color-mix(in srgb, var(--wr-gold, #c49a3a) 12%, transparent),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.04);
+}
+
+/* ── Close buttons ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ) {
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  border-radius: 4px;
+  background: rgba(16, 24, 20, 0.75);
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ):hover:not(:disabled) {
+  color: var(--wr-gold, #c49a3a);
+  background: rgba(22, 34, 28, 0.92);
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  box-shadow: 0 0 12px rgba(196, 154, 58, 0.22);
+}
+
+/* ── Titles — survey log labels ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__title,
+    .credits-modal__title,
+    .withdrawal-modal__title,
+    .payment-method-modal__title,
+    .buy-card-modal__title,
+    .clear-deck-modal__title,
+    .terms-sale-modal__title,
+    .deck-modal__title,
+    .cookie-consent__title,
+    .auth-gate__title,
+    .market-cart__title
+  ) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: none;
+}
+
+[data-landing-variant='wildreach'] .auth-gate__loading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wr-teal, #2a7a6a);
+}
+
+/* ── Body copy, labels, subtitles ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__subtitle,
+    .auth-modal__label,
+    .auth-modal__text,
+    .credits-modal__subtitle,
+    .credits-modal__currency-label,
+    .withdrawal-modal__subtitle,
+    .withdrawal-modal__label,
+    .payment-method-modal__lead,
+    .buy-card-modal__copy,
+    .buy-card-modal__field-label,
+    .clear-deck-modal__copy,
+    .terms-sale-modal__updated,
+    .terms-sale-modal__body,
+    .terms-sale-modal__intro,
+    .deck-modal__mode,
+    .cookie-consent__text,
+    .cookie-consent__text--muted,
+    .auth-gate__message,
+    .auth-gate__text,
+    .withdrawal-modal__estimate,
+    .withdrawal-modal__pending-note
+  ) {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__label,
+    .buy-card-modal__field-label,
+    .deck-modal__field-label,
+    .credits-modal__currency-label
+  ) {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] :is(
+    .buy-card-modal__copy strong,
+    .buy-card-modal__balance,
+    .buy-card-modal__balance strong,
+    .withdrawal-modal__balance,
+    .withdrawal-modal__balance strong,
+    .withdrawal-modal__estimate strong
+  ) {
+  color: var(--wr-gold, #c49a3a);
+}
+
+/* ── Withdrawal balance card ── */
+
+[data-landing-variant='wildreach'] .withdrawal-modal__balance {
+  border-radius: 4px;
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  background:
+    radial-gradient(ellipse 90% 70% at 0% 0%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    rgba(16, 24, 20, 0.65);
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+  padding: 0.65rem 0.9rem;
+}
+
+[data-landing-variant='wildreach'] .withdrawal-modal__error {
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .withdrawal-modal__pending-lead {
+  color: var(--wr-ink, #f0ebe4);
+}
+
+/* ── Inputs — kill default purple borders ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__input,
+    .buy-card-modal__input,
+    .withdrawal-modal__field input,
+    .credits-modal__currency select
+  ) {
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  border-radius: 4px;
+  background: rgba(8, 12, 10, 0.72);
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__input:focus,
+    .buy-card-modal__input:focus,
+    .withdrawal-modal__field input:focus,
+    .credits-modal__currency select:focus
+  ) {
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  box-shadow: 0 0 0 2px rgba(42, 122, 106, 0.22);
+  outline: none;
+}
+
+[data-landing-variant='wildreach'] .auth-modal__hint {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+}
+
+/* ── Switch / register links — teal field accent ── */
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__switch-btn,
+    .auth-gate__register,
+    .cookie-consent__link
+  ) {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 75%, #f0ebe4);
+  text-shadow: none;
+  text-underline-offset: 0.15em;
+}
+
+[data-landing-variant='wildreach'] :is(
+    .auth-modal__switch-btn:hover:not(:disabled),
+    .auth-gate__register:hover,
+    .cookie-consent__link:hover
+  ) {
+  color: var(--wr-gold, #c49a3a);
+  text-shadow: none;
+}
+
+/* ── Status messages ── */
+
+[data-landing-variant='wildreach'] .auth-modal__message {
+  border-radius: 4px;
+}
+
+[data-landing-variant='wildreach'] .auth-modal__message--error {
+  background: rgba(184, 90, 58, 0.14);
+  border-color: rgba(184, 90, 58, 0.42);
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .auth-modal__message--info {
+  background: rgba(42, 122, 106, 0.16);
+  border-color: rgba(42, 122, 106, 0.42);
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .auth-modal__message--success {
+  background: rgba(196, 154, 58, 0.14);
+  border-color: rgba(196, 154, 58, 0.45);
+  color: #e8d4a0;
+}
+
+/* ── Cookie categories ── */
+
+[data-landing-variant='wildreach'] .cookie-consent__category {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background:
+    radial-gradient(ellipse 90% 70% at 0% 0%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    rgba(10, 16, 14, 0.55);
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__category-label {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__category-desc {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__toggle-ui {
+  border-radius: 3px;
+  background: rgba(8, 12, 10, 0.85);
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__toggle input:checked + .cookie-consent__toggle-ui {
+  background: color-mix(in srgb, var(--wr-teal, #2a7a6a) 45%, rgba(10, 16, 14, 0.7));
+  border-color: color-mix(in srgb, var(--wr-gold, #c49a3a) 55%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--wr-gold, #c49a3a) 22%, transparent);
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__toggle-ui::after {
+  border-radius: 2px;
+  background: #f0ebe4;
+}
+
+/* ── Cookie / modal / auth action buttons ── */
+
+[data-landing-variant='wildreach'] .cookie-consent__panel .vb-btn,
+[data-landing-variant='wildreach'] .auth-modal__panel .vb-btn,
+[data-landing-variant='wildreach'] .auth-gate__panel .vb-btn,
+[data-landing-variant='wildreach'] .auth-callback__panel .vb-btn {
+  backdrop-filter: none;
+  border-radius: 4px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='wildreach'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='wildreach'] .auth-gate__panel :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='wildreach'] .auth-callback__panel :is(.vb-btn--primary, .vb-btn--gold) {
+  color: #0a100e;
+  background: linear-gradient(180deg, #d4ae52 0%, #c49a3a 48%, #a87828 100%);
+  border-color: rgba(196, 154, 58, 0.72);
+  box-shadow:
+    0 4px 16px rgba(196, 154, 58, 0.22),
+    inset 0 1px 0 rgba(240, 235, 228, 0.28);
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-gate__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-callback__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled) {
+  color: #0a100e;
+  border-color: rgba(212, 174, 82, 0.9);
+  box-shadow:
+    0 6px 20px rgba(196, 154, 58, 0.34),
+    inset 0 1px 0 rgba(240, 235, 228, 0.34);
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__panel :is(.vb-btn--secondary, .vb-btn--ghost),
+[data-landing-variant='wildreach'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost),
+[data-landing-variant='wildreach'] .auth-gate__panel :is(.vb-btn--secondary, .vb-btn--ghost),
+[data-landing-variant='wildreach'] .auth-callback__panel :is(.vb-btn--secondary, .vb-btn--ghost) {
+  color: var(--wr-ink, #f0ebe4);
+  background: var(--wr-panel, rgba(16, 24, 20, 0.82));
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  box-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .cookie-consent__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-gate__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled),
+[data-landing-variant='wildreach'] .auth-callback__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled) {
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  background: var(--wr-panel-strong, rgba(22, 34, 28, 0.94));
+  color: var(--wr-ink, #f0ebe4);
+}
+
+/* ── Deck select modal ── */
+
+[data-landing-variant='wildreach'] .deck-modal__title {
+  text-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .deck-modal__mode {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__mode-mark {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__field-label {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .deck-modal__select-wrap {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(8, 12, 10, 0.72);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__select {
+  color: var(--wr-ink, #f0ebe4);
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='wildreach'] .deck-modal__select option {
+  background: #0a100e;
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__count {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .deck-modal__count--full {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+  text-shadow: 0 0 8px rgba(42, 122, 106, 0.35);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__manage {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .deck-modal__manage:hover {
+  color: var(--wr-gold, #c49a3a);
+  text-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .deck-modal__error {
+  border-radius: 4px;
+  border-color: rgba(184, 90, 58, 0.42);
+  background: rgba(184, 90, 58, 0.14);
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .deck-modal .vb-btn {
+  color: var(--wr-ink, #f0ebe4);
+  background: var(--wr-panel, rgba(16, 24, 20, 0.82));
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  border-radius: 4px;
+  box-shadow: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='wildreach'] .deck-modal .vb-btn:hover:not(:disabled) {
+  color: var(--wr-gold, #c49a3a);
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  background: var(--wr-panel-strong, rgba(22, 34, 28, 0.94));
+  box-shadow: 0 4px 14px rgba(196, 154, 58, 0.16);
+  filter: none;
+}
+
+[data-landing-variant='wildreach'] .deck-modal .vb-btn--primary {
+  color: #0a100e;
+  background: linear-gradient(180deg, #d4ae52 0%, #c49a3a 48%, #a87828 100%);
+  border-color: rgba(196, 154, 58, 0.72);
+  box-shadow:
+    0 4px 16px rgba(196, 154, 58, 0.22),
+    inset 0 1px 0 rgba(240, 235, 228, 0.28);
+}
+
+[data-landing-variant='wildreach'] .deck-modal .vb-btn--primary:hover:not(:disabled) {
+  color: #0a100e;
+  border-color: rgba(212, 174, 82, 0.9);
+  background: linear-gradient(180deg, #e0c060 0%, #d4ae52 48%, #c49a3a 100%);
+  box-shadow: 0 6px 20px rgba(196, 154, 58, 0.34);
+}
+
+/* ── Auth gate + password-reset callback ── */
+
+[data-landing-variant='wildreach'] .auth-gate {
+  background:
+    linear-gradient(180deg, rgba(8, 12, 10, 0.72) 0%, rgba(8, 12, 10, 0.94) 100%),
+    var(--play-lobby-bg) center / cover no-repeat;
+}
+
+[data-landing-variant='wildreach'] .auth-callback {
+  background: var(--wr-void, #0a100e);
+}
+
+[data-landing-variant='wildreach'] .auth-callback__panel {
+  border-radius: 6px;
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  background:
+    radial-gradient(ellipse 80% 55% at 12% 0%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    linear-gradient(165deg, rgba(16, 24, 20, 0.97) 0%, rgba(8, 12, 10, 0.98) 100%);
+  box-shadow:
+    0 22px 52px rgba(0, 0, 0, 0.55),
+    0 0 28px color-mix(in srgb, var(--wr-gold, #c49a3a) 12%, transparent),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.04);
+}
+
+[data-landing-variant='wildreach'] .auth-callback__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='wildreach'] .auth-callback__subtitle,
+[data-landing-variant='wildreach'] .auth-callback__message {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .auth-callback__message--ok {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+}

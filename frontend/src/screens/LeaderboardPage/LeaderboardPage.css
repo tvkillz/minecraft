@@ -1,0 +1,194 @@
+.leaderboard-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(123, 77, 255, 0.18), transparent 55%),
+    var(--void-black, #0a0a0c);
+}
+
+.leaderboard-page__main {
+  width: min(100%, 920px);
+  margin: 0 auto;
+  padding: 6.5rem 1.25rem 3rem;
+  margin-top: 3rem;
+}
+
+.leaderboard-page__hero {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.leaderboard-page__kicker {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(127, 216, 255, 0.85);
+}
+
+.leaderboard-page__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f1e6c8;
+}
+
+.leaderboard-page__subtitle {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: rgba(232, 220, 200, 0.72);
+}
+
+.leaderboard-page__viewer-summary {
+  margin: 1rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: rgba(232, 220, 200, 0.88);
+}
+
+.leaderboard-page__viewer-summary strong {
+  color: var(--play-gold, #f3c74f);
+  font-weight: 600;
+}
+
+.leaderboard-page__viewer-summary--muted {
+  color: rgba(232, 220, 200, 0.58);
+}
+
+.leaderboard-page__status {
+  text-align: center;
+  font-family: var(--font-fantasy);
+  letter-spacing: 0.08em;
+  color: rgba(232, 220, 200, 0.75);
+}
+
+.leaderboard-page__status--error {
+  color: var(--ember, #e85d5d);
+}
+
+.leaderboard-page__empty {
+  margin: 0;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: var(--font-ui);
+  color: rgba(232, 220, 200, 0.65);
+  border: 1px dashed rgba(201, 162, 39, 0.28);
+  border-radius: 10px;
+}
+
+.leaderboard-page__tables {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.leaderboard-table-wrap {
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  background: linear-gradient(180deg, rgba(18, 22, 38, 0.82) 0%, rgba(10, 10, 12, 0.9) 100%);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
+  overflow: hidden;
+}
+
+.leaderboard-table-wrap--compact {
+  border-color: rgba(127, 216, 255, 0.28);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-ui);
+}
+
+.leaderboard-table__caption {
+  padding: 0.85rem 1rem 0.35rem;
+  text-align: left;
+  font-family: var(--font-fantasy);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(241, 230, 200, 0.82);
+}
+
+.leaderboard-table thead th {
+  padding: 0.55rem 1rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(232, 220, 200, 0.55);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.18);
+}
+
+.leaderboard-table thead th:last-child {
+  text-align: right;
+}
+
+.leaderboard-table tbody td {
+  padding: 0.72rem 1rem;
+  font-size: 0.9rem;
+  color: rgba(232, 220, 200, 0.9);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.leaderboard-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.leaderboard-table__rank {
+  width: 5.5rem;
+  font-variant-numeric: tabular-nums;
+  color: rgba(127, 216, 255, 0.9);
+  font-weight: 600;
+}
+
+.leaderboard-table__player {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.leaderboard-table__rating {
+  text-align: right;
+  width: 5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--play-gold, #f3c74f);
+}
+
+.leaderboard-table__row--viewer {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 162, 39, 0.16) 0%,
+    rgba(123, 77, 255, 0.12) 100%
+  );
+  box-shadow: inset 3px 0 0 var(--play-gold, #f3c74f);
+}
+
+.leaderboard-table__you-badge {
+  flex-shrink: 0;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1408;
+  background: var(--play-gold, #f3c74f);
+}
+
+@media (max-width: 560px) {
+  .leaderboard-page__main {
+    padding-top: 5.75rem;
+  }
+
+  .leaderboard-table thead th,
+  .leaderboard-table tbody td {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}

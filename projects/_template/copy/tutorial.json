@@ -1,0 +1,32 @@
+{
+  "title": "How to play",
+  "eyebrow": "Getting started",
+  "lead": "Copy the IP, join Discord, then pick a rank or coin pack if you want to support the server.",
+  "exampleCardSlug": "ranks_card_02_ace",
+  "statLabels": {
+    "mana": "Price",
+    "attack": "Perks",
+    "health": "Tier"
+  },
+  "sections": [
+    {
+      "id": "join",
+      "title": "Join the server",
+      "body": "Java 1.20.4+. Paste the IP from the hero into Multiplayer.",
+      "bullets": [],
+      "steps": [
+        "Copy the IP",
+        "Add the server in Minecraft",
+        "Join the lobby"
+      ],
+      "items": []
+    }
+  ],
+  "cta": {
+    "primaryLabel": "Open store",
+    "primaryRoute": "portalStore",
+    "secondaryLabel": "Home",
+    "secondaryRoute": "home",
+    "secondaryNote": ""
+  }
+}

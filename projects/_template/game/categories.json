@@ -1,0 +1,32 @@
+{
+  "categories": [
+    {
+      "id": "earth",
+      "label": "Lobby",
+      "locationIds": [
+        "lobby"
+      ]
+    },
+    {
+      "id": "fire",
+      "label": "Ranks",
+      "locationIds": [
+        "ranks"
+      ]
+    },
+    {
+      "id": "water",
+      "label": "Coins",
+      "locationIds": [
+        "vault"
+      ]
+    },
+    {
+      "id": "air",
+      "label": "Minigames",
+      "locationIds": [
+        "arcade"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+@import './styles/landing-layout.css';
+@import './styles/iyashikei-fonts.css';
+@import './styles/helix-fonts.css';
+@import './styles/iyashikei-cards.css';
+@import './styles/iyashikei-modals.css';
+@import './styles/iyashikei-theme.css';
+@import './styles/iyashikei-portal-pages.css';
+@import './styles/iyashikei-landing-layouts.css';
+@import './styles/helix-theme.css';
+@import './styles/helix-modals.css';
+@import './styles/helix-portal-chrome.css';
+@import './styles/helix-play.css';
+@import './styles/helix-portal-pages.css';
+@import './styles/helix-landing-layouts.css';
+@import './styles/helix-cards.css';
+@import './styles/final_whistle-fonts.css';
+@import './styles/final_whistle-theme.css';
+@import './styles/final_whistle-modals.css';
+@import './styles/final_whistle-portal-chrome.css';
+@import './styles/final_whistle-reveal.css';
+@import './styles/final_whistle-landing-layouts.css';
+@import './styles/final_whistle-cards.css';
+@import './styles/final_whistle-portal-pages.css';
+@import './styles/final_whistle-play.css';
+@import './styles/wildreach-fonts.css';
+@import './styles/wildreach-theme.css';
+@import './styles/wildreach-modals.css';
+@import './styles/wildreach-portal-chrome.css';
+@import './styles/wildreach-portal-pages.css';
+@import './styles/wildreach-cards.css';
+@import './styles/wildreach-landing-layouts.css';
+@import './styles/wildreach-play.css';
+@import './styles/minecraft-theme.css';
+
+/* Color defaults — overridden at runtime by applyTheme(); fonts via next/font in app layout */
+:root {
+  --void-black: #0a0a0c;
+  --gold: #c9a227;
+  --purple-glow: #7b4dff;
+  --cyan-glow: #4ec8ff;
+  --ember: #e85d5d;
+  --violet-accent: #9b59ff;
+  --text-primary: #e8dcc8;
+  --text-muted: rgba(232, 220, 200, 0.85);
+  --accent-pink: #ff3366;
+  --accent-purple: #a855f7;
+  --play-cyan: #7fd8ff;
+  --play-gold: #f3c74f;
+  --trigger-orange: #fb923c;
+  --trigger-green: #22c55e;
+  --trigger-blue: #3b82f6;
+  /* --font-fantasy / --font-ui: set by next/font (layout) or loadFonts() (Vite play) */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+  font-family: var(--font-ui, 'Inter', system-ui, sans-serif);
+  background: var(--void-black);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  border: none;
+  min-height: 100svh;
+  text-align: initial;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app,
+main {
+  min-width: 0;
+  max-width: 100%;
+}

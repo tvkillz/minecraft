@@ -1,0 +1,38 @@
+---
+description: >-
+  Creating a new Minecraft storefront content pack. Follow projects/NEW_THEME.md
+  phase order: JSON → contentgen/cardgen → landing (hero first) → portal → APIs/SMTP.
+alwaysApply: false
+---
+
+# New Minecraft store / content pack
+
+When building a **new storefront** (like Coop, or another Tebex-style shop), follow:
+
+**→ [`projects/NEW_THEME.md`](../../projects/NEW_THEME.md)**
+
+## Required phase order (do not skip ahead)
+
+1. **Phase 0–1** — identity + `projects/{id}/` JSON (mirror `_template`), registry
+2. **Phase 2a–2b** — contentgen apply + brand assets; cardgen **showcase** for hero feature tiles
+3. **Phase 3** — landing **section by section**, **hero first** (feature tiles, not TCG card fans)
+4. **Phase 4** — portal chrome + modals
+5. **Phase 5** — `/play` only if the store needs a minigame; otherwise stub/theme the existing gameplay pack
+6. **Phase 2c / 6** — full art + upload; site row, sendmail SMTP, SEO, nginx/pm2; `ui-tests` site entry
+
+## Hard constraints
+
+- Mirror `_template` / voidborn pack structure — no parallel architecture.
+- Catalog items are **server features** (ranks, coin packs, minigames), compiled through `game/cards.json`.
+- Prefer variant CSS packs over forking every React section.
+- No Stripe — existing checkout/credits path only.
+- Agent edits locally; **user** runs VPS docker/pm2/seed/nginx (`terminal-via-user.mdc`).
+
+## Scaffold shortcut
+
+```bash
+cd frontend
+npm run site:add -- --id=newsie --url=https://newsie.example.com --from=_template --name=Newsie
+```
+
+Then execute `projects/NEW_THEME.md` phases — `site:add` is structure only, not a finished theme.

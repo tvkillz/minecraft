@@ -1,0 +1,28 @@
+{
+  "domains": [
+    {
+      "id": "lobby",
+      "label": "Lobby",
+      "categoryId": "earth",
+      "glowColor": "#3d8f3d"
+    },
+    {
+      "id": "ranks",
+      "label": "Ranks",
+      "categoryId": "fire",
+      "glowColor": "#e8b923"
+    },
+    {
+      "id": "coins",
+      "label": "Victory Coins",
+      "categoryId": "water",
+      "glowColor": "#c9a227"
+    },
+    {
+      "id": "games",
+      "label": "Minigames",
+      "categoryId": "air",
+      "glowColor": "#5aa6ff"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "contentgen",
+  "version": "1.0.0",
+  "description": "Local dev tool — project-scoped Gemini landing asset pipeline (domains, cities, cta, gamemodel)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "manifest": "node src/cli.js manifest",
+    "generate-images": "node src/cli.js generate-images",
+    "apply": "node src/cli.js apply",
+    "list": "node src/cli.js list"
+  },
+  "dependencies": {
+    "@google/genai": "^2.10.0",
+    "dotenv": "^16.4.7",
+    "sharp": "^0.35.2"
+  }
+}

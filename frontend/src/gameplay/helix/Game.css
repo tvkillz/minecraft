@@ -1,0 +1,248 @@
+@import '../voidborn/Game.css';
+
+/* HELIX arena — relay signal field over city backdrop */
+
+.game-stage {
+  background:
+    radial-gradient(circle at 50% 38%, rgba(61, 184, 212, 0.16) 0%, transparent 44%),
+    linear-gradient(rgba(12, 16, 22, 0.42), rgba(12, 16, 22, 0.88)),
+    var(--game-arena-bg, var(--play-arena-bg)) center/cover no-repeat;
+}
+
+.game-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 3px,
+      rgba(61, 184, 212, 0.025) 3px,
+      rgba(61, 184, 212, 0.025) 4px
+    );
+  opacity: 0.65;
+}
+
+.game-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  box-shadow:
+    inset 0 0 0 1px rgba(61, 184, 212, 0.18),
+    inset 0 0 100px rgba(12, 16, 22, 0.55);
+}
+
+.game-enemy-turn-text {
+  color: #e69a86;
+  text-shadow:
+    0 0 10px rgba(230, 154, 134, 0.65),
+    0 0 22px rgba(196, 120, 100, 0.42),
+    0 3px 12px rgba(12, 16, 22, 0.95);
+}
+
+.game-your-turn-text {
+  color: #3db8d4;
+  text-shadow:
+    0 0 10px rgba(61, 184, 212, 0.72),
+    0 0 22px rgba(42, 155, 184, 0.48),
+    0 3px 12px rgba(12, 16, 22, 0.95);
+}
+
+.game-enemy-turn-strip,
+.game-your-turn-strip {
+  background: linear-gradient(
+    90deg,
+    rgba(12, 16, 22, 0) 0%,
+    rgba(12, 16, 22, 0.62) 14%,
+    rgba(12, 16, 22, 0.72) 50%,
+    rgba(12, 16, 22, 0.62) 86%,
+    rgba(12, 16, 22, 0) 100%
+  );
+}
+
+.game-board-slot--vacant {
+  border-color: rgba(61, 184, 212, 0.22);
+  background: rgba(12, 16, 22, 0.42);
+  box-shadow: inset 0 0 12px rgba(61, 184, 212, 0.06);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-zone-controls .game-zone-controls__btn {
+  color: #e8eef4;
+  background: rgba(16, 22, 30, 0.88);
+  border-color: rgba(61, 184, 212, 0.35);
+  border-radius: 2px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-zone-controls .game-zone-controls__btn:hover:not(:disabled) {
+  color: #7fd8ef;
+  border-color: rgba(61, 184, 212, 0.55);
+  box-shadow: 0 6px 18px rgba(61, 184, 212, 0.18);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary {
+  color: #0c1016;
+  background: linear-gradient(135deg, rgba(61, 184, 212, 0.95) 0%, rgba(42, 155, 184, 0.98) 100%);
+  border-color: rgba(61, 184, 212, 0.65);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary:hover:not(:disabled) {
+  color: #071016;
+  border-color: rgba(127, 216, 239, 0.85);
+  box-shadow: 0 6px 22px rgba(61, 184, 212, 0.35);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-turn-box {
+  border-radius: 2px;
+  border: 1px solid rgba(61, 184, 212, 0.32);
+  background: rgba(12, 16, 22, 0.82);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.game-stage[data-gameplay-variant='helix'] .game-turn-box strong {
+  color: #7fd8ef;
+}
+
+.game-action-error {
+  border-color: rgba(230, 154, 134, 0.55);
+  background: rgba(12, 16, 22, 0.92);
+  color: #f0c4b8;
+}
+
+.game-stage--booting,
+.game-stage--error {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(61, 184, 212, 0.12) 0%, transparent 42%),
+    rgba(12, 16, 22, 0.94);
+}
+
+.game-stage--booting p,
+.game-stage--error p {
+  color: #7fd8ef;
+  letter-spacing: 0.12em;
+}
+
+/* ── Laser combat FX ── */
+
+.game-laser-beam,
+.game-laser-core {
+  position: absolute;
+  height: 3px;
+  transform-origin: 0 50%;
+  transform: translateY(-50%) rotate(var(--flight-angle, 0deg));
+  pointer-events: none;
+  border-radius: 999px;
+  opacity: 0;
+}
+
+.game-laser-beam {
+  height: 5px;
+  background: var(
+    --laser-gradient,
+    linear-gradient(90deg, transparent, #3db8d4, transparent)
+  );
+  box-shadow: var(--laser-shadow, 0 0 18px rgba(61, 184, 212, 0.9));
+  filter: blur(0.3px);
+}
+
+.game-laser-core {
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.95) 18%,
+    rgba(255, 255, 255, 0.95) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.75);
+}
+
+.game-laser-muzzle,
+.game-laser-impact {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    circle,
+    #ffffff 0%,
+    var(--laser-color, #3db8d4) 42%,
+    transparent 72%
+  );
+  box-shadow: 0 0 22px var(--laser-color, #3db8d4);
+}
+
+.game-laser-impact {
+  width: 34px;
+  height: 34px;
+}
+
+/* Hide voidborn fireball look if any leftover class appears */
+.game-stage[data-gameplay-variant='helix'] .game-fireball {
+  display: none;
+}
+
+.game-fx-deactivated {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #7fd8ef;
+  text-shadow:
+    0 0 8px rgba(61, 184, 212, 1),
+    0 0 20px rgba(139, 126, 200, 0.75),
+    0 2px 0 #0c1016;
+  white-space: nowrap;
+}
+
+.game-fx-signal-lock {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: #c4b8ec;
+  text-shadow:
+    0 0 10px rgba(139, 126, 200, 1),
+    0 0 22px rgba(61, 184, 212, 0.65),
+    0 2px 0 #0c1016;
+  white-space: nowrap;
+}
+
+.game-fx-signal-lock-failed {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-heading, 'Orbitron', sans-serif);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #e69a86;
+  text-shadow:
+    0 0 10px rgba(230, 154, 134, 0.85),
+    0 2px 0 #0c1016;
+  white-space: nowrap;
+}
+
+.game-board-card-wrap--deactivated {
+  pointer-events: none;
+}
+

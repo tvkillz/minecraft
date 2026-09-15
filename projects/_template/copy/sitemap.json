@@ -1,0 +1,48 @@
+{
+  "entries": [
+    {
+      "path": "/",
+      "changeFrequency": "weekly",
+      "priority": 1
+    },
+    {
+      "path": "/play",
+      "changeFrequency": "weekly",
+      "priority": 0.5
+    },
+    {
+      "path": "/terms",
+      "changeFrequency": "yearly",
+      "priority": 0.3
+    },
+    {
+      "path": "/privacy",
+      "changeFrequency": "yearly",
+      "priority": 0.3
+    },
+    {
+      "path": "/refund-policy",
+      "changeFrequency": "yearly",
+      "priority": 0.3
+    },
+    {
+      "path": "/disclaimer",
+      "changeFrequency": "yearly",
+      "priority": 0.3
+    },
+    {
+      "path": "/cookie-policy",
+      "changeFrequency": "yearly",
+      "priority": 0.3
+    }
+  ],
+  "robots": {
+    "disallow": [
+      "/portal/",
+      "/checkout",
+      "/auth/",
+      "/profile",
+      "/market"
+    ]
+  }
+}

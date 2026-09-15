@@ -1,0 +1,372 @@
+.fw-transfer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #0a1210 0%, #101a16 48%, #0a1210 100%);
+}
+
+.fw-transfer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(61, 122, 74, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 122, 74, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(180deg, black 0%, transparent 10%);
+}
+
+.fw-transfer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -3rem;
+  height: 6rem;
+  pointer-events: none;
+  background: linear-gradient(
+    0deg,
+    rgba(10, 18, 16, 0) 0%,
+    rgba(10, 18, 16, 0.52) 30%,
+    rgba(10, 18, 16, 0.9) 50%
+  );
+}
+
+.fw-transfer__shell {
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(3rem, 8vw, 5rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.35rem, 3.5vw, 2.25rem);
+}
+
+.fw-transfer__header {
+  max-width: 54rem;
+}
+
+.fw-transfer__kicker {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-ui);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #7aab78;
+}
+
+.fw-transfer__title {
+  margin-bottom: 0.65rem;
+}
+
+.fw-transfer__lead {
+  margin: 0;
+}
+
+/* —— Operations board (6 pathways) —— */
+
+.fw-transfer__ops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .fw-transfer__ops {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+.fw-transfer__op {
+  min-width: 0;
+}
+
+.fw-transfer__op-card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--op-glow, #7aab78) 34%, rgba(61, 122, 74, 0.28));
+  background: rgba(10, 18, 16, 0.82);
+  box-shadow:
+    0 10px 26px rgba(0, 0, 0, 0.38),
+    inset 0 0 0 1px rgba(232, 201, 106, 0.05);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.fw-transfer__op-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--op-glow, #7aab78) 58%, #e8c96a);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.45),
+    0 0 18px color-mix(in srgb, var(--op-glow, #7aab78) 16%, transparent);
+}
+
+.fw-transfer__op-mark {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.55rem;
+  z-index: 2;
+  padding: 0.18rem 0.42rem;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  color: #0a1210;
+  background: linear-gradient(180deg, #e8c96a, #c4a35a);
+  border: 1px solid rgba(10, 18, 16, 0.45);
+}
+
+.fw-transfer__op-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--op-glow, #7aab78) 28%, transparent);
+  background: #0f1814;
+}
+
+.fw-transfer__op-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.fw-transfer__op-card:hover .fw-transfer__op-image {
+  transform: scale(1.03);
+  filter: brightness(1.04) saturate(1.05);
+}
+
+.fw-transfer__op-scan {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(122, 171, 120, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 171, 120, 0.12) 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.fw-transfer__op-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.fw-transfer__op-title {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(0.78rem, 2vw, 0.92rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #f2f0e8;
+}
+
+.fw-transfer__op-desc {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.66rem, 1.8vw, 0.76rem);
+  line-height: 1.45;
+  color: rgba(242, 240, 232, 0.68);
+}
+
+/* —— Print tier strip —— */
+
+.fw-transfer__depth {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.fw-transfer__depth-label {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7aab78;
+}
+
+.fw-transfer__tiers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+@media (min-width: 720px) {
+  .fw-transfer__tiers {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+}
+
+.fw-transfer__tier-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid color-mix(in srgb, var(--tier-glow, #e8c96a) 38%, rgba(61, 122, 74, 0.3));
+  background:
+    linear-gradient(165deg, rgba(20, 32, 24, 0.92), rgba(10, 18, 16, 0.88));
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.fw-transfer__tier-card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--tier-glow, #e8c96a) 62%, #fff);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.42),
+    0 0 20px color-mix(in srgb, var(--tier-glow, #e8c96a) 14%, transparent);
+}
+
+.fw-transfer__tier-rarity {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--tier-glow, #e8c96a) 82%, #fff);
+  border: 1px solid color-mix(in srgb, var(--tier-glow, #e8c96a) 48%, transparent);
+  background: rgba(10, 18, 16, 0.72);
+}
+
+.fw-transfer__tier-title {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(0.82rem, 2.2vw, 0.98rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #f2f0e8;
+}
+
+.fw-transfer__tier-desc {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.66rem, 1.8vw, 0.76rem);
+  line-height: 1.5;
+  color: rgba(242, 240, 232, 0.68);
+}
+
+/* —— Market CTA (turnstile panel) —— */
+
+.fw-transfer__cta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0;
+  border: 1px solid rgba(61, 122, 74, 0.42);
+  background: rgba(10, 18, 16, 0.88);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.42),
+    inset 0 0 0 1px rgba(232, 201, 106, 0.08);
+  overflow: hidden;
+}
+
+.fw-transfer__cta-rail {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding: 1rem 0.65rem;
+  background: linear-gradient(180deg, rgba(61, 122, 74, 0.35), rgba(20, 32, 24, 0.95));
+  border-right: 1px solid rgba(61, 122, 74, 0.35);
+}
+
+.fw-transfer__cta-rail span {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: #e8c96a;
+  box-shadow: 0 0 8px rgba(232, 201, 106, 0.45);
+}
+
+.fw-transfer__cta-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+.fw-transfer__cta-tag {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #7aab78;
+}
+
+.fw-transfer__cta-lead {
+  margin: 0;
+  max-width: 42rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  line-height: 1.55;
+  color: rgba(242, 240, 232, 0.78);
+}
+
+.fw-transfer__cta-btn {
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+}
+
+@media (max-width: 560px) {
+  .fw-transfer__cta {
+    grid-template-columns: 1fr;
+  }
+
+  .fw-transfer__cta-rail {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 1px solid rgba(61, 122, 74, 0.35);
+    padding: 0.65rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fw-transfer__op-card,
+  .fw-transfer__tier-card,
+  .fw-transfer__op-image {
+    transition: none;
+  }
+
+  .fw-transfer__op-card:hover,
+  .fw-transfer__tier-card:hover,
+  .fw-transfer__op-card:hover .fw-transfer__op-image {
+    transform: none;
+  }
+}

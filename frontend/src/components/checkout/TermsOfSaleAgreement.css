@@ -1,0 +1,40 @@
+.terms-sale-agreement {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: rgba(232, 220, 200, 0.72);
+}
+
+.terms-sale-agreement__checkbox {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.1rem;
+  accent-color: #c9a227;
+  cursor: pointer;
+}
+
+.terms-sale-agreement__copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.terms-sale-agreement__link {
+  border: none;
+  padding: 0;
+  background: none;
+  color: #f3d878;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+  cursor: pointer;
+}
+
+.terms-sale-agreement__link:hover {
+  color: #ffe08a;
+}

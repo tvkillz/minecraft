@@ -1,0 +1,28 @@
+{
+  "title": "See you on the server",
+  "subtitle": "The Coop",
+  "description": "Copy the IP, grab a rank if you like, and jump into a minigame.",
+  "buttonLabel": "View ranks",
+  "route": "home",
+  "backgroundImage": "cities/lobby/spawn_01.png",
+  "siege": {
+    "title": "Store highlights",
+    "stats": [
+      {
+        "id": "ranks",
+        "value": "5",
+        "label": "Ranks"
+      },
+      {
+        "id": "coins",
+        "value": "5",
+        "label": "Coin packs"
+      },
+      {
+        "id": "modes",
+        "value": "2+",
+        "label": "Minigames"
+      }
+    ]
+  }
+}

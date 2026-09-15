@@ -1,0 +1,39 @@
+---
+description: Deployment model, payments, mail, and local vs mount layout
+alwaysApply: true
+---
+
+# Project architecture (authoritative)
+
+This repo at `~/Desktop/projects/minecraft` is a **Minecraft store constructor** (sibling of constructor-mount / textproject). Many storefronts share one frontend engine.
+
+| Local path | What it is | Notes |
+|---|---|---|
+| `frontend/` | Next.js engine | Local clone; compile from `projects/{id}/` |
+| `projects/` | Store content packs | **Local** (not the TCG rclone mount) |
+| `contentgen/` | Landing art pipeline | Gemini; project-scoped |
+| `cardgen/` | Feature/product art | Used for hero/catalog tiles |
+| `backend/` | Optional rclone mount | Shared Supabase stack — mount later |
+| `sendmail/` | Optional rclone mount | Invoice/auth mail relay — mount later |
+
+`projects/` here is **not** `constructor-mount/projects`. Each Minecraft store is `projects/{id}/`, same pattern as TCG sites and textproject packs.
+
+## Deployment — VPS only, no cPanel
+
+- **Frontend** runs on a frontend VPS (pm2 + nginx) when a store goes live.
+- **Backend** (Supabase) is the shared API VPS; mount it with `./mount-backend.sh` when needed.
+- There is **no cPanel production deploy**.
+
+## Payments — no Stripe
+
+- **No Stripe.** Checkout: `checkout_init` → billing → `checkout_pay` (gateway TBD) or admin **`checkout_test` success** for demos.
+- On test success: `fulfillInternalOrder` → credits granted → **`sendOrderInvoice`** → sendmail `POST /invoice`.
+
+## Mail
+
+- Auth email: GoTrue hook → sendmail `POST /hook`.
+- Invoices: commerce edge function → sendmail `POST /invoice` with `MAIL_API_KEY`.
+
+## Company / legal test data
+
+- Seller on invoices: `INVOICE_COMPANY_*` env (mirror `projects/{id}/copy/footer.json` contact block).

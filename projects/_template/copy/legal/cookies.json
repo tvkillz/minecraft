@@ -1,0 +1,17 @@
+{
+  "title": "Cookie Policy",
+  "lastUpdated": "2026-09-15",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Necessary cookies keep you signed in. Optional analytics cookies can be rejected."
+    },
+    {
+      "type": "company",
+      "name": "Store",
+      "companyNumber": "",
+      "address": "",
+      "email": "support@store.example.com"
+    }
+  ]
+}

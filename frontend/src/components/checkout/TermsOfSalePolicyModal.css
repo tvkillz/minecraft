@@ -1,0 +1,147 @@
+.terms-sale-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.terms-sale-modal--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.terms-sale-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(10, 10, 12, 0.84);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.terms-sale-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 640px);
+  max-height: min(90vh, 760px);
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem 1.25rem 1.1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background: linear-gradient(
+    165deg,
+    rgba(14, 18, 32, 0.98) 0%,
+    rgba(10, 10, 14, 0.96) 55%,
+    rgba(8, 8, 12, 0.98) 100%
+  );
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.65),
+    0 0 50px rgba(123, 77, 255, 0.12);
+  transform: translateY(12px) scale(0.98);
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.terms-sale-modal--open .terms-sale-modal__panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.terms-sale-modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 4px;
+  background: rgba(10, 10, 12, 0.6);
+  color: rgba(232, 220, 200, 0.75);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.terms-sale-modal__close:hover {
+  color: #f1e6c8;
+  border-color: rgba(201, 162, 39, 0.7);
+}
+
+.terms-sale-modal__header {
+  margin-bottom: 0.85rem;
+  padding-right: 2rem;
+}
+
+.terms-sale-modal__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-fantasy);
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #f0e8d8;
+}
+
+.terms-sale-modal__updated {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.terms-sale-modal__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.2rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: rgba(232, 220, 200, 0.82);
+}
+
+.terms-sale-modal__intro {
+  margin: 0 0 1rem;
+}
+
+.terms-sale-modal__section {
+  margin-bottom: 1rem;
+}
+
+.terms-sale-modal__section-title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #f3d878;
+}
+
+.terms-sale-modal__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.terms-sale-modal__list li strong {
+  color: #f1e6c8;
+  font-weight: 600;
+}
+
+.terms-sale-modal__footer {
+  flex-shrink: 0;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(123, 77, 255, 0.2);
+  display: flex;
+  justify-content: flex-end;
+}

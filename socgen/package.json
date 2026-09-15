@@ -1,0 +1,28 @@
+{
+  "name": "voidborn-socgen",
+  "version": "0.2.0",
+  "description": "Local CLI — project-scoped social post generator (Instagram, Facebook, Discord)",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "add-post": "node src/cli.js add-post",
+    "validate": "node src/cli.js validate",
+    "approve": "node src/cli.js approve",
+    "generate-images": "node src/cli.js generate-images",
+    "publish": "node src/cli.js publish",
+    "list": "node src/cli.js list",
+    "export": "node src/cli.js export",
+    "welcome-batch": "node src/cli.js welcome-batch",
+    "realm-market-batch": "node src/cli.js realm-market-batch",
+    "full-campaign": "node src/cli.js full-campaign",
+    "test-card": "node src/cli.js test-card",
+    "content-plan": "node src/cli.js content-plan"
+  },
+  "dependencies": {
+    "@fontsource/cinzel": "^5.2.8",
+    "@google/genai": "^2.10.0",
+    "@google/generative-ai": "^0.24.1",
+    "dotenv": "^16.4.7",
+    "sharp": "^0.35.2"
+  }
+}

@@ -1,0 +1,79 @@
+[data-landing-variant='minecraft'] {
+  --font-fantasy: 'Pixelify Sans', 'Inter', system-ui, sans-serif;
+}
+
+[data-landing-variant='minecraft'] .header__title,
+[data-landing-variant='minecraft'] .header__wordmark {
+  filter: none;
+}
+
+[data-landing-variant='minecraft'] .header {
+  padding: 0.35rem var(--landing-gutter-x, 1.5rem);
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 12, 0.88) 0%,
+    rgba(10, 10, 12, 0.28) 70%,
+    transparent 100%
+  );
+}
+
+[data-landing-variant='minecraft'] .header__brand {
+  justify-self: start;
+  min-width: 0;
+}
+
+[data-landing-variant='minecraft'] .header__wordmark {
+  height: 2.4rem;
+  width: 2.4rem;
+  max-width: 2.4rem;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+[data-landing-variant='minecraft'] .header__logo {
+  width: 28px;
+  height: 28px;
+}
+
+[data-landing-variant='minecraft'] .header__title {
+  font-size: 0.92rem;
+  letter-spacing: 0.14em;
+}
+
+[data-landing-variant='minecraft'] .header__sign-in {
+  font-family: var(--font-fantasy);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] .header__sign-in-icon {
+  color: var(--gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] .header__sign-in,
+[data-landing-variant='minecraft'] .header__menu-toggle {
+  height: 32px;
+}
+
+[data-landing-variant='minecraft'] .header__menu-toggle {
+  border-left-color: color-mix(in srgb, var(--gold, #e8b923) 40%, transparent);
+}
+
+[data-landing-variant='minecraft'] .header__menu-toggle span {
+  background: var(--gold, #e8b923);
+}
+
+@media (min-width: 768px) {
+  [data-landing-variant='minecraft'] .header {
+    padding: 0.4rem var(--landing-gutter-x, 3rem);
+  }
+
+  [data-landing-variant='minecraft'] .header__wordmark {
+    height: 2.55rem;
+    width: 2.55rem;
+    max-width: 2.55rem;
+  }
+}

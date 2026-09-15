@@ -1,0 +1,17 @@
+/* Tutorial chrome only — match result lives in MatchResultOverlay.css */
+
+.tutorial-overlay__panel {
+  border-radius: 2px;
+  border-color: rgba(61, 184, 212, 0.42);
+  background: rgba(12, 16, 22, 0.96);
+}
+
+.tutorial-overlay__title {
+  color: #7fd8ef;
+}
+
+.tutorial-highlight {
+  box-shadow:
+    0 0 0 2px rgba(61, 184, 212, 0.75),
+    0 0 24px rgba(61, 184, 212, 0.35);
+}

@@ -1,0 +1,304 @@
+.portal-transactions {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.portal-transactions__section {
+  padding: 1.35rem 1.25rem 1.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(123, 77, 255, 0.28);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 22, 38, 0.72) 0%,
+    rgba(10, 10, 12, 0.88) 100%
+  );
+  box-shadow: inset 0 0 24px rgba(123, 77, 255, 0.06);
+}
+
+.portal-transactions__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-fantasy);
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f1e6c8;
+}
+
+.portal-transactions__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.65rem 1rem;
+  margin-bottom: 1rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(80, 80, 88, 0.55);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.22);
+}
+
+.portal-transactions__filter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 8.5rem;
+}
+
+.portal-transactions__filter-label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.45);
+}
+
+.portal-transactions__filter-select {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background: rgba(10, 10, 12, 0.85);
+  color: #e8dcc8;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.portal-transactions__filter-select:focus {
+  outline: none;
+  border-color: rgba(123, 77, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(123, 77, 255, 0.2);
+}
+
+.portal-transactions__pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.portal-transactions__pagination-summary {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.portal-transactions__pagination-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.portal-transactions__pagination-page {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: rgba(232, 220, 200, 0.65);
+  padding: 0 0.25rem;
+}
+
+.portal-transactions__empty {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.portal-transactions__loading {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  color: rgba(232, 220, 200, 0.65);
+}
+
+.portal-transactions__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portal-tx-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.28);
+  transition: border-color 0.2s ease;
+}
+
+.portal-tx-row:hover {
+  border-color: rgba(123, 77, 255, 0.35);
+}
+
+.portal-tx-row__main {
+  flex: 1 1 14rem;
+  min-width: 0;
+}
+
+.portal-tx-row__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.65rem;
+  margin-bottom: 0.35rem;
+}
+
+.portal-tx-row__type {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #e8dcc8;
+}
+
+.portal-tx-row__tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.portal-tx-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portal-tx-tag--credits {
+  color: #fde68a;
+  border: 1px solid rgba(243, 199, 79, 0.4);
+  background: rgba(243, 199, 79, 0.1);
+}
+
+.portal-tx-tag--cash {
+  color: #7dd3fc;
+  border: 1px solid rgba(125, 211, 252, 0.4);
+  background: rgba(125, 211, 252, 0.1);
+}
+
+.portal-tx-row__desc {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: rgba(232, 220, 200, 0.72);
+  word-break: break-word;
+}
+
+.portal-tx-row__reject-reason {
+  margin: 0 0 0.35rem;
+  padding: 0.45rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid rgba(252, 165, 165, 0.25);
+  background: rgba(252, 165, 165, 0.06);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: rgba(252, 165, 165, 0.92);
+  word-break: break-word;
+}
+
+.portal-tx-row__reject-label {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  color: rgba(252, 165, 165, 0.75);
+}
+
+.portal-tx-row__date {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(232, 220, 200, 0.45);
+}
+
+.portal-tx-row__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.portal-tx-row__status {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portal-tx-row__status--completed,
+.portal-tx-row__status--paid,
+.portal-tx-row__status--successful {
+  color: #86efac;
+}
+
+.portal-tx-row__status--pending,
+.portal-tx-row__status--pending_payment {
+  color: #fcd34d;
+}
+
+.portal-tx-row__status--failed,
+.portal-tx-row__status--refunded,
+.portal-tx-row__status--cancelled,
+.portal-tx-row__status--rejected {
+  color: #fca5a5;
+}
+
+.portal-tx-row__amount {
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f3d878;
+}
+
+.portal-tx-row__amount--debit {
+  color: #fca5a5;
+}
+
+.portal-tx-row__balance {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.5);
+}
+
+@media (max-width: 640px) {
+  .portal-tx-row__meta {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    padding-top: 0.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+@media (max-width: 403px){
+  .portal-transactions__filter{
+    width: 100%
+  }
+}

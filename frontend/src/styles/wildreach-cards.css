@@ -1,0 +1,215 @@
+/* Wildreach card chrome — trail blaze / talon / river stone (not FW jersey, helix HUD, iyashikei soft) */
+
+[data-landing-variant='wildreach'] .card {
+  container-type: inline-size;
+  container-name: wr-card;
+}
+
+[data-landing-variant='wildreach'] .card .card__frame {
+  border-radius: 5px;
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 48%, #c49a3a);
+  background: linear-gradient(165deg, #18241e 0%, #0a100e 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.48),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.06);
+}
+
+[data-landing-variant='wildreach'] .card .card__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(10, 16, 14, 0.04) 0%,
+    rgba(10, 16, 14, 0.22) 42%,
+    rgba(8, 12, 10, 0.88) 100%
+  );
+}
+
+[data-landing-variant='wildreach'] .card .card__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f0ebe4;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.65);
+  font-size: clamp(0.38rem, 5.2cqw, 0.52rem);
+  padding: clamp(2px, 1.8cqw, 4px) clamp(3px, 2.4cqw, 6px);
+}
+
+[data-landing-variant='wildreach'] .card .card__stat,
+[data-landing-variant='wildreach'] .card .card__stat-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+/* Cost — trail blaze (map pin / blaze plate); sizes track card width via cqw */
+[data-landing-variant='wildreach'] .card .card__stat--mana {
+  top: clamp(4px, 4.5cqw, 8px);
+  left: clamp(4px, 4.5cqw, 8px);
+  width: clamp(14px, 16.5cqw, 28px);
+  height: clamp(17px, 20cqw, 34px);
+  color: #0a100e;
+  background: linear-gradient(180deg, #e0c878 0%, #c49a3a 55%, #8a6a2a 100%);
+  border: 1.5px solid rgba(240, 235, 228, 0.35);
+  border-radius: 0;
+  clip-path: polygon(50% 100%, 0 78%, 0 0, 100% 0, 100% 78%);
+  box-shadow:
+    0 2px 8px rgba(196, 154, 58, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+[data-landing-variant='wildreach'] .card .card__stat--mana .card__stat-value {
+  font-size: clamp(0.4rem, 7.2cqw, 0.78rem);
+  font-weight: 700;
+  padding-bottom: clamp(1px, 1.5cqw, 4px);
+}
+
+/* Strike — talon / claw chevron */
+[data-landing-variant='wildreach'] .card .card__stat--attack {
+  bottom: clamp(1.4rem, 22cqw, 3rem);
+  left: clamp(4px, 4.5cqw, 8px);
+  min-width: 0;
+  width: clamp(18px, 21cqw, 36px);
+  height: clamp(14px, 16.5cqw, 28px);
+  padding: 0 clamp(2px, 2.2cqw, 4px) 0 clamp(3px, 3.2cqw, 6px);
+  color: #f0ebe4;
+  background: linear-gradient(115deg, #b85a3a 0%, #c49a3a 100%);
+  border: none;
+  border-radius: 0;
+  clip-path: polygon(0 15%, 62% 0, 100% 50%, 62% 100%, 0 85%, 18% 50%);
+  box-shadow: 0 2px 8px rgba(184, 90, 58, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+[data-landing-variant='wildreach'] .card .card__stat--attack .card__stat-value {
+  font-size: clamp(0.38rem, 6.5cqw, 0.72rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+[data-landing-variant='wildreach'] .card .card__stat-icon--attack {
+  display: none;
+}
+
+/* Stamina — river stone / worn pebble */
+[data-landing-variant='wildreach'] .card .card__stat--health {
+  bottom: clamp(1.4rem, 22cqw, 3rem);
+  right: clamp(4px, 4.5cqw, 8px);
+  min-width: clamp(16px, 20cqw, 34px);
+  width: auto;
+  height: clamp(12px, 14cqw, 24px);
+  padding: 0 clamp(4px, 4.5cqw, 8px);
+  color: #f0ebe4;
+  background: linear-gradient(160deg, #4a9a8a 0%, #2a7a6a 55%, #1a4a42 100%);
+  border: 1.5px solid rgba(168, 208, 200, 0.45);
+  border-radius: 50% / 60%;
+  clip-path: none;
+  box-shadow: 0 2px 8px rgba(42, 122, 106, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-landing-variant='wildreach'] .card .card__stat--health .card__stat-value {
+  font-size: clamp(0.38rem, 6.5cqw, 0.72rem);
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+}
+
+/* Domain — organic track / paw pip */
+[data-landing-variant='wildreach'] .card .card__domain {
+  top: clamp(5px, 5.5cqw, 10px);
+  right: clamp(5px, 5.5cqw, 10px);
+  width: clamp(12px, 13cqw, 22px);
+  height: clamp(12px, 13cqw, 22px);
+  border-radius: 0;
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 65%, #f0ebe4);
+  background: rgba(10, 16, 14, 0.75);
+  clip-path: polygon(
+    50% 0%,
+    72% 18%,
+    100% 28%,
+    82% 55%,
+    88% 100%,
+    50% 82%,
+    12% 100%,
+    18% 55%,
+    0% 28%,
+    28% 18%
+  );
+  transform: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+[data-landing-variant='wildreach'] .card .card__domain--serengeti {
+  background: linear-gradient(135deg, #c49a3a 0%, #6a4a1a 100%);
+}
+
+[data-landing-variant='wildreach'] .card .card__domain--bengal {
+  background: linear-gradient(135deg, #2a7a6a 0%, #1a4a42 100%);
+}
+
+[data-landing-variant='wildreach'] .card .card__domain--patagonia {
+  background: linear-gradient(135deg, #b85a3a 0%, #6a3020 100%);
+}
+
+[data-landing-variant='wildreach'] .card .card__domain--taiga {
+  background: linear-gradient(135deg, #6a8a9a 0%, #2a3a48 100%);
+}
+
+[data-landing-variant='wildreach'] .card .card__keywords li {
+  border-radius: 2px;
+  font-family: var(--font-ui);
+  font-size: clamp(0.32rem, 4.2cqw, 0.58rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(42, 122, 106, 0.35);
+  border: 1px solid rgba(196, 154, 58, 0.28);
+}
+
+[data-landing-variant='wildreach'] .card .card__rarity {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  font-size: clamp(0.32rem, 4cqw, 0.5rem);
+}
+
+/* [data-landing-variant='wildreach'].wr-catalog__specimen-card.card:hover{
+  transform: none !important;
+} */
+
+/* Beat shared mobile hero fixed 22px stats — keep cqw scaling */
+@media (max-width: 640px) {
+  [data-landing-variant='wildreach'] .card.card--hero .card__stat,
+  [data-landing-variant='wildreach'] .card.card--hero .card__domain {
+    width: auto;
+    height: auto;
+    min-width: 0;
+    font-size: inherit;
+  }
+
+  [data-landing-variant='wildreach'] .card.card--hero .card__stat--mana {
+    width: clamp(14px, 16.5cqw, 28px);
+    height: clamp(17px, 20cqw, 34px);
+  }
+
+  [data-landing-variant='wildreach'] .card.card--hero .card__stat--attack {
+    width: clamp(18px, 21cqw, 36px);
+    height: clamp(14px, 16.5cqw, 28px);
+    bottom: clamp(1.4rem, 22cqw, 3rem);
+  }
+
+  [data-landing-variant='wildreach'] .card.card--hero .card__stat--health {
+    min-width: clamp(16px, 20cqw, 34px);
+    height: clamp(12px, 14cqw, 24px);
+    bottom: clamp(1.4rem, 22cqw, 3rem);
+  }
+
+  [data-landing-variant='wildreach'] .card.card--hero .card__domain {
+    width: clamp(12px, 13cqw, 22px);
+    height: clamp(12px, 13cqw, 22px);
+  }
+}

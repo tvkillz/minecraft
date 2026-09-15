@@ -1,0 +1,1178 @@
+.game-stage {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 252, 247, 0.22) 0%, transparent 48%),
+    linear-gradient(rgba(245, 240, 230, 0.08), rgba(44, 62, 45, 0.12)),
+    var(--game-arena-bg, var(--play-arena-bg)) center/cover no-repeat;
+}
+
+.game-vfx-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 12;
+}
+
+/* KOMOREBI — ambient field combat (no projectiles) */
+
+.game-field-veil {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.game-field-veil--blue {
+  background: radial-gradient(
+    ellipse 90% 70% at 50% 38%,
+    rgba(184, 220, 232, 0.22) 0%,
+    rgba(255, 252, 247, 0.08) 48%,
+    transparent 72%
+  );
+}
+
+.game-field-veil--green {
+  background: radial-gradient(
+    ellipse 88% 68% at 50% 40%,
+    rgba(159, 212, 168, 0.2) 0%,
+    rgba(255, 252, 247, 0.06) 50%,
+    transparent 74%
+  );
+}
+
+.game-field-veil--orange {
+  background: radial-gradient(
+    ellipse 92% 72% at 50% 36%,
+    rgba(232, 201, 160, 0.24) 0%,
+    rgba(255, 252, 247, 0.08) 46%,
+    transparent 72%
+  );
+}
+
+.game-field-ray {
+  position: absolute;
+  top: -8%;
+  width: 3px;
+  height: 62%;
+  transform-origin: 50% 0;
+  border-radius: 999px;
+  opacity: 0;
+  filter: blur(0.4px);
+}
+
+.game-field-ray--blue {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(184, 220, 232, 0.55) 28%,
+    rgba(142, 197, 218, 0.35) 62%,
+    rgba(184, 220, 232, 0) 100%
+  );
+  box-shadow: 0 0 18px rgba(184, 220, 232, 0.35);
+}
+
+.game-field-ray--green {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(184, 220, 192, 0.5) 30%,
+    rgba(159, 212, 168, 0.32) 64%,
+    rgba(184, 220, 192, 0) 100%
+  );
+  box-shadow: 0 0 16px rgba(159, 212, 168, 0.28);
+}
+
+.game-field-ray--orange {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 244, 230, 0.58) 26%,
+    rgba(232, 201, 160, 0.38) 60%,
+    rgba(255, 244, 230, 0) 100%
+  );
+  box-shadow: 0 0 18px rgba(232, 201, 160, 0.32);
+}
+
+.game-field-mote {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-field-mote--blue {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 0 10px rgba(184, 220, 232, 0.65);
+}
+
+.game-field-mote--green {
+  width: 6px;
+  height: 4px;
+  border-radius: 40% 60% 40% 60%;
+  background: rgba(200, 230, 204, 0.88);
+  box-shadow: 0 0 8px rgba(159, 212, 168, 0.45);
+}
+
+.game-field-mote--orange {
+  background: rgba(255, 250, 240, 0.95);
+  box-shadow: 0 0 10px rgba(232, 201, 160, 0.55);
+}
+
+.game-field-whisper {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-field-whisper--blue {
+  background: radial-gradient(circle, rgba(184, 220, 232, 0.45) 0%, rgba(184, 220, 232, 0) 72%);
+}
+
+.game-field-whisper--green {
+  background: radial-gradient(circle, rgba(159, 212, 168, 0.42) 0%, rgba(159, 212, 168, 0) 72%);
+}
+
+.game-field-whisper--orange {
+  background: radial-gradient(circle, rgba(232, 201, 160, 0.48) 0%, rgba(232, 201, 160, 0) 72%);
+}
+
+.game-field-bloom {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-field-bloom--face {
+  width: 160px;
+  height: 160px;
+}
+
+.game-field-bloom--blue {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.72) 0%, rgba(184, 220, 232, 0.38) 42%, transparent 72%);
+}
+
+.game-field-bloom--green {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.68) 0%, rgba(159, 212, 168, 0.36) 44%, transparent 72%);
+}
+
+.game-field-bloom--orange {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.75) 0%, rgba(232, 201, 160, 0.4) 42%, transparent 72%);
+}
+
+.game-field-ripple {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.game-field-ripple--blue {
+  box-shadow:
+    0 0 0 1px rgba(184, 220, 232, 0.35),
+    inset 0 0 18px rgba(184, 220, 232, 0.22);
+}
+
+.game-field-ripple--green {
+  box-shadow:
+    0 0 0 1px rgba(159, 212, 168, 0.32),
+    inset 0 0 18px rgba(159, 212, 168, 0.2);
+}
+
+.game-field-ripple--orange {
+  box-shadow:
+    0 0 0 1px rgba(232, 201, 160, 0.35),
+    inset 0 0 18px rgba(232, 201, 160, 0.22);
+}
+
+.game-vfx-particle {
+  position: absolute;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  opacity: 0.85;
+  box-shadow: 0 0 8px rgba(184, 220, 232, 0.35);
+}
+
+/* KOMOREBI — calm turn banners (kanji enter / exit) */
+
+.game-turn-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.game-turn-overlay__veil {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+}
+
+.game-turn-overlay--your .game-turn-overlay__veil {
+  background: radial-gradient(
+    circle at 50% 48%,
+    rgba(255, 252, 247, 0.2) 0%,
+    rgba(106, 171, 114, 0.08) 42%,
+    rgba(44, 62, 45, 0.04) 100%
+  );
+}
+
+.game-turn-overlay--enemy .game-turn-overlay__veil {
+  background: radial-gradient(
+    circle at 50% 48%,
+    rgba(255, 252, 247, 0.16) 0%,
+    rgba(201, 168, 124, 0.1) 42%,
+    rgba(44, 62, 45, 0.04) 100%
+  );
+}
+
+.game-turn-overlay__strip {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 72px;
+  transform: translateY(-50%);
+  opacity: 0.92;
+}
+
+.game-turn-overlay--your .game-turn-overlay__strip {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 252, 247, 0) 0%,
+    rgba(232, 244, 234, 0.55) 18%,
+    rgba(220, 236, 226, 0.68) 50%,
+    rgba(232, 244, 234, 0.55) 82%,
+    rgba(255, 252, 247, 0) 100%
+  );
+}
+
+.game-turn-overlay--enemy .game-turn-overlay__strip {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 252, 247, 0) 0%,
+    rgba(250, 243, 234, 0.55) 18%,
+    rgba(245, 235, 220, 0.68) 50%,
+    rgba(250, 243, 234, 0.55) 82%,
+    rgba(255, 252, 247, 0) 100%
+  );
+}
+
+.game-turn-overlay__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  transform-origin: center center;
+}
+
+.game-turn-overlay__glyph {
+  font-family: var(--font-heading, 'Shippori Mincho', serif);
+  font-size: 4.6rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.game-turn-overlay--your .game-turn-overlay__glyph {
+  color: #4a7c59;
+  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.75);
+}
+
+.game-turn-overlay--enemy .game-turn-overlay__glyph {
+  color: #9a7a62;
+  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.75);
+}
+
+.game-turn-overlay--exit .game-turn-overlay__glyph {
+  font-size: 3.4rem;
+  color: #6a8a96;
+  opacity: 0.92;
+}
+
+.game-turn-overlay__sublabel {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: rgba(44, 62, 45, 0.62);
+}
+
+.game-turn-overlay--enter {
+  animation: komorebi-turn-overlay-enter 0.63s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.game-turn-overlay--enter .game-turn-overlay__content {
+  animation: komorebi-turn-glyph-enter 0.75s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.game-turn-overlay--exit {
+  animation: komorebi-turn-overlay-exit 0.83s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.game-turn-overlay--exit .game-turn-overlay__content {
+  animation: komorebi-turn-glyph-exit 0.83s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.game-cast-ring {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--cast-color, #fb923c) 84%, white 16%);
+  box-shadow:
+    0 0 26px color-mix(in srgb, var(--cast-color, #fb923c) 62%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--cast-color, #fb923c) 40%, transparent);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.game-zone-villain {
+  position: absolute;
+  top: 28px;
+  left: 24px;
+  z-index: 3;
+}
+
+.game-zone-hero {
+  position: absolute;
+  bottom: 28px;
+  left: 24px;
+  z-index: 3;
+}
+
+.game-zone-board {
+  position: absolute;
+  left: 320px;
+  right: 220px;
+  top: 219px;
+  bottom: 335px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  /* gap: 20px; */
+  z-index: 1;
+}
+
+.game-board-lane {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 22px;
+  border-radius: 14px;
+  /* border: 1px solid rgba(148, 163, 184, 0.18); */
+  /* background: rgba(2, 6, 23, 0.16); */
+}
+
+.game-board-lane--opponent {
+  border-color: rgba(56, 189, 248, 0.25);
+}
+
+.game-board-lane--hero {
+  border-color: rgba(250, 204, 21, 0.22);
+}
+
+.game-board-card {
+  width: 176px;
+  height: 236px;
+  border-radius: 10px;
+  border: 2px solid rgba(46, 128, 173, 0.5);
+  background: linear-gradient(180deg, rgba(9, 24, 40, 0.85), rgba(7, 13, 24, 0.95));
+  color: #e5e7eb;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-fantasy, serif);
+  font-size: 2rem;
+  text-shadow: 0 0 10px rgba(147, 197, 253, 0.45);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.game-zone-enemy-hand {
+  position: absolute;
+  top: 14px;
+  left: 877px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 4;
+}
+
+.game-enemy-card-back {
+  position: relative;
+  width: 120px;
+  height: 168px;
+  margin-left: -66px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.game-enemy-card-back.game-card-fly-clone,
+.game-deck-card.game-card-fly-clone {
+  margin-left: 0;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-zone-controls {
+  position: absolute;
+  right: 86px;
+  top: 392px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 4;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box {
+  padding: 12px 16px 14px;
+  border-radius: 18px;
+  min-width: 162px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--font-ui, sans-serif);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.94) 0%, rgba(245, 240, 230, 0.88) 58%),
+    linear-gradient(180deg, rgba(255, 252, 247, 0.96) 0%, rgba(232, 237, 228, 0.9) 100%);
+  border: 1px solid rgba(124, 184, 124, 0.3);
+  box-shadow:
+    0 8px 22px rgba(44, 62, 45, 0.11),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box__round {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(44, 62, 45, 0.46);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box__phase {
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  color: rgba(44, 62, 45, 0.58);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box__status {
+  margin-top: 3px;
+  font-family: var(--font-heading, 'Shippori Mincho', serif);
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  color: #4a7c59;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box--yours .game-turn-box__status {
+  color: #4a7c59;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box--theirs .game-turn-box__status {
+  color: #5a8aaa;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-turn-box--settling .game-turn-box__status {
+  color: #9a8ab0;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-zone-controls .game-zone-controls__btn {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  border-radius: 999px !important;
+  color: #3d5240;
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(124, 184, 124, 0.32);
+  box-shadow: 0 4px 12px rgba(44, 62, 45, 0.08);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-zone-controls .game-zone-controls__btn:hover:not(:disabled) {
+  color: #243d28;
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(124, 184, 124, 0.45);
+  box-shadow: 0 6px 16px rgba(106, 171, 114, 0.12);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary {
+  color: #2f4a32;
+  background: rgba(184, 212, 176, 0.55);
+  border-color: rgba(106, 171, 114, 0.48);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary:hover:not(:disabled) {
+  background: rgba(184, 212, 176, 0.72);
+  border-color: rgba(106, 171, 114, 0.62);
+}
+
+.game-zone-hero-hand {
+    position: absolute;
+    left: 300px;
+    right: 296px;
+    bottom: 19px;
+    height: 370px;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.game-hero-card-fan {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  pointer-events: auto;
+  animation: hero-hand-pop 0.75s ease-out;
+}
+
+/* Wrapper is layout-only; each card owns its own hit box in the fan. */
+.game-hero-card-wrap {
+  display: contents;
+}
+
+.game-hero-card-wrap--disabled .card.card--game {
+  filter: grayscale(0.85) brightness(0.72);
+  cursor: not-allowed;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'].game-stage--booting {
+  display: grid;
+  place-items: center;
+  min-height: 100%;
+  color: #2c3e2d;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'].game-stage--booting p {
+  margin: 0;
+  color: #2c3e2d;
+}
+
+.game-stage--error {
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.game-action-error {
+  position: absolute;
+  left: 50%;
+  bottom: 420px;
+  transform: translateX(-50%);
+  z-index: 8;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 252, 247, 0.94);
+  color: #9a5548;
+  font-size: 0.85rem;
+  border: 1px solid rgba(201, 120, 106, 0.35);
+  box-shadow: 0 8px 20px rgba(44, 62, 45, 0.1);
+}
+
+.game-board-slot {
+  width: 176px;
+  height: 236px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game-board-slot--vacant {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.game-board-card-wrap {
+  position: relative;
+  width: 176px;
+  height: 236px;
+}
+
+.game-board-card-wrap .card {
+  width: 100%;
+  height: 100%;
+  transform: none;
+}
+
+.game-card-fly-clone {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.game-hero-card-fan .card.card--game {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: calc(178px * var(--card-scale, 1));
+  margin-left: calc(-89px * var(--card-scale, 1));
+  z-index: calc(10 + var(--fan-index));
+  pointer-events: auto;
+  cursor: pointer;
+  transform: translateX(var(--fan-translate-x)) translateY(var(--fan-lift))
+    rotate(var(--fan-rotate)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transform-origin: bottom center;
+  animation-name: game-card-fan-enter;
+  animation-duration: 0.72s;
+  animation-delay: calc(var(--fan-index) * 0.045s + 0.1s);
+}
+
+.game-hero-card-fan .card.card--game:hover,
+.game-hero-card-fan .card.card--game.card--hovered {
+  z-index: 100;
+  transform: translateX(var(--fan-translate-x)) translateY(calc(var(--fan-lift) - 66px))
+    rotate(0deg) rotateX(0deg) rotateY(0deg) scale(1.03);
+}
+
+.game-zone-card-preview {
+  position: absolute;
+  left: 20px;
+  top: 220px;
+  bottom: 230px;
+  z-index: 7;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.game-card-preview-wrap {
+  height: 100%;
+  width: auto;
+  aspect-ratio: 2 / 3;
+  max-width: min(420px, 38vw);
+  position: relative;
+  pointer-events: none;
+}
+
+.game-card-preview-wrap .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  animation: none;
+  filter: drop-shadow(0 16px 48px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--glow-color) 45%, transparent));
+}
+
+.game-card-preview-wrap .card:hover {
+  transform: none;
+  filter: drop-shadow(0 16px 48px rgba(0, 0, 0, 0.75))
+    drop-shadow(0 0 28px color-mix(in srgb, var(--glow-color) 45%, transparent));
+}
+
+.game-card-preview-wrap--ready .card__art {
+  transition: opacity 0.12s ease;
+}
+
+/* Large readout for left-side hover preview (fills game-zone-card-preview height). */
+.game-card-preview-wrap .card--preview .card__stat--mana {
+  top: 14px;
+  left: 14px;
+  width: 52px;
+  height: 58px;
+  font-size: 1.25rem;
+}
+
+.game-card-preview-wrap .card--preview .card__domain {
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+}
+
+.game-card-preview-wrap .card--preview .card__combat-stats {
+  padding: 0 14px;
+}
+
+.game-card-preview-wrap .card--preview .card__stat--attack {
+  min-width: 52px;
+  min-height: 44px;
+  padding: 6px 10px 6px 8px;
+  font-size: 1.15rem;
+}
+
+.game-card-preview-wrap .card--preview .card__stat--health {
+  min-width: 48px;
+  min-height: 56px;
+  padding: 6px 8px;
+  font-size: 1.25rem;
+}
+
+.game-card-preview-wrap .card--preview .card__rarity {
+  top: 58px;
+  right: 14px;
+  font-size: 0.62rem;
+  padding: 3px 8px;
+}
+
+.game-card-preview-wrap .card--preview .card__footer {
+  padding: 12px 20px 20px;
+  gap: 8px;
+}
+
+.game-card-preview-wrap .card--preview .card__title {
+  font-size: 0.95rem;
+  padding: 6px 8px;
+}
+
+.game-card-preview-wrap .card--preview .card__ability-name {
+  font-size: 0.72rem;
+}
+
+.game-card-preview-wrap .card--preview .card__ability-text {
+  font-size: 0.68rem;
+  line-height: 1.4;
+}
+
+.game-card-preview-wrap .card--preview .card__keywords li {
+  font-size: 0.58rem;
+  padding: 2px 6px;
+}
+
+.game-card-preview {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 2px solid rgba(250, 204, 21, 0.75);
+  /* background: #0a0a0c;
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.65),
+    0 0 24px rgba(59, 130, 246, 0.3); */
+}
+
+.game-card-preview__art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.game-card-preview__overlay {
+  position: absolute;
+  inset: 0;
+  /* background: linear-gradient(180deg, transparent 34%, rgba(10, 10, 12, 0.88) 100%); */
+}
+
+.game-card-preview__title {
+  position: absolute;
+  left: 50%;
+  bottom: 200px;
+  transform: translateX(-50%);
+  width: 88%;
+  margin: 0;
+  font-family: var(--font-fantasy, serif);
+  font-size: 0.86rem;
+  text-transform: uppercase;
+  color: #f8fafc;
+  text-align: center;
+  letter-spacing: 0.05em;
+  /* text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95); */
+}
+
+.game-card-preview__stat {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(10, 10, 12, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.8);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.game-card-preview__stat--mana {
+  top: 12px;
+  left: 12px;
+}
+
+.game-card-preview__stat--attack {
+  bottom: 56px;
+  left: 12px;
+}
+
+.game-card-preview__stat--health {
+  bottom: 56px;
+  right: 12px;
+}
+
+.game-zone-enemy-deck,
+.game-zone-hero-deck {
+  position: absolute;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  z-index: 5;
+}
+
+.game-zone-enemy-deck {
+  top: 54px;
+}
+
+.game-zone-hero-deck {
+  bottom: 110px;
+}
+
+.game-deck-card {
+  position: relative;
+  width: 88px;
+  height: 122px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.game-deck-count {
+  margin-top: 2px;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #1e3326;
+  text-shadow: none;
+}
+
+.game-deck-label {
+  font-family: var(--font-ui, sans-serif);
+  color: rgba(44, 62, 45, 0.65);
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  text-transform: lowercase;
+}
+
+.game-fullscreen-button {
+  position: absolute;
+  right: 24px;
+  bottom: 20px;
+  z-index: 5;
+  border: 1px solid rgba(106, 171, 114, 0.35);
+  border-radius: 999px;
+  color: #3d5244;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.72rem;
+  background: rgba(255, 252, 247, 0.82);
+  backdrop-filter: blur(8px);
+  padding: 0.45rem 0.85rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.game-fullscreen-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(106, 171, 114, 0.55);
+  box-shadow: 0 8px 18px rgba(44, 62, 45, 0.1);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .game-fullscreen-button {
+    display: none;
+  }
+}
+
+@keyframes hero-hand-pop {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes game-card-fan-enter {
+  from {
+    opacity: 0;
+    transform: translateX(0) translateY(70px) rotate(0deg) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(var(--fan-translate-x)) translateY(var(--fan-lift))
+      rotate(var(--fan-rotate)) scale(1);
+  }
+}
+
+@keyframes komorebi-turn-overlay-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes komorebi-turn-overlay-exit {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes komorebi-turn-glyph-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes komorebi-turn-glyph-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-14px) scale(0.94);
+  }
+}
+
+/* Match FX layer */
+.game-fx-mana-burst {
+  position: absolute;
+  z-index: 90;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  filter: drop-shadow(0 4px 12px rgba(106, 171, 114, 0.2));
+}
+
+.game-fx-mana-burst--villain {
+  filter: drop-shadow(0 4px 12px rgba(201, 168, 124, 0.22));
+}
+
+.game-fx-mana-burst__label {
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #4a7c59;
+  text-shadow: none;
+}
+
+.game-fx-mana-burst--villain .game-fx-mana-burst__label {
+  color: #9a6b55;
+}
+
+.game-fx-mana-burst__sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+  color: rgba(44, 62, 45, 0.65);
+  text-transform: lowercase;
+}
+
+.game-fx-rest {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #5a7a8a;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.game-fx-stillness {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #6a9ec4;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.game-fx-stillness-failed {
+  position: absolute;
+  z-index: 95;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(92, 74, 58, 0.72);
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.65);
+  white-space: nowrap;
+}
+
+.game-fx-executed {
+  display: none;
+}
+
+.game-fx-freeze,
+.game-fx-freeze-failed {
+  display: none;
+}
+
+.game-board-card-wrap--freeze-hit {
+  z-index: 11;
+}
+
+.game-board-card-wrap--striking {
+  z-index: 12;
+}
+
+.game-board-card-wrap--rest {
+  z-index: 11;
+}
+
+.game-hero-card-wrap--dealing {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+}
+
+.game-hero-card-wrap:not(.game-hero-card-wrap--dealing) {
+  transition:
+    opacity 0.22s ease,
+    transform 0.22s ease;
+}
+
+.game-card-fly-clone {
+  will-change: transform, opacity;
+}
+
+.game-server-pill {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  opacity: 0.72;
+  font-weight: 600;
+}
+
+.game-server-pill--live {
+  color: #6ee7b7;
+}
+
+.game-server-pill--offline {
+  color: #fca5a5;
+}
+
+.game-api-hud {
+  position: absolute;
+  left: 0.65rem;
+  bottom: 0.55rem;
+  z-index: 70;
+  max-width: min(22rem, 42vw);
+  padding: 0.45rem 0.55rem;
+  border-radius: 0.35rem;
+  background: rgba(6, 10, 18, 0.88);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  font-size: 0.58rem;
+  line-height: 1.35;
+  color: rgba(226, 232, 240, 0.92);
+  pointer-events: none;
+}
+
+.game-api-hud__head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.6rem;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+}
+
+.game-api-hud__head strong {
+  letter-spacing: 0.12em;
+  font-size: 0.58rem;
+}
+
+.game-api-hud__ok {
+  color: #6ee7b7;
+}
+
+.game-api-hud__bad {
+  color: #fca5a5;
+}
+
+.game-api-hud__hint {
+  margin: 0 0 0.3rem;
+  opacity: 0.78;
+}
+
+.game-api-hud__hint code {
+  font-size: 0.55rem;
+}
+
+.game-api-hud__log {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.game-api-hud__log li {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.12rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.game-api-hud__line--ok span:last-child {
+  color: #86efac;
+}
+
+.game-api-hud__line--fail span:last-child {
+  color: #fca5a5;
+}
+
+.game-api-hud__empty {
+  opacity: 0.7;
+  font-style: italic;
+}

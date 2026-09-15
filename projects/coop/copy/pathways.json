@@ -1,0 +1,62 @@
+{
+  "title": "Support the server",
+  "description": "Hosting, builds, and updates are funded by this store. Pick a rank, grab coins, or just jump in and play.",
+  "features": [
+    {
+      "id": "join-discord",
+      "title": "Join Discord",
+      "description": "Ranked chat, priority feedback, and patch notes.",
+      "image": "cta1/join-discord.png",
+      "glowColor": "#5865f2"
+    },
+    {
+      "id": "copy-ip",
+      "title": "Copy the IP",
+      "description": "Java 1.20.4+ — paste the address from the hero and connect.",
+      "image": "cta1/copy-ip.png",
+      "glowColor": "#3d8f3d"
+    },
+    {
+      "id": "buy-rank",
+      "title": "Buy a rank",
+      "description": "Permanent perks. Upgrade later without losing what you paid.",
+      "image": "cta1/buy-rank.png",
+      "glowColor": "#e8b923"
+    },
+    {
+      "id": "buy-coins",
+      "title": "Buy Victory Coins",
+      "description": "Kits, extra MineMart slots, and lobby cosmetics.",
+      "image": "cta1/buy-coins.png",
+      "glowColor": "#c9a227"
+    }
+  ],
+  "tiers": [
+    {
+      "id": "uncommon",
+      "rarityLabel": "PRO",
+      "title": "Pro Rank",
+      "description": "Affordable start — lobby particles, chat prefix, early inventory slot.",
+      "glowColor": "#5eead4"
+    },
+    {
+      "id": "rare",
+      "rarityLabel": "ACE",
+      "title": "Ace Rank",
+      "description": "The usual best deal — extra particles, bonus coins, more ranked maps.",
+      "glowColor": "#e8b923"
+    },
+    {
+      "id": "epic",
+      "rarityLabel": "LEGEND",
+      "title": "Legend Rank",
+      "description": "Top tier cosmetics, the most ranked maps, and the biggest coin bonus.",
+      "glowColor": "#f3c74f"
+    }
+  ],
+  "marketCta": {
+    "description": "Ready to support the server?",
+    "buttonLabel": "Open the store",
+    "route": "portalStore"
+  }
+}

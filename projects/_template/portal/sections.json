@@ -1,0 +1,32 @@
+{
+  "sections": [
+    {
+      "id": "market",
+      "label": "Store",
+      "route": "portalMarket",
+      "title": "STORE",
+      "subtitle": "Browse ranks and Victory Coin packs."
+    },
+    {
+      "id": "collection",
+      "label": "Unlocks",
+      "route": "portalCollection",
+      "title": "UNLOCKS",
+      "subtitle": "Ranks and packs tied to your account."
+    },
+    {
+      "id": "transactions",
+      "label": "Transactions",
+      "route": "portalTransactions",
+      "title": "TRANSACTIONS",
+      "subtitle": "Order and credit history."
+    },
+    {
+      "id": "profile",
+      "label": "Profile",
+      "route": "portalProfile",
+      "title": "PROFILE",
+      "subtitle": "Account settings."
+    }
+  ]
+}

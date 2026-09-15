@@ -1,0 +1,9 @@
+[
+  {
+    "id": "coop",
+    "name": "The Coop",
+    "domain": "coop.example.com",
+    "status": "demo",
+    "stagingDomain": "staging.coop.example.com"
+  }
+]

@@ -1,0 +1,75 @@
+# =============================================================================
+# Minecraft store constructor — root .gitignore
+# Layout: frontend/  projects/  contentgen/  cardgen/
+# backend/ and sendmail/ are optional rclone mounts (not committed).
+# =============================================================================
+
+# --- OS & editors ---
+.DS_Store
+Thumbs.db
+*.sw?
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# --- Logs ---
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# --- Secrets & local env (keep *.example templates) ---
+**/.env
+**/.env.local
+**/.env.development
+**/.env.production
+**/.env.test
+**/.env.*.local
+**/.env.admin
+frontend/deploy/deploy.local.env
+frontend/deploy/cpanel.local.env
+!**/.env.example
+!**/.env.*.example
+
+# Playwright saved auth
+ui-tests/.auth/
+
+# --- Node / JS build artifacts ---
+**/node_modules/
+**/.next/
+**/.cache/
+**/.turbo/
+**/dist/
+**/dist-ssr/
+**/.build/
+**/.site-hybrid/
+**/.hybrid-production/
+**/.active-project/
+*.tsbuildinfo
+
+# --- Frontend compile outputs ---
+frontend/src/generated/
+frontend/public/assets/
+frontend/public/favicon.svg
+frontend/game/public/favicon.ico
+frontend/game/public/favicon.png
+frontend/game/public/favicon.svg
+frontend/public/data/
+frontend/public/play/
+frontend/public/_play_dist_backup/
+frontend/deploy/output/
+frontend/dist-cpanel/
+frontend/dist-cpanel-static/
+
+# --- Contentgen / cardgen staging ---
+projects/**/assets/_staging/
+
+# --- Optional rclone mounts (shared constructor backend) ---
+/backend/
+/sendmail/
+
+# --- Optional local asset fallback ---
+cursor_assets/

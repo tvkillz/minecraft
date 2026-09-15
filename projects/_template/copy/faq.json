@@ -1,0 +1,25 @@
+{
+  "title": "F.A.Q",
+  "items": [
+    {
+      "id": "how-join",
+      "question": "How do I join the server?",
+      "answer": "Use Minecraft Java 1.20.4 or newer. Copy the server IP from the hero and add it in Multiplayer."
+    },
+    {
+      "id": "ranks-permanent",
+      "question": "Are ranks permanent?",
+      "answer": "Yes. Ranks are permanent and can be upgraded from this store."
+    },
+    {
+      "id": "pay-to-win",
+      "question": "Is this pay-to-win?",
+      "answer": "Ranks are cosmetics and quality-of-life. Ranked maps can still roll for everyone when a ranked player is in the game."
+    },
+    {
+      "id": "coins",
+      "question": "What are Victory Coins?",
+      "answer": "The shared currency for kits, extra inventory, and lobby cosmetics. Earn them by playing or buy packs here."
+    }
+  ]
+}

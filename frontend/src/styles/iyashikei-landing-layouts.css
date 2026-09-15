@@ -1,0 +1,450 @@
+/* Iyashikei landing — per-section layout rhythms (shared gutter/padding, distinct structure) */
+
+[data-landing-variant='iyashikei'] {
+  --iyashi-section-pad-y: clamp(4.5rem, 10vw, 7rem);
+  --iyashi-section-pad-bottom: clamp(3rem, 8vw, 5.5rem);
+}
+
+/* Flow: hero bleeds into locations; gentler gaps between lower sections */
+[data-landing-variant='iyashikei'] .landing-flow {
+  gap: clamp(3rem, 8vw, 5.5rem);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .landing-flow > .iyashikei-hero + .locations {
+  margin-top: calc(-1 * clamp(3.5rem, 9vw, 6.5rem));
+}
+
+[data-landing-variant='iyashikei'] .landing-flow > .locations + .dominions {
+  margin-top: 0;
+}
+
+/* ── Locations: editorial — preview left, copy + ward pills right ── */
+
+[data-landing-variant='iyashikei'] .locations {
+  -webkit-mask-image: none;
+  mask-image: none;
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+[data-landing-variant='iyashikei'] .locations__bg {
+  top: 0;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] .locations .landing-shell {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .locations__grid {
+  grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.95fr);
+  gap: clamp(2rem, 5vw, 3.5rem);
+  align-items: center;
+}
+
+[data-landing-variant='iyashikei'] .locations__left {
+  order: 2;
+}
+
+[data-landing-variant='iyashikei'] .locations__right {
+  order: 1;
+  justify-self: start;
+}
+
+[data-landing-variant='iyashikei'] .locations__copy {
+  text-align: left;
+}
+
+[data-landing-variant='iyashikei'] .locations__kicker {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+[data-landing-variant='iyashikei'] .locations__menu {
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 1.5rem;
+}
+
+[data-landing-variant='iyashikei'] .locations__menu li {
+  flex: none;
+  width: 100%;
+}
+
+@media (max-width: 919px) {
+  [data-landing-variant='iyashikei'] .locations__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  [data-landing-variant='iyashikei'] .locations__left,
+  [data-landing-variant='iyashikei'] .locations__right {
+    order: unset;
+  }
+
+  [data-landing-variant='iyashikei'] .locations__right {
+    justify-self: stretch;
+  }
+}
+
+/* ── Dominions: centered grid on wide screens, scroll on narrow ── */
+
+[data-landing-variant='iyashikei'] .dominions__inner {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .dominions__grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(1rem, 2.5vw, 1.35rem);
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--landing-gutter-x);
+  padding-bottom: 0.75rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 184, 124, 0.45) transparent;
+}
+
+[data-landing-variant='iyashikei'] .dominions__item {
+  flex: 0 0 clamp(260px, 72vw, 320px);
+  scroll-snap-align: center;
+}
+
+[data-landing-variant='iyashikei'] .dominions__card {
+  aspect-ratio: 3 / 4;
+  min-height: 0;
+}
+
+[data-landing-variant='iyashikei'] .dominions__card-copy {
+  text-align: center;
+  align-items: center;
+}
+
+@media (min-width: 1150px) {
+  [data-landing-variant='iyashikei'] .dominions__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 280px));
+    justify-content: center;
+    overflow-x: visible;
+    scroll-snap-type: none;
+  }
+
+  [data-landing-variant='iyashikei'] .dominions__item {
+    flex: unset;
+    scroll-snap-align: unset;
+  }
+}
+
+/* ── Game model: alternating feature rows ── */
+
+[data-landing-variant='iyashikei'] .gamemodel__inner {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__grid {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  max-width: min(920px, 100%);
+  margin-inline: auto;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    'icon title'
+    'icon desc';
+  align-items: start;
+  text-align: left;
+  gap: 0.35rem 1.25rem;
+  padding: clamp(1.1rem, 3vw, 1.5rem);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__icon-wrap {
+  grid-area: icon;
+  width: clamp(4.5rem, 12vw, 5.5rem);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card-title {
+  grid-area: title;
+  align-self: end;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card-desc {
+  grid-area: desc;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__tags {
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: min(720px, 100%);
+  margin-inline: auto;
+  display: none;
+}
+
+@media (max-width: 640px) {
+  [data-landing-variant='iyashikei'] .gamemodel__card {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      'icon title'
+      'icon desc';
+    text-align: left;
+  }
+}
+
+/* ── Collection: stacked showcase + horizontal picker ── */
+
+[data-landing-variant='iyashikei'] .collection__inner {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .collection__showcase {
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
+  justify-items: center;
+}
+
+[data-landing-variant='iyashikei'] .collection__preview {
+  min-height: clamp(280px, 38vw, 400px);
+  max-width: min(420px, 100%);
+  margin-inline: auto;
+  width: 100%;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.85rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 0.5rem;
+  -webkit-overflow-scrolling: touch;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+  justify-content: center;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-item {
+  flex: 0 0 clamp(100px, 22vw, 130px);
+  scroll-snap-align: center;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-btn {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Komorebi's Library — picker cards grow on hover (not clipped by strip) */
+[data-landing-variant='iyashikei'] .collection {
+  overflow: visible;
+}
+
+[data-landing-variant='iyashikei'] .collection__showcase {
+  overflow: visible;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker {
+  overflow-x: auto;
+  overflow-y: visible;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-item {
+  overflow: visible;
+}
+
+[data-landing-variant='iyashikei'] .collection.visible .collection__picker-item:hover {
+  opacity: 1;
+  transform: translateY(-12px) scale(1.12);
+  z-index: 5;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-btn .card {
+  transition: filter 0.35s ease;
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-btn:hover .card,
+[data-landing-variant='iyashikei'] .collection__picker-btn .card.card--hovered {
+  z-index: 6;
+  transform: none;
+  filter: drop-shadow(0 14px 32px rgba(0, 0, 0, 0.28))
+    drop-shadow(0 0 22px color-mix(in srgb, var(--glow-color, #c9a87c) 42%, transparent));
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-btn:hover .card .card__frame,
+[data-landing-variant='iyashikei'] .collection__picker-btn .card.card--hovered .card__frame {
+  overflow: visible;
+}
+
+/* ── Pathways: bento features + tier row ── */
+
+[data-landing-variant='iyashikei'] .pathways__inner {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .pathways__list {
+  /* grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, auto); */
+}
+
+
+
+/* [data-landing-variant='iyashikei'] .pathways__item:nth-child(1) {
+  grid-column: span 3;
+}
+
+[data-landing-variant='iyashikei'] .pathways__item:nth-child(2) {
+  grid-column: span 3;
+}
+
+[data-landing-variant='iyashikei'] .pathways__item:nth-child(3) {
+  grid-column: span 2;
+}
+
+[data-landing-variant='iyashikei'] .pathways__item:nth-child(4) {
+  grid-column: span 2;
+}
+
+[data-landing-variant='iyashikei'] .pathways__item:nth-child(5) {
+  grid-column: span 2;
+}
+
+[data-landing-variant='iyashikei'] .pathways__item:nth-child(6) {
+  grid-column: span 6;
+} */
+
+[data-landing-variant='iyashikei'] .pathways__tiers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.85rem, 2vw, 1.15rem);
+  overflow-x: visible;
+  padding-bottom: 0;
+}
+
+[data-landing-variant='iyashikei'] .pathways__tier {
+  flex: 0 1 clamp(220px, 30vw, 280px);
+  scroll-snap-align: unset;
+}
+
+[data-landing-variant='iyashikei'] .pathways__cta {
+  width: 100%;
+  max-width: min(640px, 100%);
+  margin-inline: auto;
+}
+
+@media (max-width: 919px) {
+  [data-landing-variant='iyashikei'] .pathways__list {
+    grid-template-columns: 1fr;
+  }
+
+  [data-landing-variant='iyashikei'] .pathways__item:nth-child(n) {
+    grid-column: span 1;
+  }
+}
+
+/* ── FAQ: two-column accordion ── */
+
+[data-landing-variant='iyashikei'] .faq__inner {
+  margin-top: 0;
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .faq__list {
+  max-width: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(0.55rem, 1.5vw, 0.75rem);
+  column-gap: clamp(1rem, 3vw, 2rem);
+}
+
+@media (min-width: 920px) {
+  [data-landing-variant='iyashikei'] .faq__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+}
+
+/* ── Final CTA: split copy + stats ── */
+
+[data-landing-variant='iyashikei'] .final-cta {
+  padding-top: var(--iyashi-section-pad-y);
+  padding-bottom: var(--iyashi-section-pad-bottom);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__bg {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+[data-landing-variant='iyashikei'] .final-cta__bg-image {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* object-fit: contain;
+  object-position: center bottom; */
+  opacity: 0.72;
+  filter: grayscale(0.1) brightness(1.02) saturate(1.05);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__inner {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
+  align-items: center;
+  padding: 3vw;
+}
+
+[data-landing-variant='iyashikei'] .final-cta__siege-stats {
+  font-family: var(--font-heading,var(--font-fantasy) );
+}
+
+@media (min-width: 920px) {
+  [data-landing-variant='iyashikei'] .final-cta__inner {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: center;
+  }
+
+  [data-landing-variant='iyashikei'] .final-cta__copy {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  [data-landing-variant='iyashikei'] .final-cta__siege {
+    margin-inline: 0;
+  }
+}

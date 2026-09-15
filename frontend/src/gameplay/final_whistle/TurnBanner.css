@@ -1,0 +1,160 @@
+/* FINAL WHISTLE — match-day turn board (scoped to arena only) */
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board {
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 8, 6, 0.68);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__pitch-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  opacity: 0.85;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--home .fw-turn-board__pitch-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(122, 171, 120, 0.75) 18%,
+    rgba(122, 171, 120, 0.75) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(61, 122, 74, 0.45);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--away .fw-turn-board__pitch-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(232, 201, 106, 0.7) 18%,
+    rgba(232, 201, 106, 0.7) 82%,
+    transparent 100%
+  );
+  box-shadow: 0 0 16px rgba(196, 163, 90, 0.38);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__panel {
+  position: relative;
+  z-index: 1;
+  min-width: min(520px, 86vw);
+  padding: 1.15rem 1.35rem 1.2rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    linear-gradient(180deg, rgba(20, 32, 24, 0.97) 0%, rgba(10, 18, 14, 0.99) 100%);
+  box-shadow:
+    0 22px 56px rgba(0, 0, 0, 0.72),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  transform-origin: center center;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--home .fw-turn-board__panel {
+  border-top: 3px solid #7aab78;
+  box-shadow:
+    0 0 0 1px rgba(122, 171, 120, 0.14),
+    0 22px 56px rgba(0, 0, 0, 0.72),
+    0 0 28px rgba(61, 122, 74, 0.18);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--away .fw-turn-board__panel {
+  border-top: 3px solid #e8c96a;
+  box-shadow:
+    0 0 0 1px rgba(232, 201, 106, 0.12),
+    0 22px 56px rgba(0, 0, 0, 0.72),
+    0 0 28px rgba(196, 163, 90, 0.16);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__tag {
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 232, 0.42);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__headline {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--home .fw-turn-board__headline {
+  color: #d4ead4;
+  text-shadow: 0 0 22px rgba(61, 122, 74, 0.45);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--away .fw-turn-board__headline {
+  color: #f0d47a;
+  text-shadow: 0 0 22px rgba(232, 201, 106, 0.38);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board__sub {
+  margin: 0;
+  font-family: var(--font-ui, sans-serif);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(242, 240, 232, 0.48);
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--enter {
+  animation: fw-turn-board-enter 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--enter .fw-turn-board__panel {
+  animation: fw-turn-board-panel-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--exit {
+  animation: fw-turn-board-exit 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.game-stage[data-gameplay-variant='final_whistle'] .fw-turn-board--exit .fw-turn-board__panel {
+  animation: fw-turn-board-panel-exit 0.55s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fw-turn-board-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fw-turn-board-exit {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes fw-turn-board-panel-enter {
+  from { opacity: 0; transform: translateY(16px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fw-turn-board-panel-exit {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-12px) scale(0.96); }
+}

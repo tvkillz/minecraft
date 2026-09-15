@@ -1,0 +1,407 @@
+/* Final Whistle — portal sub-pages styling.
+   Scoped to [data-landing-variant='final_whistle'] so other portals remain unchanged. */
+
+/* ── Transactions (/portal/transactions) ── */
+
+[data-landing-variant='final_whistle'] .portal-transactions__section {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.82) 0%, rgba(10, 18, 16, 0.9) 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(61, 122, 74, 0.06);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__toolbar {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(8, 14, 12, 0.72);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__filter-label {
+  color: var(--fw-ink-soft);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__filter-select {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(8, 14, 12, 0.72);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__filter-select:focus {
+  outline: none;
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 0 2px rgba(122, 171, 120, 0.22);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__pagination {
+  border-top-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .portal-transactions__pagination-summary,
+[data-landing-variant='final_whistle'] .portal-transactions__pagination-page,
+[data-landing-variant='final_whistle'] .portal-transactions__empty,
+[data-landing-variant='final_whistle'] .portal-transactions__loading {
+  color: var(--fw-ink-soft);
+}
+
+/* Transaction rows */
+[data-landing-variant='final_whistle'] .portal-tx-row {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.6);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row:hover {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 16px rgba(232, 201, 106, 0.1);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__type {
+  color: var(--fw-ink);
+  letter-spacing: 0.08em;
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: uppercase;
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-tag {
+  border-radius: 2px;
+}
+
+/* Credits tag — gold */
+[data-landing-variant='final_whistle'] .portal-tx-tag--credits {
+  color: var(--fw-gold);
+  border-color: rgba(232, 201, 106, 0.42);
+  background: rgba(232, 201, 106, 0.1);
+}
+
+/* Cash tag — grass green */
+[data-landing-variant='final_whistle'] .portal-tx-tag--cash {
+  color: var(--fw-grass-bright);
+  border-color: rgba(122, 171, 120, 0.42);
+  background: rgba(122, 171, 120, 0.1);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__desc {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__date,
+[data-landing-variant='final_whistle'] .portal-tx-row__balance {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__amount {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__amount--debit {
+  color: #e8b09a;
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__status--completed,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--paid,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--successful {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__status--pending,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--pending_payment {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__status--failed,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--refunded,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--cancelled,
+[data-landing-variant='final_whistle'] .portal-tx-row__status--rejected {
+  color: #e8b09a;
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__reject-reason {
+  border-radius: 2px;
+  border-color: rgba(196, 120, 90, 0.35);
+  background: rgba(196, 120, 90, 0.08);
+  color: rgba(232, 176, 154, 0.92);
+}
+
+[data-landing-variant='final_whistle'] .portal-tx-row__reject-label {
+  color: rgba(232, 176, 154, 0.85);
+}
+
+/* ── Checkout (/checkout) ── */
+
+[data-landing-variant='final_whistle'] .checkout-page__header h1,
+[data-landing-variant='final_whistle'] .checkout-page > h1 {
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__lead,
+[data-landing-variant='final_whistle'] .checkout-page > p:not([class]) {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__card,
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.82) 0%, rgba(10, 18, 16, 0.9) 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(61, 122, 74, 0.06);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__card-title,
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__summary div {
+  border-bottom-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__summary dt {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__summary dd {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__line-items th {
+  border-bottom-color: var(--fw-border);
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__line-items td {
+  border-bottom-color: rgba(61, 122, 74, 0.12);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page .billing-form__label {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page .billing-form__required {
+  color: var(--fw-ember);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page .billing-form__input {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(8, 14, 12, 0.72);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page .billing-form__input:focus {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 0 2px rgba(122, 171, 120, 0.22);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__pay-block {
+  border-top-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__secure-note,
+[data-landing-variant='final_whistle'] .checkout-page__pay-message {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__admin-tests {
+  border-top-color: rgba(232, 201, 106, 0.28);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__admin-label {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer a,
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer .checkout-page__link,
+[data-landing-variant='final_whistle'] .checkout-page__link {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__disclaimer a:hover,
+[data-landing-variant='final_whistle'] .checkout-page__link:hover {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__error {
+  color: #e8b09a;
+}
+
+[data-landing-variant='final_whistle'] .checkout-page__success {
+  color: var(--fw-grass-bright);
+}
+
+/* Checkout success / failure (/portal/checkout/success, /portal/checkout/cancel) */
+
+[data-landing-variant='final_whistle'] .checkout-result h1 {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .checkout-result__lead,
+[data-landing-variant='final_whistle'] .checkout-result__balance {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .checkout-result__balance strong {
+  color: var(--fw-gold);
+  font-weight: 600;
+}
+
+[data-landing-variant='final_whistle'] .checkout-result__warning {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .checkout-result .vb-btn--secondary {
+  color: var(--fw-ink);
+  border-color: var(--fw-border);
+  background: var(--fw-panel);
+}
+
+[data-landing-variant='final_whistle'] .checkout-result .vb-btn--secondary:hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+  background: var(--fw-panel-strong);
+}
+
+/* ── Terms-of-sale agreement (checkbox + link on checkout) ── */
+[data-landing-variant='final_whistle'] .terms-sale-agreement {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-agreement__checkbox {
+  accent-color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-agreement__link {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-agreement__link:hover {
+  color: var(--fw-gold);
+}
+
+/* ── Terms-of-sale policy modal (popup) ──
+   Most modal chrome is handled by final_whistle-modals.css; here we add readability accents. */
+[data-landing-variant='final_whistle'] .terms-sale-modal__close {
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.75);
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-modal__close:hover {
+  color: var(--fw-gold);
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 12px rgba(232, 201, 106, 0.22);
+}
+
+/* Solid titles (optional; keep gradient title styling from modals) */
+[data-landing-variant='final_whistle'] .terms-sale-modal__title {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-modal__section-title {
+  color: var(--fw-gold);
+  font-family: var(--font-heading, var(--font-fantasy));
+}
+
+/* ── Legal documents pages (terms, privacy, refund, cookies, disclaimer) ── */
+[data-landing-variant='final_whistle'] .legal-doc {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__eyebrow {
+  color: var(--fw-grass-bright);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__updated {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__paragraph,
+[data-landing-variant='final_whistle'] .legal-doc__list {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__heading,
+[data-landing-variant='final_whistle'] .legal-doc h2.legal-doc__heading,
+[data-landing-variant='final_whistle'] .legal-doc h3.legal-doc__heading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fw-grass-bright);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__company {
+  border-radius: 4px;
+  border: 1px solid var(--fw-border);
+  background: rgba(20, 32, 24, 0.55);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__company p {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__company-name {
+  color: var(--fw-ink);
+  font-weight: 700;
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__link {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .legal-doc__link:hover {
+  color: var(--fw-gold);
+}
+

@@ -1,0 +1,363 @@
+@import '../voidborn/Game.css';
+
+/* WILDREACH arena — blurred range backdrop + field dossier chrome */
+
+.game-stage {
+  background: #0a100e;
+}
+
+/* Blurred arena art sits behind UI (pseudo so filters don't blur HUD) */
+.game-stage::before {
+  content: '';
+  position: absolute;
+  inset: -24px;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--game-arena-bg, var(--play-arena-bg)) center / cover no-repeat;
+  filter: blur(7px);
+  transform: scale(1.06);
+}
+
+.game-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 10, 0.55) 0%, rgba(8, 12, 10, 0.22) 38%, rgba(8, 12, 10, 0.72) 100%),
+    radial-gradient(circle at 50% 18%, rgba(196, 154, 58, 0.12) 0%, transparent 42%),
+    radial-gradient(circle at 18% 78%, rgba(42, 122, 106, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 82% 72%, rgba(184, 90, 58, 0.08) 0%, transparent 38%);
+  box-shadow:
+    inset 0 0 0 1px rgba(196, 154, 58, 0.14),
+    inset 0 0 90px rgba(8, 12, 10, 0.45);
+}
+
+.game-vfx-layer {
+  z-index: 12;
+}
+
+.game-enemy-turn-text {
+  color: #e8b09a;
+  text-shadow:
+    0 0 10px rgba(184, 90, 58, 0.55),
+    0 3px 12px rgba(8, 12, 10, 0.95);
+}
+
+.game-your-turn-text {
+  color: #c49a3a;
+  text-shadow:
+    0 0 10px rgba(196, 154, 58, 0.65),
+    0 3px 12px rgba(8, 12, 10, 0.95);
+}
+
+.game-enemy-turn-strip,
+.game-your-turn-strip {
+  background: linear-gradient(
+    90deg,
+    rgba(8, 12, 10, 0) 0%,
+    rgba(8, 12, 10, 0.62) 14%,
+    rgba(8, 12, 10, 0.72) 50%,
+    rgba(8, 12, 10, 0.62) 86%,
+    rgba(8, 12, 10, 0) 100%
+  );
+}
+
+.game-board-slot--vacant {
+  border-color: rgba(196, 154, 58, 0.22);
+  background: rgba(8, 12, 10, 0.42);
+  box-shadow: inset 0 0 12px rgba(42, 122, 106, 0.06);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-zone-controls .game-zone-controls__btn {
+  color: #f0ebe4;
+  background: rgba(16, 24, 20, 0.88);
+  border-color: rgba(196, 154, 58, 0.35);
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-zone-controls .game-zone-controls__btn:hover:not(:disabled) {
+  color: #c49a3a;
+  border-color: rgba(196, 154, 58, 0.55);
+  box-shadow: 0 6px 18px rgba(196, 154, 58, 0.18);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary {
+  color: #0a100e;
+  background: linear-gradient(180deg, #d4ae52 0%, #c49a3a 48%, #a87828 100%);
+  border-color: rgba(196, 154, 58, 0.72);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-zone-controls .game-zone-controls__btn.vb-btn--primary:hover:not(:disabled) {
+  color: #070c0a;
+  border-color: rgba(212, 174, 82, 0.9);
+  box-shadow: 0 6px 22px rgba(196, 154, 58, 0.35);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-turn-box {
+  border-radius: 4px;
+  border: 1px solid rgba(196, 154, 58, 0.35);
+  background: rgba(8, 12, 10, 0.82);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.03);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-turn-box strong {
+  color: #c49a3a;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.1em;
+}
+
+.game-action-error {
+  border-color: rgba(184, 90, 58, 0.55);
+  background: rgba(8, 12, 10, 0.92);
+  color: #e8b09a;
+}
+
+.game-stage--booting,
+.game-stage--error {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(196, 154, 58, 0.1) 0%, transparent 42%),
+    rgba(8, 12, 10, 0.94);
+}
+
+.game-stage--booting::before,
+.game-stage--error::before {
+  display: none;
+}
+
+.game-stage--booting p,
+.game-stage--error p {
+  color: #c49a3a;
+  letter-spacing: 0.12em;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  text-transform: uppercase;
+}
+
+/* Deck quantity + DECK label — white ~40% opacity */
+.game-stage[data-gameplay-variant='wildreach'] .game-deck-count {
+  color: rgba(255, 255, 255, 0.4);
+  text-shadow: none;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-deck-label {
+  color: rgba(255, 255, 255, 0.4);
+  text-shadow: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fullscreen-button {
+  border-radius: 4px;
+  border-color: rgba(196, 154, 58, 0.4);
+  background: rgba(16, 24, 20, 0.82);
+  color: rgba(240, 235, 228, 0.7);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fullscreen-button:hover {
+  border-color: rgba(196, 154, 58, 0.6);
+  color: #f0ebe4;
+}
+
+/* FX labels — field dossier tone */
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-executed {
+  color: #e8d4a0;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.14em;
+  text-shadow:
+    0 0 10px rgba(196, 154, 58, 0.55),
+    0 2px 0 #0a100e;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-freeze {
+  color: #c49a3a;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.14em;
+  text-shadow:
+    0 0 10px rgba(196, 154, 58, 0.65),
+    0 2px 0 #0a100e;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-freeze-failed {
+  color: rgba(240, 235, 228, 0.45);
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.12em;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-mana-burst__label {
+  color: #c49a3a;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-mana-burst__sub {
+  color: rgba(240, 235, 228, 0.55);
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.14em;
+}
+
+.game-stage[data-gameplay-variant='wildreach'] .game-fx-mana-burst--villain .game-fx-mana-burst__label {
+  color: #e8b09a;
+}
+
+/* ── Claw slash / trail-strike combat FX ── */
+
+.game-claw-muzzle,
+.game-claw-blaze,
+.game-claw-slash,
+.game-claw-wake,
+.game-claw-scratches,
+.game-claw-impact {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.game-claw-muzzle {
+  width: 28px;
+  height: 28px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(240, 235, 228, 0.95) 0%,
+    var(--claw-color, #c49a3a) 42%,
+    transparent 72%
+  );
+  box-shadow: 0 0 22px var(--claw-color, #c49a3a);
+}
+
+/* Trail-blaze plate flash at cast */
+.game-claw-blaze {
+  width: 22px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  clip-path: polygon(50% 100%, 0 78%, 0 0, 100% 0, 100% 78%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--claw-color, #c49a3a) 88%, #f0ebe4) 0%,
+    var(--claw-color, #c49a3a) 55%,
+    color-mix(in srgb, var(--claw-color, #c49a3a) 55%, #0a100e) 100%
+  );
+  border: 1px solid rgba(240, 235, 228, 0.35);
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--claw-color, #c49a3a) 55%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Flying talon chevron (matches Wildreach attack chrome) */
+.game-claw-slash {
+  width: 54px;
+  height: 28px;
+  transform: translate(-50%, -50%) rotate(var(--flight-angle, 0deg));
+  clip-path: polygon(0 15%, 62% 0, 100% 50%, 62% 100%, 0 85%, 18% 50%);
+  background: var(
+    --claw-gradient,
+    linear-gradient(115deg, #b85a3a 0%, #c49a3a 100%)
+  );
+  box-shadow: var(--claw-shadow, 0 0 18px rgba(196, 154, 58, 0.85));
+  filter: drop-shadow(0 0 8px var(--claw-color, #c49a3a));
+}
+
+.game-claw-slash::after {
+  content: '';
+  position: absolute;
+  inset: 22% 18% 22% 28%;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 235, 228, 0) 0%,
+    rgba(240, 235, 228, 0.55) 50%,
+    rgba(240, 235, 228, 0) 100%
+  );
+  clip-path: inherit;
+  opacity: 0.85;
+}
+
+/* Dust / heat wake trailing the talon */
+.game-claw-wake {
+  width: 72px;
+  height: 10px;
+  transform: translate(-92%, -50%) rotate(var(--flight-angle, 0deg));
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--claw-color, rgba(224, 200, 120, 0.85)) 55%, transparent) 35%,
+    transparent 100%
+  );
+  filter: blur(2.5px);
+  opacity: 0.7;
+}
+
+/* Three parallel claw scratches on hit */
+.game-claw-scratches {
+  width: 54px;
+  height: 42px;
+  transform: translate(-50%, -50%) rotate(var(--flight-angle, 0deg));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.game-claw-scratch {
+  display: block;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--claw-color, #e0c878) 18%,
+    #f0ebe4 48%,
+    var(--claw-color, #e0c878) 78%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--claw-color, #c49a3a) 70%, transparent);
+  transform-origin: 0 50%;
+}
+
+.game-claw-scratch:nth-child(1) {
+  width: 92%;
+  margin-left: 4%;
+  transform: rotate(-11deg);
+}
+
+.game-claw-scratch:nth-child(2) {
+  width: 100%;
+  transform: rotate(0deg);
+}
+
+.game-claw-scratch:nth-child(3) {
+  width: 88%;
+  margin-left: 6%;
+  transform: rotate(10deg);
+}
+
+.game-claw-impact {
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(240, 235, 228, 0.75) 0%,
+    var(--claw-color, #c49a3a) 38%,
+    transparent 70%
+  );
+  box-shadow:
+    0 0 28px var(--claw-color, #c49a3a),
+    inset 0 0 12px rgba(240, 235, 228, 0.25);
+}
+
+/* Hide voidborn orb if anything leaks through */
+.game-stage[data-gameplay-variant='wildreach'] .game-fireball,
+.game-stage[data-gameplay-variant='wildreach'] .game-cast-ring {
+  display: none;
+}
+

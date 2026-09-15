@@ -1,0 +1,17 @@
+{
+  "title": "Refund Policy",
+  "lastUpdated": "2026-09-15",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Digital ranks and coin packs are fulfilled immediately and are generally non-refundable except where required by law."
+    },
+    {
+      "type": "company",
+      "name": "Store",
+      "companyNumber": "",
+      "address": "",
+      "email": "support@store.example.com"
+    }
+  ]
+}

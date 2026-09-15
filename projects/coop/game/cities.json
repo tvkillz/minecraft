@@ -1,0 +1,28 @@
+{
+  "cities": [
+    {
+      "slug": "spawn_01",
+      "path": "cities/lobby/spawn_01.png",
+      "name": "Spawn",
+      "description": "The hub."
+    },
+    {
+      "slug": "hall_01",
+      "path": "cities/ranks/hall_01.png",
+      "name": "Rank Hall",
+      "description": "Perk gallery."
+    },
+    {
+      "slug": "vault_01",
+      "path": "cities/coins/vault_01.png",
+      "name": "Coin Vault",
+      "description": "Victory Coins."
+    },
+    {
+      "slug": "arcade_01",
+      "path": "cities/games/arcade_01.png",
+      "name": "Arcade",
+      "description": "Minigames."
+    }
+  ]
+}

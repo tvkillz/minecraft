@@ -1,0 +1,68 @@
+.billing-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.billing-form__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.billing-form__footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.billing-form__grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.billing-form__grid--pair {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 640px) {
+  .billing-form__grid--pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+.billing-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.billing-form__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.billing-form__required {
+  color: #f3d878;
+}
+
+.billing-form__input {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  color: inherit;
+  font: inherit;
+}
+
+.billing-form__input:disabled {
+  opacity: 0.6;
+}
+
+.billing-form__input:focus {
+  outline: none;
+  border-color: rgba(125, 211, 252, 0.45);
+}

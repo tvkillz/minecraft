@@ -1,0 +1,130 @@
+{
+  "cards": [
+    {
+      "slug": "ranks_card_01_pro",
+      "title": "Pro Rank",
+      "domain": "ranks",
+      "role": "Rank",
+      "rarity": "common",
+      "path": "cards/ranks/ranks_card_01_pro.png",
+      "stats": {
+        "mana": 2,
+        "attack": 2,
+        "health": 3
+      },
+      "keywords": [
+        "Rank"
+      ],
+      "ability": {
+        "name": "Starter perks",
+        "text": "Lobby particle ×1, [Pro] chat prefix, early 5th MineMart slot."
+      },
+      "image_prompt": "Minecraft Java store tile: lime-green emerald rank medallion on a mossy oak podium, modest rank hall, single green firework spark, iron armor stand, warm lantern light, no text, no UI."
+    },
+    {
+      "slug": "ranks_card_02_ace",
+      "title": "Ace Rank",
+      "domain": "ranks",
+      "role": "Rank",
+      "rarity": "uncommon",
+      "path": "cards/ranks/ranks_card_02_ace.png",
+      "stats": {
+        "mana": 4,
+        "attack": 4,
+        "health": 5
+      },
+      "keywords": [
+        "Rank"
+      ],
+      "ability": {
+        "name": "Best deal",
+        "text": "Two lobby particles, [Ace] prefix, 100 bonus Victory Coins, extra ranked maps."
+      },
+      "image_prompt": "Minecraft Java store tile: golden ace-of-spades medallion made of gold blocks, two gold particle spirals, enchanted golden armor on a stand, purple wool banners, ceremonial hall, no text, no UI."
+    },
+    {
+      "slug": "ranks_card_03_legend",
+      "title": "Legend Rank",
+      "domain": "ranks",
+      "role": "Rank",
+      "rarity": "epic",
+      "path": "cards/ranks/ranks_card_03_legend.png",
+      "stats": {
+        "mana": 8,
+        "attack": 8,
+        "health": 9
+      },
+      "keywords": [
+        "Rank"
+      ],
+      "ability": {
+        "name": "Top tier",
+        "text": "Three particles, [Legend] prefix, 1000 bonus coins, most ranked maps."
+      },
+      "image_prompt": "Minecraft Java store tile: blazing orange netherite crown on a quartz and gold throne, three flame particles, netherite armor with orange trim, lava glow, legendary hall, no text, no UI."
+    },
+    {
+      "slug": "coins_card_01_bag",
+      "title": "Victory Coins",
+      "domain": "coins",
+      "role": "Currency pack",
+      "rarity": "uncommon",
+      "path": "cards/coins/coins_card_01_bag.png",
+      "stats": {
+        "mana": 3,
+        "attack": 3,
+        "health": 4
+      },
+      "keywords": [
+        "Coins"
+      ],
+      "ability": {
+        "name": "Server currency",
+        "text": "Spend on kits, extra inventory, and lobby cosmetics. Also earned by playing."
+      },
+      "image_prompt": "Minecraft Java store tile: overflowing brown leather coin pouch spilling gold nugget coins beside an open chest in a vault, warm torch light, no readable text, no UI."
+    },
+    {
+      "slug": "games_card_01_disasters",
+      "title": "Survive Disasters",
+      "domain": "games",
+      "role": "Minigame",
+      "rarity": "rare",
+      "path": "cards/games/games_card_01_disasters.png",
+      "stats": {
+        "mana": 5,
+        "attack": 5,
+        "health": 6
+      },
+      "keywords": [
+        "Kit"
+      ],
+      "ability": {
+        "name": "Disaster rounds",
+        "text": "Survive shifting hazards. Ranked maps can appear when a ranked player is in the game."
+      },
+      "image_prompt": "Minecraft Java store tile of a Survive Disasters kit: open chest with iron sword, water bucket, cobblestone, and shield, meteor raining on a cracked stone arena behind, no text, no UI."
+    },
+    {
+      "slug": "games_card_02_minemart",
+      "title": "MineMart",
+      "domain": "games",
+      "role": "Minigame",
+      "rarity": "rare",
+      "path": "cards/games/games_card_02_minemart.png",
+      "stats": {
+        "mana": 5,
+        "attack": 5,
+        "health": 6
+      },
+      "keywords": [
+        "Kit"
+      ],
+      "ability": {
+        "name": "Infinite store",
+        "text": "Shop-crawl minigame. Ranks unlock the 5th inventory slot early."
+      },
+      "image_prompt": "Minecraft Java store tile of a MineMart shopping kit: iron-bar shopping cart packed with food and tools, item-frame supermarket aisles stretching forever, bright redstone lamps, no text, no UI."
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+/* Final Whistle — hard seam between hero and section 2 (no bleed / overlap) */
+
+[data-landing-variant='final_whistle'] {
+  --locations-bg-bleed-top: 0;
+}
+
+[data-landing-variant='final_whistle'] .landing-flow {
+  gap: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-hero + .fw-pressure {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-pressure + .fw-dominions {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-dominions + .fw-programme {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-programme + .fw-catalog {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-catalog + .fw-transfer {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-transfer + .fw-faq {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow > .fw-faq + .fw-shape {
+  margin-top: clamp(-1.5rem, -3vw, -0.75rem);
+}
+
+[data-landing-variant='final_whistle'] .landing-flow + .site-footer {
+  margin-top: 0;
+}
+
+/* Pressure map section: own stack */
+[data-landing-variant='final_whistle'] .fw-pressure {
+  background: var(--fw-pitch);
+  overflow: hidden;
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+}
+
+[data-landing-variant='final_whistle'] .fw-pressure .landing-shell {
+  /* margin-top: clamp(4rem, 10vw, 7rem); */
+}

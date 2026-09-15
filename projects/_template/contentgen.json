@@ -1,0 +1,48 @@
+{
+  "projectTitle": "Store",
+  "visualPitch": "Minecraft Java minigames server store — blocky worlds, ranks, coin pouches, no UI text",
+  "style": {
+    "aesthetic": "Minecraft Java Edition screenshot aesthetic, voxel blocks, warm sunlight, no photoreal humans, no readable text, no logos, no watermarks",
+    "avoid": "text, watermarks, logos, photoreal skin, gun violence, Mojang official logo",
+    "palette": "grass green, gold, oak, night plaza lanterns"
+  },
+  "image": {
+    "promptPrefix": "Wide cinematic Minecraft Java world,",
+    "promptSuffix": "blocky voxel art, no people close-up, no text, no watermark.",
+    "ctaSuffix": "Minecraft feature tile illustration, 16:9, atmospheric, no text, no watermark.",
+    "gamemodelSuffix": "square Minecraft icon illustration, centered, no text, no watermark, 1:1.",
+    "cardTypeSuffix": "square Minecraft rank emblem, centered, clean silhouette, no text, no watermark, 1:1."
+  },
+  "domains": {
+    "lobby": {
+      "mood": "friendly spawn plaza",
+      "palette": "grass, oak, lantern gold"
+    },
+    "ranks": {
+      "mood": "ceremonial hall",
+      "palette": "gold, purple wool, oak"
+    },
+    "coins": {
+      "mood": "treasure vault",
+      "palette": "gold, chest brown"
+    },
+    "games": {
+      "mood": "arcade of portals",
+      "palette": "cyan wool, redstone lamps"
+    }
+  },
+  "cardTypes": {
+    "uncommon": {
+      "label": "Pro / Ace",
+      "accent": "#5eead4"
+    },
+    "rare": {
+      "label": "King / Queen",
+      "accent": "#e8b923"
+    },
+    "epic": {
+      "label": "Legend",
+      "accent": "#f97316"
+    }
+  }
+}

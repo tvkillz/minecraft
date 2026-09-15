@@ -1,0 +1,322 @@
+/* WILDREACH — Hunt Protocol (three documentary passes) — unique vs FW programme / default pillars */
+
+.wr-protocol {
+  position: relative;
+  isolation: isolate;
+  padding: clamp(1.5rem, 3.5vw, 2.5rem) 0 clamp(2.75rem, 6.5vw, 4.5rem);
+  overflow: hidden;
+  background: #070b09;
+  color: var(--text-primary, #f0ebe4);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wr-protocol--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.wr-protocol__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wr-protocol__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(196, 154, 58, 0.03) 2px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 4px,
+      rgba(42, 122, 106, 0.02) 4px 5px
+    );
+}
+
+.wr-protocol__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(196, 154, 58, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 50% at 10% 80%, rgba(42, 122, 106, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 45% at 90% 60%, rgba(184, 90, 58, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #070b09 0%, #0c1210 50%, #070b09 100%);
+}
+
+.wr-protocol__trail-line {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 52%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 154, 58, 0.15) 15%,
+    rgba(42, 122, 106, 0.35) 50%,
+    rgba(184, 90, 58, 0.2) 85%,
+    transparent 100%
+  );
+  opacity: 0.7;
+}
+
+.wr-protocol__shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.35rem, 3vw, 2.25rem);
+  min-width: 0;
+  min-height: 0;
+}
+
+.wr-protocol__header {
+  max-width: 44rem;
+  flex-shrink: 0;
+}
+
+.wr-protocol__eyebrow {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.62rem, 1.4vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c49a3a;
+}
+
+.wr-protocol__title {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.85rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wr-protocol__lead {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(220, 228, 220, 0.82);
+}
+
+/* Three equal passes */
+.wr-protocol__passes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.55rem, 1.5vw, 1.1rem);
+  align-items: start;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.wr-protocol__pass {
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.08s + var(--pass-i, 0) * 0.1s);
+}
+
+.wr-protocol--visible .wr-protocol__pass {
+  opacity: 1;
+  transform: none;
+}
+
+.wr-protocol__pass-hit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.wr-protocol__pass-art {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  aspect-ratio: 16 / 9;
+  max-height: 14rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--pass-glow, #c49a3a) 35%, rgba(196, 154, 58, 0.18));
+  background: #0a100e;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.35);
+}
+
+.wr-protocol__pass-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.wr-protocol__pass-mist {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 10, 8, 0.1) 0%,
+    transparent 40%,
+    rgba(6, 10, 8, 0.55) 72%,
+    rgba(6, 10, 8, 0.88) 100%
+  );
+  pointer-events: none;
+}
+
+.wr-protocol__pass-index {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.7rem;
+  z-index: 1;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: color-mix(in srgb, var(--pass-glow, #c49a3a) 75%, #f0ebe4);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+  opacity: 0.9;
+}
+
+.wr-protocol__pass-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: 0 0.1rem;
+}
+
+.wr-protocol__pass-phase {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--pass-glow, #c49a3a) 80%, #f0ebe4);
+}
+
+.wr-protocol__pass-title {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #f0ebe4;
+}
+
+.wr-protocol__pass-verb {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: rgba(220, 228, 220, 0.55);
+}
+
+.wr-protocol__pass-desc {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: rgba(220, 228, 220, 0.78);
+}
+
+@media (max-width: 960px) {
+  .wr-protocol__trail-line {
+    display: none;
+  }
+
+  .wr-protocol__passes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .wr-protocol__pass-verb {
+    display: none;
+  }
+
+  .wr-protocol__pass-title {
+    font-size: clamp(0.9rem, 2.4vw, 1.15rem);
+  }
+}
+
+@media (max-width: 700px) {
+  .wr-protocol {
+    padding: clamp(1.5rem, 5vw, 2.25rem) 0;
+  }
+
+  .wr-protocol__shell {
+    gap: 0.85rem;
+  }
+
+  .wr-protocol__title {
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+    margin-bottom: 0.45rem;
+  }
+
+  .wr-protocol__lead {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .wr-protocol__pass-hit {
+    gap: 0.45rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .wr-protocol__pass-phase {
+    font-size: 0.52rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-protocol,
+  .wr-protocol__pass {
+    animation: none;
+    transition: none;
+  }
+
+  .wr-protocol,
+  .wr-protocol__pass {
+    opacity: 1;
+    transform: none;
+  }
+}

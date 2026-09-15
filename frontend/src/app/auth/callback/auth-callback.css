@@ -1,0 +1,40 @@
+.auth-callback {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+}
+
+.auth-callback__panel {
+  width: min(100%, 28rem);
+  padding: 2rem;
+  border-radius: 12px;
+  background: rgba(12, 12, 16, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+}
+
+.auth-callback__title {
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f4f0e6;
+}
+
+.auth-callback__subtitle {
+  margin: 0 0 1.5rem;
+  color: rgba(244, 240, 230, 0.72);
+  line-height: 1.5;
+}
+
+.auth-callback__message {
+  margin: 0;
+  text-align: center;
+  color: rgba(244, 240, 230, 0.85);
+  line-height: 1.5;
+}
+
+.auth-callback__message--ok {
+  color: #9fd89f;
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Terms of Service",
+  "lastUpdated": "2026-09-15",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Purchases on https://store.example.com are digital store features (ranks, coins, cosmetics). They support server hosting and development. Not affiliated with Mojang, Microsoft, or Minecraft."
+    },
+    {
+      "type": "company",
+      "name": "Store",
+      "companyNumber": "",
+      "address": "",
+      "email": "support@store.example.com"
+    }
+  ]
+}

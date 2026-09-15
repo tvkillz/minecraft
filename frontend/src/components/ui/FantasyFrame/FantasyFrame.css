@@ -1,0 +1,214 @@
+.fantasy-frame {
+  /* --fantasy-frame-glow-color: #a855f7; */
+  --fantasy-frame-iron: #3d3530;
+  --fantasy-frame-iron-hi: #6a6158;
+  --fantasy-frame-rust: #6b3a28;
+  --fantasy-frame-patina: rgba(90, 68, 48, 0.35);
+  --fantasy-frame-inset: clamp(0.55rem, 1.8vw, 0.85rem);
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #0a0908;
+  transition: box-shadow 0.45s ease;
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.55),
+    0 0 32px color-mix(in srgb, var(--fantasy-frame-glow-color) 28%, transparent),
+    0 0 72px color-mix(in srgb, var(--fantasy-frame-glow-color) 14%, transparent);
+}
+
+.fantasy-frame__content {
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-height: inherit;
+}
+
+/* ── Aging overlays (above media, below inset trim) ── */
+.fantasy-frame__age {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fantasy-frame__patina {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(107, 58, 40, 0.22) 0%, transparent 28%),
+    radial-gradient(circle at 88% 22%, rgba(74, 52, 38, 0.18) 0%, transparent 24%),
+    radial-gradient(circle at 8% 82%, rgba(60, 42, 32, 0.2) 0%, transparent 26%),
+    radial-gradient(circle at 92% 78%, rgba(107, 58, 40, 0.16) 0%, transparent 22%),
+    linear-gradient(145deg, rgba(30, 22, 18, 0.12) 0%, transparent 45%, rgba(20, 14, 12, 0.18) 100%);
+  mix-blend-mode: multiply;
+}
+
+.fantasy-frame__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.09;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.fantasy-frame__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 85% 80% at 50% 50%,
+    transparent 42%,
+    rgba(8, 6, 5, 0.35) 78%,
+    rgba(4, 3, 2, 0.65) 100%
+  );
+}
+
+.fantasy-frame__dust {
+  position: absolute;
+  inset: 0;
+}
+
+.fantasy-frame__mote {
+  position: absolute;
+  border-radius: 999px;
+  transform: translate3d(0, 0, 0);
+  animation: fantasy-frame-mote-drift ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.fantasy-frame__mote--dust {
+  background: rgba(210, 185, 150, 0.85);
+  box-shadow: 0 0 3px rgba(210, 185, 150, 0.25);
+}
+
+.fantasy-frame__mote--ember {
+  background: rgba(168, 90, 48, 0.9);
+  box-shadow: 0 0 4px rgba(168, 90, 48, 0.35);
+}
+
+.fantasy-frame__mote--ash {
+  background: rgba(140, 130, 120, 0.75);
+  box-shadow: 0 0 2px rgba(100, 95, 90, 0.2);
+}
+
+@keyframes fantasy-frame-mote-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+  35% {
+    transform: translate3d(var(--mote-drift, 8px), -10px, 0);
+    opacity: 0.75;
+  }
+  70% {
+    transform: translate3d(calc(var(--mote-drift, 8px) * -0.4), -18px, 0);
+    opacity: 0.45;
+  }
+}
+
+/* Inner iron bevel — sits over media, pointer-events none */
+.fantasy-frame__inset {
+  position: absolute;
+  inset: -22px;
+  z-index: 2;
+  pointer-events: none;
+  /* border: 1px solid color-mix(in srgb, var(--fantasy-frame-iron-hi) 55%, transparent); */
+  /* box-shadow:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.55),
+    inset 0 2px 18px rgba(0, 0, 0, 0.45),
+    inset 0 0 24px color-mix(in srgb, var(--fantasy-frame-glow-color) 35%, transparent); */
+}
+
+.fantasy-frame__inset::before {
+  content: '';
+  position: absolute;
+  inset: var(--fantasy-frame-inset);
+  border: 1px solid color-mix(in srgb, var(--fantasy-frame-iron) 80%, #7b4dff 20%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.35);
+}
+
+.fantasy-frame--aged .fantasy-frame__inset::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.55;
+  background:
+    linear-gradient(108deg, transparent 42%, rgba(255, 255, 255, 0.04) 49%, transparent 56%),
+    linear-gradient(18deg, transparent 58%, rgba(0, 0, 0, 0.12) 61%, transparent 64%),
+    linear-gradient(162deg, transparent 30%, rgba(107, 58, 40, 0.08) 32%, transparent 34%);
+  mix-blend-mode: overlay;
+}
+
+/* Forged corner brackets — worn edges */
+.fantasy-frame__corner {
+  position: absolute;
+  width: clamp(1.1rem, 3.5vw, 1.65rem);
+  height: clamp(1.1rem, 3.5vw, 1.65rem);
+  border-color: color-mix(in srgb, var(--fantasy-frame-iron-hi) 70%, var(--fantasy-frame-rust) 30%);
+  opacity: 0.88;
+}
+
+.fantasy-frame--aged .fantasy-frame__corner {
+  filter: saturate(0.82);
+}
+
+.fantasy-frame__corner--tl {
+  top: calc(var(--fantasy-frame-inset) - 1px);
+  left: calc(var(--fantasy-frame-inset) - 1px);
+  border-top: 2px solid;
+  border-left: 2px solid;
+  box-shadow:
+    -1px -1px 6px rgba(0, 0, 0, 0.65),
+    inset 2px 2px 4px rgba(107, 58, 40, 0.15);
+}
+
+.fantasy-frame__corner--tr {
+  top: calc(var(--fantasy-frame-inset) - 1px);
+  right: calc(var(--fantasy-frame-inset) - 1px);
+  border-top: 2px solid;
+  border-right: 2px solid;
+  box-shadow:
+    1px -1px 6px rgba(0, 0, 0, 0.65),
+    inset -2px 2px 4px rgba(107, 58, 40, 0.12);
+}
+
+.fantasy-frame__corner--bl {
+  bottom: calc(var(--fantasy-frame-inset) - 1px);
+  left: calc(var(--fantasy-frame-inset) - 1px);
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  box-shadow:
+    -1px 1px 6px rgba(0, 0, 0, 0.65),
+    inset 2px -2px 4px rgba(60, 42, 32, 0.18);
+}
+
+.fantasy-frame__corner--br {
+  bottom: calc(var(--fantasy-frame-inset) - 1px);
+  right: calc(var(--fantasy-frame-inset) - 1px);
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  box-shadow:
+    1px 1px 6px rgba(0, 0, 0, 0.65),
+    inset -2px -2px 4px rgba(107, 58, 40, 0.14);
+}
+
+.fantasy-frame--aged {
+  box-shadow:
+    0 16px 44px rgba(0, 0, 0, 0.55),
+    0 0 32px color-mix(in srgb, var(--fantasy-frame-glow-color) 28%, transparent),
+    0 0 72px color-mix(in srgb, var(--fantasy-frame-glow-color) 14%, transparent),
+    inset 0 0 80px rgba(20, 14, 10, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fantasy-frame__mote {
+    animation: none;
+    opacity: 0.25 !important;
+  }
+}

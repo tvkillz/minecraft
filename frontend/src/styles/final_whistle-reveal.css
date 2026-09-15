@@ -1,0 +1,149 @@
+/* Final Whistle — section reveal on scroll into view (re-plays each enter) */
+
+[data-landing-variant='final_whistle'] :is(
+    .fw-pressure__header,
+    .fw-pressure__board-wrap,
+    .fw-dominions__panel,
+    .fw-dominions__zones,
+    .fw-programme__header,
+    .fw-programme__page,
+    .fw-programme__footer,
+    .fw-catalog__header,
+    .fw-catalog__gallery,
+    .fw-transfer__header,
+    .fw-transfer__op,
+    .fw-transfer__depth,
+    .fw-transfer__cta,
+    .fw-faq__panel,
+    .fw-faq__item,
+    .fw-shape__board
+  ) {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0ms;
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .fw-pressure.visible .fw-pressure__header,
+    .fw-pressure.visible .fw-pressure__board-wrap,
+    .fw-dominions.visible .fw-dominions__panel,
+    .fw-dominions.visible .fw-dominions__zones,
+    .fw-programme.visible .fw-programme__header,
+    .fw-programme.visible .fw-programme__page,
+    .fw-programme.visible .fw-programme__footer,
+    .fw-catalog.visible .fw-catalog__header,
+    .fw-catalog.visible .fw-catalog__gallery,
+    .fw-transfer.visible .fw-transfer__header,
+    .fw-transfer.visible .fw-transfer__op,
+    .fw-transfer.visible .fw-transfer__depth,
+    .fw-transfer.visible .fw-transfer__cta,
+    .fw-faq.visible .fw-faq__panel,
+    .fw-faq.visible .fw-faq__item,
+    .fw-shape.visible .fw-shape__board
+  ) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger — board / secondary blocks */
+[data-landing-variant='final_whistle'] :is(
+    .fw-pressure.visible .fw-pressure__board-wrap,
+    .fw-dominions.visible .fw-dominions__zones,
+    .fw-catalog.visible .fw-catalog__gallery,
+    .fw-transfer.visible .fw-transfer__depth,
+    .fw-transfer.visible .fw-transfer__cta,
+    .fw-programme.visible .fw-programme__footer,
+    .fw-faq.visible .fw-faq__list,
+    .fw-shape.visible .fw-shape__board
+  ) {
+  transition-delay: 120ms;
+}
+
+[data-landing-variant='final_whistle'] .fw-programme.visible .fw-programme__page:nth-child(1) {
+  transition-delay: 80ms;
+}
+[data-landing-variant='final_whistle'] .fw-programme.visible .fw-programme__page:nth-child(2) {
+  transition-delay: 160ms;
+}
+[data-landing-variant='final_whistle'] .fw-programme.visible .fw-programme__page:nth-child(3) {
+  transition-delay: 240ms;
+}
+[data-landing-variant='final_whistle'] .fw-programme.visible .fw-programme__footer {
+  transition-delay: 320ms;
+}
+
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(1) {
+  transition-delay: 60ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(2) {
+  transition-delay: 120ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(3) {
+  transition-delay: 180ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(4) {
+  transition-delay: 240ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(5) {
+  transition-delay: 300ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__op:nth-child(6) {
+  transition-delay: 360ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__depth {
+  transition-delay: 280ms;
+}
+[data-landing-variant='final_whistle'] .fw-transfer.visible .fw-transfer__cta {
+  transition-delay: 380ms;
+}
+
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(1) {
+  transition-delay: 80ms;
+}
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(2) {
+  transition-delay: 140ms;
+}
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(3) {
+  transition-delay: 200ms;
+}
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(4) {
+  transition-delay: 260ms;
+}
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(5) {
+  transition-delay: 320ms;
+}
+[data-landing-variant='final_whistle'] .fw-faq.visible .fw-faq__item:nth-child(6) {
+  transition-delay: 380ms;
+}
+
+[data-landing-variant='final_whistle'] .fw-dominions.visible .fw-dominions__zones {
+  transition-delay: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-landing-variant='final_whistle'] :is(
+      .fw-pressure__header,
+      .fw-pressure__board-wrap,
+      .fw-dominions__panel,
+      .fw-dominions__zones,
+      .fw-programme__header,
+      .fw-programme__page,
+      .fw-programme__footer,
+      .fw-catalog__header,
+      .fw-catalog__gallery,
+      .fw-transfer__header,
+      .fw-transfer__op,
+      .fw-transfer__depth,
+      .fw-transfer__cta,
+      .fw-faq__panel,
+      .fw-faq__item,
+      .fw-shape__board
+    ) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

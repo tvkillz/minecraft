@@ -1,0 +1,642 @@
+/* HELIX — dark HUD modals, drawers, cookies, auth (voidborn/iyashikei unchanged) */
+
+/* ── Shared backdrops ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__backdrop,
+    .credits-modal__backdrop,
+    .withdrawal-modal__backdrop,
+    .payment-method-modal__backdrop,
+    .buy-card-modal__backdrop,
+    .clear-deck-modal__backdrop,
+    .terms-sale-modal__backdrop,
+    .deck-modal__backdrop,
+    .cookie-consent__backdrop,
+    .market-cart__backdrop
+  ) {
+  background: rgba(8, 12, 18, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+/* ── Shared panels — dark HUD console ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__panel,
+    .credits-modal__panel,
+    .withdrawal-modal__panel,
+    .payment-method-modal__panel,
+    .buy-card-modal__panel,
+    .clear-deck-modal__panel,
+    .terms-sale-modal__panel,
+    .deck-modal__panel,
+    .cookie-consent__panel,
+    .auth-gate__panel
+  ) {
+  border-radius: 6px;
+  border: 1px solid var(--helix-border);
+  background: linear-gradient(180deg, rgba(16, 22, 30, 0.96) 0%, rgba(10, 14, 20, 0.98) 100%);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(61, 184, 212, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ── Market cart — side drawer ── */
+
+[data-landing-variant='helix'] .market-cart__panel {
+  border-left: 1px solid var(--helix-border);
+  background: linear-gradient(180deg, rgba(16, 22, 30, 0.97), rgba(9, 13, 19, 0.99));
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Close buttons ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ) {
+  border: 1px solid var(--helix-border);
+  border-radius: 2px;
+  background: rgba(16, 22, 30, 0.75);
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ):hover:not(:disabled) {
+  color: #7fd8ef;
+  background: rgba(22, 28, 38, 0.92);
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 12px rgba(61, 184, 212, 0.25);
+}
+
+/* ── Titles — Orbitron HUD labels ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__title,
+    .credits-modal__title,
+    .withdrawal-modal__title,
+    .payment-method-modal__title,
+    .buy-card-modal__title,
+    .clear-deck-modal__title,
+    .terms-sale-modal__title,
+    .deck-modal__title,
+    .cookie-consent__title,
+    .auth-gate__title,
+    .market-cart__title
+  ) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--helix-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='helix'] .auth-gate__loading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--helix-cyan);
+}
+
+/* ── Body copy, labels, subtitles ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__subtitle,
+    .auth-modal__label,
+    .credits-modal__subtitle,
+    .credits-modal__currency-label,
+    .withdrawal-modal__subtitle,
+    .withdrawal-modal__label,
+    .payment-method-modal__lead,
+    .buy-card-modal__copy,
+    .buy-card-modal__field-label,
+    .clear-deck-modal__copy,
+    .terms-sale-modal__updated,
+    .terms-sale-modal__body,
+    .terms-sale-modal__intro,
+    .deck-modal__mode,
+    .cookie-consent__text,
+    .cookie-consent__text--muted,
+    .auth-gate__message,
+    .withdrawal-modal__estimate,
+    .withdrawal-modal__pending-note
+  ) {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] :is(
+    .terms-sale-modal__list li strong,
+    .terms-sale-modal__section-title
+  ) {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .terms-sale-modal__section-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* Credit amounts get the amber HUD accent */
+[data-landing-variant='helix'] :is(
+    .buy-card-modal__copy strong,
+    .buy-card-modal__balance,
+    .buy-card-modal__balance strong,
+    .withdrawal-modal__balance,
+    .withdrawal-modal__balance strong
+  ) {
+  color: var(--helix-amber);
+}
+
+/* ── Inputs & selects ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__input,
+    .buy-card-modal__input,
+    .withdrawal-modal__field input,
+    .credits-modal__currency select
+  ) {
+  border: 1px solid var(--helix-border);
+  border-radius: 3px;
+  background: rgba(8, 12, 18, 0.7);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__input:focus,
+    .buy-card-modal__input:focus,
+    .withdrawal-modal__field input:focus,
+    .credits-modal__currency select:focus
+  ) {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.22);
+  outline: none;
+}
+
+[data-landing-variant='helix'] .auth-modal__hint {
+  color: var(--helix-ink-soft);
+}
+
+/* ── Links ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__switch-btn,
+    .auth-gate__register,
+    .cookie-consent__link
+  ) {
+  color: var(--helix-cyan);
+  text-shadow: none;
+}
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__switch-btn:hover:not(:disabled),
+    .auth-gate__register:hover,
+    .cookie-consent__link:hover
+  ) {
+  color: #7fd8ef;
+  text-shadow: none;
+}
+
+/* ── Status messages ── */
+
+[data-landing-variant='helix'] .auth-modal__message--error {
+  background: rgba(214, 94, 74, 0.14);
+  border-color: rgba(214, 94, 74, 0.4);
+  color: #f0a892;
+}
+
+[data-landing-variant='helix'] .auth-modal__message--info {
+  background: rgba(61, 184, 212, 0.14);
+  border-color: rgba(61, 184, 212, 0.4);
+  color: #7fd8ef;
+}
+
+[data-landing-variant='helix'] .auth-modal__message--success {
+  background: rgba(45, 212, 191, 0.14);
+  border-color: rgba(45, 212, 191, 0.42);
+  color: #6ee7d8;
+}
+
+[data-landing-variant='helix'] :is(
+    .buy-card-modal__error,
+    .deck-modal__error,
+    .withdrawal-modal__error
+  ) {
+  color: #f0a892;
+}
+
+[data-landing-variant='helix'] .buy-card-modal__warning {
+  border-color: rgba(214, 150, 74, 0.45);
+  background: rgba(214, 150, 74, 0.14);
+  color: #e8c896;
+}
+
+/* ── Buttons inside modals — cyan primary, gold forced to cyan ── */
+
+[data-landing-variant='helix'] [class*='modal__panel'] .vb-btn,
+[data-landing-variant='helix'] .auth-modal__panel .vb-btn,
+[data-landing-variant='helix'] .cookie-consent__panel .vb-btn,
+[data-landing-variant='helix'] .auth-gate__panel .vb-btn {
+  backdrop-filter: none;
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] [class*='modal__panel'] :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='helix'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='helix'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold) {
+  background: linear-gradient(135deg, rgba(61, 184, 212, 0.92) 0%, rgba(42, 155, 184, 0.95) 100%);
+  border-color: rgba(61, 184, 212, 0.55);
+  color: #0c1016;
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.22);
+}
+
+[data-landing-variant='helix'] [class*='modal__panel'] :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='helix'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='helix'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled) {
+  color: #0c1016;
+  border-color: rgba(61, 184, 212, 0.75);
+  box-shadow: 0 6px 20px rgba(61, 184, 212, 0.32);
+}
+
+[data-landing-variant='helix'] [class*='modal__panel'] :is(.vb-btn--secondary, .vb-btn--ghost),
+[data-landing-variant='helix'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost) {
+  color: var(--helix-ink);
+  background: var(--helix-panel);
+  border-color: var(--helix-border);
+}
+
+[data-landing-variant='helix'] [class*='modal__panel'] :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled),
+[data-landing-variant='helix'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled) {
+  border-color: var(--helix-border-strong);
+  background: var(--helix-panel-strong);
+}
+
+[data-landing-variant='helix'] [class*='modal__panel'] .vb-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* ── Credits packs ── */
+
+[data-landing-variant='helix'] .credits-modal__pack {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: linear-gradient(145deg, rgba(16, 22, 30, 0.85) 0%, rgba(10, 14, 20, 0.92) 100%);
+}
+
+[data-landing-variant='helix'] .credits-modal__pack:hover:not(:disabled) {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.18);
+}
+
+[data-landing-variant='helix'] .credits-modal__pack--selected {
+  border-color: rgba(61, 184, 212, 0.7);
+  box-shadow: 0 4px 18px rgba(61, 184, 212, 0.28);
+}
+
+[data-landing-variant='helix'] .credits-modal__pack--popular {
+  border-color: rgba(196, 163, 90, 0.65);
+  box-shadow: 0 4px 18px rgba(196, 163, 90, 0.22);
+}
+
+[data-landing-variant='helix'] .credits-modal__pack-credits {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .credits-modal__pack-price {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] .credits-modal__custom {
+  border-top-color: var(--helix-border);
+}
+
+[data-landing-variant='helix'] .credits-modal__custom-input-wrap {
+  border: 1px solid var(--helix-border);
+  border-radius: 3px;
+  background: rgba(8, 12, 18, 0.7);
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] .credits-modal__custom-input-wrap:focus-within {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.22);
+}
+
+[data-landing-variant='helix'] .credits-modal__custom-input {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .credits-modal__custom-input::placeholder {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .credits-modal__total-label {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .credits-modal__total-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--helix-amber);
+  text-shadow: none;
+}
+
+/* ── Withdrawal balance card ── */
+
+[data-landing-variant='helix'] .withdrawal-modal__balance {
+  border-radius: 4px;
+  border: 1px solid var(--helix-border);
+  background: rgba(16, 22, 30, 0.6);
+  padding: 0.65rem 0.9rem;
+}
+
+/* ── Payment methods ── */
+
+[data-landing-variant='helix'] .payment-method-modal__option {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: rgba(16, 22, 30, 0.6);
+}
+
+[data-landing-variant='helix'] .payment-method-modal__option:hover:not(:disabled) {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 4px 14px rgba(61, 184, 212, 0.16);
+}
+
+[data-landing-variant='helix'] .payment-method-modal__option--selected {
+  border-color: rgba(61, 184, 212, 0.7);
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.26);
+}
+
+[data-landing-variant='helix'] .payment-method-modal__option-label {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .payment-method-modal__option-description {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] :is(
+    .payment-method-modal__option--google_pay .payment-method-modal__icon,
+    .payment-method-modal__option--bank_transfer .payment-method-modal__icon
+  ) {
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+
+[data-landing-variant='helix'] :is(
+    .payment-method-modal__footer,
+    .terms-sale-modal__footer,
+    .market-cart__header
+  ) {
+  border-color: var(--helix-border);
+}
+
+/* ── Deck select modal ── */
+
+[data-landing-variant='helix'] .deck-modal__field-label {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .deck-modal__select-wrap {
+  border-radius: 3px;
+  border-color: var(--helix-border);
+  background: rgba(8, 12, 18, 0.7);
+}
+
+[data-landing-variant='helix'] .deck-modal__select {
+  color: var(--helix-ink);
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='helix'] .deck-modal__select option {
+  background: #10151e;
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .deck-modal__count {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .deck-modal__count--full {
+  color: var(--helix-cyan);
+  text-shadow: 0 0 8px rgba(61, 184, 212, 0.4);
+}
+
+[data-landing-variant='helix'] .deck-modal__manage {
+  color: var(--helix-cyan);
+}
+
+[data-landing-variant='helix'] .deck-modal__manage:hover {
+  color: #7fd8ef;
+  text-shadow: none;
+}
+
+[data-landing-variant='helix'] .deck-modal .vb-btn {
+  color: var(--helix-ink);
+  background: var(--helix-panel);
+  border-color: var(--helix-border);
+  border-radius: 4px;
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] .deck-modal .vb-btn:hover:not(:disabled) {
+  color: #7fd8ef;
+  border-color: var(--helix-border-strong);
+  background: var(--helix-panel-strong);
+  box-shadow: 0 4px 14px rgba(61, 184, 212, 0.18);
+  filter: none;
+}
+
+/* ── Market cart ── */
+
+[data-landing-variant='helix'] .market-cart__line {
+  border-radius: 3px;
+  border-color: var(--helix-border);
+  background: rgba(16, 22, 30, 0.55);
+}
+
+[data-landing-variant='helix'] .market-cart__line-title {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .market-cart__line-price {
+  color: var(--helix-cyan);
+}
+
+[data-landing-variant='helix'] .market-cart__line-credits {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .market-cart__subtotal {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] .market-cart__subtotal strong {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .market-cart__note {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .market-cart__qty-btn {
+  border-radius: 2px;
+  border-color: var(--helix-border);
+  background: rgba(16, 22, 30, 0.75);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .market-cart__qty-btn:hover:not(:disabled) {
+  border-color: var(--helix-border-strong);
+  color: #7fd8ef;
+}
+
+[data-landing-variant='helix'] .market-cart__close {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] .market-cart__close:hover {
+  color: #7fd8ef;
+}
+
+[data-landing-variant='helix'] :is(
+    .market-cart__empty,
+    .market-cart__count
+  ) {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .market-cart__footer {
+  border-color: var(--helix-border);
+}
+
+/* ── Field labels — keep HUD uppercase, unify tracking ── */
+
+[data-landing-variant='helix'] :is(
+    .auth-modal__label,
+    .buy-card-modal__field-label,
+    .deck-modal__field-label,
+    .credits-modal__currency-label
+  ) {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Credits legal links ── */
+
+[data-landing-variant='helix'] :is(
+    .credits-modal__legal,
+    .credits-modal__custom-hint,
+    .credits-modal__terms
+  ) {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .credits-modal__legal a {
+  color: var(--helix-cyan);
+}
+
+[data-landing-variant='helix'] .credits-modal__legal a:hover {
+  color: #7fd8ef;
+}
+
+/* ── Cookie consent categories ── */
+
+[data-landing-variant='helix'] .cookie-consent__category {
+  border-radius: 3px;
+  border-color: var(--helix-border);
+  background: rgba(16, 22, 30, 0.55);
+}
+
+[data-landing-variant='helix'] .cookie-consent__category-label {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .cookie-consent__category-desc {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] .cookie-consent__toggle-ui {
+  border-radius: 2px;
+  background: rgba(8, 12, 18, 0.8);
+  border-color: var(--helix-border);
+}
+
+[data-landing-variant='helix'] .cookie-consent__toggle input:checked + .cookie-consent__toggle-ui {
+  background: rgba(61, 184, 212, 0.45);
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 10px rgba(61, 184, 212, 0.35);
+}
+
+/* ── Store product modal ── */
+
+[data-landing-variant='helix'] .product-modal-backdrop {
+  background: rgba(8, 12, 18, 0.75);
+  backdrop-filter: blur(10px);
+}
+
+[data-landing-variant='helix'] .product-modal {
+  border-radius: 6px;
+  border: 1px solid var(--helix-border);
+  background: linear-gradient(180deg, rgba(16, 22, 30, 0.96) 0%, rgba(10, 14, 20, 0.98) 100%);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(61, 184, 212, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] .product-modal h2 {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--helix-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='helix'] .product-modal strong {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .product-modal .vb-btn--primary {
+  background: linear-gradient(135deg, rgba(61, 184, 212, 0.92) 0%, rgba(42, 155, 184, 0.95) 100%);
+  border-color: rgba(61, 184, 212, 0.55);
+  color: #0c1016;
+}
+
+[data-landing-variant='helix'] .product-modal :is(.vb-btn--secondary, .vb-btn--ghost) {
+  color: var(--helix-ink);
+  background: var(--helix-panel);
+  border-color: var(--helix-border);
+}
+
+/* ── Auth gate page overlay ── */
+
+[data-landing-variant='helix'] .auth-gate {
+  background:
+    linear-gradient(180deg, rgba(12, 16, 22, 0.7) 0%, rgba(10, 14, 20, 0.92) 100%),
+    var(--play-lobby-bg) center / cover no-repeat;
+}

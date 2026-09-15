@@ -1,0 +1,20 @@
+/* Tutorial chrome — field dossier accents */
+
+.tutorial-overlay__panel {
+  border-radius: 6px;
+  border-color: rgba(196, 154, 58, 0.42);
+  background: rgba(12, 18, 14, 0.96);
+}
+
+.tutorial-overlay__title {
+  color: #c49a3a;
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tutorial-highlight {
+  box-shadow:
+    0 0 0 2px rgba(196, 154, 58, 0.75),
+    0 0 24px rgba(196, 154, 58, 0.3);
+}

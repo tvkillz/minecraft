@@ -1,0 +1,17 @@
+{
+  "title": "Privacy Notice",
+  "lastUpdated": "2026-09-15",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Store stores the account data needed for login, orders, and support. Contact support@store.example.com for requests."
+    },
+    {
+      "type": "company",
+      "name": "Store",
+      "companyNumber": "",
+      "address": "",
+      "email": "support@store.example.com"
+    }
+  ]
+}

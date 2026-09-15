@@ -1,0 +1,208 @@
+/* Wildreach observer HUD — trail-blaze mana, paw frame, stamina chip */
+
+.wr-avatar {
+  --wr-av-ring: #c49a3a;
+  --wr-av-ring-soft: rgba(196, 154, 58, 0.35);
+  --wr-av-glow: rgba(196, 154, 58, 0.4);
+  --wr-av-mana: #c49a3a;
+  --wr-av-mana-dim: rgba(196, 154, 58, 0.16);
+  --wr-av-stamina: #2a7a6a;
+  --wr-av-name-border: rgba(196, 154, 58, 0.45);
+  --wr-av-name-text: #f0ebe4;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  margin: 40px 40px;
+  user-select: none;
+}
+
+.wr-avatar--rival {
+  --wr-av-ring: #b85a3a;
+  --wr-av-ring-soft: rgba(184, 90, 58, 0.38);
+  --wr-av-glow: rgba(184, 90, 58, 0.38);
+  --wr-av-mana: #b85a3a;
+  --wr-av-mana-dim: rgba(184, 90, 58, 0.16);
+  --wr-av-stamina: #8a4030;
+  --wr-av-name-border: rgba(184, 90, 58, 0.5);
+}
+
+.wr-avatar__mana {
+  position: absolute;
+  left: -36px;
+  bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  z-index: 5;
+}
+
+.wr-avatar__mana-rail {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: calc(3px * var(--mana-scale, 1));
+}
+
+.wr-avatar__mana-blaze {
+  width: calc(14px * var(--mana-scale, 1));
+  height: calc(17px * var(--mana-scale, 1));
+  border: 1.5px solid rgba(240, 235, 228, 0.18);
+  background: linear-gradient(180deg, rgba(16, 24, 20, 0.95) 0%, rgba(8, 12, 10, 0.98) 100%);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.45);
+  clip-path: polygon(50% 100%, 0 78%, 0 0, 100% 0, 100% 78%);
+  transition:
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.wr-avatar__mana-blaze--lit {
+  border-color: rgba(240, 235, 228, 0.35);
+  background: linear-gradient(180deg, #e0c878 0%, #c49a3a 55%, #8a6a2a 100%);
+  box-shadow:
+    0 0 10px var(--wr-av-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+.wr-avatar--rival .wr-avatar__mana-blaze--lit {
+  background: linear-gradient(180deg, #e8a080 0%, #b85a3a 55%, #6a3020 100%);
+}
+
+.wr-avatar__mana-readout {
+  font-family: var(--font-ui, 'Source Sans 3', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--wr-av-mana);
+  text-shadow: 0 0 8px var(--wr-av-glow);
+}
+
+.wr-avatar__mana-label {
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(240, 235, 228, 0.4);
+}
+
+.wr-avatar__core {
+  position: relative;
+  width: 148px;
+  height: 148px;
+  display: grid;
+  place-items: center;
+}
+
+.wr-avatar__ring {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  border: 2px solid var(--wr-av-ring);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(240, 235, 228, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 50% 55%, rgba(16, 24, 20, 0.2) 0%, transparent 60%),
+    linear-gradient(165deg, #18241e 0%, #0a100e 100%);
+  box-shadow:
+    0 0 28px var(--wr-av-glow),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.06),
+    inset 0 0 24px rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+}
+
+.wr-avatar__ring::after {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid var(--wr-av-ring-soft);
+  pointer-events: none;
+}
+
+.wr-avatar__paw {
+  width: 42px;
+  height: 42px;
+  background: color-mix(in srgb, var(--wr-av-ring) 75%, #f0ebe4);
+  clip-path: polygon(
+    50% 0%,
+    72% 18%,
+    100% 28%,
+    82% 55%,
+    88% 100%,
+    50% 82%,
+    12% 100%,
+    18% 55%,
+    0% 28%,
+    28% 18%
+  );
+  filter: drop-shadow(0 0 10px var(--wr-av-glow));
+  opacity: 0.92;
+}
+
+.wr-avatar__stamina {
+  position: absolute;
+  right: 4px;
+  bottom: 10px;
+  min-width: 42px;
+  height: 28px;
+  padding: 0 0.45rem;
+  border-radius: 999px / 60%;
+  border: 1.5px solid rgba(168, 208, 200, 0.45);
+  background: linear-gradient(160deg, #4a9a8a 0%, #2a7a6a 55%, #1a4a42 100%);
+  box-shadow: 0 2px 10px rgba(42, 122, 106, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}
+
+.wr-avatar--rival .wr-avatar__stamina {
+  border-color: rgba(232, 176, 154, 0.45);
+  background: linear-gradient(160deg, #d48a6a 0%, #b85a3a 55%, #6a3020 100%);
+  box-shadow: 0 2px 10px rgba(184, 90, 58, 0.4);
+}
+
+.wr-avatar__stamina-val {
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f0ebe4;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.55);
+  line-height: 1;
+}
+
+.wr-avatar__callsign {
+  margin-top: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 180px;
+  padding: 0.28rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid var(--wr-av-name-border);
+  background: rgba(8, 12, 10, 0.82);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.wr-avatar__callsign-tag {
+  font-family: var(--font-heading, 'Barlow Condensed', sans-serif);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--wr-av-mana);
+}
+
+.wr-avatar__callsign-name {
+  font-family: var(--font-ui, 'Source Sans 3', sans-serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--wr-av-name-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

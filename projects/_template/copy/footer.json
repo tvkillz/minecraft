@@ -1,0 +1,83 @@
+{
+  "brand": {
+    "name": "Store",
+    "tagline": "Official Minecraft minigames store"
+  },
+  "legal": [
+    {
+      "id": "terms",
+      "label": "Terms",
+      "href": "/terms"
+    },
+    {
+      "id": "privacy",
+      "label": "Privacy",
+      "href": "/privacy"
+    },
+    {
+      "id": "refund",
+      "label": "Refunds",
+      "href": "/refund-policy"
+    },
+    {
+      "id": "cookies",
+      "label": "Cookies",
+      "href": "/cookie-policy"
+    }
+  ],
+  "contact": {
+    "companyName": "Store",
+    "companyNumber": "",
+    "address": "",
+    "email": "support@store.example.com"
+  },
+  "social": [
+    {
+      "id": "discord",
+      "label": "Discord",
+      "href": "https://discord.gg/example",
+      "icon": "shared/discord.svg"
+    }
+  ],
+  "payments": [
+    {
+      "id": "visa",
+      "label": "Visa",
+      "icon": "shared/visa.svg"
+    },
+    {
+      "id": "mastercard",
+      "label": "Mastercard",
+      "icon": "shared/mastercard.svg"
+    }
+  ],
+  "copyright": "© 2026 Store. All rights reserved.",
+  "subCopyright": "Not affiliated with Mojang, Microsoft, or Minecraft.",
+  "crafted": "",
+  "cookieSettingsLabel": "Cookie Settings",
+  "cookies": {
+    "title": "Cookies",
+    "intro": "We use cookies to keep you signed in and understand store traffic.",
+    "policyNote": "See the cookie policy for details.",
+    "consentNote": "You can change this later.",
+    "manageIntro": "Choose which cookies to allow.",
+    "categories": [
+      {
+        "id": "necessary",
+        "label": "Necessary",
+        "description": "Required for login and checkout.",
+        "required": true
+      },
+      {
+        "id": "analytics",
+        "label": "Analytics",
+        "description": "Helps us see which store pages are useful."
+      }
+    ],
+    "acceptAll": "Accept All",
+    "rejectNonEssential": "Reject Non-Essential",
+    "managePreferences": "Manage Preferences",
+    "savePreferences": "Save Preferences",
+    "closeLabel": "Close"
+  }
+}

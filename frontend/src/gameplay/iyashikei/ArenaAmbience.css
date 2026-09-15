@@ -1,0 +1,85 @@
+.game-arena-ambience {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.game-arena-ambience__wash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.28) 0%,
+    rgba(245, 240, 230, 0.1) 38%,
+    rgba(44, 62, 45, 0.06) 100%
+  );
+}
+
+.game-arena-ambience__komorebi {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 42% at 18% 8%, rgba(255, 255, 255, 0.42) 0%, transparent 58%),
+    radial-gradient(ellipse 48% 38% at 72% 12%, rgba(184, 220, 232, 0.28) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 34% at 48% 6%, rgba(232, 201, 160, 0.18) 0%, transparent 58%);
+  opacity: 0.85;
+  animation: game-arena-komorebi-drift 28s ease-in-out infinite alternate;
+}
+
+.game-arena-ambience__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 88% 78% at 50% 46%,
+    transparent 42%,
+    rgba(44, 62, 45, 0.14) 100%
+  );
+}
+
+.game-arena-ambience__petals {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.game-arena-ambience__petal {
+  position: absolute;
+  top: -16px;
+  width: 7px;
+  height: 10px;
+  background: color-mix(in srgb, var(--petal-color) 68%, white);
+  border-radius: 50% 0 50% 50%;
+  opacity: 0;
+  transform: scale(var(--petal-scale, 1));
+  animation: game-arena-petal-fall linear infinite;
+}
+
+@keyframes game-arena-petal-fall {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(var(--petal-scale, 1));
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.42;
+  }
+  88% {
+    opacity: 0.22;
+  }
+  100% {
+    transform: translateY(1120px) rotate(240deg) scale(var(--petal-scale, 1));
+    opacity: 0;
+  }
+}
+
+@keyframes game-arena-komorebi-drift {
+  from {
+    transform: translateX(-1.2%) scale(1);
+    opacity: 0.78;
+  }
+  to {
+    transform: translateX(1.2%) scale(1.02);
+    opacity: 0.92;
+  }
+}

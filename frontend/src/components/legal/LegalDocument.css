@@ -1,0 +1,109 @@
+.legal-doc {
+  max-width: 175rem;
+  margin: 0 auto;
+  padding: 3.5rem 0 1rem;
+  color: color-mix(in srgb, var(--text-primary) 92%, #d4c8e8);
+}
+
+.legal-doc__eyebrow {
+  display: none;
+  margin: 0 0 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--violet-accent) 75%, #c8b8e8);
+}
+
+.legal-doc__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.65rem, 4vw, 2.2rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8dff8;
+}
+
+.legal-doc__updated {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: color-mix(in srgb, var(--text-muted) 90%, #9a8ab8);
+}
+
+.legal-doc__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.legal-doc__paragraph {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+}
+
+.legal-doc__heading {
+  margin: 1.35rem 0 0.25rem;
+  font-family: var(--font-fantasy);
+  letter-spacing: 0.06em;
+  color: #ddd0f5;
+}
+
+.legal-doc h2.legal-doc__heading {
+  font-size: 1.05rem;
+  text-transform: uppercase;
+}
+
+.legal-doc h3.legal-doc__heading {
+  font-size: 0.95rem;
+}
+
+.legal-doc__list {
+  margin: 0.15rem 0 0.35rem;
+  padding-left: 1.35rem;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+}
+
+.legal-doc__list li + li {
+  margin-top: 0.45rem;
+}
+
+.legal-doc__company {
+  margin: 0.25rem 0 0.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--purple-glow) 28%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--void-black) 55%, transparent);
+}
+
+.legal-doc__company p {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.legal-doc__company p + p {
+  margin-top: 0.35rem;
+}
+
+.legal-doc__company-name {
+  font-weight: 600;
+  color: #e8dff8;
+}
+
+.legal-doc__link {
+  color: color-mix(in srgb, var(--violet-accent) 82%, #d8d0ec);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal-doc__link:hover {
+  color: #f0e0ff;
+}

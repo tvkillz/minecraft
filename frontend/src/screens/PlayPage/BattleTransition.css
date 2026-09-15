@@ -1,0 +1,111 @@
+.battle-enter {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+}
+
+.battle-enter__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(10, 10, 12, 0.88);
+}
+
+.battle-enter__loading p {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--play-cyan);
+  text-shadow: 0 0 20px color-mix(in srgb, var(--purple-glow) 40%, transparent);
+}
+
+.battle-enter__spinner {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--purple-glow) 25%, transparent);
+  border-top-color: var(--play-cyan);
+  animation: battle-enter-spin 0.9s linear infinite;
+}
+
+.battle-arena {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+}
+
+@keyframes battle-enter-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* KOMOREBI / iyashikei — soft loading gate */
+[data-landing-variant='iyashikei'] .battle-enter__loading {
+  background: rgba(245, 240, 230, 0.94);
+}
+
+[data-landing-variant='iyashikei'] .battle-enter__loading p {
+  text-transform: none;
+  letter-spacing: 0.06em;
+  color: #4a7c59;
+  text-shadow: none;
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+}
+
+[data-landing-variant='iyashikei'] .battle-enter__spinner {
+  border-color: rgba(106, 171, 114, 0.22);
+  border-top-color: #6aab72;
+}
+
+/* HELIX — signal lock loading gate */
+[data-landing-variant='helix'] .battle-enter__loading {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(61, 184, 212, 0.1) 0%, transparent 48%),
+    rgba(12, 16, 22, 0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+[data-landing-variant='helix'] .battle-enter__loading::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 0;
+  width: min(420px, 86vw);
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(61, 184, 212, 0.14) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(10, 14, 20, 0.78) 0%, rgba(10, 14, 20, 0.52) 100%);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+[data-landing-variant='helix'] .battle-enter__loading > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-landing-variant='helix'] .battle-enter__loading p {
+  color: var(--helix-cyan, #3db8d4);
+  text-shadow: 0 0 16px rgba(61, 184, 212, 0.45);
+  letter-spacing: 0.12em;
+}
+
+[data-landing-variant='helix'] .battle-enter__spinner {
+  border-color: rgba(61, 184, 212, 0.22);
+  border-top-color: #3db8d4;
+  box-shadow: 0 0 18px rgba(61, 184, 212, 0.25);
+}

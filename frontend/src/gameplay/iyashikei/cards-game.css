@@ -1,0 +1,184 @@
+/* KOMOREBI in-game card chrome — mirrors landing iyashikei-cards.css */
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-enemy-card-back,
+.game-stage[data-gameplay-variant='iyashikei'] .game-deck-card {
+  border: 2px solid #b8cfc4;
+  background:
+    radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.72) 0%, transparent 58%),
+    radial-gradient(circle at 50% 50%, rgba(142, 176, 192, 0.28) 0%, rgba(142, 176, 192, 0) 66%),
+    linear-gradient(180deg, #e8ede9 0%, #dce5e0 46%, #cfd9d3 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    0 4px 14px rgba(44, 62, 45, 0.14);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-enemy-card-back::before,
+.game-stage[data-gameplay-variant='iyashikei'] .game-deck-card::before {
+  content: '';
+  position: absolute;
+  inset: 9px;
+  border-radius: 10px;
+  border: 1px solid rgba(142, 176, 192, 0.45);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.42),
+    inset 0 0 22px rgba(142, 176, 192, 0.16);
+  pointer-events: none;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-deck-card::before {
+  inset: 7px;
+  border-radius: 8px;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-enemy-card-back::after,
+.game-stage[data-gameplay-variant='iyashikei'] .game-deck-card::after {
+  content: '木';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: none;
+  font-family: var(--font-heading, 'Shippori Mincho', serif);
+  font-size: 2.35rem;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(74, 124, 89, 0.34);
+  opacity: 1;
+  filter: none;
+  pointer-events: none;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-deck-card::after {
+  font-size: 1.55rem;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--game:hover,
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--game.card--hovered,
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--compact:hover,
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--compact.card--hovered,
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--preview:hover,
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--preview.card--hovered {
+  filter: drop-shadow(0 14px 28px rgba(44, 62, 45, 0.22))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--glow-color) 30%, transparent));
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__frame {
+  border-radius: 10px;
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 38%, #e8e0d0);
+  background: #f7f2e8;
+  box-shadow:
+    0 8px 24px rgba(44, 62, 45, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 242, 232, 0.08) 0%,
+    rgba(44, 62, 45, 0.12) 42%,
+    rgba(44, 62, 45, 0.72) 100%
+  );
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__stat--mana {
+  color: #3d5240;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: linear-gradient(160deg, #c8dcc0 0%, #9ab89a 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 0 8px rgba(122, 168, 122, 0.28);
+  text-shadow: none;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__stat--attack {
+  color: #3a4550;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: rgba(245, 240, 230, 0.92);
+  border: 1.5px solid #8a9aaa;
+  border-radius: 8px 16px 16px 8px;
+  box-shadow: 0 2px 8px rgba(74, 90, 106, 0.15);
+  text-shadow: none;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__stat--health {
+  color: #5a3d45;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: rgba(232, 196, 196, 0.55);
+  border: 1.5px solid #d4a5a5;
+  border-radius: 50% 50% 48% 48% / 58% 58% 42% 42%;
+  box-shadow: 0 2px 8px rgba(212, 165, 165, 0.22);
+  text-shadow: none;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__domain {
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 45%, #f5f0e6);
+  background: rgba(245, 240, 230, 0.75);
+  box-shadow: 0 2px 8px rgba(44, 62, 45, 0.1);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__domain--shinrin {
+  background-image: radial-gradient(circle at 30% 30%, #b8d4b0, #6a9a6a 72%);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__domain--naminami {
+  background-image: radial-gradient(circle at 30% 30%, #a8d4e8, #5a8aaa 72%);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__domain--akari {
+  background-image: radial-gradient(circle at 30% 30%, #e8c8a0, #b88858 72%);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__domain--takane {
+  background-image: radial-gradient(circle at 30% 30%, #d4c8e0, #9a8ab0 72%);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #f5f0e6;
+  text-shadow: 0 1px 4px rgba(44, 62, 45, 0.45);
+  background: transparent;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card__footer {
+  color: rgba(245, 240, 230, 0.92);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card--game .card__title,
+.game-stage[data-gameplay-variant='iyashikei'] .card--compact .card__title {
+  font-family: var(--font-heading, var(--font-fantasy, serif));
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--frozen .card__frame {
+  border-color: rgba(142, 176, 192, 0.75);
+  box-shadow:
+    0 0 18px rgba(142, 176, 192, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card.card--frozen::after {
+  background: rgba(210, 228, 234, 0.38);
+  box-shadow: inset 0 0 18px rgba(142, 176, 192, 0.22);
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card--compact .card__stat--mana {
+  width: 22px;
+  height: 22px;
+  font-size: 0.52rem;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .card--compact .card__stat--attack,
+.game-stage[data-gameplay-variant='iyashikei'] .card--compact .card__stat--health {
+  min-width: 22px;
+  width: 22px;
+  height: 20px;
+  font-size: 0.52rem;
+}
+
+.game-stage[data-gameplay-variant='iyashikei'] .game-hero-card-wrap--disabled .card.card--game {
+  filter: saturate(0.55) brightness(1.05);
+  opacity: 0.72;
+}

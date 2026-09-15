@@ -1,0 +1,199 @@
+.payment-method-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.payment-method-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(10, 10, 12, 0.84);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+
+.payment-method-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  max-height: min(90vh, 720px);
+  display: flex;
+  flex-direction: column;
+  padding: 1.35rem 1.25rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid rgba(123, 77, 255, 0.35);
+  background: linear-gradient(
+    165deg,
+    rgba(14, 18, 32, 0.98) 0%,
+    rgba(10, 10, 14, 0.96) 55%,
+    rgba(8, 8, 12, 0.98) 100%
+  );
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.65),
+    0 0 50px rgba(123, 77, 255, 0.12);
+}
+
+.payment-method-modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid rgba(201, 162, 39, 0.45);
+  border-radius: 4px;
+  background: rgba(10, 10, 12, 0.6);
+  color: rgba(232, 220, 200, 0.75);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.payment-method-modal__close:hover:not(:disabled) {
+  color: #f1e6c8;
+  border-color: rgba(201, 162, 39, 0.7);
+}
+
+.payment-method-modal__close:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.payment-method-modal__header {
+  margin-bottom: 1rem;
+  padding-right: 2rem;
+  text-align: center;
+}
+
+.payment-method-modal__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-fantasy);
+  font-size: 1.15rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f1e6c8;
+}
+
+.payment-method-modal__lead {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(232, 220, 200, 0.62);
+}
+
+.payment-method-modal__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  overflow-y: auto;
+}
+
+.payment-method-modal__option {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 0.95rem;
+  border-radius: 10px;
+  border: 1px solid rgba(123, 77, 255, 0.28);
+  background: linear-gradient(
+    145deg,
+    rgba(18, 22, 38, 0.72) 0%,
+    rgba(10, 10, 12, 0.88) 100%
+  );
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.payment-method-modal__option:hover:not(:disabled) {
+  border-color: rgba(123, 77, 255, 0.5);
+  box-shadow: 0 0 18px rgba(123, 77, 255, 0.12);
+}
+
+.payment-method-modal__option--selected {
+  border-color: rgba(201, 162, 39, 0.65);
+  box-shadow: 0 0 22px rgba(201, 162, 39, 0.16);
+  transform: translateY(-1px);
+}
+
+.payment-method-modal__option:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.payment-method-modal__option-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  min-width: 4.5rem;
+}
+
+.payment-method-modal__icon {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  max-width: 2.75rem;
+  object-fit: contain;
+}
+
+.payment-method-modal__option--google_pay .payment-method-modal__icon,
+.payment-method-modal__option--bank_transfer .payment-method-modal__icon {
+  filter: brightness(0) invert(1);
+}
+
+.payment-method-modal__option-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.payment-method-modal__option-label {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f1e6c8;
+}
+
+.payment-method-modal__option-description {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.52);
+}
+
+.payment-method-modal__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(123, 77, 255, 0.18);
+}
+
+@media (max-width: 520px) {
+  .payment-method-modal__option {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    text-align: center;
+  }
+
+  .payment-method-modal__option-icons {
+    min-width: 0;
+  }
+}

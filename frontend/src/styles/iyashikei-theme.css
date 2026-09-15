@@ -1,0 +1,1362 @@
+/* Iyashikei — light pastoral theme (landing sections 2+, portal, global chrome).
+   Scoped to [data-landing-variant='iyashikei']; voidborn unchanged. */
+
+[data-landing-variant='iyashikei'] {
+  --iyashi-paper: #f5f0e6;
+  --iyashi-paper-soft: #faf7f0;
+  --iyashi-ink: #2c3e2d;
+  --iyashi-ink-muted: rgba(44, 62, 45, 0.78);
+  --iyashi-ink-soft: rgba(44, 62, 45, 0.62);
+  --iyashi-border: rgba(124, 184, 124, 0.28);
+  --iyashi-border-strong: rgba(124, 184, 124, 0.42);
+  --iyashi-panel: rgba(255, 255, 255, 0.72);
+  --iyashi-panel-strong: rgba(255, 255, 255, 0.85);
+  --iyashi-shadow: rgba(44, 62, 45, 0.1);
+  --iyashi-section-gradient: linear-gradient(
+    180deg,
+    #f5f0e6 0%,
+    #faf7f0 45%,
+    #f0ebe2 100%
+  );
+}
+
+/* ── Global shell ── */
+
+[data-landing-variant='iyashikei'] .app,
+[data-landing-variant='iyashikei'] .portal {
+  background: var(--iyashi-paper);
+  color: var(--text-primary);
+}
+
+[data-landing-variant='iyashikei'] .portal__sticky-top {
+  background: var(--iyashi-paper-soft);
+}
+
+/* ── Global buttons (landing + portal) ── */
+
+[data-landing-variant='iyashikei'] .vb-btn {
+  color: #3d5240;
+  background: var(--iyashi-panel);
+  border-color: var(--iyashi-border);
+  backdrop-filter: none;
+  box-shadow: 0 2px 10px var(--iyashi-shadow);
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+[data-landing-variant='iyashikei'] .vb-btn:hover:not(:disabled) {
+  color: #243d28;
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 4px 14px rgba(106, 171, 114, 0.16);
+  filter: none;
+}
+
+[data-landing-variant='iyashikei'] .vb-btn--primary {
+  color: #2f4a32;
+  background: rgba(142, 201, 160, 0.42);
+  border-color: rgba(106, 171, 114, 0.5);
+}
+
+[data-landing-variant='iyashikei'] .vb-btn--primary:hover:not(:disabled) {
+  color: #243d28;
+  border-color: rgba(106, 171, 114, 0.65);
+  background: rgba(142, 201, 160, 0.55);
+}
+
+[data-landing-variant='iyashikei'] .vb-btn--secondary,
+[data-landing-variant='iyashikei'] .vb-btn--ghost {
+  color: #3d5240;
+  background: var(--iyashi-panel);
+  border-color: var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .vb-btn--fantasy {
+  font-family: var(--font-heading, var(--font-fantasy));
+}
+
+/* Section CTA buttons with !important overrides */
+[data-landing-variant='iyashikei'] :is(
+    .final-cta__btn,
+    .pathways__cta-btn,
+    .portal__buy-credits-btn
+  ) {
+  color: #2f4a32 !important;
+  background: rgba(142, 201, 160, 0.45) !important;
+  border-color: rgba(106, 171, 114, 0.55) !important;
+  box-shadow: 0 4px 16px rgba(106, 171, 114, 0.2) !important;
+  animation: none !important;
+}
+
+[data-landing-variant='iyashikei'] :is(
+    .final-cta__btn,
+    .pathways__cta-btn,
+    .portal__buy-credits-btn
+  ):hover:not(:disabled) {
+  color: #243d28 !important;
+  border-color: rgba(106, 171, 114, 0.7) !important;
+  box-shadow: 0 6px 20px rgba(106, 171, 114, 0.28) !important;
+}
+
+/* ── Shared section backgrounds ── */
+
+[data-landing-variant='iyashikei'] :is(
+    .dominions,
+    .gamemodel,
+    .pathways,
+    .faq
+  ) {
+  background: var(--iyashi-section-gradient);
+}
+
+[data-landing-variant='iyashikei'] .collection {
+  background: linear-gradient(180deg, #f0ebe2 0%, #f5f0e6 50%, #faf7f0 100%);
+}
+
+[data-landing-variant='iyashikei'] .final-cta {
+  background: var(--iyashi-paper);
+  margin: -6rem auto;
+}
+
+/* ── Section headings (beyond landing-layout) ── */
+
+[data-landing-variant='iyashikei'] :is(
+    .final-cta__title,
+    .gamemodel__card-title,
+    .pathways__feature-title,
+    .pathways__tier-title,
+    .collection__preview-title,
+    .portal__section-title,
+    .portal__brand-name
+  ) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: none;
+  letter-spacing: 0.08em;
+}
+
+[data-landing-variant='iyashikei'] .final-cta__title {
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='iyashikei'] :is(
+    .final-cta__subtitle,
+    .final-cta__desc,
+    .gamemodel__card-desc,
+    .pathways__feature-desc,
+    .pathways__tier-desc,
+    .pathways__cta-lead,
+    .collection__preview-desc,
+    .collection__stat-label,
+    .faq__answer
+  ) {
+  color: var(--iyashi-ink-muted);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__subtitle {
+  color: var(--iyashi-ink-soft);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .faq__question {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .faq__item--open .faq__question,
+[data-landing-variant='iyashikei'] .faq__question:hover {
+  border-color: var(--iyashi-border-strong);
+  background: var(--iyashi-panel-strong);
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .faq__question-text {
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .faq__chevron {
+  border-color: rgba(74, 106, 74, 0.55);
+}
+
+/* ── Locations ── */
+
+[data-landing-variant='iyashikei'] .locations {
+  background: var(--iyashi-paper);
+}
+
+[data-landing-variant='iyashikei'] .locations__bg-image {
+  filter: grayscale(0.25) brightness(1.05) contrast(0.92) saturate(1.1);
+  opacity: 0.55;
+}
+
+[data-landing-variant='iyashikei'] .locations__bg-scrim {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(142, 201, 160, 0.12) 0%, transparent 55%),
+    linear-gradient(
+      180deg,
+      rgba(245, 240, 230, 0.82) 0%,
+      rgba(245, 240, 230, 0.45) 42%,
+      rgba(245, 240, 230, 0.78) 100%
+    );
+}
+
+[data-landing-variant='iyashikei'] .locations__text {
+  color: var(--iyashi-ink-muted);
+}
+[data-landing-variant='iyashikei'] .locations__text:nth-of-type(2){
+  display: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__text strong:not([class]) {
+  color: var(--iyashi-ink);
+  text-shadow: none;
+}
+
+/* Lore terms — Haru-kaze / Shizukesa (reuse aether/null class names from copy) */
+[data-landing-variant='iyashikei'] .locations__lore-aether {
+  background: linear-gradient(105deg, #6aab72 0%, #6a9ec4 55%, #c9a87c 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  font-family: var(--font-heading,var(--font-fantasy) );
+  color: black;
+  background-clip: text;
+  
+  filter: none;
+  animation: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__lore-null {
+  background: linear-gradient(105deg, #6a9ec4 0%, #9a8ab8 48%, #8aab72 100%);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  animation: none;
+  font-family: var(--font-heading,var(--font-fantasy) );
+  color: black;
+}
+
+[data-landing-variant='iyashikei'] .locations__item.vb-btn {
+  color: var(--iyashi-ink-muted);
+  background: var(--iyashi-panel);
+  border-color: var(--iyashi-border);
+  box-shadow: 0 2px 8px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .locations__item.vb-btn--primary,
+[data-landing-variant='iyashikei'] .locations__item--active {
+  border-color: rgba(201, 168, 124, 0.5);
+  background: rgba(232, 196, 124, 0.14);
+  box-shadow: 0 4px 12px rgba(44, 62, 45, 0.08);
+}
+
+[data-landing-variant='iyashikei'] .locations__item-title {
+  text-transform: none;
+  letter-spacing: 0.06em;
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .locations__item-desc {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .locations__item-underline {
+  background: linear-gradient(90deg, #6aab72 0%, #6a9ec4 100%);
+  box-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__item:hover .locations__item-title,
+[data-landing-variant='iyashikei'] .locations__item:focus-visible .locations__item-title {
+  color: #4a6a4a;
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__preview-overlay {
+  background: linear-gradient(
+      180deg,
+      rgba(245, 240, 230, 0.08) 0%,
+      rgba(245, 240, 230, 0.35) 75%,
+      rgba(245, 240, 230, 0.65) 100%
+    ),
+    radial-gradient(ellipse at 30% 30%, rgba(142, 201, 160, 0.1) 0%, transparent 55%);
+}
+
+[data-landing-variant='iyashikei'] .locations__preview-label {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: var(--iyashi-border);
+  color: var(--iyashi-ink);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__preview-dot {
+  background: linear-gradient(90deg, #6aab72 0%, #6a9ec4 100%);
+  box-shadow: none;
+}
+
+/* ── Fantasy frame (locations preview) ── */
+
+[data-landing-variant='iyashikei'] .fantasy-frame {
+  --fantasy-frame-iron: #b8b0a4;
+  --fantasy-frame-iron-hi: #e8e2d8;
+  --fantasy-frame-rust: #c9a87c;
+  border-radius: 12px;
+  background: var(--iyashi-paper-soft);
+  box-shadow:
+    0 12px 32px var(--iyashi-shadow),
+    0 0 0 1px var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .fantasy-frame__corner,
+[data-landing-variant='iyashikei'] .fantasy-frame__inset::before {
+  display: none;
+}
+
+[data-landing-variant='iyashikei'] .fantasy-frame__dust,
+[data-landing-variant='iyashikei'] .fantasy-frame__grain {
+  display: none;
+}
+
+[data-landing-variant='iyashikei'] .fantasy-frame__vignette {
+  background: radial-gradient(
+    ellipse 85% 80% at 50% 50%,
+    transparent 55%,
+    rgba(245, 240, 230, 0.25) 85%,
+    rgba(245, 240, 230, 0.45) 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] .fantasy-frame__patina {
+  opacity: 0.35;
+}
+
+[data-landing-variant='iyashikei'] .fantasy-frame--aged {
+  box-shadow:
+    0 12px 32px var(--iyashi-shadow),
+    0 0 0 1px var(--iyashi-border),
+    inset 0 0 40px rgba(245, 240, 230, 0.2);
+}
+
+/* ── Dominions (photo cards keep dark overlay for legibility) ── */
+
+[data-landing-variant='iyashikei'] .dominions__card {
+  border-color: rgba(124, 184, 124, 0.35);
+  box-shadow: 0 12px 28px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .dominions__card-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(44, 62, 45, 0.08) 0%,
+    rgba(44, 62, 45, 0.38) 48%,
+    rgba(44, 62, 45, 0.9) 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] .dominions__card-name {
+  color: rgba(255, 255, 255, 0.96);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .dominions__city-desc {
+  color: rgba(255, 255, 255, 0.92);
+  -webkit-line-clamp: 5;
+}
+
+[data-landing-variant='iyashikei'] .dominions__city-name {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+[data-landing-variant='iyashikei'] .dominions__dot {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+[data-landing-variant='iyashikei'] .dominions__dot--active {
+  background: #8ec9a0;
+  border-color: #6aab72;
+  box-shadow: 0 0 8px rgba(106, 171, 114, 0.4);
+}
+
+[data-landing-variant='iyashikei'] .dominions__arrow {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Game model ── */
+
+[data-landing-variant='iyashikei'] .gamemodel__card {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 8px 24px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card:hover {
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 12px 28px rgba(106, 171, 114, 0.14);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card-title {
+  color: var(--iyashi-ink);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__icon-wrap {
+  box-shadow: 0 0 0 1px var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__tag {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  color: var(--iyashi-ink-muted);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__tags--in-view .gamemodel__tag:hover {
+  color: #4a6a4a;
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 4px 12px var(--iyashi-shadow);
+}
+
+/* ── Collection ── */
+
+[data-landing-variant='iyashikei'] .collection__bg-image {
+  filter: grayscale(0.2) brightness(1.1) contrast(0.9) saturate(1.05);
+  opacity: 0.35;
+}
+
+[data-landing-variant='iyashikei'] .collection__bg-scrim {
+  background:
+    radial-gradient(ellipse at 18% 22%, rgba(142, 201, 160, 0.12) 0%, transparent 48%),
+    radial-gradient(ellipse at 82% 68%, rgba(106, 158, 196, 0.1) 0%, transparent 52%),
+    linear-gradient(180deg, rgba(245, 240, 230, 0.55) 0%, rgba(245, 240, 230, 0.88) 100%);
+}
+
+[data-landing-variant='iyashikei'] .collection__stat {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .collection__stat-value {
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-landing-variant='iyashikei'] .collection__preview {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 24px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .collection__preview-title {
+  color: var(--iyashi-ink);
+  font-family: var(--font-heading, var(--font-fantasy));
+}
+
+[data-landing-variant='iyashikei'] .collection__preview-domain {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-item {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+}
+
+[data-landing-variant='iyashikei'] .collection__picker-item--active {
+  border-color: rgba(201, 168, 124, 0.55);
+  background: rgba(232, 196, 124, 0.12);
+}
+
+/* ── Pathways ── */
+
+[data-landing-variant='iyashikei'] .pathways__card,
+[data-landing-variant='iyashikei'] .pathways__tier-card {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 6px 18px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .pathways__card:hover,
+[data-landing-variant='iyashikei'] .pathways__tier-card:hover {
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 8px 22px rgba(106, 171, 114, 0.12);
+}
+
+[data-landing-variant='iyashikei'] .pathways__feature-title,
+[data-landing-variant='iyashikei'] .pathways__tier-title {
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .pathways__media-frame {
+  border-color: var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .pathways__split {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(124, 184, 124, 0.2) 20%,
+    rgba(106, 158, 196, 0.28) 50%,
+    rgba(124, 184, 124, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] .pathways__tier-rarity {
+  color: #4a6a4a;
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+[data-landing-variant='iyashikei'] .pathways__cta {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 6px 20px var(--iyashi-shadow);
+}
+
+/* Pathways cards — soft hover (no zoom / shine sweep) */
+[data-landing-variant='iyashikei'] .pathways__card,
+[data-landing-variant='iyashikei'] .pathways__tier-card {
+  transition:
+    border-color 0.45s ease,
+    box-shadow 0.45s ease,
+    background 0.45s ease;
+}
+
+[data-landing-variant='iyashikei'] .pathways__card:hover,
+[data-landing-variant='iyashikei'] .pathways__tier-card:hover {
+  transform: none;
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 8px 22px rgba(106, 171, 114, 0.14);
+}
+
+[data-landing-variant='iyashikei'] .pathways__card:hover .pathways__image {
+  transform: none;
+  filter: none;
+}
+
+[data-landing-variant='iyashikei'] .pathways__card:hover .pathways__media-shine {
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card:hover {
+  transform: none;
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card:hover .gamemodel__icon-wrap {
+  transform: none;
+  filter: none;
+  box-shadow: 0 0 0 1px var(--iyashi-border-strong);
+}
+
+[data-landing-variant='iyashikei'] .gamemodel__card:hover .gamemodel__icon-shine {
+  transform: translateX(-120%);
+}
+
+/* ── Final CTA ── */
+
+[data-landing-variant='iyashikei'] .final-cta__bg-scrim {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(142, 201, 160, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(201, 168, 124, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(245, 240, 230, 0.45) 0%, rgba(245, 240, 230, 0.88) 100%);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__particle {
+  opacity: 0.45;
+  box-shadow: 0 0 6px var(--particle-color);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__siege {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+}
+
+[data-landing-variant='iyashikei'] .final-cta__siege-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--iyashi-ink);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .final-cta__siege-value {
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-landing-variant='iyashikei'] .final-cta__siege-label {
+  color: var(--iyashi-ink-soft);
+}
+
+/* ── Footer ── */
+
+[data-landing-variant='iyashikei'] .site-footer {
+  background: #ebe6dc;
+  border-top-color: var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__brand-name {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--iyashi-ink);
+  text-shadow: none;
+  letter-spacing: 0.12em;
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .site-footer__brand-tagline,
+[data-landing-variant='iyashikei'] .site-footer__link,
+[data-landing-variant='iyashikei'] .site-footer__cookie-btn,
+[data-landing-variant='iyashikei'] .site-footer__copyright,
+[data-landing-variant='iyashikei'] .site-footer__sub-copy {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__contact,
+[data-landing-variant='iyashikei'] .site-footer__contact li,
+[data-landing-variant='iyashikei'] .site-footer__contact-label {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__heading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--iyashi-ink);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .site-footer__link:hover,
+[data-landing-variant='iyashikei'] .site-footer__cookie-btn:hover {
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__logo {
+  border-color: var(--iyashi-border-strong);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__payments {
+  border-top-color: var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .site-footer__social-icon {
+  background-color: rgba(74, 106, 74, 0.55);
+}
+
+/* ── Portal shell ── */
+
+[data-landing-variant='iyashikei'] .portal__header {
+  border-bottom-color: var(--iyashi-border);
+  background: linear-gradient(
+    180deg,
+    rgba(252, 248, 240, 0.98) 0%,
+    rgba(245, 240, 230, 0.95) 100%
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-landing-variant='iyashikei'] .portal__brand-name {
+  font-family: var(--font-heading);
+  letter-spacing: 0.18em;
+  color: var(--iyashi-ink);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__wordmark {
+  filter: drop-shadow(0 1px 6px rgba(245, 240, 230, 0.65));
+}
+
+[data-landing-variant='iyashikei'] .portal__logo {
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 2px 10px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .portal__account {
+  border-color: var(--iyashi-border);
+  border-radius: 999px;
+  background: var(--iyashi-panel);
+  box-shadow: 0 2px 10px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .portal__account-name {
+  color: var(--iyashi-ink);
+  text-transform: none;
+  letter-spacing: 0.06em;
+}
+
+[data-landing-variant='iyashikei'] .portal__account-credits,
+[data-landing-variant='iyashikei'] .portal__toolbar-balance {
+  color: #8a7048;
+}
+
+[data-landing-variant='iyashikei'] .portal__menu-toggle {
+  border-left: none;
+  margin-left: 0.25rem;
+  padding-left: 0;
+}
+
+[data-landing-variant='iyashikei'] .portal__menu-toggle span {
+  background: var(--iyashi-ink);
+  box-shadow: 0 0 4px rgba(245, 240, 230, 0.55);
+}
+
+[data-landing-variant='iyashikei'] .portal__account-menu {
+  border-bottom-color: var(--iyashi-border);
+  background: rgba(252, 248, 240, 0.98);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-landing-variant='iyashikei'] .portal__account-menu-list a,
+[data-landing-variant='iyashikei'] .portal__account-menu-list button {
+  color: var(--iyashi-ink-muted);
+  text-transform: none;
+  letter-spacing: 0.06em;
+  border-radius: 8px;
+}
+
+[data-landing-variant='iyashikei'] .portal__account-menu-list a:hover,
+[data-landing-variant='iyashikei'] .portal__account-menu-list button:hover {
+  background: rgba(124, 184, 124, 0.14);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal__account-menu-item--sign-out button:hover {
+  background: rgba(212, 132, 92, 0.12);
+  color: #8a5040;
+}
+
+[data-landing-variant='iyashikei'] .portal__tabs {
+  border-bottom-color: var(--iyashi-border);
+  background: rgba(252, 248, 240, 0.92);
+}
+
+[data-landing-variant='iyashikei'] .portal__tab {
+  color: var(--iyashi-ink-soft);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__tab:hover,
+[data-landing-variant='iyashikei'] .portal__tab--active {
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal__tab--active::after {
+  background: linear-gradient(90deg, #6aab72 0%, #6a9ec4 100%);
+  box-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__section-title {
+  color: transparent;
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: none;
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__section-subtitle {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal__mode-switch {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+}
+
+[data-landing-variant='iyashikei'] .portal__mode-btn {
+  color: var(--iyashi-ink-soft);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__mode-btn--active {
+  color: #5a4a32;
+  background: rgba(201, 168, 124, 0.2);
+}
+
+[data-landing-variant='iyashikei'] .portal__mode-btn:hover:not(.portal__mode-btn--active) {
+  color: var(--iyashi-ink);
+  background: rgba(142, 201, 160, 0.12);
+}
+
+[data-landing-variant='iyashikei'] .portal__toolbar-balance {
+  border-color: rgba(201, 168, 124, 0.35);
+  background: rgba(201, 168, 124, 0.1);
+}
+
+/* KOMOREBI credits — single sun medallion (not voidborn coin stack) */
+[data-landing-variant='iyashikei'] .coin-stack-icon {
+  width: 16px;
+  height: 16px;
+}
+
+[data-landing-variant='iyashikei'] .coin-stack-icon--sm {
+  width: 14px;
+  height: 14px;
+}
+
+[data-landing-variant='iyashikei'] .coin-stack-icon::before {
+  width: 13px;
+  height: 13px;
+  left: 50%;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(168, 138, 74, 0.55);
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 38% 32%,
+      rgba(255, 252, 240, 0.98) 0%,
+      rgba(232, 196, 124, 0.92) 28%,
+      rgba(154, 171, 114, 0.88) 72%,
+      rgba(106, 138, 90, 0.95) 100%
+    );
+  box-shadow:
+    0 1px 3px rgba(44, 62, 45, 0.14),
+    inset 0 -2px 4px rgba(106, 138, 90, 0.2);
+}
+
+[data-landing-variant='iyashikei'] .coin-stack-icon--sm::before {
+  width: 11px;
+  height: 11px;
+}
+
+[data-landing-variant='iyashikei'] .coin-stack-icon::after {
+  display: none;
+}
+
+/* KOMOREBI cart — woven tote (not voidborn shopping cart) */
+[data-landing-variant='iyashikei'] .cart-icon {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath stroke='%23000' stroke-width='1.6' stroke-linejoin='round' d='M4 9h16l-2 11H6L4 9z'/%3E%3Cpath stroke='%23000' stroke-width='1.6' stroke-linecap='round' d='M8 9V7a4 4 0 018 0v2'/%3E%3Cpath stroke='%23000' stroke-width='1.15' stroke-linecap='round' d='M7 13h10M7 16h10'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'%3E%3Cpath stroke='%23000' stroke-width='1.6' stroke-linejoin='round' d='M4 9h16l-2 11H6L4 9z'/%3E%3Cpath stroke='%23000' stroke-width='1.6' stroke-linecap='round' d='M8 9V7a4 4 0 018 0v2'/%3E%3Cpath stroke='%23000' stroke-width='1.15' stroke-linecap='round' d='M7 13h10M7 16h10'/%3E%3C/svg%3E");
+}
+
+[data-landing-variant='iyashikei'] .cart-icon--toolbar {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .cart-icon--money {
+  color: #5a8aaa;
+}
+
+[data-landing-variant='iyashikei'] .portal__currency select {
+  padding: 0.45rem 0.65rem;
+  border-radius: 6px;
+  border: 1px solid rgba(124, 184, 124, 0.35);
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--iyashi-ink);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 1px 4px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .portal__currency select:focus {
+  border-color: rgba(106, 171, 114, 0.55);
+  box-shadow: 0 0 0 2px rgba(142, 201, 160, 0.2);
+  outline: none;
+}
+
+[data-landing-variant='iyashikei'] .portal__cart-badge {
+  color: #faf7f0;
+  background: #6aab72;
+}
+
+/* Portal sub-pages */
+[data-landing-variant='iyashikei'] .portal-market__toolbar {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+}
+
+[data-landing-variant='iyashikei'] .portal-market__scope-switch {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+[data-landing-variant='iyashikei'] .portal-market__scope-btn {
+  color: var(--iyashi-ink-soft);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal-market__scope-btn--active {
+  color: #5a4a32;
+  background: rgba(201, 168, 124, 0.2);
+}
+
+[data-landing-variant='iyashikei'] .portal-market__scope-btn:hover:not(.portal-market__scope-btn--active) {
+  color: var(--iyashi-ink);
+  background: rgba(142, 201, 160, 0.12);
+}
+
+[data-landing-variant='iyashikei'] .portal-market__search input,
+[data-landing-variant='iyashikei'] .portal-market__select-wrap select {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal-market__search input::placeholder {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__card {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__card-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--iyashi-ink);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__label {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__input {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__input:focus {
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 0 0 2px rgba(142, 201, 160, 0.2);
+}
+
+[data-landing-variant='iyashikei'] .billing-form__label {
+  color: var(--iyashi-ink-soft);
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+
+[data-landing-variant='iyashikei'] .billing-form__required {
+  color: #7a5a42;
+}
+
+[data-landing-variant='iyashikei'] .billing-form__input {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--iyashi-ink);
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+}
+
+[data-landing-variant='iyashikei'] .billing-form__input::placeholder {
+  color: rgba(44, 62, 45, 0.42);
+}
+
+[data-landing-variant='iyashikei'] .billing-form__input:focus {
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 0 0 2px rgba(142, 201, 160, 0.2);
+}
+
+[data-landing-variant='iyashikei'] .portal-profile__hint,
+[data-landing-variant='iyashikei'] .portal-profile__empty,
+[data-landing-variant='iyashikei'] .portal-profile__status {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__status {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-tab {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-tab--active {
+  border-color: rgba(201, 168, 124, 0.5);
+  background: rgba(232, 196, 124, 0.12);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-panel,
+[data-landing-variant='iyashikei'] .portal-collection__stats {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__stats-summary,
+[data-landing-variant='iyashikei'] .portal-collection__stats-filtered {
+  color: var(--iyashi-ink-soft);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__stats-item strong,
+[data-landing-variant='iyashikei'] .portal-collection__stats-filtered strong {
+  color: var(--iyashi-ink);
+  font-weight: 700;
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__stats-sep {
+  color: rgba(44, 62, 45, 0.38);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-count {
+  color: var(--iyashi-ink);
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-row {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__deck-row-qty {
+  color: #4a5a42;
+  font-weight: 700;
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__mana-pip {
+  width: 22px;
+  height: 24px;
+  font-size: 0.62rem;
+  font-weight: 400;
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: #3d5240;
+  text-shadow: none;
+  background: linear-gradient(160deg, #c8dcc0 0%, #9ab89a 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 0 8px rgba(122, 168, 122, 0.28);
+}
+
+[data-landing-variant='iyashikei'] .portal-collection__domain-dot {
+  box-shadow: 0 0 4px rgba(44, 62, 45, 0.12);
+}
+
+[data-landing-variant='iyashikei'] .collection-owned-card__qty-btn {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .market-card__rarity {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .market-card--hovered .market-card__frame {
+  box-shadow: 0 0 0 2px rgba(106, 171, 114, 0.45);
+}
+
+[data-landing-variant='iyashikei'] .market-card__domain {
+  color: var(--iyashi-ink-soft);
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+[data-landing-variant='iyashikei'] .market-card__price {
+  border-radius: 12px;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  font-size: 0.74rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--iyashi-border);
+  box-shadow: 0 2px 8px var(--iyashi-shadow);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--credits {
+  color: #6a5838;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.98) 0%,
+    rgba(248, 238, 220, 0.94) 100%
+  );
+  border-color: rgba(201, 168, 124, 0.42);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--credits:hover:not(:disabled) {
+  color: #5a4a32;
+  border-color: rgba(201, 168, 124, 0.62);
+  background: rgba(252, 244, 228, 0.98);
+  box-shadow: 0 4px 12px rgba(201, 168, 124, 0.16);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--money {
+  color: #3a5a68;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 252, 247, 0.98) 0%,
+    rgba(228, 240, 246, 0.94) 100%
+  );
+  border-color: rgba(110, 181, 217, 0.38);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--money:hover:not(:disabled) {
+  color: #2f4a58;
+  border-color: rgba(110, 181, 217, 0.58);
+  background: rgba(236, 246, 252, 0.98);
+  box-shadow: 0 4px 12px rgba(110, 181, 217, 0.14);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--cancel {
+  color: #8a5a5a;
+  background: rgba(252, 240, 240, 0.94);
+  border-color: rgba(212, 165, 165, 0.45);
+}
+
+[data-landing-variant='iyashikei'] .market-card__price--cancel:hover:not(:disabled) {
+  color: #7a4848;
+  border-color: rgba(212, 165, 165, 0.62);
+  background: rgba(252, 236, 236, 0.98);
+  box-shadow: 0 4px 12px rgba(212, 165, 165, 0.12);
+}
+
+[data-landing-variant='iyashikei'] .market-card .cart-icon--money {
+  color: #5a8aaa;
+}
+
+[data-landing-variant='iyashikei'] .player-listing-card__badge {
+  color: #5a4a32;
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(201, 168, 124, 0.45);
+}
+
+[data-landing-variant='iyashikei'] .portal-coming-soon__frame {
+  border-color: var(--iyashi-border);
+  background: var(--iyashi-panel);
+  box-shadow: 0 4px 18px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .portal-coming-soon__eyebrow {
+  color: var(--iyashi-ink-soft);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal-coming-soon__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--iyashi-ink);
+  text-shadow: none;
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .portal-coming-soon__text {
+  color: var(--iyashi-ink-muted);
+}
+
+[data-landing-variant='iyashikei'] :is(
+    .portal-market-page__subtitle,
+    .portal-collection-page__subtitle
+  ) {
+  color: var(--iyashi-ink-muted);
+}
+
+/* Play lobby — softer overlay on scenic background */
+[data-landing-variant='iyashikei'] .play-page__overlay {
+  background:
+    radial-gradient(circle at 50% 15%, rgba(245, 240, 230, 0.15), transparent 35%),
+    radial-gradient(circle at 50% 50%, transparent 0%, rgba(245, 240, 230, 0.35) 70%);
+}
+
+[data-landing-variant='iyashikei'] .play-page__player {
+  display: none;
+}
+
+[data-landing-variant='iyashikei'] .play-page__top {
+  justify-content: flex-end;
+}
+
+[data-landing-variant='iyashikei'] .play-page__action {
+  border-color: var(--iyashi-border);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+  color: var(--iyashi-ink);
+}
+
+[data-landing-variant='iyashikei'] .play-page__store-badge {
+  display: none;
+}
+
+/* Play lobby — logo plate for readability on scenic art */
+[data-landing-variant='iyashikei'] .play-page__logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.15rem 2rem 1.25rem;
+  margin-bottom: 0.35rem;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.79) 0%, rgba(245, 240, 230, 0.25) 58%), 
+    linear-gradient(180deg, rgba(255, 252, 247, 0.94) 0%, rgba(232, 237, 228, 0.02) 100%);
+  border: 1px solid rgba(124, 184, 124, 0.28);
+  box-shadow:
+    0 10px 28px rgba(44, 62, 45, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+}
+
+[data-landing-variant='iyashikei'] .play-page__logo {
+  mix-blend-mode: normal;
+  filter: drop-shadow(0 2px 8px rgba(44, 62, 45, 0.12));
+  height: clamp(72px, 14vw, 118px);
+}
+
+[data-landing-variant='iyashikei'] .play-page__center {
+  gap: 0.5rem;
+}
+
+[data-landing-variant='iyashikei'] .play-page__panel {
+  min-height: 220px;
+}
+
+/* Play lobby — mode list: stacked cards, soft washi panels */
+[data-landing-variant='iyashikei'] .play-page .vb-btn {
+  color: var(--iyashi-ink);
+  background: var(--iyashi-panel-strong);
+  border-color: var(--iyashi-border);
+  border-radius: 14px;
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .play-page .vb-btn:hover:not(:disabled) {
+  color: #243d28;
+  background: rgba(255, 255, 255, 0.92);
+  border-color: var(--iyashi-border-strong);
+  box-shadow: 0 6px 18px rgba(106, 171, 114, 0.14);
+}
+
+[data-landing-variant='iyashikei'] .play-page__modes {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.65rem;
+  width: min(100%, 340px);
+  margin-top: 60px;
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode {
+  width: 100%;
+  height: auto;
+  min-height: 74px;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--iyashi-border);
+  border-left: 1px solid var(--iyashi-border);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(245, 240, 230, 0.82) 100%);
+  box-shadow: 0 4px 14px var(--iyashi-shadow);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode--accent-cyan,
+[data-landing-variant='iyashikei'] .play-page__mode--accent-ember,
+[data-landing-variant='iyashikei'] .play-page__mode--accent-purple {
+  border-left: 1px solid var(--iyashi-border);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode--accent-cyan:hover:not(:disabled) {
+  border-color: rgba(110, 181, 217, 0.45);
+  box-shadow:
+    0 6px 18px rgba(90, 142, 180, 0.14),
+    inset 0 0 0 1px rgba(168, 212, 232, 0.35);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode--accent-ember:hover:not(:disabled) {
+  border-color: rgba(232, 168, 124, 0.45);
+  box-shadow:
+    0 6px 18px rgba(201, 168, 124, 0.16),
+    inset 0 0 0 1px rgba(232, 200, 160, 0.35);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode--accent-purple:hover:not(:disabled) {
+  border-color: rgba(124, 184, 124, 0.48);
+  box-shadow:
+    0 6px 18px rgba(106, 171, 114, 0.14),
+    inset 0 0 0 1px rgba(184, 212, 176, 0.35);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil {
+  width: 2.65rem;
+  height: 2.65rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(124, 184, 124, 0.35);
+  background: rgba(245, 240, 230, 0.92);
+  box-shadow: 0 2px 8px rgba(44, 62, 45, 0.08);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil::before {
+  display: none;
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--cyan {
+  border-color: rgba(110, 181, 217, 0.45);
+  background: radial-gradient(circle at 30% 28%, #d4eef8 0%, #a8d4e8 42%, #6eb5d9 100%);
+  box-shadow: 0 2px 10px rgba(110, 181, 217, 0.22);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--ember {
+  border-color: rgba(232, 168, 124, 0.45);
+  background: radial-gradient(circle at 30% 28%, #f8e8d0 0%, #e8c8a0 42%, #c9a87c 100%);
+  box-shadow: 0 2px 10px rgba(201, 168, 124, 0.22);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--purple {
+  border-color: rgba(124, 184, 124, 0.45);
+  background: radial-gradient(circle at 30% 28%, #dce8d8 0%, #b8d4b0 42%, #7cb87c 100%);
+  box-shadow: 0 2px 10px rgba(124, 184, 124, 0.22);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-mark {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  color: rgba(44, 62, 45, 0.82);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--cyan .play-page__mode-mark,
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--ember .play-page__mode-mark,
+[data-landing-variant='iyashikei'] .play-page__mode-sigil--purple .play-page__mode-mark {
+  color: rgba(44, 62, 45, 0.88);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.75);
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-text strong {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--iyashi-ink);
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .play-page__mode-text small {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  color: var(--iyashi-ink-soft);
+  line-height: 1.35;
+}
+
+[data-landing-variant='iyashikei'] .play-page__back-btn,
+[data-landing-variant='iyashikei'] .play-page__play-btn,
+[data-landing-variant='iyashikei'] .play-page__resume-btn {
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+[data-landing-variant='iyashikei'] .play-page__tutorial-error {
+  color: #9a5a5a;
+}
+
+[data-landing-variant='iyashikei'] .collection__stats{
+  display: none;
+}
+
+/* [data-landing-variant='iyashikei'] */

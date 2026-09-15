@@ -1,0 +1,41 @@
+{
+  "title": "How the store works",
+  "description": "Buy ranks for cosmetics and quality-of-life perks. Buy Victory Coins to speed up kits, inventory, and lobby cosmetics. Everything supports server hosting and updates.",
+  "pillars": [
+    {
+      "id": "ranks",
+      "title": "Ranks",
+      "description": "Permanent and upgradeable. Particles, chat prefixes, ranked maps, extra inventory, and Discord perks.",
+      "image": "gamemodel/ranks.png",
+      "glowColor": "#e8b923"
+    },
+    {
+      "id": "coins",
+      "title": "Victory Coins",
+      "description": "Server currency for Survive Disasters kits, MineMart slots, and lobby cosmetics. Earn in-game or buy here.",
+      "image": "gamemodel/coins.png",
+      "glowColor": "#c9a227"
+    },
+    {
+      "id": "minigames",
+      "title": "Minigames",
+      "description": "Survive Disasters, MineMart, and more — unique modes you will not find on a generic survival box.",
+      "image": "gamemodel/minigames.png",
+      "glowColor": "#3d8f3d"
+    }
+  ],
+  "tags": [
+    {
+      "id": "java",
+      "label": "Java 1.20.4+"
+    },
+    {
+      "id": "ranks",
+      "label": "Permanent ranks"
+    },
+    {
+      "id": "fair",
+      "label": "No pay-to-win combat"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.app {
+  min-height: 100svh;
+  background: var(--void-black);
+  color: var(--text-primary);
+}
+
+.app main {
+  width: 100%;
+}

@@ -1,0 +1,692 @@
+/* Final Whistle — stadium night modals, cookies, auth (landing + shared overlays) */
+
+/* ── Shared backdrops ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__backdrop,
+    .credits-modal__backdrop,
+    .withdrawal-modal__backdrop,
+    .payment-method-modal__backdrop,
+    .buy-card-modal__backdrop,
+    .clear-deck-modal__backdrop,
+    .terms-sale-modal__backdrop,
+    .deck-modal__backdrop,
+    .cookie-consent__backdrop,
+    .market-cart__backdrop
+  ) {
+  background: rgba(8, 14, 12, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+/* ── Shared panels — pitch-side console ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__panel,
+    .credits-modal__panel,
+    .withdrawal-modal__panel,
+    .payment-method-modal__panel,
+    .buy-card-modal__panel,
+    .clear-deck-modal__panel,
+    .terms-sale-modal__panel,
+    .deck-modal__panel,
+    .cookie-consent__panel,
+    .auth-gate__panel
+  ) {
+  border-radius: 2px;
+  border: 1px solid var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.96) 0%, rgba(10, 18, 16, 0.98) 100%);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(61, 122, 74, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* ── Market cart — side drawer ── */
+
+[data-landing-variant='final_whistle'] .market-cart__panel {
+  border-left: 1px solid var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.97), rgba(10, 18, 16, 0.99));
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Close buttons ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ) {
+  border: 1px solid var(--fw-border);
+  border-radius: 2px;
+  background: rgba(20, 32, 24, 0.75);
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ):hover:not(:disabled) {
+  color: var(--fw-gold);
+  background: rgba(24, 38, 30, 0.92);
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 12px rgba(232, 201, 106, 0.22);
+}
+
+/* ── Titles — matchday board labels ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__title,
+    .credits-modal__title,
+    .withdrawal-modal__title,
+    .payment-method-modal__title,
+    .buy-card-modal__title,
+    .clear-deck-modal__title,
+    .terms-sale-modal__title,
+    .deck-modal__title,
+    .cookie-consent__title,
+    .auth-gate__title,
+    .market-cart__title
+  ) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .auth-gate__loading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fw-grass-bright);
+}
+
+/* ── Body copy, labels, subtitles ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__subtitle,
+    .auth-modal__label,
+    .credits-modal__subtitle,
+    .credits-modal__currency-label,
+    .withdrawal-modal__subtitle,
+    .withdrawal-modal__label,
+    .payment-method-modal__lead,
+    .buy-card-modal__copy,
+    .buy-card-modal__field-label,
+    .clear-deck-modal__copy,
+    .terms-sale-modal__updated,
+    .terms-sale-modal__body,
+    .terms-sale-modal__intro,
+    .deck-modal__mode,
+    .cookie-consent__text,
+    .cookie-consent__text--muted,
+    .auth-gate__message,
+    .withdrawal-modal__estimate,
+    .withdrawal-modal__pending-note
+  ) {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .terms-sale-modal__list li strong,
+    .terms-sale-modal__section-title
+  ) {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .terms-sale-modal__section-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .buy-card-modal__copy strong,
+    .buy-card-modal__balance,
+    .buy-card-modal__balance strong,
+    .withdrawal-modal__balance,
+    .withdrawal-modal__balance strong
+  ) {
+  color: var(--fw-gold);
+}
+
+/* ── Inputs & selects ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__input,
+    .buy-card-modal__input,
+    .withdrawal-modal__field input,
+    .credits-modal__currency select
+  ) {
+  border: 1px solid var(--fw-border);
+  border-radius: 2px;
+  background: rgba(8, 14, 12, 0.72);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__input:focus,
+    .buy-card-modal__input:focus,
+    .withdrawal-modal__field input:focus,
+    .credits-modal__currency select:focus
+  ) {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 0 2px rgba(122, 171, 120, 0.22);
+  outline: none;
+}
+
+[data-landing-variant='final_whistle'] .auth-modal__hint {
+  color: var(--fw-ink-soft);
+}
+
+/* ── Links ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__switch-btn,
+    .auth-gate__register,
+    .cookie-consent__link
+  ) {
+  color: var(--fw-grass-bright);
+  text-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__switch-btn:hover:not(:disabled),
+    .auth-gate__register:hover,
+    .cookie-consent__link:hover
+  ) {
+  color: var(--fw-gold);
+  text-shadow: none;
+}
+
+/* ── Status messages ── */
+
+[data-landing-variant='final_whistle'] .auth-modal__message--error {
+  background: rgba(196, 120, 90, 0.14);
+  border-color: rgba(196, 120, 90, 0.42);
+  color: #e8b09a;
+}
+
+[data-landing-variant='final_whistle'] .auth-modal__message--info {
+  background: rgba(61, 122, 74, 0.16);
+  border-color: rgba(122, 171, 120, 0.42);
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .auth-modal__message--success {
+  background: rgba(122, 171, 120, 0.16);
+  border-color: rgba(122, 171, 120, 0.45);
+  color: #b8ddb6;
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .buy-card-modal__error,
+    .deck-modal__error,
+    .withdrawal-modal__error
+  ) {
+  color: #e8b09a;
+}
+
+[data-landing-variant='final_whistle'] .buy-card-modal__warning {
+  border-color: rgba(232, 201, 106, 0.45);
+  background: rgba(232, 201, 106, 0.12);
+  color: var(--fw-gold);
+}
+
+/* ── Buttons inside modals — gold kickoff primary ── */
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] .vb-btn,
+[data-landing-variant='final_whistle'] .auth-modal__panel .vb-btn,
+[data-landing-variant='final_whistle'] .cookie-consent__panel .vb-btn,
+[data-landing-variant='final_whistle'] .auth-gate__panel .vb-btn {
+  backdrop-filter: none;
+  border-radius: 2px;
+  box-shadow: none;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='final_whistle'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold),
+[data-landing-variant='final_whistle'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold) {
+  background: linear-gradient(180deg, #e8c96a 0%, #c4a35a 100%);
+  border-color: rgba(232, 201, 106, 0.65);
+  color: #0a1210;
+  box-shadow: 0 4px 16px rgba(232, 201, 106, 0.22);
+}
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='final_whistle'] .auth-modal__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled),
+[data-landing-variant='final_whistle'] .cookie-consent__panel :is(.vb-btn--primary, .vb-btn--gold):hover:not(:disabled) {
+  color: #0a1210;
+  border-color: rgba(232, 201, 106, 0.85);
+  box-shadow: 0 6px 20px rgba(232, 201, 106, 0.32);
+}
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] :is(.vb-btn--secondary, .vb-btn--ghost),
+[data-landing-variant='final_whistle'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost) {
+  color: var(--fw-ink);
+  background: var(--fw-panel);
+  border-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled),
+[data-landing-variant='final_whistle'] .auth-modal__panel :is(.vb-btn--secondary, .vb-btn--ghost):hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+  background: var(--fw-panel-strong);
+}
+
+[data-landing-variant='final_whistle'] [class*='modal__panel'] .vb-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* ── Credits packs ── */
+
+[data-landing-variant='final_whistle'] .credits-modal__pack {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: linear-gradient(145deg, rgba(20, 32, 24, 0.85) 0%, rgba(10, 18, 16, 0.92) 100%);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__pack:hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 4px 16px rgba(122, 171, 120, 0.16);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__pack--selected {
+  border-color: rgba(122, 171, 120, 0.68);
+  box-shadow: 0 4px 18px rgba(122, 171, 120, 0.24);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__pack--popular {
+  border-color: rgba(232, 201, 106, 0.65);
+  box-shadow: 0 4px 18px rgba(232, 201, 106, 0.2);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__pack-credits {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__pack-price {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__custom {
+  border-top-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__custom-input-wrap {
+  border: 1px solid var(--fw-border);
+  border-radius: 2px;
+  background: rgba(8, 14, 12, 0.72);
+  box-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__custom-input-wrap:focus-within {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 0 2px rgba(122, 171, 120, 0.22);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__custom-input {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__custom-input::placeholder {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__total-label {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__total-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--fw-gold);
+  text-shadow: none;
+}
+
+/* ── Withdrawal balance card ── */
+
+[data-landing-variant='final_whistle'] .withdrawal-modal__balance {
+  border-radius: 2px;
+  border: 1px solid var(--fw-border);
+  background: rgba(20, 32, 24, 0.6);
+  padding: 0.65rem 0.9rem;
+}
+
+/* ── Payment methods ── */
+
+[data-landing-variant='final_whistle'] .payment-method-modal__option {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.6);
+}
+
+[data-landing-variant='final_whistle'] .payment-method-modal__option:hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 4px 14px rgba(122, 171, 120, 0.14);
+}
+
+[data-landing-variant='final_whistle'] .payment-method-modal__option--selected {
+  border-color: rgba(122, 171, 120, 0.68);
+  box-shadow: 0 4px 16px rgba(122, 171, 120, 0.22);
+}
+
+[data-landing-variant='final_whistle'] .payment-method-modal__option-label {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .payment-method-modal__option-description {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .payment-method-modal__option--google_pay .payment-method-modal__icon,
+    .payment-method-modal__option--bank_transfer .payment-method-modal__icon
+  ) {
+  filter: brightness(0) invert(1) opacity(0.85);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .payment-method-modal__footer,
+    .terms-sale-modal__footer,
+    .market-cart__header
+  ) {
+  border-color: var(--fw-border);
+}
+
+/* ── Deck select modal ── */
+
+[data-landing-variant='final_whistle'] .deck-modal__field-label {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__select-wrap {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(8, 14, 12, 0.72);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__select {
+  color: var(--fw-ink);
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__select option {
+  background: #0f1814;
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__count {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__count--full {
+  color: var(--fw-grass-bright);
+  text-shadow: 0 0 8px rgba(122, 171, 120, 0.35);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__manage {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .deck-modal__manage:hover {
+  color: var(--fw-gold);
+  text-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .deck-modal .vb-btn {
+  color: var(--fw-ink);
+  background: var(--fw-panel);
+  border-color: var(--fw-border);
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+[data-landing-variant='final_whistle'] .deck-modal .vb-btn:hover:not(:disabled) {
+  color: var(--fw-gold);
+  border-color: var(--fw-border-strong);
+  background: var(--fw-panel-strong);
+  box-shadow: 0 4px 14px rgba(232, 201, 106, 0.16);
+  filter: none;
+}
+
+/* ── Market cart ── */
+
+[data-landing-variant='final_whistle'] .market-cart__line {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.55);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__line-title {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__line-price {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__line-credits {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__subtotal {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__subtotal strong {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__note {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__qty-btn {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.75);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__qty-btn:hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__close {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__close:hover {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] :is(
+    .market-cart__empty,
+    .market-cart__count
+  ) {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .market-cart__footer {
+  border-color: var(--fw-border);
+}
+
+/* ── Field labels — uppercase squad sheet ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .auth-modal__label,
+    .buy-card-modal__field-label,
+    .deck-modal__field-label,
+    .credits-modal__currency-label
+  ) {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ── Credits legal links ── */
+
+[data-landing-variant='final_whistle'] :is(
+    .credits-modal__legal,
+    .credits-modal__custom-hint,
+    .credits-modal__terms
+  ) {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__legal a {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .credits-modal__legal a:hover {
+  color: var(--fw-gold);
+}
+
+/* ── Cookie consent categories ── */
+
+[data-landing-variant='final_whistle'] .cookie-consent__category {
+  border-radius: 2px;
+  border-color: var(--fw-border);
+  background: rgba(20, 32, 24, 0.55);
+}
+
+[data-landing-variant='final_whistle'] .cookie-consent__category-label {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .cookie-consent__category-desc {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .cookie-consent__toggle-ui {
+  border-radius: 2px;
+  background: rgba(8, 14, 12, 0.8);
+  border-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .cookie-consent__toggle input:checked + .cookie-consent__toggle-ui {
+  background: rgba(61, 122, 74, 0.5);
+  border-color: var(--fw-border-strong);
+  box-shadow: 0 0 10px rgba(122, 171, 120, 0.3);
+}
+
+/* ── Store product modal ── */
+
+[data-landing-variant='final_whistle'] .product-modal-backdrop {
+  background: rgba(8, 14, 12, 0.78);
+  backdrop-filter: blur(10px);
+}
+
+[data-landing-variant='final_whistle'] .product-modal {
+  border-radius: 2px;
+  border: 1px solid var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.96) 0%, rgba(10, 18, 16, 0.98) 100%);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(61, 122, 74, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .product-modal h2 {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='final_whistle'] .product-modal strong {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .product-modal .vb-btn--primary {
+  background: linear-gradient(180deg, #e8c96a 0%, #c4a35a 100%);
+  border-color: rgba(232, 201, 106, 0.65);
+  color: #0a1210;
+}
+
+[data-landing-variant='final_whistle'] .product-modal :is(.vb-btn--secondary, .vb-btn--ghost) {
+  color: var(--fw-ink);
+  background: var(--fw-panel);
+  border-color: var(--fw-border);
+}
+
+/* ── Auth gate page overlay ── */
+
+[data-landing-variant='final_whistle'] .auth-gate {
+  background:
+    linear-gradient(180deg, rgba(10, 18, 16, 0.72) 0%, rgba(10, 18, 16, 0.94) 100%),
+    var(--play-lobby-bg) center / cover no-repeat;
+}
+
+/* ── Password reset callback page (/auth/callback) ── */
+
+[data-landing-variant='final_whistle'] .auth-callback {
+  background: var(--fw-pitch);
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__panel {
+  border-radius: 2px;
+  border: 1px solid var(--fw-border);
+  background: linear-gradient(180deg, rgba(20, 32, 24, 0.96) 0%, rgba(10, 18, 16, 0.98) 100%);
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.55),
+    0 0 32px rgba(61, 122, 74, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__subtitle,
+[data-landing-variant='final_whistle'] .auth-callback__message {
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__message--ok {
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__panel .vb-btn--primary {
+  background: linear-gradient(180deg, #e8c96a 0%, #c4a35a 100%);
+  border-color: rgba(232, 201, 106, 0.65);
+  color: #0a1210;
+}
+
+[data-landing-variant='final_whistle'] .auth-callback__panel .vb-btn--secondary {
+  color: var(--fw-ink);
+  background: var(--fw-panel);
+  border-color: var(--fw-border);
+}

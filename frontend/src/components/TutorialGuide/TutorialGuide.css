@@ -1,0 +1,637 @@
+.tutorial-page {
+  --tutorial-header-clearance: calc(5.5rem + env(safe-area-inset-top, 0px));
+}
+
+[data-landing-variant='final_whistle'] .tutorial-page {
+  --tutorial-header-clearance: calc(7rem + env(safe-area-inset-top, 0px));
+}
+
+.tutorial-guide {
+  position: relative;
+  padding-top: calc(var(--tutorial-header-clearance) + 1.5rem);
+  padding-bottom: 4rem;
+  color: color-mix(in srgb, var(--text-primary) 92%, #d4c8e8);
+}
+
+@media (min-width: 721px) {
+  .tutorial-guide {
+    padding-top: clamp(7rem, calc(12vh + 4.5rem), calc(15vh + 4.5rem));
+  }
+}
+
+.tutorial-guide__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.tutorial-guide__header {
+  max-width: 46rem;
+}
+
+.tutorial-guide__eyebrow {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 80%, var(--text-muted));
+}
+
+.tutorial-guide__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.tutorial-guide__lead {
+  margin: 0;
+  max-width: 42rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-primary));
+}
+
+.tutorial-guide__card-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 280px) minmax(0, 1fr);
+  gap: 1.75rem 2.25rem;
+  align-items: center;
+  padding: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 22%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--void-black) 72%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.tutorial-guide__card-stage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  width: min(100%, 280px);
+  margin: 0 auto;
+  cursor: default;
+}
+
+.tutorial-guide__card-hint {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-primary));
+}
+
+.tutorial-guide__card-popover {
+  position: fixed;
+  z-index: 2000;
+  pointer-events: none;
+  filter: drop-shadow(0 16px 40px rgba(0, 0, 0, 0.72))
+    drop-shadow(0 0 24px color-mix(in srgb, var(--glow-color, #c9a227) 42%, transparent));
+}
+
+@media (hover: none), (pointer: coarse) {
+  .tutorial-guide__card-popover,
+  .tutorial-guide__card-hint {
+    display: none;
+  }
+}
+
+.tutorial-guide__realms {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.tutorial-guide__realms-header {
+  max-width: 46rem;
+}
+
+.tutorial-guide__realms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  grid-auto-rows: 1fr;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tutorial-guide__realms-grid > li {
+  display: flex;
+  min-height: 0;
+}
+
+.tutorial-guide__realm {
+  display: grid;
+  grid-template-columns: 7.75rem minmax(0, 1fr);
+  gap: 1.15rem;
+  align-items: start;
+  width: 100%;
+  min-height: 13.5rem;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid color-mix(in srgb, var(--realm-glow, var(--gold)) 24%, transparent);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--void-black) 50%, transparent);
+  cursor: default;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.tutorial-guide__realm:hover,
+.tutorial-guide__realm--active {
+  border-color: color-mix(in srgb, var(--realm-glow, var(--gold)) 62%, transparent);
+  background: color-mix(in srgb, var(--realm-glow, var(--gold)) 8%, var(--void-black));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--realm-glow, var(--gold)) 18%, transparent);
+}
+
+.tutorial-guide__realm--on-card {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--realm-glow, var(--gold)) 35%, transparent);
+}
+
+.tutorial-guide__realm-badge-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  min-height: 11.625rem;
+  height: 100%;
+}
+
+.tutorial-guide__realm-badge-card {
+  position: relative;
+  width: 7.75rem;
+  height: 11.625rem;
+  max-height: 100%;
+  aspect-ratio: 2 / 3;
+  animation: none;
+  transform: none;
+  filter: none;
+  pointer-events: none;
+}
+
+.tutorial-guide__realm-badge-card .card__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  overflow: visible;
+  background: linear-gradient(165deg, #18241e 0%, #0a100e 100%);
+  border: 1px solid color-mix(in srgb, var(--realm-glow, var(--gold)) 45%, transparent);
+}
+
+.tutorial-guide__realm-badge-card .card__domain {
+  top: 50% !important;
+  left: 50% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 4.25rem !important;
+  height: 4.25rem !important;
+  min-width: 4.25rem !important;
+  margin: 0 !important;
+  transform: translate(-50%, -50%) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.tutorial-guide__realm--active .tutorial-guide__realm-badge-card .card__domain {
+  transform: translate(-50%, -50%) scale(1.08) !important;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--realm-glow, var(--gold)) 75%, #fff),
+    0 0 22px color-mix(in srgb, var(--realm-glow, var(--gold)) 55%, transparent) !important;
+}
+
+.tutorial-guide__realm-copy {
+  display: grid;
+  gap: 0.25rem;
+  min-width: 0;
+  align-self: start;
+  max-height: 11.625rem;
+  overflow: hidden;
+}
+
+.tutorial-guide__realm-name {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.tutorial-guide__realm-epithet {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--realm-glow, var(--gold)) 75%, var(--text-primary));
+  line-height: 1.25;
+}
+
+.tutorial-guide__realm-short {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.84rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-primary));
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.tutorial-guide__card-stage .card.tutorial-guide__card {
+  position: relative;
+  bottom: auto;
+  width: 100%;
+  max-width: 280px;
+  animation: none;
+  transform: none !important;
+  cursor: default;
+  pointer-events: none;
+}
+
+.tutorial-guide__card-stage .card.tutorial-guide__card:hover,
+.tutorial-guide__card-stage .card.tutorial-guide__card.card--hovered {
+  transform: none !important;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--glow-color) 35%, transparent));
+}
+
+.tutorial-guide__card .card__footer {
+  display: none;
+}
+
+.tutorial-guide__card-panel[class*='tutorial-guide__card-panel--highlight-']
+  .tutorial-guide__card
+  .card__stat,
+.tutorial-guide__card-panel[class*='tutorial-guide__card-panel--highlight-']
+  .tutorial-guide__card
+  .card__domain {
+  transition:
+    opacity 0.2s ease,
+    filter 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tutorial-guide__card-panel--highlight-mana
+  .tutorial-guide__card
+  .card__stat:not(.card__stat--mana),
+.tutorial-guide__card-panel--highlight-mana .tutorial-guide__card .card__domain,
+.tutorial-guide__card-panel--highlight-attack
+  .tutorial-guide__card
+  .card__stat:not(.card__stat--attack),
+.tutorial-guide__card-panel--highlight-attack .tutorial-guide__card .card__domain,
+.tutorial-guide__card-panel--highlight-health
+  .tutorial-guide__card
+  .card__stat:not(.card__stat--health),
+.tutorial-guide__card-panel--highlight-health .tutorial-guide__card .card__domain,
+.tutorial-guide__card-panel--highlight-domain .tutorial-guide__card .card__stat {
+  opacity: 0.28;
+  filter: saturate(0.45) brightness(0.72);
+}
+
+.tutorial-guide__card-panel[data-highlight='mana'] .tutorial-guide__card .card__stat--mana,
+.tutorial-guide__card-panel[data-highlight='attack'] .tutorial-guide__card .card__stat--attack,
+.tutorial-guide__card-panel[data-highlight='health'] .tutorial-guide__card .card__stat--health,
+.tutorial-guide__card-panel[data-highlight='domain'] .tutorial-guide__card .card__domain {
+  opacity: 1 !important;
+  filter: saturate(1.25) brightness(1.35) !important;
+  transform: scale(1.2) !important;
+  z-index: 12 !important;
+  overflow: visible;
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--gold) 90%, #fff),
+    0 0 22px color-mix(in srgb, var(--gold) 65%, transparent),
+    0 0 40px color-mix(in srgb, var(--glow-color, var(--gold)) 55%, transparent) !important;
+}
+
+.tutorial-guide__card-panel[data-highlight='mana'] .tutorial-guide__card .card__stat--mana::after,
+.tutorial-guide__card-panel[data-highlight='attack'] .tutorial-guide__card .card__stat--attack::after,
+.tutorial-guide__card-panel[data-highlight='health'] .tutorial-guide__card .card__stat--health::after,
+.tutorial-guide__card-panel[data-highlight='domain'] .tutorial-guide__card .card__domain::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: inherit;
+  border: 2px solid color-mix(in srgb, var(--gold) 85%, #fff);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--gold) 55%, transparent);
+  pointer-events: none;
+  animation: tutorial-spotlight-pulse 1.2s ease-in-out infinite;
+}
+
+.tutorial-guide__card-panel[data-highlight] .tutorial-guide__card .card__stat,
+.tutorial-guide__card-panel[data-highlight] .tutorial-guide__card .card__domain {
+  position: absolute;
+}
+
+@keyframes tutorial-spotlight-pulse {
+  0%,
+  100% {
+    opacity: 0.72;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.tutorial-guide__card-panel--highlight-mana .tutorial-guide__card .card__stat--mana .card__stat-value,
+.tutorial-guide__card-panel--highlight-attack .tutorial-guide__card .card__stat--attack .card__stat-value,
+.tutorial-guide__card-panel--highlight-health .tutorial-guide__card .card__stat--health .card__stat-value {
+  color: #fff !important;
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.85),
+    0 1px 4px rgba(0, 0, 0, 0.9) !important;
+}
+
+.tutorial-guide__card-panel[class*='tutorial-guide__card-panel--highlight-']
+  .tutorial-guide__card
+  .card__frame {
+  overflow: visible;
+}
+
+.tutorial-guide__card-callouts {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tutorial-guide__callout {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.75rem 0.9rem;
+  border-left: 3px solid color-mix(in srgb, var(--cyan-glow) 55%, var(--gold));
+  background: color-mix(in srgb, var(--void-black) 55%, transparent);
+  cursor: default;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.tutorial-guide__callout:hover,
+.tutorial-guide__callout--active {
+  background: color-mix(in srgb, var(--gold) 10%, var(--void-black));
+  transform: translateX(4px);
+}
+
+.tutorial-guide__callout--mana {
+  border-left-color: color-mix(in srgb, var(--gold) 75%, #fff);
+}
+
+.tutorial-guide__callout--mana:hover,
+.tutorial-guide__callout--mana.tutorial-guide__callout--active {
+  border-left-color: color-mix(in srgb, var(--gold) 95%, #fff);
+}
+
+.tutorial-guide__callout--attack {
+  border-left-color: color-mix(in srgb, var(--ember) 70%, #fff);
+}
+
+.tutorial-guide__callout--attack:hover,
+.tutorial-guide__callout--attack.tutorial-guide__callout--active {
+  border-left-color: color-mix(in srgb, var(--ember) 95%, #fff);
+}
+
+.tutorial-guide__callout--health {
+  border-left-color: color-mix(in srgb, var(--cyan-glow) 75%, #fff);
+}
+
+.tutorial-guide__callout--health:hover,
+.tutorial-guide__callout--health.tutorial-guide__callout--active {
+  border-left-color: color-mix(in srgb, var(--cyan-glow) 95%, #fff);
+}
+
+.tutorial-guide__callout--domain {
+  border-left-color: color-mix(in srgb, var(--purple-glow) 75%, #fff);
+}
+
+.tutorial-guide__callout--domain:hover,
+.tutorial-guide__callout--domain.tutorial-guide__callout--active {
+  border-left-color: color-mix(in srgb, var(--purple-glow) 95%, #fff);
+}
+
+.tutorial-guide__callout-label {
+  font-family: var(--font-fantasy);
+  font-size: 0.92rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.tutorial-guide__callout-hint {
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--text-muted) 90%, var(--text-primary));
+}
+
+.tutorial-guide__sections {
+  display: grid;
+  gap: 2rem;
+}
+
+.tutorial-guide__section-title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.05rem, 2.5vw, 1.25rem);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--gold) 70%, var(--text-primary));
+}
+
+.tutorial-guide__section-body {
+  margin: 0 0 0.85rem;
+  max-width: 44rem;
+  font-family: var(--font-ui);
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+}
+
+.tutorial-guide__bullets {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tutorial-guide__bullets li {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 18%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--void-black) 45%, transparent);
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.tutorial-guide__bullets-item--highlightable {
+  cursor: default;
+}
+
+.tutorial-guide__bullets-item--highlightable:hover,
+.tutorial-guide__bullets-item--active {
+  border-color: color-mix(in srgb, var(--gold) 45%, transparent);
+  background: color-mix(in srgb, var(--gold) 8%, var(--void-black));
+  transform: translateX(4px);
+}
+
+.tutorial-guide__bullets strong {
+  font-family: var(--font-fantasy);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.tutorial-guide__bullets span {
+  font-family: var(--font-ui);
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-primary));
+}
+
+.tutorial-guide__steps {
+  margin: 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.55rem;
+  max-width: 44rem;
+}
+
+.tutorial-guide__steps li {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+}
+
+.tutorial-guide__terms {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.tutorial-guide__term {
+  padding: 0.85rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 16%, transparent);
+  border-radius: 0.65rem;
+  background: color-mix(in srgb, var(--void-black) 40%, transparent);
+}
+
+.tutorial-guide__term dt {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-fantasy);
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.tutorial-guide__term dd {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text-primary));
+}
+
+.tutorial-guide__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem 1rem;
+  padding-top: 0.5rem;
+}
+
+.tutorial-guide__cta-primary,
+.tutorial-guide__cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.tutorial-guide__cta-primary {
+  border: 1px solid color-mix(in srgb, var(--gold) 55%, transparent);
+  background: color-mix(in srgb, var(--gold) 18%, transparent);
+  color: var(--text-primary);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--gold) 18%, transparent);
+}
+
+.tutorial-guide__cta-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px color-mix(in srgb, var(--gold) 28%, transparent);
+}
+
+.tutorial-guide__cta-secondary {
+  border: 1px solid color-mix(in srgb, var(--text-muted) 28%, transparent);
+  background: transparent;
+  color: color-mix(in srgb, var(--text-primary) 90%, var(--text-muted));
+}
+
+.tutorial-guide__cta-secondary:hover {
+  border-color: color-mix(in srgb, var(--cyan-glow) 45%, transparent);
+  color: var(--text-primary);
+}
+
+.tutorial-guide__cta-note {
+  flex: 1 1 100%;
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--text-muted) 92%, var(--text-primary));
+}
+
+@media (max-width: 720px) {
+  .tutorial-guide__card-panel {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .tutorial-guide__card-stage {
+    max-width: 240px;
+  }
+
+  .tutorial-guide__card-stage .card.tutorial-guide__card {
+    max-width: 240px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tutorial-guide__card-panel {
+    padding: 1rem;
+  }
+}

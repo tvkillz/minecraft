@@ -1,0 +1,32 @@
+{
+  "tiers": [
+    {
+      "id": "common",
+      "label": "Pro",
+      "manaMin": 1,
+      "manaMax": 2,
+      "description": "Entry rank"
+    },
+    {
+      "id": "uncommon",
+      "label": "Ace",
+      "manaMin": 3,
+      "manaMax": 4,
+      "description": "Best deal"
+    },
+    {
+      "id": "rare",
+      "label": "King / Queen",
+      "manaMin": 5,
+      "manaMax": 6,
+      "description": "Mid-high rank"
+    },
+    {
+      "id": "epic",
+      "label": "Legend",
+      "manaMin": 7,
+      "manaMax": 10,
+      "description": "Top rank"
+    }
+  ]
+}

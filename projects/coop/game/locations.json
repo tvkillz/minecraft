@@ -1,0 +1,58 @@
+{
+  "defaults": {
+    "arenaLocationId": "arcade",
+    "lobbyLocationId": "lobby"
+  },
+  "lore": {
+    "global": {
+      "aetherBleed": "Server upkeep",
+      "nullZones": "Maintenance"
+    }
+  },
+  "locations": [
+    {
+      "id": "lobby",
+      "name": "Spawn Lobby",
+      "domainId": "lobby",
+      "categoryId": "earth",
+      "glowColor": "#3d8f3d",
+      "epithet": "The hub",
+      "short": "Copy the IP, join Discord, and pick a minigame.",
+      "imageAsset": "domains/lobby_domain.png",
+      "featuredCardSlug": "ranks_card_02_ace"
+    },
+    {
+      "id": "ranks",
+      "name": "Ranks",
+      "domainId": "ranks",
+      "categoryId": "fire",
+      "glowColor": "#e8b923",
+      "epithet": "Permanent perks",
+      "short": "Pro through Legend — cosmetics, maps, and Discord perks.",
+      "imageAsset": "domains/ranks_domain.png",
+      "featuredCardSlug": "ranks_card_01_pro"
+    },
+    {
+      "id": "vault",
+      "name": "Victory Coins",
+      "domainId": "coins",
+      "categoryId": "water",
+      "glowColor": "#c9a227",
+      "epithet": "Server currency",
+      "short": "Buy kits, extra inventory, and lobby cosmetics.",
+      "imageAsset": "domains/coins_domain.png",
+      "featuredCardSlug": "coins_card_01_bag"
+    },
+    {
+      "id": "arcade",
+      "name": "Minigames",
+      "domainId": "games",
+      "categoryId": "air",
+      "glowColor": "#5aa6ff",
+      "epithet": "Unique modes",
+      "short": "Survive Disasters, MineMart, and more.",
+      "imageAsset": "domains/games_domain.png",
+      "featuredCardSlug": "games_card_01_disasters"
+    }
+  ]
+}

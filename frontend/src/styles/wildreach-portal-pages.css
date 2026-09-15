@@ -1,0 +1,381 @@
+/* Wildreach — portal sub-pages styling.
+   Scoped to [data-landing-variant='wildreach'] so other portals remain unchanged. */
+
+/* ── Transactions (/portal/transactions) ── */
+
+[data-landing-variant='wildreach'] .portal-transactions__section {
+  border-radius: 6px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: linear-gradient(165deg, rgba(16, 24, 20, 0.86) 0%, rgba(8, 12, 10, 0.92) 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(42, 122, 106, 0.06);
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__toolbar {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(8, 12, 10, 0.72);
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__filter-label {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__filter-select {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(8, 12, 10, 0.72);
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__filter-select:focus {
+  outline: none;
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  box-shadow: 0 0 0 2px rgba(42, 122, 106, 0.22);
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__pagination {
+  border-top-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+}
+
+[data-landing-variant='wildreach'] .portal-transactions__pagination-summary,
+[data-landing-variant='wildreach'] .portal-transactions__pagination-page,
+[data-landing-variant='wildreach'] .portal-transactions__empty,
+[data-landing-variant='wildreach'] .portal-transactions__loading {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(16, 24, 20, 0.6);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row:hover {
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  box-shadow: 0 0 16px rgba(196, 154, 58, 0.1);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__type {
+  color: var(--wr-ink, #f0ebe4);
+  letter-spacing: 0.08em;
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: uppercase;
+}
+
+[data-landing-variant='wildreach'] .portal-tx-tag {
+  border-radius: 3px;
+}
+
+[data-landing-variant='wildreach'] .portal-tx-tag--credits {
+  color: var(--wr-gold, #c49a3a);
+  border-color: rgba(196, 154, 58, 0.42);
+  background: rgba(196, 154, 58, 0.1);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-tag--cash {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+  border-color: rgba(42, 122, 106, 0.42);
+  background: rgba(42, 122, 106, 0.1);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__desc {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__date,
+[data-landing-variant='wildreach'] .portal-tx-row__balance {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__amount {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__amount--debit {
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__status--completed,
+[data-landing-variant='wildreach'] .portal-tx-row__status--paid,
+[data-landing-variant='wildreach'] .portal-tx-row__status--successful {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__status--pending,
+[data-landing-variant='wildreach'] .portal-tx-row__status--pending_payment {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__status--failed,
+[data-landing-variant='wildreach'] .portal-tx-row__status--refunded,
+[data-landing-variant='wildreach'] .portal-tx-row__status--cancelled,
+[data-landing-variant='wildreach'] .portal-tx-row__status--rejected {
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__reject-reason {
+  border-radius: 4px;
+  border-color: rgba(184, 90, 58, 0.35);
+  background: rgba(184, 90, 58, 0.08);
+  color: rgba(232, 176, 154, 0.92);
+}
+
+[data-landing-variant='wildreach'] .portal-tx-row__reject-label {
+  color: rgba(232, 176, 154, 0.85);
+}
+
+/* ── Checkout (/checkout) ── */
+
+[data-landing-variant='wildreach'] .checkout-page__header h1,
+[data-landing-variant='wildreach'] .checkout-page > h1 {
+  font-family: var(--font-heading, var(--font-fantasy));
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .checkout-page__lead,
+[data-landing-variant='wildreach'] .checkout-page > p:not([class]) {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__card,
+[data-landing-variant='wildreach'] .checkout-page__disclaimer {
+  border-radius: 6px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: linear-gradient(165deg, rgba(16, 24, 20, 0.86) 0%, rgba(8, 12, 10, 0.92) 100%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(42, 122, 106, 0.06);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__card-title,
+[data-landing-variant='wildreach'] .checkout-page__disclaimer-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__summary div {
+  border-bottom-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__summary dt {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__summary dd {
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__line-items th {
+  border-bottom-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__line-items td {
+  border-bottom-color: rgba(196, 154, 58, 0.12);
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-page .billing-form__label {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .checkout-page .billing-form__required {
+  color: var(--wr-ember, #b85a3a);
+}
+
+[data-landing-variant='wildreach'] .checkout-page .billing-form__input {
+  border-radius: 4px;
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(8, 12, 10, 0.72);
+  color: var(--wr-ink, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-page .billing-form__input:focus {
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  box-shadow: 0 0 0 2px rgba(42, 122, 106, 0.22);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__pay-block {
+  border-top-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__secure-note,
+[data-landing-variant='wildreach'] .checkout-page__pay-message {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__admin-tests {
+  border-top-color: rgba(196, 154, 58, 0.28);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__admin-label {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__disclaimer {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .checkout-page__disclaimer a,
+[data-landing-variant='wildreach'] .checkout-page__disclaimer .checkout-page__link,
+[data-landing-variant='wildreach'] .checkout-page__link {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__disclaimer a:hover,
+[data-landing-variant='wildreach'] .checkout-page__link:hover {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .checkout-page__error {
+  color: #e8b09a;
+}
+
+[data-landing-variant='wildreach'] .checkout-page__success {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 55%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .checkout-result h1 {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .checkout-result__lead,
+[data-landing-variant='wildreach'] .checkout-result__balance {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .checkout-result__balance strong {
+  color: var(--wr-gold, #c49a3a);
+  font-weight: 600;
+}
+
+[data-landing-variant='wildreach'] .checkout-result__warning {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .checkout-result .vb-btn--secondary {
+  color: var(--wr-ink, #f0ebe4);
+  border-color: var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: var(--wr-panel, rgba(16, 24, 20, 0.82));
+}
+
+[data-landing-variant='wildreach'] .checkout-result .vb-btn--secondary:hover:not(:disabled) {
+  border-color: var(--wr-border-strong, rgba(196, 154, 58, 0.55));
+  background: var(--wr-panel-strong, rgba(22, 34, 28, 0.94));
+}
+
+[data-landing-variant='wildreach'] .terms-sale-agreement {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .terms-sale-agreement__checkbox {
+  accent-color: var(--wr-teal, #2a7a6a);
+}
+
+[data-landing-variant='wildreach'] .terms-sale-agreement__link {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .terms-sale-agreement__link:hover {
+  color: var(--wr-gold, #c49a3a);
+}
+
+[data-landing-variant='wildreach'] .terms-sale-modal__section-title {
+  color: var(--wr-gold, #c49a3a);
+  font-family: var(--font-heading, var(--font-fantasy));
+}
+
+/* ── Legal documents ── */
+
+[data-landing-variant='wildreach'] .legal-doc {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .legal-doc__eyebrow {
+  color: var(--wr-teal, #2a7a6a);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='wildreach'] .legal-doc__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='wildreach'] .legal-doc__updated {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .legal-doc__paragraph,
+[data-landing-variant='wildreach'] .legal-doc__list {
+  color: var(--wr-ink-muted, rgba(240, 235, 228, 0.72));
+}
+
+[data-landing-variant='wildreach'] .legal-doc__heading,
+[data-landing-variant='wildreach'] .legal-doc h2.legal-doc__heading,
+[data-landing-variant='wildreach'] .legal-doc h3.legal-doc__heading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--wr-gold, #c49a3a);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+[data-landing-variant='wildreach'] .legal-doc__company {
+  border-radius: 6px;
+  border: 1px solid var(--wr-border, rgba(196, 154, 58, 0.32));
+  background: rgba(16, 24, 20, 0.55);
+}
+
+[data-landing-variant='wildreach'] .legal-doc__company p {
+  color: var(--wr-ink-soft, rgba(240, 235, 228, 0.55));
+}
+
+[data-landing-variant='wildreach'] .legal-doc__company-name {
+  color: var(--wr-ink, #f0ebe4);
+  font-weight: 700;
+}
+
+[data-landing-variant='wildreach'] .legal-doc__link {
+  color: color-mix(in srgb, var(--wr-teal, #2a7a6a) 70%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .legal-doc__link:hover {
+  color: var(--wr-gold, #c49a3a);
+}

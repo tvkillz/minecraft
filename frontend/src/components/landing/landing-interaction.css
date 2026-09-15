@@ -1,0 +1,30 @@
+/**
+ * Landing hover-preview controls — visual hover OK, default cursor (not a click target).
+ * Scoped to main.landing-flow on the homepage.
+ */
+.landing-flow .locations__item.vb-btn,
+.landing-flow .helix-locations__channel,
+.landing-flow .wr-pathways__card,
+.landing-flow .wr-pathways__tier-card,
+.landing-flow .wr-catalog__specimen-btn,
+.landing-flow .collection__picker-btn,
+.landing-flow .fw-pressure__node,
+.landing-flow .pathways__card,
+.landing-flow .pathways__tier-card,
+.landing-flow .dominions__card,
+.landing-flow .fw-dominions__zone,
+.landing-flow .gamemodel__card,
+.landing-flow .helix-hero__rail-slot,
+.landing-flow .iyashikei-hero__corner,
+.landing-flow .wr-hero__cluster-slot {
+  cursor: default;
+}
+
+.landing-flow .fw-dominions__zone-dot {
+  cursor: pointer;
+}
+
+.landing-flow .wr-catalog__specimen-btn .card,
+.landing-flow .collection__picker-btn .card {
+  cursor: default;
+}

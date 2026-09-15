@@ -1,0 +1,110 @@
+{
+  "fonts": {
+    "fantasy": "'Pixelify Sans', 'Inter', system-ui, sans-serif",
+    "ui": "'Inter', system-ui, sans-serif",
+    "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&display=swap"
+  },
+  "navigation": [
+    {
+      "label": "Store",
+      "href": "/",
+      "route": "home"
+    },
+    {
+      "label": "Ranks",
+      "href": "/#ranks",
+      "anchor": "play"
+    },
+    {
+      "label": "Coins",
+      "href": "/#coins",
+      "anchor": "market"
+    },
+    {
+      "label": "Minigames",
+      "href": "/#minigames",
+      "anchor": "leaderboard"
+    }
+  ],
+  "accountMenu": [
+    {
+      "id": "play",
+      "label": "Join Server",
+      "route": "play"
+    },
+    {
+      "id": "market",
+      "label": "Store",
+      "route": "portalStore"
+    },
+    {
+      "id": "profile",
+      "label": "Profile",
+      "route": "portalProfile"
+    },
+    {
+      "id": "credits",
+      "label": "Buy Coins",
+      "action": "purchaseCredits"
+    },
+    {
+      "id": "sign-out",
+      "label": "Sign Out",
+      "action": "signOut"
+    }
+  ],
+  "heroCtas": [
+    {
+      "id": "ranks",
+      "label": "View Ranks",
+      "anchor": "play",
+      "accent": "purple"
+    },
+    {
+      "id": "coins",
+      "label": "Victory Coins",
+      "anchor": "market",
+      "accent": "cyan"
+    },
+    {
+      "id": "store",
+      "label": "Open Store",
+      "route": "portalStore",
+      "accent": "ember"
+    }
+  ],
+  "playModes": [
+    {
+      "id": "casual",
+      "title": "Minigames",
+      "subtitle": "Hop into Survive Disasters, MineMart, and more",
+      "accent": "cyan",
+      "mark": "I"
+    },
+    {
+      "id": "ranked",
+      "title": "Ranks",
+      "subtitle": "Permanent cosmetic and quality-of-life perks",
+      "accent": "ember",
+      "mark": "II"
+    },
+    {
+      "id": "tutorial",
+      "title": "How to join",
+      "subtitle": "Java 1.20.4+ — copy the IP from the hero",
+      "accent": "purple",
+      "mark": "III"
+    }
+  ],
+  "player": {
+    "fallbackName": "Player",
+    "opponentName": "Server",
+    "defaultCredits": 0
+  },
+  "particles": {
+    "colors": [
+      "#3d8f3d",
+      "#e8b923"
+    ]
+  }
+}

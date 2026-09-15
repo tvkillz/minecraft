@@ -1,0 +1,684 @@
+/* HELIX landing — dark cosmos HUD, Orbitron headings, console rail cards */
+
+/* ── Header ── */
+
+.helix-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem var(--landing-gutter-x, 1.5rem);
+  background: rgba(12, 16, 22, 0.92);
+  border-bottom: 1px solid rgba(61, 184, 212, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset;
+  overflow: hidden;
+}
+
+.helix-header__stars {
+  z-index: 0;
+}
+
+.helix-header__brand,
+.helix-header__actions,
+.helix-header__accordion {
+  position: relative;
+  z-index: 1;
+}
+
+.helix-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.helix-header__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(61, 184, 212, 0.4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.helix-header__wordmark {
+  display: block;
+  height: 2.75rem;
+  width: auto;
+  max-width: min(52vw, 220px);
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(61, 184, 212, 0.35));
+}
+
+.helix-header__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--text-primary);
+}
+
+.helix-header__actions {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.helix-header__sign-in {
+  height: 36px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(61, 184, 212, 0.4);
+  border-radius: 6px;
+  background: rgba(16, 22, 30, 0.85);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.helix-header__sign-in:hover:not(:disabled) {
+  background: rgba(22, 28, 38, 0.95);
+  border-color: rgba(61, 184, 212, 0.6);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.12);
+}
+
+.helix-header__user-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 36px;
+  padding: 0 0.75rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.helix-header__user-label p {
+  margin: 0 0 2px;
+}
+
+.helix-header__user-label strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.06em;
+}
+
+.helix-header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.helix-header__menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-left: auto;
+  background: #3db8d4;
+  border-radius: 1px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.helix-header__menu-toggle--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.helix-header__menu-toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.helix-header__menu-toggle--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.helix-header__accordion {
+  flex-basis: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease;
+}
+
+.helix-header__accordion--open {
+  max-height: 520px;
+  opacity: 1;
+  margin-top: 0.65rem;
+}
+
+.helix-header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: center;
+  background: rgba(16, 22, 30, 0.96);
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  border-radius: 8px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.helix-header__nav-link,
+.helix-header__nav-btn {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.helix-header__nav-link:hover,
+.helix-header__nav-btn:hover {
+  background: rgba(61, 184, 212, 0.12);
+}
+
+.helix-header__nav-btn--sign-out:hover {
+  background: rgba(212, 137, 92, 0.12);
+}
+
+/* ── Hero ── */
+
+.helix-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #0c1016;
+}
+
+.helix-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.helix-hero__bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--hero-poster);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.helix-hero__media-root,
+.helix-hero__slides,
+.helix-hero__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.helix-hero__slide {
+  object-fit: cover;
+  animation: helix-slide-in 1.1s ease;
+}
+
+@keyframes helix-slide-in {
+  from {
+    opacity: 0.35;
+    transform: scale(1.04);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.helix-hero__grid {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(61, 184, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 184, 212, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+}
+
+.helix-hero__scan {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(61, 184, 212, 0.06) 48%,
+    transparent 52%,
+    transparent 100%
+  );
+  background-size: 100% 220%;
+  animation: helix-scan 9s linear infinite;
+}
+
+@keyframes helix-scan {
+  from {
+    background-position: 0 -40%;
+  }
+  to {
+    background-position: 0 140%;
+  }
+}
+
+.helix-hero__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 16, 22, 0.72) 0%,
+    rgba(12, 16, 22, 0.35) 38%,
+    rgba(12, 16, 22, 0.62) 78%,
+    rgba(12, 16, 22, 0.92) 100%
+  );
+}
+
+.helix-hero__stars {
+  z-index: 5;
+}
+
+.helix-hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 32%, transparent 28%, rgba(12, 16, 22, 0.7) 100%);
+}
+
+.helix-hero__content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6.5rem var(--landing-gutter-x, 1.5rem) clamp(11rem, 28vh, 15rem);
+  max-width: var(--landing-content-max, 1280px);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.helix-hero__stage {
+  display: flex;
+  justify-content: center;
+  width: min(100%, 42rem);
+  animation: helix-fade-up 0.85s ease backwards;
+}
+
+.helix-hero__copy {
+  position: relative;
+  text-align: center;
+  padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.helix-hero__copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  top: 50%;
+  width: 128%;
+  height: 135%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 90% 80% at 50% 50%,
+    rgba(12, 16, 22, 0.55) 0%,
+    rgba(12, 16, 22, 0.28) 45%,
+    transparent 78%
+  );
+  filter: blur(16px);
+  pointer-events: none;
+}
+
+.helix-hero__eyebrow {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(0.68rem, 1.8vw, 0.82rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3db8d4;
+  text-shadow: 0 0 18px rgba(61, 184, 212, 0.35);
+}
+
+.helix-hero__headline {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(2.1rem, 6.2vw, 3.85rem);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--helix-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.65));
+}
+
+.helix-hero__subheadline {
+  margin: 0 auto;
+  max-width: 40rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.92rem, 2.1vw, 1.08rem);
+  line-height: 1.7;
+  font-weight: 500;
+  color: rgba(232, 238, 244, 0.86);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes helix-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* Console rail — horizontal helix stagger (not corners, not fan) */
+
+.helix-hero__rail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(1.5rem, 4vh, 2.75rem);
+  z-index: 12;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--landing-gutter-x, 1.25rem);
+  pointer-events: none;
+}
+
+.helix-hero__rail-track {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: 7%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(61, 184, 212, 0.15) 12%,
+    rgba(61, 184, 212, 0.55) 50%,
+    rgba(139, 126, 200, 0.45) 78%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(61, 184, 212, 0.25);
+}
+
+/*
+  Soft under-rail wash (separate from per-card glow).
+  Tune: --helix-rail-glow-opacity (0 = off), left/right/height.
+*/
+.helix-hero__rail-glow {
+  --helix-rail-glow-opacity: 0;
+  position: absolute;
+  left: 22%;
+  right: 22%;
+  bottom: 8%;
+  height: 28%;
+  background: radial-gradient(
+    ellipse 70% 90% at 50% 100%,
+    rgba(61, 184, 212, var(--helix-rail-glow-opacity)) 0%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.helix-hero__rail-list {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.35rem, 1.4vw, 0.85rem);
+  margin: 4vw;
+  padding: 0;
+  list-style: none;
+  perspective: 900px;
+  pointer-events: auto;
+}
+
+.helix-hero__rail-slot {
+  overflow: hidden;
+  position: relative;
+  width: clamp(78px, 12.5vw, 132px);
+  flex: 0 0 auto;
+  cursor: default;
+  opacity: 0;
+  transform: translateY(calc(var(--rail-lift, 0px) + 28px)) rotate(var(--rail-tilt, 0deg));
+  animation:
+    helix-rail-enter 0.75s cubic-bezier(0.23, 1, 0.32, 1) forwards,
+    helix-rail-float 5.2s ease-in-out infinite;
+  animation-delay: var(--rail-delay, 0s), calc(0.75s + var(--rail-delay, 0s));
+}
+
+.helix-hero__rail-shine {
+  position: absolute;
+  inset: -8% -20%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 46%,
+    rgba(61, 184, 212, 0.55) 50%,
+    rgba(255, 255, 255, 0.12) 54%,
+    transparent 60%
+  );
+  animation: helix-rail-shine 6s ease-in-out infinite;
+  animation-delay: var(--rail-delay, 0s);
+  mix-blend-mode: soft-light;
+}
+
+/*
+  ═══ PER-CARD GLOW — edit these two vars ═══
+  --helix-card-glow-spread  → blur radius around each card (px). Smaller = tighter.
+  --helix-card-glow-alpha   → 0..1 strength of colored aura. 0 = depth shadow only.
+  Also reduce .card__frame box-shadow below if the rim still feels large.
+*/
+.helix-hero__rail-slot:hover {
+  z-index: 12;
+  transform: translateY(calc(var(--rail-lift, 0px) - 8px)) rotate(var(--rail-tilt, 0deg));
+}
+
+.helix-hero__rail-slot .helix-hero__rail-card.card {
+  --helix-card-glow-spread: 6px;
+  --helix-card-glow-alpha: 0.12;
+  position: relative;
+  bottom: auto;
+  width: 100%;
+  animation: none;
+  transform: rotateY(calc(var(--rail-tilt, 0deg) * -0.35));
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.55))
+    drop-shadow(
+      0 0 var(--helix-card-glow-spread)
+        color-mix(in srgb, var(--glow-color) calc(var(--helix-card-glow-alpha) * 100%), transparent)
+    );
+  transition:
+    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.35s ease;
+}
+
+.helix-hero__rail-slot .card__frame {
+  border-radius: 4px;
+  border-color: color-mix(in srgb, var(--glow-color) 50%, #0c1016);
+  box-shadow:
+    0 0 0 1px rgba(232, 238, 244, 0.1) inset,
+    0 0 4px color-mix(in srgb, var(--glow-color) 12%, transparent);
+}
+
+.helix-hero__rail-slot .helix-hero__rail-card.card:hover,
+.helix-hero__rail-slot .helix-hero__rail-card.card.card--hovered,
+.helix-hero__rail-slot:hover .helix-hero__rail-card.card {
+  --helix-card-glow-spread: 10px;
+  --helix-card-glow-alpha: 0.28;
+  z-index: auto;
+  transform: rotateY(calc(var(--rail-tilt, 0deg) * -0.35)) translateY(-4px) scale(1.04);
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.55))
+    drop-shadow(
+      0 0 var(--helix-card-glow-spread)
+        color-mix(in srgb, var(--glow-color) calc(var(--helix-card-glow-alpha) * 100%), transparent)
+    );
+}
+
+@keyframes helix-rail-enter {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--rail-lift, 0px) + 28px)) rotate(var(--rail-tilt, 0deg));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(var(--rail-lift, 0px)) rotate(var(--rail-tilt, 0deg));
+  }
+}
+
+@keyframes helix-rail-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -8px;
+  }
+}
+
+@keyframes helix-rail-shine {
+  0%,
+  100% {
+    transform: translateX(-130%) rotate(10deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  65% {
+    transform: translateX(130%) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+.helix-hero__transition {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 14;
+  height: clamp(3.5rem, 9vw, 5.5rem);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(12, 16, 22, 0.45) 45%,
+    #0c1016 100%
+  );
+  clip-path: polygon(0 35%, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .helix-header {
+    padding-inline: var(--landing-gutter-x, 3rem);
+  }
+
+  .helix-hero__content {
+    padding-top: 7.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .helix-hero__rail-slot {
+    width: clamp(64px, 15vw, 92px);
+  }
+
+  .helix-hero__rail-list {
+    gap: 0.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .helix-hero__rail {
+    display: none;
+  }
+
+  .helix-hero__content {
+    padding-bottom: 4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .helix-hero__scan,
+  .helix-hero__rail-slot,
+  .helix-hero__rail-shine,
+  .helix-hero__slide {
+    animation: none;
+  }
+
+  .helix-hero__rail-slot {
+    opacity: 1;
+    transform: translateY(var(--rail-lift, 0px)) rotate(var(--rail-tilt, 0deg));
+  }
+}
+
+@media(max-width: 861px) and (min-width: 815px) {
+  .helix-hero__rail-list{
+    margin: 8vw;
+  }
+}
+
+@media(max-width: 816px) and (min-width: 675px) {
+  .helix-hero__rail-list{
+    margin: 12vw;
+  }
+}
+
+@media(max-width: 676px) and (min-width: 300px) {
+  .helix-hero__rail-list{
+    margin: 20vw;
+  }
+}

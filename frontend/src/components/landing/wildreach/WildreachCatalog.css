@@ -1,0 +1,580 @@
+/* WILDREACH — Specimen Dossier catalog (unique vs FW cascade / Helix scanner / default picker) */
+
+.wr-catalog {
+  position: relative;
+  isolation: isolate;
+  padding: 0;
+  overflow: hidden;
+  background: #070b09;
+  color: var(--text-primary, #f0ebe4);
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.wr-catalog--visible {
+  opacity: 1;
+  transform: none;
+}
+
+.wr-catalog__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.wr-catalog__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 2px,
+      rgba(196, 154, 58, 0.03) 2px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 4px,
+      rgba(42, 122, 106, 0.02) 4px 5px
+    );
+}
+
+.wr-catalog__wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 40% at 20% 15%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 45% at 85% 70%, rgba(42, 122, 106, 0.09) 0%, transparent 60%),
+    linear-gradient(180deg, #070b09 0%, #0c1210 48%, #070b09 100%);
+}
+
+.wr-catalog__shell {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+  min-width: 0;
+  min-height: 0;
+}
+
+.wr-catalog__header {
+  max-width: 44rem;
+  flex-shrink: 0;
+}
+
+.wr-catalog__eyebrow {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.62rem, 1.4vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #c49a3a;
+}
+
+.wr-catalog__title {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.85rem, 4.5vw, 3rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.05;
+  background: var(--wr-heading-gradient, linear-gradient(105deg, #f0ebe4, #c49a3a, #2a7a6a));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wr-catalog__lead {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.8vw, 1.08rem);
+  line-height: 1.65;
+  color: rgba(220, 228, 220, 0.82);
+}
+
+/* Field ledger metrics */
+.wr-catalog__ledger {
+  list-style: none;
+  margin: 0;
+  padding: 0.55rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  border-top: 1px solid rgba(196, 154, 58, 0.22);
+  border-bottom: 1px solid rgba(196, 154, 58, 0.22);
+  flex-shrink: 0;
+}
+
+.wr-catalog__metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+  padding: 0.15rem 0.35rem;
+}
+
+.wr-catalog__metric-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.15rem, 2.4vw, 1.55rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f0ebe4;
+}
+
+.wr-catalog__metric-label {
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(220, 228, 220, 0.55);
+}
+
+/* Board: mount + tray */
+.wr-catalog__board {
+  --wr-catalog-stage: 336px; /* ~20% above prior 280px; scales like Helix stage */
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
+  grid-template-areas: 'mount tray';
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  align-items: stretch;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+/* Observation mount */
+.wr-catalog__mount {
+  grid-area: mount;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.wr-catalog__mount-frame {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: calc(var(--wr-catalog-stage) * 1.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border: 1px solid color-mix(in srgb, var(--specimen-glow, #c49a3a) 40%, rgba(196, 154, 58, 0.22));
+  border-radius: 6px;
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--specimen-glow, #c49a3a) 10%, rgba(12, 18, 16, 0.92)) 0%,
+      rgba(10, 16, 14, 0.96) 55%
+    );
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.05);
+  overflow: hidden;
+}
+
+.wr-catalog__corner {
+  position: absolute;
+  width: 1.1rem;
+  height: 1.1rem;
+  border-color: color-mix(in srgb, var(--specimen-glow, #c49a3a) 70%, #c49a3a);
+  border-style: solid;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.wr-catalog__corner--tl {
+  top: 0.55rem;
+  left: 0.55rem;
+  border-width: 2px 0 0 2px;
+}
+
+.wr-catalog__corner--tr {
+  top: 0.55rem;
+  right: 0.55rem;
+  border-width: 2px 2px 0 0;
+}
+
+.wr-catalog__corner--bl {
+  bottom: 0.55rem;
+  left: 0.55rem;
+  border-width: 0 0 2px 2px;
+}
+
+.wr-catalog__corner--br {
+  bottom: 0.55rem;
+  right: 0.55rem;
+  border-width: 0 2px 2px 0;
+}
+
+.wr-catalog__mount-mist {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 50% 40%,
+      color-mix(in srgb, var(--specimen-glow, #c49a3a) 12%, transparent) 0%,
+      transparent 70%
+    );
+  pointer-events: none;
+  animation: wr-catalog-mist 7s ease-in-out infinite;
+}
+
+@keyframes wr-catalog-mist {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.wr-catalog__mount-stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, var(--wr-catalog-stage));
+  aspect-ratio: 2 / 3;
+  min-height: calc(var(--wr-catalog-stage) * 1.5);
+}
+
+.wr-catalog__mount-stage .card-preview-panel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Undo CardPreviewPanel fixed rem chrome — scale with card width (cqw), like Helix stage shrink */
+.wr-catalog .card-preview-panel .card--preview .card__title {
+  font-size: clamp(0.55rem, 7.2cqw, 0.95rem);
+  padding: clamp(3px, 2cqw, 6px) clamp(4px, 2.8cqw, 8px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--mana {
+  top: clamp(6px, 4.5cqw, 12px);
+  left: clamp(6px, 4.5cqw, 12px);
+  width: clamp(22px, 16.5cqw, 40px);
+  height: clamp(26px, 20cqw, 48px);
+  font-size: inherit;
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--mana .card__stat-value {
+  font-size: clamp(0.55rem, 8cqw, 1.05rem);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__domain {
+  top: clamp(7px, 5cqw, 14px);
+  right: clamp(7px, 5cqw, 14px);
+  width: clamp(18px, 13cqw, 32px);
+  height: clamp(18px, 13cqw, 32px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__combat-stats {
+  padding: 0 clamp(8px, 4cqw, 14px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--attack,
+.wr-catalog .card-preview-panel .card--preview .card__stat--health {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  min-width: 0;
+  min-height: 0;
+  font-size: inherit;
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--attack {
+  width: clamp(26px, 21cqw, 44px);
+  height: clamp(18px, 16.5cqw, 36px);
+  padding: 0 clamp(3px, 2.2cqw, 6px) 0 clamp(4px, 3.2cqw, 8px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--health {
+  min-width: clamp(22px, 20cqw, 42px);
+  width: auto;
+  height: clamp(16px, 14cqw, 32px);
+  padding: 0 clamp(5px, 4.5cqw, 10px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__stat--attack .card__stat-value,
+.wr-catalog .card-preview-panel .card--preview .card__stat--health .card__stat-value {
+  font-size: clamp(0.5rem, 7cqw, 0.95rem);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__footer {
+  padding: clamp(6px, 3cqw, 12px) clamp(8px, 4cqw, 14px) clamp(8px, 4.5cqw, 16px);
+  gap: clamp(2px, 1.2cqw, 6px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__ability-name {
+  font-size: clamp(0.48rem, 5.5cqw, 0.78rem);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__ability-text {
+  font-size: clamp(0.5rem, 5.8cqw, 0.82rem);
+  line-height: 1.35;
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__keywords {
+  gap: clamp(2px, 1.2cqw, 5px);
+}
+
+.wr-catalog .card-preview-panel .card--preview .card__keywords li {
+  font-size: clamp(0.4rem, 4.5cqw, 0.68rem);
+}
+
+.wr-catalog__caption {
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.wr-catalog__caption-range {
+  margin: 0 0 0.2rem;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--specimen-glow, #c49a3a) 80%, #f0ebe4);
+}
+
+.wr-catalog__caption-name {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  color: #f0ebe4;
+}
+
+.wr-catalog__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.wr-catalog__tag {
+  padding: 0.22rem 0.5rem;
+  border: 1px solid rgba(196, 154, 58, 0.28);
+  border-radius: 2px;
+  font-family: var(--font-ui);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(220, 228, 220, 0.75);
+  background: rgba(10, 16, 14, 0.45);
+}
+
+/* Specimen tray */
+.wr-catalog__tray {
+  grid-area: tray;
+  list-style: none;
+  margin: 0;
+  /* padding: clamp(0.55rem, 1.4vw, 0.85rem); */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem 0.45rem;
+  align-content: start;
+  min-width: 0;
+  min-height: 0;
+  /* border: 1px solid rgba(196, 154, 58, 0.2); */
+  /* border-radius: 6px; */
+  /* background:
+    repeating-linear-gradient(
+      180deg,
+      transparent 0 22px,
+      rgba(196, 154, 58, 0.035) 22px 23px
+    ),
+    linear-gradient(165deg, rgba(12, 18, 16, 0.92) 0%, rgba(10, 16, 14, 0.96) 100%); */
+  /* box-shadow: inset 0 0 0 1px rgba(240, 235, 228, 0.03); */
+  overflow: auto;
+}
+
+.wr-catalog__specimen {
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.06s + var(--specimen-i, 0) * 0.04s);
+}
+
+.wr-catalog__specimen .card:hover{
+  transform: none;
+}
+
+.wr-catalog--visible .wr-catalog__specimen {
+  opacity: 1;
+  transform: none;
+}
+
+.wr-catalog__specimen-btn {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.35rem 0.3rem 0.45rem;
+  border: 1px solid rgba(196, 154, 58, 0.14);
+  border-radius: 4px;
+  background: rgba(6, 10, 8, 0.4);
+  cursor: default;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.wr-catalog__specimen-btn:hover {
+  border-color: color-mix(in srgb, var(--specimen-glow, #c49a3a) 40%, transparent);
+  background: rgba(16, 24, 20, 0.7);
+}
+
+.wr-catalog__specimen--active .wr-catalog__specimen-btn {
+  border-color: color-mix(in srgb, var(--specimen-glow, #c49a3a) 65%, #c49a3a);
+  background:
+    radial-gradient(
+      ellipse 90% 80% at 50% 45%,
+      color-mix(in srgb, var(--specimen-glow, #c49a3a) 28%, transparent) 0%,
+      transparent 70%
+    ),
+    color-mix(in srgb, var(--specimen-glow, #c49a3a) 14%, rgba(10, 16, 14, 0.92));
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--specimen-glow, #c49a3a) 28%, transparent),
+    0 0 22px color-mix(in srgb, var(--specimen-glow, #c49a3a) 35%, transparent);
+}
+
+.wr-catalog__specimen-pin {
+  display: block;
+  margin: 0 auto 0.3rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.35rem;
+  text-align: center;
+  color: #0a100e;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--specimen-glow, #c49a3a) 80%, #f0ebe4) 0%,
+    var(--specimen-glow, #c49a3a) 100%
+  );
+  clip-path: polygon(50% 100%, 0 78%, 0 0, 100% 0, 100% 78%);
+}
+
+.wr-catalog__specimen-card {
+  display: block;
+  width: 100%;
+}
+
+.wr-catalog__specimen-card .card {
+  width: 100%;
+  max-width: none;
+}
+
+@media (max-width: 1100px) {
+  .wr-catalog__board {
+    --wr-catalog-stage: 300px;
+  }
+}
+
+@media (max-width: 960px) {
+  .wr-catalog__board {
+    --wr-catalog-stage: 288px;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'mount'
+      'tray';
+  }
+
+  .wr-catalog__mount-frame {
+    min-height: calc(var(--wr-catalog-stage) * 1.5);
+  }
+
+  .wr-catalog__tray {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .wr-catalog__caption{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 700px) {
+  .wr-catalog__board {
+    --wr-catalog-stage: 264px;
+  }
+
+  .wr-catalog__title {
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+  }
+
+  .wr-catalog__lead {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .wr-catalog__ledger {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem 0.75rem;
+  }
+
+  .wr-catalog__mount-frame {
+    min-height: calc(var(--wr-catalog-stage) * 1.5);
+    padding: 1rem;
+  }
+
+  .wr-catalog__tray {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.4rem;
+    padding: 0.45rem;
+  }
+
+  .wr-catalog__specimen-btn {
+    padding: 0.3rem 0.2rem 0.35rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .wr-catalog__board {
+    --wr-catalog-stage: 240px;
+  }
+
+  .wr-catalog__tray {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-catalog,
+  .wr-catalog__specimen,
+  .wr-catalog__mount-mist {
+    animation: none;
+    transition: none;
+  }
+
+  .wr-catalog,
+  .wr-catalog--visible .wr-catalog__specimen {
+    opacity: 1;
+    transform: none;
+  }
+}

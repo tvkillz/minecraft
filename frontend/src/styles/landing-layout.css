@@ -1,0 +1,201 @@
+/* Shared horizontal rhythm + responsive layout tokens (see frontend/rules.md §4.1) */
+:root {
+  --layout-min-width: 350px;
+  --landing-gutter-x: 1.5rem;
+  --landing-content-max: 1910px;
+  --landing-section-gap: clamp(4rem, 10vw, 7rem);
+  /** Extra space after Hero (card fan overflows below viewport). Total hero→Locations = this value. */
+  --landing-after-hero-gap: clamp(6rem, 16vw, 11rem);
+  /** Pull Dominions up into Locations bottom fade (inverse of hero→locations entry). */
+  --landing-locations-dominions-overlap: 150px;
+
+  --locations-preview-max: 800px;
+  /* 1:1 square minus ~40% height → 5:3 landscape */
+  --locations-preview-aspect: 5 / 3;
+  --locations-breakpoint-fluid: 1150px;
+  --locations-breakpoint-compact: 1350px;
+  --locations-breakpoint-stack: 919px;
+
+  --dominions-card-min: 260px;
+  --dominions-breakpoint-2col: 640px;
+  --dominions-breakpoint-4col: 1150px;
+  --locations-bg-bleed-top: clamp(4rem, 12vw, 9rem);    /* into Hero */
+  --locations-bg-bleed-bottom: clamp(4rem, 12vw, 9rem); /* into Dominions */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --landing-gutter-x: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --landing-gutter-x: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  :root {
+    --landing-gutter-x: 0.75rem;
+  }
+}
+
+.landing-shell {
+  width: 100%;
+  max-width: var(--landing-content-max);
+  min-width: 0;
+  margin-inline: auto;
+  padding-inline: var(--landing-gutter-x);
+  box-sizing: border-box;
+}
+
+/* Section heading — hero gradient typography without glow animation */
+.landing-section-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.35rem, 3.2vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(
+    105deg,
+    #ff4d6d 0%,
+    #e63946 22%,
+    #c42d78 48%,
+    #9b2dff 72%,
+    #7b4dff 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.landing-section-lead {
+  margin: 0 auto;
+  /* max-width: min(720px, 100%); */
+  font-family: var(--font-ui);
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  line-height: 1.7;
+  text-align: center;
+  color: rgba(232, 220, 200, 0.82);
+  overflow-wrap: anywhere;
+}
+
+.landing-section-lead strong {
+  color: #f0e0ff;
+  font-weight: 600;
+}
+
+/* Vertical rhythm between landing sections (Hero → Locations → Dominions) */
+.landing-flow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--landing-section-gap);
+  padding-bottom: var(--landing-section-gap);
+  min-width: 0;
+}
+
+/* Iyashikei — light pastoral landing tokens */
+[data-landing-variant='iyashikei'] {
+  --iyashikei-heading-gradient: linear-gradient(
+    105deg,
+    #4a6a4a 0%,
+    #5a7a5a 35%,
+    #6a9ec4 70%,
+    #c9a87c 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] :is(
+    .landing-section-title,
+    .locations__kicker,
+    .locations__item-title,
+    .dominions__card-name,
+    .dominions__city-name,
+    .iyashikei-hero__headline,
+    .iyashikei-hero__eyebrow
+  ) {
+  font-family: var(--font-heading, var(--font-fantasy));
+}
+
+[data-landing-variant='iyashikei'] .landing-section-title,
+[data-landing-variant='iyashikei'] .iyashikei-hero__headline {
+  text-transform: none;
+  letter-spacing: 0.12em;
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  /* text-shadow: 5px 5px #f8f8f8; */
+  backdrop-filter: blur(2px);
+}
+
+[data-landing-variant='iyashikei'] .locations__kicker {
+  text-transform: none;
+  letter-spacing: 0.14em;
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+}
+
+[data-landing-variant='iyashikei'] .locations__title {
+  text-transform: none;
+  letter-spacing: 0.12em;
+  background: var(--iyashikei-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  animation: none;
+}
+
+[data-landing-variant='iyashikei'] .landing-section-lead {
+  color: var(--text-muted);
+}
+
+[data-landing-variant='iyashikei'] .landing-section-lead strong {
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+/* Hero card fan extends below 100svh — bump gap before Locations only */
+.landing-flow > .hero + .locations {
+  /* margin-top: calc(var(--landing-after-hero-gap) - var(--landing-section-gap)); */
+}
+
+[data-landing-variant='iyashikei'] .landing-flow > .iyashikei-hero + .locations {
+  /* corner cards stay inside viewport — default section gap is enough */
+}
+
+[data-landing-variant='helix'] .landing-section-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  background: var(--helix-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: none;
+  animation: none;
+}
+
+[data-landing-variant='helix'] .landing-section-lead {
+  color: var(--text-muted);
+}
+
+[data-landing-variant='helix'] .landing-section-lead strong {
+  color: var(--text-primary);
+  text-shadow: none;
+}
+
+/*
+ * Locations → Dominions: outgoing section fades out at bottom (locations mask);
+ * dominions stays fully opaque — pull up into the fade zone only.
+ */
+.landing-flow > .locations + .dominions {
+  margin-top: calc(-1 * var(--landing-locations-dominions-overlap));
+}

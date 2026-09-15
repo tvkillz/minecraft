@@ -1,0 +1,13 @@
+{
+  "variant": "minecraft",
+  "introVideo": false,
+  "heroMedia": "slides",
+  "heroCardSlugs": [
+    "ranks_card_01_pro",
+    "ranks_card_02_ace",
+    "ranks_card_03_legend",
+    "coins_card_01_bag",
+    "games_card_01_disasters",
+    "games_card_02_minemart"
+  ]
+}

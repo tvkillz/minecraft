@@ -1,0 +1,68 @@
+{
+  "assets": [
+    {
+      "kind": "domain",
+      "domain": "lobby",
+      "slug": "lobby_domain",
+      "title": "Spawn lobby",
+      "path": "domains/lobby_domain.png",
+      "notes": "Minecraft Java lobby plaza, warm lanterns, NPC statues, no text."
+    },
+    {
+      "kind": "domain",
+      "domain": "ranks",
+      "slug": "ranks_domain",
+      "title": "Ranks hall",
+      "path": "domains/ranks_domain.png",
+      "notes": "Minecraft throne hall with rank banners, gold trim, no text."
+    },
+    {
+      "kind": "domain",
+      "domain": "coins",
+      "slug": "coins_domain",
+      "title": "Coin vault",
+      "path": "domains/coins_domain.png",
+      "notes": "Minecraft treasure vault with coin piles and chests, no text."
+    },
+    {
+      "kind": "domain",
+      "domain": "games",
+      "slug": "games_domain",
+      "title": "Minigame arcade",
+      "path": "domains/games_domain.png",
+      "notes": "Minecraft arcade of minigame portals, bright blocky lighting, no text."
+    },
+    {
+      "kind": "city",
+      "domain": "lobby",
+      "slug": "spawn_01",
+      "title": "Spawn",
+      "path": "cities/lobby/spawn_01.png",
+      "notes": "Wide Minecraft spawn plaza at golden hour, no text."
+    },
+    {
+      "kind": "city",
+      "domain": "ranks",
+      "slug": "hall_01",
+      "title": "Rank hall",
+      "path": "cities/ranks/hall_01.png",
+      "notes": "Interior Minecraft rank hall, no text."
+    },
+    {
+      "kind": "city",
+      "domain": "coins",
+      "slug": "vault_01",
+      "title": "Vault",
+      "path": "cities/coins/vault_01.png",
+      "notes": "Minecraft gold vault, no text."
+    },
+    {
+      "kind": "city",
+      "domain": "games",
+      "slug": "arcade_01",
+      "title": "Arcade",
+      "path": "cities/games/arcade_01.png",
+      "notes": "Minecraft minigame lobby with disaster arena in the distance, no text."
+    }
+  ]
+}

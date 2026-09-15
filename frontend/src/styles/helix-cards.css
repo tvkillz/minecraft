@@ -1,0 +1,137 @@
+/* HELIX card chrome — instrument readouts (not voidborn circles / iyashikei soft badges) */
+
+[data-landing-variant='helix'] .card .card__frame {
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--glow-color) 45%, #9aa3ae);
+  background: #1a222c;
+  box-shadow:
+    0 10px 24px rgba(12, 16, 22, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+[data-landing-variant='helix'] .card .card__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(20, 26, 34, 0.05) 0%,
+    rgba(20, 26, 34, 0.2) 45%,
+    rgba(12, 16, 22, 0.82) 100%
+  );
+}
+
+[data-landing-variant='helix'] .card .card__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8eef4;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Shared: Orbitron numerals on all stats */
+[data-landing-variant='helix'] .card .card__stat,
+[data-landing-variant='helix'] .card .card__stat-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
+}
+
+/* Mana — signal diamond (rotated square), not hex gem */
+[data-landing-variant='helix'] .card .card__stat--mana {
+  width: 30px;
+  height: 30px;
+  color: #0c1016;
+  background: linear-gradient(145deg, #7fd8ef 0%, #2a9bb8 55%, #1a6a7a 100%);
+  clip-path: none;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 0 10px rgba(61, 184, 212, 0.45),
+    inset 0 0 6px rgba(255, 255, 255, 0.25);
+}
+
+[data-landing-variant='helix'] .card .card__stat--mana .card__stat-value {
+  transform: rotate(-45deg);
+  font-size: 0.78rem;
+}
+
+/* Signal — cut-corner HUD slab */
+[data-landing-variant='helix'] .card .card__stat--attack {
+  min-width: 34px;
+  height: 28px;
+  padding: 0 7px;
+  color: #e8eef4;
+  background: linear-gradient(180deg, rgba(30, 36, 48, 0.95), rgba(18, 22, 30, 0.98));
+  border: 1.5px solid #8b7ec8;
+  border-radius: 0;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  box-shadow: 0 0 10px rgba(139, 126, 200, 0.35);
+}
+
+[data-landing-variant='helix'] .card .card__stat-icon--attack {
+  display: none;
+}
+
+/* Integrity — octagonal plate */
+[data-landing-variant='helix'] .card .card__stat--health {
+  width: 30px;
+  height: 30px;
+  color: #e8eef4;
+  background: linear-gradient(160deg, #3d8a7a 0%, #1e4a42 100%);
+  border: 1.5px solid #6ab8a8;
+  border-radius: 0;
+  clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
+  box-shadow: 0 0 10px rgba(74, 154, 138, 0.35);
+}
+
+/* Hero scale: keep diamond / octagon readable */
+[data-landing-variant='helix'] .card.card--hero .card__stat--mana,
+[data-landing-variant='helix'] .card.card--hero .card__stat--health {
+  width: 22px;
+  height: 22px;
+}
+
+[data-landing-variant='helix'] .card.card--hero .card__stat--attack {
+  min-width: 26px;
+  height: 22px;
+  padding: 0 5px;
+  font-size: 0.65rem;
+}
+
+[data-landing-variant='helix'] .card.card--hero .card__stat--mana .card__stat-value {
+  font-size: 0.62rem;
+}
+
+/* Domain pip — small rotated square, not circle */
+[data-landing-variant='helix'] .card .card__domain {
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 70%, #fff);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--glow-color) 40%, transparent);
+}
+
+[data-landing-variant='helix'] .card .card__domain--atrium {
+  background: linear-gradient(135deg, #6ab89a, #2a5a4a);
+}
+
+[data-landing-variant='helix'] .card .card__domain--reservoir {
+  background: linear-gradient(135deg, #5ec8e0, #1e5a6a);
+}
+
+[data-landing-variant='helix'] .card .card__domain--core {
+  background: linear-gradient(135deg, #e0a070, #7a4028);
+}
+
+[data-landing-variant='helix'] .card .card__domain--antenna {
+  background: linear-gradient(135deg, #a898d8, #403868);
+}
+
+/*
+  Hero rail glow knobs live in helix/styles.css on:
+  .helix-hero__rail-slot .helix-hero__rail-card.card
+  --helix-card-glow-spread / --helix-card-glow-alpha
+  Under-rail wash: --helix-rail-glow-opacity on .helix-hero__rail-glow (default 0)
+*/

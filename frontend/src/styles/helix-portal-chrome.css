@@ -1,0 +1,601 @@
+/* HELIX — portal shell, market, collection (play lobby → helix-play.css).
+   Scoped to [data-landing-variant='helix']; voidborn/iyashikei unchanged. */
+
+/* ── 1. Portal shell — void background ── */
+
+[data-landing-variant='helix'] .portal {
+  background: var(--helix-void);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal__sticky-top {
+  background: var(--helix-void-soft);
+}
+
+/* ── 2. Buy-credits button — cyan primary (match landing market button) ── */
+
+[data-landing-variant='helix'] .portal__buy-credits-btn {
+  color: #0c1016 !important;
+  background: linear-gradient(135deg, rgba(61, 184, 212, 0.95) 0%, rgba(42, 155, 184, 0.98) 100%) !important;
+  border-color: rgba(61, 184, 212, 0.65) !important;
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.28) !important;
+  animation: none !important;
+}
+
+[data-landing-variant='helix'] .portal__buy-credits-btn:hover:not(:disabled) {
+  color: #071016 !important;
+  border-color: rgba(127, 216, 239, 0.85) !important;
+  background: linear-gradient(135deg, rgba(90, 200, 224, 0.98) 0%, rgba(61, 184, 212, 1) 100%) !important;
+  box-shadow: 0 6px 22px rgba(61, 184, 212, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* ── 3. .vb-btn--gold globally under helix — cyan primary (portal / modals / checkout) ── */
+
+[data-landing-variant='helix'] .vb-btn--gold {
+  color: #0c1016;
+  background: linear-gradient(135deg, rgba(61, 184, 212, 0.92) 0%, rgba(42, 155, 184, 0.95) 100%);
+  border-color: rgba(61, 184, 212, 0.55);
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.22);
+}
+
+[data-landing-variant='helix'] .vb-btn--gold:hover:not(:disabled) {
+  border-color: rgba(127, 216, 239, 0.85);
+  box-shadow: 0 6px 20px rgba(61, 184, 212, 0.32);
+}
+
+/* ── 4. Portal header, brand, wordmark, logo ── */
+
+[data-landing-variant='helix'] .portal__header {
+  border-bottom-color: var(--helix-border);
+  background: linear-gradient(180deg, rgba(12, 16, 22, 0.98) 0%, rgba(10, 14, 20, 0.94) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-landing-variant='helix'] .portal__brand-name {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.16em;
+  color: var(--helix-ink);
+  text-shadow: none;
+}
+
+[data-landing-variant='helix'] .portal__wordmark {
+  filter: drop-shadow(0 1px 8px rgba(61, 184, 212, 0.35));
+}
+
+[data-landing-variant='helix'] .portal__logo {
+  border-radius: 2px;
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 2px 10px var(--helix-shadow);
+}
+
+/* ── 5. Account chip / menu ── */
+
+[data-landing-variant='helix'] .portal__account {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-panel);
+  box-shadow: 0 2px 10px var(--helix-shadow);
+}
+
+[data-landing-variant='helix'] .portal__account-name {
+  color: var(--helix-ink);
+  letter-spacing: 0.06em;
+}
+
+[data-landing-variant='helix'] .portal__account-credits,
+[data-landing-variant='helix'] .portal__toolbar-balance {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .portal__menu-toggle {
+  border-left-color: var(--helix-border);
+}
+
+[data-landing-variant='helix'] .portal__menu-toggle span {
+  background: var(--helix-cyan);
+  box-shadow: 0 0 6px rgba(61, 184, 212, 0.55);
+  border-radius: 0;
+}
+
+[data-landing-variant='helix'] .portal__account-menu {
+  border-bottom-color: var(--helix-border);
+  background: rgba(10, 14, 20, 0.97);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+[data-landing-variant='helix'] .portal__account-menu-list a,
+[data-landing-variant='helix'] .portal__account-menu-list button {
+  color: var(--helix-ink-muted);
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+}
+
+[data-landing-variant='helix'] .portal__account-menu-list a:hover,
+[data-landing-variant='helix'] .portal__account-menu-list button:hover {
+  background: rgba(61, 184, 212, 0.12);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal__account-menu-item--sign-out button:hover {
+  background: rgba(217, 122, 106, 0.14);
+  color: #e69a86;
+}
+
+/* ── 6. Tabs + active underline (cyan → violet) ── */
+
+[data-landing-variant='helix'] .portal__tabs {
+  border-bottom-color: var(--helix-border);
+  background: rgba(10, 14, 20, 0.9);
+}
+
+[data-landing-variant='helix'] .portal__tab {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal__tab:hover,
+[data-landing-variant='helix'] .portal__tab--active {
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal__tab--active::after {
+  background: linear-gradient(90deg, var(--helix-cyan) 0%, var(--helix-violet) 100%);
+  box-shadow: 0 0 12px rgba(61, 184, 212, 0.4);
+}
+
+/* ── 7. Section title (heading gradient) + subtitle ── */
+
+[data-landing-variant='helix'] .portal__section-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  background: var(--helix-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  letter-spacing: 0.1em;
+}
+
+[data-landing-variant='helix'] .portal__section-subtitle {
+  color: var(--helix-ink-soft);
+}
+
+/* ── 8. Mode switch + active (cyan tint) ── */
+
+[data-landing-variant='helix'] .portal__mode-switch {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-panel);
+}
+
+[data-landing-variant='helix'] .portal__mode-btn {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal__mode-btn--active {
+  color: #7fd8ef;
+  background: rgba(61, 184, 212, 0.16);
+}
+
+[data-landing-variant='helix'] .portal__mode-btn:hover:not(.portal__mode-btn--active) {
+  color: var(--helix-ink);
+  background: rgba(139, 126, 200, 0.1);
+}
+
+/* ── 9. Toolbar balance — amber bordered box ── */
+
+[data-landing-variant='helix'] .portal__toolbar-balance {
+  border-radius: 4px;
+  border-color: rgba(196, 163, 90, 0.4);
+  background: rgba(196, 163, 90, 0.08);
+}
+
+/* ── 10. Currency select + focus ── */
+
+[data-landing-variant='helix'] .portal__currency select {
+  padding: 0.45rem 0.65rem;
+  border-radius: 4px;
+  border: 1px solid var(--helix-border);
+  background: var(--helix-void-soft);
+  color: var(--helix-ink);
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  cursor: pointer;
+  box-shadow: 0 1px 4px var(--helix-shadow);
+}
+
+[data-landing-variant='helix'] .portal__currency select:focus {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.22);
+  outline: none;
+}
+
+/* ── 11. Cart badge / cart icon (keep default shape, cyan/ink) ── */
+
+[data-landing-variant='helix'] .portal__cart-badge {
+  color: #0c1016;
+  background: var(--helix-cyan);
+  box-shadow: 0 0 8px rgba(61, 184, 212, 0.5);
+  border-radius: 2px;
+}
+
+[data-landing-variant='helix'] .cart-icon--toolbar {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .cart-icon--money {
+  color: var(--helix-cyan);
+}
+
+/* ── 12. Coin-stack / credits icon — amber/cyan HUD medallion (simple circle, not pastoral sun) ── */
+
+[data-landing-variant='helix'] .coin-stack-icon::before {
+  width: 13px;
+  height: 13px;
+  left: 50%;
+  top: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(61, 184, 212, 0.65);
+  background: radial-gradient(
+    circle at 36% 30%,
+    #f0dca6 0%,
+    var(--helix-amber) 55%,
+    #6a5228 100%
+  );
+  box-shadow:
+    0 0 8px rgba(61, 184, 212, 0.4),
+    inset 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+[data-landing-variant='helix'] .coin-stack-icon--sm::before {
+  width: 11px;
+  height: 11px;
+}
+
+[data-landing-variant='helix'] .coin-stack-icon::after {
+  display: none;
+}
+
+/* ── 13. Market toolbar, scope switch, search / select inputs ── */
+
+[data-landing-variant='helix'] .portal-market__toolbar {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-panel);
+}
+
+[data-landing-variant='helix'] .portal-market__scope-switch {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-void-soft);
+}
+
+[data-landing-variant='helix'] .portal-market__scope-btn {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-market__scope-btn--active {
+  color: #7fd8ef;
+  background: rgba(61, 184, 212, 0.16);
+}
+
+[data-landing-variant='helix'] .portal-market__scope-btn:hover:not(.portal-market__scope-btn--active) {
+  color: var(--helix-ink);
+  background: rgba(139, 126, 200, 0.1);
+}
+
+[data-landing-variant='helix'] .portal-market__search input,
+[data-landing-variant='helix'] .portal-market__select-wrap select {
+  border-color: var(--helix-border);
+  background: var(--helix-void-soft);
+  color: var(--helix-ink);
+  border-radius: 4px;
+}
+
+[data-landing-variant='helix'] .portal-market__search input::placeholder {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-market__search input:focus,
+[data-landing-variant='helix'] .portal-market__select-wrap select:focus {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.2);
+  outline: none;
+}
+
+[data-landing-variant='helix'] .portal-market__count {
+  color: var(--helix-ink-soft);
+}
+
+/* ── 14. Market cards — rarity, domain, price buttons ── */
+
+[data-landing-variant='helix'] .market-card__rarity {
+  border-radius: 2px;
+  color: var(--helix-ink);
+  background: var(--helix-void-soft);
+  border: 1px solid var(--helix-border);
+}
+
+[data-landing-variant='helix'] .market-card__rarity--uncommon {
+  border-color: rgba(61, 184, 212, 0.55);
+  color: #7fd8ef;
+}
+
+[data-landing-variant='helix'] .market-card__rarity--rare {
+  border-color: rgba(139, 126, 200, 0.65);
+  color: #c4b8ec;
+}
+
+[data-landing-variant='helix'] .market-card__rarity--epic {
+  border-color: rgba(196, 163, 90, 0.85);
+  color: #e0c584;
+}
+
+[data-landing-variant='helix'] .market-card__rarity--legendary {
+  border-color: rgba(196, 163, 90, 0.9);
+  color: #f0da9e;
+  box-shadow: 0 0 12px rgba(196, 163, 90, 0.28);
+}
+
+[data-landing-variant='helix'] .market-card--hovered .market-card__frame {
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.55);
+}
+
+[data-landing-variant='helix'] .market-card__domain {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .market-card__price {
+  border-radius: 2px;
+  border-color: var(--helix-border);
+  background: var(--helix-void-soft);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .market-card__price--credits {
+  color: var(--helix-amber);
+  border-color: rgba(196, 163, 90, 0.5);
+}
+
+[data-landing-variant='helix'] .market-card__price--credits:hover:not(:disabled) {
+  border-color: rgba(196, 163, 90, 0.85);
+  background: rgba(196, 163, 90, 0.1);
+}
+
+[data-landing-variant='helix'] .market-card__price--money {
+  color: var(--helix-cyan);
+  border-color: rgba(61, 184, 212, 0.45);
+}
+
+[data-landing-variant='helix'] .market-card__price--money:hover:not(:disabled) {
+  border-color: rgba(61, 184, 212, 0.85);
+  background: rgba(61, 184, 212, 0.1);
+}
+
+[data-landing-variant='helix'] .market-card__price--cancel {
+  color: #e69a86;
+  border-color: rgba(217, 122, 106, 0.45);
+}
+
+[data-landing-variant='helix'] .market-card__price--cancel:hover:not(:disabled) {
+  border-color: rgba(217, 122, 106, 0.8);
+  background: rgba(217, 122, 106, 0.1);
+}
+
+[data-landing-variant='helix'] .market-card .cart-icon--money {
+  color: var(--helix-cyan);
+}
+
+[data-landing-variant='helix'] .player-listing-card__badge {
+  color: var(--helix-amber);
+  background: var(--helix-void-soft);
+  border-color: rgba(196, 163, 90, 0.5);
+  border-radius: 2px;
+}
+
+/* ── 15. Profile card, inputs, billing-form ── */
+
+[data-landing-variant='helix'] .portal-profile__card {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: linear-gradient(180deg, var(--helix-void-lift) 0%, var(--helix-void-soft) 100%);
+  box-shadow: inset 0 0 24px rgba(61, 184, 212, 0.05);
+}
+
+[data-landing-variant='helix'] .portal-profile__card-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--helix-ink);
+  letter-spacing: 0.12em;
+}
+
+[data-landing-variant='helix'] .portal-profile__label {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-profile__input {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-void);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal-profile__input:focus {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.2);
+}
+
+[data-landing-variant='helix'] .portal-profile__empty,
+[data-landing-variant='helix'] .portal-profile__status,
+[data-landing-variant='helix'] .portal-profile__hint {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-profile__message--error,
+[data-landing-variant='helix'] .checkout-page__error {
+  color: #e69a86;
+}
+
+[data-landing-variant='helix'] .portal-profile__message--success,
+[data-landing-variant='helix'] .checkout-page__success {
+  color: #7fd8ef;
+}
+
+[data-landing-variant='helix'] .billing-form__label {
+  color: var(--helix-ink-soft);
+  font-family: var(--font-ui);
+  font-weight: 600;
+}
+
+[data-landing-variant='helix'] .billing-form__required {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .billing-form__input {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-void);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .billing-form__input::placeholder {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .billing-form__input:focus {
+  border-color: var(--helix-border-strong);
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.2);
+  outline: none;
+}
+
+/* ── 16. Collection — deck tabs, panels, stats, rows, mana pip, domain dots ── */
+
+[data-landing-variant='helix'] .portal-collection__status {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-tab {
+  border-radius: 2px;
+  border-color: var(--helix-border);
+  background: var(--helix-void-soft);
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-tab--active {
+  border-color: rgba(61, 184, 212, 0.65);
+  background: rgba(61, 184, 212, 0.14);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-panel,
+[data-landing-variant='helix'] .portal-collection__stats {
+  border-radius: 4px;
+  border-color: var(--helix-border);
+  background: var(--helix-void-lift);
+}
+
+[data-landing-variant='helix'] .portal-collection__stats-summary,
+[data-landing-variant='helix'] .portal-collection__stats-filtered {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-collection__stats-item strong,
+[data-landing-variant='helix'] .portal-collection__stats-filtered strong {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .portal-collection__stats-sep {
+  color: var(--helix-ink-soft);
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-count {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--helix-ink);
+  letter-spacing: 0.06em;
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-row {
+  border-radius: 2px;
+  background: var(--helix-void-soft);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .portal-collection__deck-row-qty {
+  color: var(--helix-amber);
+}
+
+[data-landing-variant='helix'] .portal-collection__mana-pip {
+  color: #0c1016;
+  text-shadow: none;
+  background: linear-gradient(160deg, #7fd8ef 0%, var(--helix-cyan) 55%, #1a6a7a 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 0 8px rgba(61, 184, 212, 0.45);
+}
+
+[data-landing-variant='helix'] .portal-collection__domain-dot {
+  box-shadow: 0 0 6px currentColor;
+}
+
+[data-landing-variant='helix'] .collection-owned-card--hovered .collection-owned-card__frame {
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px rgba(61, 184, 212, 0.55);
+}
+
+[data-landing-variant='helix'] .collection-owned-card__owned-badge {
+  border-color: rgba(196, 163, 90, 0.55);
+  background: var(--helix-void-soft);
+  color: var(--helix-amber);
+  border-radius: 2px;
+}
+
+[data-landing-variant='helix'] .collection-owned-card__qty-btn {
+  border-radius: 2px;
+  border-color: var(--helix-border);
+  background: var(--helix-void-soft);
+  color: var(--helix-ink);
+}
+
+[data-landing-variant='helix'] .collection-owned-card__qty-btn:not(:disabled):hover {
+  border-color: rgba(61, 184, 212, 0.6);
+  background: rgba(61, 184, 212, 0.1);
+}
+
+[data-landing-variant='helix'] .collection-owned-card__qty-value {
+  color: var(--helix-cyan);
+}
+
+/* ── 17. Coming soon frame ── */
+
+[data-landing-variant='helix'] .portal-coming-soon__frame {
+  border-radius: 4px;
+  border: 1px dashed var(--helix-border-strong);
+  background: linear-gradient(180deg, var(--helix-void-lift) 0%, var(--helix-void-soft) 100%);
+  box-shadow: inset 0 0 40px rgba(61, 184, 212, 0.08);
+}
+
+[data-landing-variant='helix'] .portal-coming-soon__eyebrow {
+  color: var(--helix-cyan);
+}
+
+[data-landing-variant='helix'] .portal-coming-soon__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  color: var(--helix-ink);
+  text-shadow: none;
+}
+
+[data-landing-variant='helix'] .portal-coming-soon__text {
+  color: var(--helix-ink-muted);
+}
+
+[data-landing-variant='helix'] :is(
+    .portal-market-page__subtitle,
+    .portal-collection-page__subtitle
+  ) {
+  color: var(--helix-ink-muted);
+}
+
+/* Play lobby — see helix-play.css */

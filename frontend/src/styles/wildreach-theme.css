@@ -1,0 +1,392 @@
+/* WILDREACH — documentary field palette for full landing. Scoped to wildreach only. */
+
+[data-landing-variant='wildreach'] {
+  --wr-void: #0a100e;
+  --wr-void-soft: #101814;
+  --wr-void-lift: #18241e;
+  --wr-ink: #f0ebe4;
+  --wr-ink-muted: rgba(240, 235, 228, 0.72);
+  --wr-ink-soft: rgba(240, 235, 228, 0.55);
+  --wr-border: rgba(196, 154, 58, 0.32);
+  --wr-border-strong: rgba(196, 154, 58, 0.55);
+  --wr-panel: rgba(16, 24, 20, 0.82);
+  --wr-panel-strong: rgba(22, 34, 28, 0.94);
+  --wr-shadow: rgba(0, 0, 0, 0.4);
+  --wr-gold: #c49a3a;
+  --wr-teal: #2a7a6a;
+  --wr-ember: #b85a3a;
+  --wr-slate: #6a8a9a;
+  --wr-section-gradient: linear-gradient(180deg, #0a100e 0%, #101814 50%, #080c0a 100%);
+}
+
+[data-landing-variant='wildreach'] .app {
+  background: var(--wr-void);
+  color: var(--text-primary);
+}
+
+[data-landing-variant='wildreach'] :is(.landing-section-title, .locations__kicker) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--wr-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: none;
+  animation: none;
+}
+
+[data-landing-variant='wildreach'] .landing-section-lead {
+  color: var(--wr-ink-muted);
+}
+
+[data-landing-variant='wildreach'] .landing-section-lead strong {
+  color: var(--wr-ink);
+  text-shadow: none;
+}
+
+/* ── Buttons (kill purple/neon gold defaults) ── */
+
+[data-landing-variant='wildreach'] .vb-btn {
+  border-radius: 4px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  backdrop-filter: none;
+  background: var(--wr-panel);
+  border-color: var(--wr-border);
+  color: var(--wr-ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+[data-landing-variant='wildreach'] .vb-btn:hover:not(:disabled) {
+  color: var(--wr-ink);
+  border-color: var(--wr-border-strong);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.34);
+  transform: translateY(-1px);
+  filter: none;
+}
+
+[data-landing-variant='wildreach'] .vb-btn--fantasy {
+  font-family: var(--font-heading, var(--font-ui));
+  letter-spacing: 0.14em;
+}
+
+[data-landing-variant='wildreach'] .vb-btn--primary,
+[data-landing-variant='wildreach'] .vb-btn--gold {
+  color: #0a100e;
+  background: linear-gradient(180deg, #d4ae52 0%, #c49a3a 48%, #a87828 100%);
+  border-color: rgba(196, 154, 58, 0.72);
+  box-shadow:
+    0 4px 16px rgba(196, 154, 58, 0.22),
+    inset 0 1px 0 rgba(240, 235, 228, 0.28);
+}
+
+[data-landing-variant='wildreach'] .vb-btn--primary:hover:not(:disabled),
+[data-landing-variant='wildreach'] .vb-btn--gold:hover:not(:disabled) {
+  color: #0a100e;
+  border-color: rgba(212, 174, 82, 0.9);
+  box-shadow:
+    0 6px 20px rgba(196, 154, 58, 0.34),
+    inset 0 1px 0 rgba(240, 235, 228, 0.34);
+}
+
+[data-landing-variant='wildreach'] .vb-btn--secondary,
+[data-landing-variant='wildreach'] .vb-btn--ghost {
+  background: var(--wr-panel);
+  border-color: var(--wr-border);
+  color: var(--wr-ink);
+  box-shadow: none;
+}
+
+[data-landing-variant='wildreach'] .vb-btn--secondary:hover:not(:disabled),
+[data-landing-variant='wildreach'] .vb-btn--ghost:hover:not(:disabled) {
+  border-color: var(--wr-border-strong);
+  background: var(--wr-panel-strong);
+  color: var(--wr-ink);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+/* Pathways market CTA + Final CTA buttons (override !important base styles) */
+[data-landing-variant='wildreach'] .wr-pathways__cta-btn.vb-btn,
+[data-landing-variant='wildreach'] a.wr-pathways__cta-btn,
+[data-landing-variant='wildreach'] button.wr-pathways__cta-btn,
+[data-landing-variant='wildreach'] .final-cta__btn.vb-btn,
+[data-landing-variant='wildreach'] a.final-cta__btn,
+[data-landing-variant='wildreach'] button.final-cta__btn {
+  color: #0a100e !important;
+  background: linear-gradient(180deg, #d4ae52 0%, #c49a3a 48%, #a87828 100%) !important;
+  border-color: rgba(196, 154, 58, 0.72) !important;
+  box-shadow:
+    0 4px 16px rgba(196, 154, 58, 0.22),
+    inset 0 1px 0 rgba(240, 235, 228, 0.28) !important;
+  animation: none !important;
+  border-radius: 4px !important;
+  letter-spacing: 0.14em !important;
+  font-family: var(--font-ui) !important;
+}
+
+[data-landing-variant='wildreach'] .wr-pathways__cta-btn.vb-btn:hover:not(:disabled),
+[data-landing-variant='wildreach'] a.wr-pathways__cta-btn:hover:not(:disabled),
+[data-landing-variant='wildreach'] button.wr-pathways__cta-btn:hover:not(:disabled),
+[data-landing-variant='wildreach'] .final-cta__btn.vb-btn:hover:not(:disabled),
+[data-landing-variant='wildreach'] a.final-cta__btn:hover:not(:disabled),
+[data-landing-variant='wildreach'] button.final-cta__btn:hover:not(:disabled) {
+  color: #0a100e !important;
+  border-color: rgba(212, 174, 82, 0.95) !important;
+  box-shadow:
+    0 6px 22px rgba(196, 154, 58, 0.36),
+    inset 0 1px 0 rgba(240, 235, 228, 0.34) !important;
+  transform: translateY(-1px);
+}
+
+/* ── FAQ ── */
+
+[data-landing-variant='wildreach'] .faq {
+  background: var(--wr-section-gradient);
+}
+
+[data-landing-variant='wildreach'] .faq__inner {
+  margin-top: 0;
+  padding-top: var(--wr-section-pad-y, clamp(1.75rem, 4vw, 3rem));
+  padding-bottom: var(--wr-section-pad-bottom, clamp(1.75rem, 4vw, 3rem));
+  gap: clamp(1.1rem, 2.5vw, 1.75rem);
+  align-items: stretch;
+}
+
+[data-landing-variant='wildreach'] .faq__header {
+  max-width: 42rem;
+}
+
+[data-landing-variant='wildreach'] .faq__list {
+  max-width: none;
+  gap: 0.55rem;
+}
+
+[data-landing-variant='wildreach'] .faq__question {
+  border-radius: 6px;
+  border-color: var(--wr-border);
+  background:
+    radial-gradient(ellipse 80% 70% at 0% 0%, rgba(196, 154, 58, 0.08) 0%, transparent 55%),
+    rgba(12, 18, 16, 0.88);
+  color: var(--wr-ink);
+  box-shadow: inset 0 0 0 1px rgba(240, 235, 228, 0.03);
+}
+
+[data-landing-variant='wildreach'] .faq__item--open .faq__question,
+[data-landing-variant='wildreach'] .faq__question:hover {
+  border-color: var(--wr-border-strong);
+  background:
+    radial-gradient(ellipse 80% 70% at 0% 0%, rgba(196, 154, 58, 0.14) 0%, transparent 55%),
+    rgba(16, 24, 20, 0.94);
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.04);
+}
+
+[data-landing-variant='wildreach'] .faq__question-text {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: clamp(0.82rem, 2vw, 0.98rem);
+  color: var(--wr-ink);
+}
+
+[data-landing-variant='wildreach'] .faq__chevron {
+  border-right-color: var(--wr-gold);
+  border-bottom-color: var(--wr-gold);
+}
+
+[data-landing-variant='wildreach'] .faq__answer {
+  color: var(--wr-ink-muted);
+  border-left: 2px solid color-mix(in srgb, var(--wr-gold) 55%, transparent);
+  background: rgba(10, 16, 14, 0.45);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ── Final CTA ── */
+
+[data-landing-variant='wildreach'] .final-cta {
+  background: #070b09;
+}
+
+[data-landing-variant='wildreach'] .final-cta__particles {
+  display: none;
+}
+
+[data-landing-variant='wildreach'] .final-cta__bg-image {
+  filter: saturate(0.85) brightness(0.42) contrast(1.05);
+  opacity: 0.48;
+  max-width: 150%;
+}
+
+[data-landing-variant='wildreach'] .final-cta__bg-scrim {
+  background:
+    radial-gradient(ellipse at 50% 28%, rgba(196, 154, 58, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse at 18% 78%, rgba(42, 122, 106, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 86% 62%, rgba(184, 90, 58, 0.1) 0%, transparent 48%),
+    linear-gradient(180deg, rgba(7, 11, 9, 0.55) 0%, rgba(10, 16, 14, 0.92) 100%);
+}
+
+[data-landing-variant='wildreach'] .final-cta__inner {
+  margin-top: 0;
+  padding-block: var(--wr-section-pad-y, clamp(1.75rem, 4vw, 3rem));
+  gap: clamp(1.35rem, 3vw, 2.25rem);
+}
+
+[data-landing-variant='wildreach'] .final-cta__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  background: var(--wr-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 0.08em;
+}
+
+[data-landing-variant='wildreach'] .final-cta__subtitle {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--wr-gold) 80%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .final-cta__desc {
+  color: var(--wr-ink-muted);
+}
+
+[data-landing-variant='wildreach'] .final-cta__siege {
+  border-radius: 6px;
+  border-color: var(--wr-border);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%, rgba(196, 154, 58, 0.1) 0%, transparent 60%),
+    rgba(12, 18, 16, 0.82);
+  box-shadow:
+    0 14px 34px rgba(0, 0, 0, 0.36),
+    inset 0 0 0 1px rgba(240, 235, 228, 0.04);
+}
+
+[data-landing-variant='wildreach'] .final-cta__siege-title {
+  font-family: var(--font-ui);
+  letter-spacing: 0.22em;
+  color: var(--wr-gold);
+  font-size: 0.68rem;
+}
+
+[data-landing-variant='wildreach'] .final-cta__siege-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  background: var(--wr-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+[data-landing-variant='wildreach'] .final-cta__siege-label {
+  color: var(--wr-ink-soft);
+}
+
+/* ── Footer ── */
+
+[data-landing-variant='wildreach'] .site-footer {
+  background: linear-gradient(180deg, #0a100e 0%, #080c0a 100%);
+  border-top: 1px solid var(--wr-border);
+}
+
+/* Landing footer only — portal footer width is overridden in wildreach-portal-chrome.css */
+[data-landing-variant='wildreach'] .site-footer__inner {
+  max-width: var(--landing-content-max, 1200px);
+  margin-inline: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+[data-landing-variant='wildreach'] .portal__footer .site-footer__inner {
+  max-width: none;
+  margin-inline: 0;
+}
+
+[data-landing-variant='wildreach'] .site-footer__wordmark {
+  transform: translateX(-17px);
+  max-width: min(42vw, 180px);
+}
+
+[data-landing-variant='wildreach'] .site-footer__logo {
+  border-color: var(--wr-border-strong);
+  border-radius: 4px;
+}
+
+[data-landing-variant='wildreach'] .site-footer__heading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--wr-gold);
+}
+
+[data-landing-variant='wildreach'] .site-footer__brand-tagline,
+[data-landing-variant='wildreach'] .site-footer__link,
+[data-landing-variant='wildreach'] .site-footer__copyright,
+[data-landing-variant='wildreach'] .site-footer__sub-copy {
+  color: var(--wr-ink-muted);
+}
+
+[data-landing-variant='wildreach'] .site-footer__contact,
+[data-landing-variant='wildreach'] .site-footer__contact li {
+  color: var(--wr-ink-muted);
+}
+
+[data-landing-variant='wildreach'] .site-footer__contact-label {
+  color: var(--wr-ink-soft);
+}
+
+[data-landing-variant='wildreach'] .site-footer__link:hover {
+  color: var(--wr-gold);
+}
+
+[data-landing-variant='wildreach'] .site-footer__sub,
+[data-landing-variant='wildreach'] .site-footer__payments {
+  border-top-color: var(--wr-border);
+}
+
+[data-landing-variant='wildreach'] .site-footer__social-icon {
+  background-color: color-mix(in srgb, var(--wr-gold) 55%, rgba(240, 235, 228, 0.35));
+}
+
+[data-landing-variant='wildreach'] .site-footer__social-link:hover .site-footer__social-icon {
+  background-color: color-mix(in srgb, var(--wr-gold) 85%, #f0ebe4);
+}
+
+[data-landing-variant='wildreach'] .site-footer__cookie-btn {
+  border: 1px solid var(--wr-border);
+  border-radius: 4px;
+  background: var(--wr-panel);
+  color: var(--wr-ink);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+[data-landing-variant='wildreach'] .site-footer__cookie-btn:hover {
+  border-color: var(--wr-border-strong);
+  background: var(--wr-panel-strong);
+  color: var(--wr-gold);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--wr-gold) 18%, transparent);
+}
+
+/* ── Header — same content inset as landing-shell on desktop ── */
+
+[data-landing-variant='wildreach'] .wr-header {
+  /* Full-bleed chrome; inset logo / burger to the content column */
+  padding-inline: var(--wr-content-inline, var(--landing-gutter-x));
+  box-sizing: border-box;
+}
+
+/* [data-landing-variant='wildreach'] .final-cta .img{
+  max-width: 150%;
+} */

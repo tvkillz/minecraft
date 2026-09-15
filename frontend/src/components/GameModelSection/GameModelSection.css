@@ -1,0 +1,307 @@
+.gamemodel {
+  width: 100%;
+  background: linear-gradient(
+    180deg,
+    #0a0a0c 0%,
+    rgba(10, 10, 12, 0.98) 40%,
+    #07070a 100%
+  );
+}
+
+.gamemodel__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 3rem);
+  padding-bottom: clamp(3rem, 8vw, 5rem);
+  margin-top: 8rem;
+}
+
+@media(max-width:460px) {
+  .gamemodel__inner {
+    margin-top: 0rem;
+  }
+}
+
+.gamemodel__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s ease;
+}
+
+.gamemodel.visible .gamemodel__header {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gamemodel__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.gamemodel__item {
+  min-width: 0;
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+@media (min-width: 920px) {
+  .gamemodel.visible .gamemodel__item {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gamemodel.visible .gamemodel__item:nth-child(1) {
+    transition-delay: 0.08s;
+  }
+
+  .gamemodel.visible .gamemodel__item:nth-child(2) {
+    transition-delay: 0.16s;
+  }
+
+  .gamemodel.visible .gamemodel__item:nth-child(3) {
+    transition-delay: 0.24s;
+  }
+}
+
+@media (max-width: 919px) {
+  .gamemodel.visible .gamemodel__item--in-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.75s ease,
+      transform 0.75s ease;
+    transition-delay: calc(var(--gamemodel-stagger, 0) * 0.08s + 0.06s);
+  }
+}
+
+.gamemodel__card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1rem, 2.5vw, 1.25rem) 1.35rem;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--pillar-glow, #a855f7) 45%, transparent);
+  background: rgba(10, 10, 12, 0.5);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    0 0 28px color-mix(in srgb, var(--pillar-glow, #a855f7) 18%, transparent);
+  transition:
+    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.gamemodel__card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--pillar-glow, #a855f7) 58%, transparent);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.5),
+    0 0 36px color-mix(in srgb, var(--pillar-glow, #a855f7) 28%, transparent);
+}
+
+.gamemodel__icon-wrap {
+  position: relative;
+  width: clamp(5.5rem, 14vw, 7rem);
+  aspect-ratio: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition:
+    transform 0.4s cubic-bezier(0.23, 1, 0.32, 1),
+    filter 0.4s ease,
+    box-shadow 0.4s ease;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 0 20px color-mix(in srgb, var(--pillar-glow, #a855f7) 20%, transparent);
+}
+
+.gamemodel__card:hover .gamemodel__icon-wrap {
+  transform: scale(1.08) translateY(-3px);
+  filter: brightness(1.1) saturate(1.05);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--pillar-glow, #a855f7) 38%, transparent),
+    0 0 32px color-mix(in srgb, var(--pillar-glow, #a855f7) 42%, transparent),
+    0 0 56px color-mix(in srgb, var(--pillar-glow, #a855f7) 18%, transparent);
+}
+
+.gamemodel__icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gamemodel__icon-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.18) 48%,
+    transparent 58%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+
+.gamemodel__card:hover .gamemodel__icon-shine {
+  transform: translateX(120%);
+}
+
+.gamemodel__copy {
+  /* Let title/desc participate in parent flex/grid (voidborn + iyashikei) */
+  display: contents;
+}
+
+.gamemodel__card-title {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: clamp(0.82rem, 2.8vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+}
+
+.gamemodel__card-desc {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.72rem, 2.4vw, 0.82rem);
+  line-height: 1.55;
+  color: rgba(232, 220, 200, 0.78);
+}
+
+.gamemodel__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(0.5rem, 2vw, 0.75rem);
+  width: 100%;
+}
+
+.gamemodel__tag-item {
+  opacity: 0;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+  transition-delay: calc(var(--tag-stagger-exit, 0) * 0.08s);
+}
+
+.gamemodel__tag-item--from-left {
+  transform: translateX(-48px);
+}
+
+.gamemodel__tag-item--from-right {
+  transform: translateX(48px);
+}
+
+.gamemodel__tags--in-view .gamemodel__tag-item {
+  opacity: 1;
+  transform: translateX(0);
+  transition-delay: calc(var(--tag-stagger, 0) * 0.08s + 0.06s);
+}
+
+.gamemodel__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 85, 247, 0.25);
+  background: rgba(10, 10, 12, 0.5);
+  backdrop-filter: blur(10px);
+  font-family: var(--font-ui);
+  font-size: clamp(0.62rem, 1.8vw, 0.72rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.88);
+  cursor: default;
+  transition:
+    color 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+.gamemodel__tags--in-view .gamemodel__tag:hover {
+  color: #a855f7;
+  border-color: rgba(255, 51, 102, 0.35);
+  box-shadow:
+    0 0 20px rgba(168, 85, 247, 0.12),
+    inset 0 0 20px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+
+.gamemodel__tag-marker {
+  font-size: 0.55rem;
+  line-height: 1;
+  color: #ff4d6d;
+  transition:
+    transform 0.25s ease,
+    color 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+.gamemodel__tag:hover .gamemodel__tag-marker {
+  transform: scale(1.2);
+  color: #a855f7;
+  text-shadow: 0 0 12px rgba(168, 85, 247, 0.45);
+}
+
+@media (max-width: 919px) {
+  .gamemodel__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .gamemodel__tags {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gamemodel__tag-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .gamemodel__card:hover,
+  .gamemodel__card:hover .gamemodel__icon-wrap,
+  .gamemodel__tags--in-view .gamemodel__tag:hover {
+    transform: none;
+  }
+
+  .gamemodel__icon-shine {
+    display: none;
+  }
+}

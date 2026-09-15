@@ -1,0 +1,20 @@
+{
+  "name": "ui-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:all": "node test-all.mjs",
+    "test:all:update": "node test-all.mjs --update",
+    "test:landing": "playwright test --project=landing",
+    "test:portal": "playwright test --project=portal",
+    "test:portal:update": "playwright test --project=portal -g visual --update-snapshots"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1"
+  }
+}

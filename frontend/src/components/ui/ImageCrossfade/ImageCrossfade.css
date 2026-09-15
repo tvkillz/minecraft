@@ -1,0 +1,33 @@
+.image-crossfade {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.image-crossfade__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.06);
+  transition:
+    opacity var(--crossfade-ms, 850ms) ease-in-out,
+    transform calc(var(--crossfade-ms, 850ms) * 1.15) ease-in-out;
+  will-change: opacity, transform;
+}
+
+.image-crossfade__layer--active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.image-crossfade--opacity-only .image-crossfade__layer {
+  transform: none;
+  transition: opacity var(--crossfade-ms, 850ms) ease;
+}
+
+.image-crossfade--opacity-only .image-crossfade__layer--active {
+  transform: none;
+}

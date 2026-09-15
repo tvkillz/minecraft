@@ -1,0 +1,257 @@
+.final-cta {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #07070a;
+}
+
+.final-cta__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 18%,
+    black 82%,
+    transparent 100%
+  );
+}
+
+.final-cta__bg-image {
+  position: absolute;
+  inset: -6%;
+  width: 112%;
+  height: 112%;
+  object-fit: cover;
+  object-position: center 40%;
+  opacity: 0.42;
+  filter: grayscale(0.8) brightness(0.5) contrast(0.95);
+}
+
+.final-cta__bg-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(168, 85, 247, 0.16) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(7, 7, 10, 0.5) 0%, rgba(10, 10, 12, 0.88) 100%);
+}
+
+.final-cta__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.final-cta__particle {
+  position: absolute;
+  bottom: -10%;
+  border-radius: 50%;
+  background: var(--particle-color);
+  opacity: 0;
+  animation: final-cta-particle-rise linear infinite;
+  box-shadow: 0 0 8px var(--particle-color);
+}
+
+@keyframes final-cta-particle-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.35;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) translateX(var(--particle-drift));
+  }
+}
+
+.final-cta__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 3rem);
+  padding: clamp(3rem, 8vw, 5rem) 0;
+  margin-top: clamp(1rem, 3vw, 2rem);
+}
+
+.final-cta__copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(0.85rem, 2.5vw, 1.25rem);
+  max-width: min(720px, 100%);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.final-cta.visible .final-cta__copy {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-cta__title {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(105deg, #ff4d6d 0%, #c42d78 45%, #9b2dff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.final-cta__subtitle {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240, 224, 255, 0.9);
+}
+
+.final-cta__desc {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.85rem, 2.2vw, 1rem);
+  line-height: 1.7;
+  color: rgba(232, 220, 200, 0.82);
+}
+
+.final-cta__btn {
+  margin-top: 0.5rem;
+  padding: 0.9rem 2rem !important;
+  font-size: clamp(0.75rem, 2vw, 0.85rem) !important;
+  letter-spacing: 0.14em !important;
+  color: #fde68a !important;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #3d2a10 92%, transparent),
+    color-mix(in srgb, #1a1208 95%, transparent)
+  ) !important;
+  border-color: color-mix(in srgb, var(--gold) 78%, var(--purple-glow)) !important;
+  box-shadow:
+    0 0 24px color-mix(in srgb, var(--gold) 32%, transparent),
+    0 0 40px color-mix(in srgb, var(--purple-glow) 20%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--gold) 12%, transparent) !important;
+  animation: final-cta-btn-glow 3.5s ease-in-out infinite;
+}
+
+.final-cta__btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+}
+
+@keyframes final-cta-btn-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px color-mix(in srgb, var(--gold) 24%, transparent),
+      0 0 34px color-mix(in srgb, var(--purple-glow) 16%, transparent),
+      inset 0 0 18px color-mix(in srgb, var(--gold) 10%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 30px color-mix(in srgb, var(--gold) 42%, transparent),
+      0 0 48px color-mix(in srgb, var(--purple-glow) 26%, transparent),
+      inset 0 0 22px color-mix(in srgb, var(--gold) 16%, transparent);
+  }
+}
+
+.final-cta__siege {
+  width: 100%;
+  max-width: min(900px, 100%);
+  padding: clamp(1rem, 2.5vw, 1.5rem);
+  border-radius: 14px;
+  border: 1px solid rgba(168, 85, 247, 0.22);
+  background: rgba(10, 10, 12, 0.55);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.75s ease 0.12s, transform 0.75s ease 0.12s;
+}
+
+.final-cta.visible .final-cta__siege {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-cta__siege-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-fantasy);
+  font-size: clamp(0.78rem, 2.2vw, 0.95rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.final-cta__siege-stats {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .final-cta__siege-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+.final-cta__siege-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  text-align: center;
+}
+
+.final-cta__siege-value {
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.2rem, 3.5vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(105deg, #7fd8ff 0%, #c9a0ff 50%, #ff8a5c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.final-cta__siege-label {
+  font-family: var(--font-ui);
+  font-size: clamp(0.65rem, 1.8vw, 0.74rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.65);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .final-cta__particle,
+  .final-cta__btn {
+    animation: none;
+  }
+}

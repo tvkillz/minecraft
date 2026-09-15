@@ -1,0 +1,35 @@
+{
+  "title": "Ranks & Victory Coins",
+  "description": "Ranks offer cosmetic bonuses and quality-of-life features. Victory Coins speed up progression across every minigame.",
+  "backgroundImage": "cities/games/arcade_01.png",
+  "stats": [
+    {
+      "id": "ranks",
+      "value": "5",
+      "label": "Rank tiers"
+    },
+    {
+      "id": "coins",
+      "value": "5",
+      "label": "Coin packs"
+    },
+    {
+      "id": "modes",
+      "value": "2+",
+      "label": "Minigames"
+    },
+    {
+      "id": "perks",
+      "value": "∞",
+      "label": "More coming"
+    }
+  ],
+  "cardSlugs": [
+    "ranks_card_01_pro",
+    "ranks_card_02_ace",
+    "ranks_card_03_legend",
+    "coins_card_01_bag",
+    "games_card_01_disasters",
+    "games_card_02_minemart"
+  ]
+}

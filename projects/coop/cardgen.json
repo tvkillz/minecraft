@@ -1,0 +1,19 @@
+{
+  "gameTitle": "The Coop",
+  "gamePitch": "a Minecraft Java minigames server store selling ranks, coin packs, and mode tiles",
+  "world": {
+    "title": "The Coop",
+    "description": "Blocky minigame worlds, rank halls, and coin vaults. No photoreal people, no readable text."
+  },
+  "domains": {
+    "lobby": { "visualIdentity": "friendly Minecraft spawn plaza", "flavorNotes": "lanterns, oak, NPC statues" },
+    "ranks": { "visualIdentity": "ceremonial rank hall", "flavorNotes": "banners, gold trim" },
+    "coins": { "visualIdentity": "treasure vault", "flavorNotes": "chests, coin piles" },
+    "games": { "visualIdentity": "minigame arcade", "flavorNotes": "portals, disaster arena" }
+  },
+  "image": {
+    "aspectRatio": "1:1",
+    "promptGuidelines": "Minecraft Java store tile illustration, unique scene per item, ranks are ceremonial badges/halls, kits are loadout chests in their minigame, blocky voxel art, single focal subject, no text, no UI frame",
+    "promptSuffix": "Minecraft Java voxel art, no text, no watermark, square 1:1."
+  }
+}

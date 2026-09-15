@@ -1,0 +1,7 @@
+.portal-market-page__subtitle {
+  margin: 0 0 1.25rem;
+  color: rgba(232, 220, 200, 0.8);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  max-width: 52ch;
+}

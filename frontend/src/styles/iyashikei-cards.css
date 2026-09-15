@@ -1,0 +1,104 @@
+/* Iyashikei — soft washi card chrome project-wide; badge positions unchanged */
+
+[data-landing-variant='iyashikei'] .card .card__frame {
+  border-radius: 10px;
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 38%, #e8e0d0);
+  background: #f7f2e8;
+  box-shadow:
+    0 8px 24px rgba(44, 62, 45, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45);
+}
+
+[data-landing-variant='iyashikei'] .card .card__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 242, 232, 0.08) 0%,
+    rgba(44, 62, 45, 0.12) 42%,
+    rgba(44, 62, 45, 0.72) 100%
+  );
+}
+
+[data-landing-variant='iyashikei'] .card .card__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: #f5f0e6;
+  text-shadow: 0 1px 4px rgba(44, 62, 45, 0.45);
+}
+
+[data-landing-variant='iyashikei'] .card .card__stat--mana {
+  color: #3d5240;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: linear-gradient(160deg, #c8dcc0 0%, #9ab89a 100%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  box-shadow: 0 0 8px rgba(122, 168, 122, 0.28);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .card .card__stat--attack {
+  color: #3a4550;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: rgba(245, 240, 230, 0.92);
+  border: 1.5px solid #8a9aaa;
+  border-radius: 8px 16px 16px 8px;
+  box-shadow: 0 2px 8px rgba(74, 90, 106, 0.15);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .card .card__stat--health {
+  color: #5a3d45;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  background: rgba(232, 196, 196, 0.55);
+  border: 1.5px solid #d4a5a5;
+  border-radius: 50% 50% 48% 48% / 58% 58% 42% 42%;
+  box-shadow: 0 2px 8px rgba(212, 165, 165, 0.22);
+  text-shadow: none;
+}
+
+[data-landing-variant='iyashikei'] .card .card__domain {
+  border: 1.5px solid color-mix(in srgb, var(--glow-color) 45%, #f5f0e6);
+  background: rgba(245, 240, 230, 0.75);
+  box-shadow: 0 2px 8px rgba(44, 62, 45, 0.1);
+}
+
+[data-landing-variant='iyashikei'] .card .card__domain--shinrin {
+  background-image: radial-gradient(circle at 30% 30%, #b8d4b0, #6a9a6a 72%);
+}
+
+[data-landing-variant='iyashikei'] .card .card__domain--naminami {
+  background-image: radial-gradient(circle at 30% 30%, #a8d4e8, #5a8aaa 72%);
+}
+
+[data-landing-variant='iyashikei'] .card .card__domain--akari {
+  background-image: radial-gradient(circle at 30% 30%, #e8c8a0, #b88858 72%);
+}
+
+[data-landing-variant='iyashikei'] .card .card__domain--takane {
+  background-image: radial-gradient(circle at 30% 30%, #d4c8e0, #9a8ab0 72%);
+}
+
+[data-landing-variant='iyashikei'] .card:hover,
+[data-landing-variant='iyashikei'] .card.card--hovered {
+  filter: drop-shadow(0 14px 28px rgba(44, 62, 45, 0.22))
+    drop-shadow(0 0 18px color-mix(in srgb, var(--glow-color) 30%, transparent));
+}
+
+[data-landing-variant='iyashikei'] .iyashikei-hero__corner-card .card__title {
+  font-size: 0.5rem;
+}
+
+[data-landing-variant='iyashikei'] .card--game .card__title {
+  font-size: 0.42rem;
+}
+
+[data-landing-variant='iyashikei'] .card--game .card__stat--mana {
+  font-size: 0.85rem;
+}
+
+[data-landing-variant='iyashikei'] .card--game .card__stat--attack,
+[data-landing-variant='iyashikei'] .card--game .card__stat--health {
+  font-size: 0.8rem;
+}

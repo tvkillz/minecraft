@@ -1,0 +1,52 @@
+{
+  "id": "coop",
+  "siteUrl": "https://coop.example.com",
+  "name": {
+    "display": "THE COOP",
+    "short": "The Coop",
+    "documentTitle": "THE COOP"
+  },
+  "routes": {
+    "home": "/",
+    "play": "/play",
+    "leaderboard": "/leaderboard",
+    "portal": "/portal",
+    "portalMarket": "/portal/market",
+    "portalVaults": "/portal/vaults",
+    "portalCollection": "/portal/collection",
+    "portalTransactions": "/portal/transactions",
+    "portalProfile": "/portal/profile",
+    "portalStore": "/portal/store",
+    "checkout": "/checkout",
+    "checkoutSuccess": "/portal/checkout/success",
+    "checkoutCancel": "/portal/checkout/cancel",
+    "withdrawalSuccess": "/portal/withdrawal/success",
+    "tutorial": "/tutorial"
+  },
+  "legal": {
+    "termsUrl": "/terms",
+    "privacyUrl": "/privacy",
+    "refundPolicyUrl": "/refund-policy"
+  },
+  "anchors": {
+    "play": "#ranks",
+    "market": "#coins",
+    "leaderboard": "#minigames"
+  },
+  "brand": {
+    "logo": "brand/gamelogo.png",
+    "logoAlt": "The Coop",
+    "headerLogo": "brand/header.png",
+    "headerLogoAlt": "The Coop",
+    "playLogo": "brand/gamelogo.png",
+    "playLogoAlt": "The Coop",
+    "playLobby": "brand/play-lobby.png",
+    "favicon": "brand/favicon.ico"
+  },
+  "features": {
+    "requireSignInForPlay": true
+  },
+  "assets": {
+    "publicBase": "/assets"
+  }
+}

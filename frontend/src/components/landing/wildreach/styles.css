@@ -1,0 +1,1043 @@
+/* WILDREACH landing — dense jungle immersion, asymmetric copy, discovery cards */
+
+/* ── Header ── */
+
+.wr-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem var(--landing-gutter-x, 1.5rem);
+  background: rgba(10, 16, 14, 0.9);
+  border-bottom: 1px solid rgba(196, 154, 58, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 rgba(240, 235, 228, 0.04) inset;
+}
+
+.wr-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Circular backing + gold glow so paw mark pops on dark jungle chrome */
+.wr-header__mark {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(240, 235, 228, 0.22) 0%, transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(196, 154, 58, 0.28) 0%, rgba(10, 16, 14, 0.55) 70%);
+  box-shadow:
+    0 0 0 1px rgba(196, 154, 58, 0.45),
+    0 0 18px rgba(196, 154, 58, 0.45),
+    0 0 36px rgba(196, 154, 58, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transform: translateX(2px);
+}
+
+.wr-header__mark::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(196, 154, 58, 0.2);
+  pointer-events: none;
+}
+
+.wr-header__logo,
+.wr-header__wordmark {
+  display: block;
+  width: 34px;
+  height: 34px;
+  max-width: none;
+  object-fit: contain;
+  border-radius: 0;
+  border: none;
+  filter: drop-shadow(0 0 6px rgba(196, 154, 58, 0.55))
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.65));
+}
+
+.wr-header__title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.wr-header__actions {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.wr-header__sign-in {
+  height: 36px;
+  padding: 0 0.9rem;
+  border: 1px solid rgba(196, 154, 58, 0.4);
+  border-radius: 4px;
+  background: rgba(16, 24, 20, 0.85);
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wr-header__sign-in:hover:not(:disabled) {
+  background: rgba(22, 34, 28, 0.95);
+  border-color: rgba(196, 154, 58, 0.6);
+  box-shadow: 0 0 0 2px rgba(196, 154, 58, 0.12);
+}
+
+.wr-header__user-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 36px;
+  padding: 0 0.75rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.wr-header__user-label p {
+  margin: 0 0 2px;
+}
+
+.wr-header__user-label strong {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.06em;
+}
+
+.wr-header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  margin-left: 0.5rem;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wr-header__menu-toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  margin-left: auto;
+  background: #c49a3a;
+  border-radius: 1px;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.wr-header__menu-toggle--open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.wr-header__menu-toggle--open span:nth-child(2) {
+  opacity: 0;
+}
+
+.wr-header__menu-toggle--open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.wr-header__accordion {
+  flex-basis: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-height 0.4s ease,
+    opacity 0.3s ease,
+    margin 0.3s ease;
+}
+
+.wr-header__accordion--open {
+  max-height: 520px;
+  opacity: 1;
+  margin-top: 0.65rem;
+}
+
+.wr-header__nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: center;
+  background: rgba(16, 24, 20, 0.96);
+  border: 1px solid rgba(196, 154, 58, 0.28);
+  border-radius: 6px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.wr-header__nav-link,
+.wr-header__nav-btn {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.wr-header__nav-link:hover,
+.wr-header__nav-btn:hover {
+  background: rgba(196, 154, 58, 0.12);
+}
+
+.wr-header__nav-btn--sign-out:hover {
+  background: rgba(184, 90, 58, 0.14);
+}
+
+/* ── Hero — peering into dense canopy ── */
+
+.wr-hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #060a08;
+}
+
+.wr-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #060a08;
+}
+
+.wr-hero__media-root {
+  z-index: 1;
+}
+
+.wr-hero__media-root,
+.wr-hero__slides,
+.wr-hero__slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wr-hero__slide {
+  object-fit: cover;
+  object-position: 58% center;
+  filter: saturate(1.08) contrast(1.05);
+}
+
+/* Dark canopy fringe — peering in from under leaves */
+.wr-hero__canopy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 55% at 50% -8%, rgba(4, 8, 6, 0.92) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 80% at -5% 40%, rgba(4, 10, 8, 0.7) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 70% at 105% 55%, rgba(4, 10, 8, 0.55) 0%, transparent 65%);
+}
+
+/* Volumetric god rays — pierce canopy toward left title */
+.wr-hero__godrays {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  mix-blend-mode: soft-light;
+}
+
+.wr-hero__ray {
+  position: absolute;
+  top: -15%;
+  right: 8%;
+  width: min(42vw, 480px);
+  height: 140%;
+  transform-origin: 70% 0%;
+  background: linear-gradient(
+    180deg,
+    rgba(232, 212, 150, 0.55) 0%,
+    rgba(196, 154, 58, 0.18) 28%,
+    rgba(42, 122, 106, 0.06) 55%,
+    transparent 78%
+  );
+  clip-path: polygon(42% 0, 62% 0, 88% 100%, 12% 100%);
+  filter: blur(12px);
+  opacity: 0.7;
+  animation: wr-ray-breathe 9s ease-in-out infinite;
+}
+
+.wr-hero__ray--a {
+  transform: rotate(-28deg);
+  animation-delay: 0s;
+}
+
+.wr-hero__ray--b {
+  right: 18%;
+  width: min(28vw, 320px);
+  transform: rotate(-18deg);
+  opacity: 0.45;
+  filter: blur(18px);
+  animation-delay: -3s;
+}
+
+.wr-hero__ray--c {
+  right: 2%;
+  width: min(22vw, 260px);
+  transform: rotate(-36deg);
+  opacity: 0.35;
+  filter: blur(22px);
+  animation-delay: -5.5s;
+}
+
+@keyframes wr-ray-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.wr-hero__haze {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 45% at 62% 48%,
+    rgba(42, 122, 106, 0.14) 0%,
+    transparent 60%
+  );
+  animation: wr-haze-breathe 10s ease-in-out infinite;
+}
+
+@keyframes wr-haze-breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+.wr-hero__dust {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wr-hero__mote {
+  position: absolute;
+  bottom: -4%;
+  border-radius: 50%;
+  background: rgba(232, 212, 150, 0.5);
+  box-shadow: 0 0 8px rgba(196, 154, 58, 0.3);
+  animation-name: wr-mote-drift;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+@keyframes wr-mote-drift {
+  0% {
+    opacity: 0;
+    transform: translateY(0) translateX(0);
+  }
+  12% {
+    opacity: 0.75;
+  }
+  88% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-110vh) translateX(22px);
+  }
+}
+
+/* Asymmetric wash — denser left for copy, open right for discoveries */
+.wr-hero__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(6, 10, 8, 0.88) 0%,
+      rgba(6, 10, 8, 0.55) 28%,
+      rgba(6, 10, 8, 0.18) 52%,
+      rgba(6, 10, 8, 0.35) 78%,
+      rgba(6, 10, 8, 0.75) 100%
+    ),
+    linear-gradient(180deg, rgba(4, 8, 6, 0.45) 0%, transparent 28%, rgba(4, 8, 6, 0.82) 100%);
+}
+
+.wr-hero__vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 85% 75% at 58% 42%,
+    transparent 25%,
+    rgba(4, 8, 6, 0.55) 78%,
+    rgba(2, 4, 3, 0.88) 100%
+  );
+}
+
+/* Two-column stage: left copy | right showcase */
+.wr-hero__stage {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding:
+    calc(6.5rem + env(safe-area-inset-top, 0px))
+    var(--landing-gutter-x, 1.5rem)
+    clamp(4rem, 10vh, 7rem);
+  max-width: var(--landing-content-max, 1280px);
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.wr-hero__copy {
+  position: relative;
+  max-width: min(100%, 34rem);
+  text-align: left;
+  padding: clamp(0.5rem, 1.5vw, 1rem) 0;
+  animation: wr-fade-left 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  z-index: 2;
+}
+
+.wr-hero__copy::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -12%;
+  top: -18%;
+  width: 130%;
+  height: 140%;
+  background: radial-gradient(
+    ellipse 70% 65% at 30% 45%,
+    rgba(6, 10, 8, 0.72) 0%,
+    rgba(6, 10, 8, 0.35) 50%,
+    transparent 78%
+  );
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+@keyframes wr-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
+  }
+}
+
+.wr-hero__eyebrow {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.62rem, 1.5vw, 0.74rem);
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #a8c0b0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.75);
+}
+
+/* Etched woody WILDREACH — god-ray catch */
+.wr-hero__brand {
+  position: relative;
+  margin: 0 0 0.65rem;
+  line-height: 0.88;
+}
+
+.wr-hero__brand-glow {
+  position: absolute;
+  left: -8%;
+  top: -20%;
+  width: 95%;
+  height: 140%;
+  background: radial-gradient(
+    ellipse 55% 50% at 35% 45%,
+    rgba(232, 212, 150, 0.35) 0%,
+    rgba(196, 154, 58, 0.12) 40%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+  animation: wr-title-glow 8s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes wr-title-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.wr-hero__brand-text {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(3.8rem, 13vw, 8rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background:
+    repeating-linear-gradient(
+      95deg,
+      transparent 0 2px,
+      rgba(90, 58, 24, 0.18) 2px 3px
+    ),
+    linear-gradient(
+      165deg,
+      #f2e6c8 0%,
+      #d4b06a 14%,
+      #a87838 28%,
+      #6e4a22 42%,
+      #c49a3a 56%,
+      #2a7a6a 70%,
+      #e0c878 84%,
+      #8a6230 100%
+    );
+  background-size: auto, 220% 220%;
+  background-position: 0 0, 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 3px 0 rgba(40, 24, 10, 0.55))
+    drop-shadow(0 14px 28px rgba(0, 0, 0, 0.65))
+    drop-shadow(0 0 24px rgba(196, 154, 58, 0.28));
+  animation: wr-hero-text-bleed 5.2s ease-in-out infinite;
+}
+
+.wr-hero__headline {
+  margin: 0 0 1rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.25rem, 3.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.wr-hero__headline-line {
+  display: inline;
+  /* Dummy first layer so wr-hero-text-bleed’s 2nd position drives the color wash */
+  background-image:
+    linear-gradient(transparent, transparent),
+    linear-gradient(
+      105deg,
+      #c49a3a 0%,
+      #e0c878 20%,
+      #2a7a6a 40%,
+      #4a9a8a 55%,
+      #c49a3a 75%,
+      #e0c878 100%
+    );
+  background-size: auto, 220% 220%;
+  background-position: 0 0, 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.55));
+  animation: wr-hero-text-bleed 5.2s ease-in-out infinite;
+}
+
+/* Color bleed only — same cadence as wr-cluster-float; glyphs stay put */
+@keyframes wr-hero-text-bleed {
+  0%,
+  100% {
+    background-position: 0 0, 0% 42%;
+  }
+  50% {
+    background-position: 0 0, 100% 58%;
+  }
+}
+
+.wr-hero__subheadline {
+  margin: 0;
+  max-width: 26rem;
+  font-family: var(--font-ui);
+  font-size: clamp(0.95rem, 1.9vw, 1.12rem);
+  line-height: 1.6;
+  font-weight: 500;
+  color: rgba(220, 228, 220, 0.9);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Right-half curated deck showcase */
+.wr-hero__showcase {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  min-height: clamp(340px, 62vh, 600px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  animation: wr-fade-right 1s cubic-bezier(0.22, 1, 0.36, 1) 0.12s backwards;
+  /* Let title stay clickable; only card slots capture pointer */
+  pointer-events: none;
+}
+
+@keyframes wr-fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+.wr-hero__showcase-glow {
+  position: absolute;
+  inset: 12% 8%;
+  background: radial-gradient(
+    ellipse 60% 55% at 50% 50%,
+    rgba(196, 154, 58, 0.14) 0%,
+    rgba(42, 122, 106, 0.08) 40%,
+    transparent 72%
+  );
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.wr-hero__cluster {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, auto);
+  align-items: end;
+  justify-items: center;
+  /* ~15% larger than prior full-screen cluster (545 → 627, gaps ×1.15) */
+  gap: clamp(7.3rem, 1.4vw, 1rem) clamp(0.3rem, 1.15vw, 0.75rem);
+  width: min(100%, 627px);
+  margin: 0;
+  padding: clamp(0.65rem, 2.2vw, 1.45rem) 0;
+  list-style: none;
+  perspective: 900px;
+  overflow: visible;
+}
+
+.wr-hero__cluster-slot {
+  /* Layout footprint = idle visual size; card paints at hover res inside */
+  --wr-hover-boost: 1.5;
+  overflow: visible;
+  position: relative;
+  width: clamp(78px, 12.65vw, 136px);
+  aspect-ratio: 2 / 3;
+  opacity: 1;
+  cursor: default;
+  pointer-events: auto;
+  transform: translateY(var(--cluster-lift, 0px)) rotate(var(--cluster-tilt, 0deg))
+    scale(var(--cluster-scale, 1));
+  animation:
+    wr-cluster-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) backwards,
+    wr-cluster-float 5.2s ease-in-out infinite;
+  animation-delay: var(--cluster-delay, 0.2s),
+    calc(0.9s + var(--cluster-delay, 0.2s) + var(--cluster-float-delay, 0s));
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    z-index 0s;
+  transform-origin: center bottom;
+}
+
+/* Overlap neighbors slightly for layered deck feel */
+.wr-hero__cluster-slot--c1 {
+  margin-right: -12%;
+}
+
+.wr-hero__cluster-slot--c2 {
+  margin-inline: -8%;
+}
+
+.wr-hero__cluster-slot--c3 {
+  margin-left: -12%;
+}
+
+.wr-hero__cluster-slot--r1 {
+  margin-bottom: -18%;
+}
+
+.wr-hero__cluster-slot--r2 {
+  margin-top: -6%;
+}
+
+.wr-hero__cluster-shadow {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: -6px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.48);
+  filter: blur(7px);
+  z-index: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+/*
+  Glow wrapper scales (paint @ hover size, idle downscale).
+  Inner frame clips the shine sweep to the card silhouette.
+*/
+.wr-hero__cluster-glow {
+  --wr-glow-x: -50%;
+  position: absolute;
+  left: 50%;
+  right: auto;
+  bottom: 0;
+  z-index: 1;
+  width: calc(100% * var(--wr-hover-boost));
+  aspect-ratio: 2 / 3;
+  transform: translateX(var(--wr-glow-x)) scale(calc(1 / var(--wr-hover-boost)));
+  transform-origin: center bottom;
+  filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 10px color-mix(in srgb, var(--glow-color, #c49a3a) 20%, transparent));
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.wr-hero__cluster-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.wr-hero__cluster-shine {
+  position: absolute;
+  inset: -8% -20%;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.1) 46%,
+    rgba(196, 154, 58, 0.45) 50%,
+    rgba(255, 255, 255, 0.1) 54%,
+    transparent 60%
+  );
+  animation: wr-cluster-shine 6.5s ease-in-out infinite;
+  animation-delay: var(--cluster-delay, 0.2s);
+  mix-blend-mode: soft-light;
+}
+
+/*
+  Kill base .card:hover scale(1.08). Glow handles size; slot handles tilt/float.
+*/
+.wr-hero__cluster-slot .wr-hero__cluster-card.card,
+.wr-hero__cluster-slot .wr-hero__cluster-card.card:hover,
+.wr-hero__cluster-slot .wr-hero__cluster-card.card.card--hovered {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  transform: none;
+  animation: none;
+  cursor: default;
+  filter: brightness(0.88) saturate(0.92);
+  transition: filter 0.35s ease;
+  z-index: 100;
+}
+
+.wr-hero__cluster-slot .wr-hero__cluster-card.card .card__title {
+  /* Allow cqw to use the larger paint size (was capped at 0.52rem → soft on hover) */
+  font-size: clamp(0.42rem, 5.2cqw, 0.85rem);
+  transition: none;
+}
+
+.wr-hero__cluster-slot .card__frame {
+  border-radius: 5px;
+  border-color: color-mix(in srgb, var(--glow-color) 42%, #0a100e);
+  box-shadow:
+    0 0 0 1px rgba(240, 235, 228, 0.08) inset,
+    0 8px 18px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.35s ease;
+}
+
+/* Hover / lit: show native paint size (+50%), straighten, pause float */
+.wr-hero__cluster-slot:hover,
+.wr-hero__cluster-slot--lit {
+  z-index: 24 !important;
+  animation-play-state: paused;
+  translate: 0 0;
+  transform: translateY(calc(var(--cluster-lift, 0px) - 12px)) rotate(0deg)
+    scale(var(--cluster-scale, 1));
+}
+
+.wr-hero__cluster-slot:hover .wr-hero__cluster-glow,
+.wr-hero__cluster-slot--lit .wr-hero__cluster-glow {
+  transform: translateX(var(--wr-glow-x)) scale(1);
+  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 20px color-mix(in srgb, var(--glow-color, #c49a3a) 42%, transparent));
+}
+
+.wr-hero__cluster-slot:hover .wr-hero__cluster-card.card,
+.wr-hero__cluster-slot--lit .wr-hero__cluster-card.card,
+.wr-hero__cluster-slot:hover .wr-hero__cluster-card.card:hover,
+.wr-hero__cluster-slot--lit .wr-hero__cluster-card.card:hover {
+  transform: none;
+  filter: brightness(1.14) saturate(1.1);
+}
+
+.wr-hero__cluster-slot:hover .wr-hero__cluster-shadow,
+.wr-hero__cluster-slot--lit .wr-hero__cluster-shadow {
+  opacity: 0.35;
+  transform: scale(1.05);
+}
+
+.wr-hero__cluster-slot:hover .wr-hero__cluster-shine,
+.wr-hero__cluster-slot--lit .wr-hero__cluster-shine {
+  animation-play-state: paused;
+  opacity: 0.35;
+}
+
+.wr-hero__cluster-slot:hover .card__frame,
+.wr-hero__cluster-slot--lit .card__frame {
+  box-shadow:
+    0 0 0 1px rgba(240, 235, 228, 0.12) inset,
+    0 12px 28px rgba(0, 0, 0, 0.48),
+    0 0 20px color-mix(in srgb, var(--glow-color) 35%, transparent);
+}
+
+@keyframes wr-cluster-in {
+  from {
+    opacity: 0;
+    transform: translateY(calc(var(--cluster-lift, 0px) + 32px))
+      rotate(var(--cluster-tilt, 0deg))
+      scale(calc(var(--cluster-scale, 1) * 0.9));
+  }
+}
+
+/* Idle bob — uses `translate` so it does not fight enter/hover `transform` */
+@keyframes wr-cluster-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -7px;
+  }
+}
+
+@keyframes wr-cluster-shine {
+  0%,
+  100% {
+    transform: translateX(-130%) rotate(10deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  65% {
+    transform: translateX(130%) rotate(10deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wr-hero__brand-text,
+  .wr-hero__headline-line,
+  .wr-hero__cluster-slot,
+  .wr-hero__cluster-shine {
+    animation: none;
+  }
+
+  .wr-hero__cluster-slot {
+    opacity: 1;
+    transform: translateY(var(--cluster-lift, 0px)) rotate(var(--cluster-tilt, 0deg))
+      scale(var(--cluster-scale, 1));
+  }
+}
+
+.wr-hero__transition {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(3.5rem, 9vw, 6rem);
+  z-index: 8;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, #060a08 100%);
+}
+
+@media (max-width: 1200px) {
+  .wr-hero__ray--c {
+    display: none;
+  }
+
+  .wr-hero__stage {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-content: center;
+    padding-bottom: clamp(3rem, 8vh, 5rem);
+  }
+
+  .wr-hero__copy {
+    order: 1;
+    z-index: 1;
+    max-width: 100%;
+  }
+
+  .wr-hero__showcase {
+    width: 100%;
+    order: 2;
+    z-index: 6;
+    /* Sit close so the enlarged hover card can cover the heading */
+    margin-top: calc(-1 * clamp(2rem, 8vw, 4rem));
+    min-height: clamp(240px, 42vh, 360px);
+    padding-inline: 0.35rem;
+    box-sizing: border-box;
+  }
+
+  .wr-hero__cluster {
+    width: min(100%, calc(100vw - 2.75rem));
+    max-width: 1000px;
+    padding-top: 10vw;
+    
+  }
+
+  .wr-hero__cluster-slot {
+    width: clamp(68px, 18vw, 100px);
+    /* Hover grow ramps up as width shrinks (1.5 desktop → ~3 @350) */
+    --wr-hover-boost: 1.85;
+  }
+
+  /* Edge cards grow inward so the hover preview stays on-screen */
+  .wr-hero__cluster-slot--c1 .wr-hero__cluster-glow {
+    left: 0;
+    --wr-glow-x: 0%;
+    transform-origin: left bottom;
+  }
+
+  .wr-hero__cluster-slot--c3 .wr-hero__cluster-glow {
+    left: auto;
+    right: 0;
+    --wr-glow-x: 0%;
+    transform-origin: right bottom;
+  }
+}
+
+@media (max-width: 900px) {
+  .wr-hero__cluster-slot {
+    --wr-hover-boost: 2.25;
+  }
+  .wr-survey{
+    padding: 0 !important;
+  }
+  .wr-catalog{
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .wr-hero__stage {
+    padding-top: calc(5.5rem + env(safe-area-inset-top, 0px));
+  }
+
+  .wr-hero__brand-text {
+    font-size: clamp(3rem, 14vw, 4.2rem);
+    letter-spacing: 0.04em;
+  }
+
+  .wr-hero__showcase {
+    margin-top: calc(-1 * clamp(2.5rem, 12vw, 5rem));
+  }
+
+  .wr-hero__cluster {
+    gap: 4.25rem 0.15rem;
+    width: min(100%, calc(100vw - 2.25rem));
+  }
+
+  .wr-hero__cluster-slot {
+    --wr-hover-boost: 2.6;
+  }
+
+  .wr-hero__cluster-slot--c1,
+  .wr-hero__cluster-slot--c2,
+  .wr-hero__cluster-slot--c3 {
+    margin-inline: -6%;
+  }
+
+  .wr-hero__cluster-slot--r1 {
+    margin-bottom: -14%;
+  }
+
+  .wr-hero__ray--b {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 400px) {
+  .wr-hero__cluster-slot {
+    --wr-hover-boost: 3;
+  }
+
+  .wr-hero__showcase {
+    margin-top: calc(-1 * clamp(3rem, 14vw, 5.5rem));
+  }
+}

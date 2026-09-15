@@ -1,0 +1,1259 @@
+/* HELIX landing — hero → locations + lower-section rhythms (helix only). */
+
+[data-landing-variant='helix'] {
+  --helix-section-pad-y: clamp(3.5rem, 8vw, 5.5rem);
+  --helix-section-pad-bottom: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+[data-landing-variant='helix'] .landing-flow {
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  padding-bottom: var(--helix-section-pad-bottom);
+}
+
+/* Hero angled cut bleeds into locations */
+[data-landing-variant='helix'] .landing-flow > .helix-hero + .helix-locations {
+  margin-top: calc(-1 * clamp(3rem, 8vw, 5.5rem));
+}
+
+[data-landing-variant='helix'] .landing-flow > .helix-locations + .dominions {
+  margin-top: 0;
+}
+
+/* ── Dominions: 2×2 landscape lab bays (not voidborn 4-col portrait / iyashikei scroll) ── */
+
+[data-landing-variant='helix'] .dominions__inner {
+  margin-top: 0;
+  /* padding-top: var(--helix-section-pad-y); */
+  padding-bottom: var(--helix-section-pad-bottom);
+  gap: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+[data-landing-variant='helix'] .dominions__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.85rem, 2vw, 1.25rem);
+}
+
+[data-landing-variant='helix'] .dominions__card {
+  aspect-ratio: 16 / 11;
+  min-height: 0;
+  border-radius: 2px;
+}
+
+[data-landing-variant='helix'] .dominions__card-copy {
+  text-align: left;
+  align-items: flex-start;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
+  padding-top: clamp(2.1rem, 4vw, 2.6rem);
+}
+
+@media (max-width: 760px) {
+  [data-landing-variant='helix'] .dominions__grid {
+    grid-template-columns: 1fr;
+  }
+
+  [data-landing-variant='helix'] .dominions__card {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ── Game model: horizontal ops protocol chain (media-first steps + signal line) ── */
+
+[data-landing-variant='helix'] .gamemodel__inner {
+  margin-top: 0;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-landing-variant='helix'] .gamemodel__header {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 40rem;
+}
+
+[data-landing-variant='helix'] .gamemodel__header .landing-section-title,
+[data-landing-variant='helix'] .gamemodel__header .landing-section-lead {
+  text-align: left;
+  margin-inline: 0;
+}
+
+[data-landing-variant='helix'] .gamemodel__eyebrow {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3db8d4;
+}
+
+[data-landing-variant='helix'] .gamemodel__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  align-items: start;
+}
+
+/* Signal rail connecting the three steps */
+/* [data-landing-variant='helix'] .gamemodel__grid::before {
+  content: '';
+  position: absolute;
+  top: clamp(3.2rem, 8vw, 4.2rem);
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(61, 184, 212, 0.2) 8%,
+    rgba(61, 184, 212, 0.55) 50%,
+    rgba(139, 126, 200, 0.45) 78%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+} */
+
+[data-landing-variant='helix'] .gamemodel__item {
+  position: relative;
+  z-index: 1;
+}
+
+[data-landing-variant='helix'] .gamemodel__card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  gap: 0.85rem;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] .gamemodel__card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] .gamemodel__step {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: color-mix(in srgb, var(--pillar-glow, #3db8d4) 90%, #fff);
+}
+
+[data-landing-variant='helix'] .gamemodel__icon-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 2px;
+  border: 1px solid color-mix(in srgb, var(--pillar-glow, #3db8d4) 40%, transparent);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+[data-landing-variant='helix'] .gamemodel__card:hover .gamemodel__icon-wrap {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--pillar-glow, #3db8d4) 65%, transparent);
+  filter: brightness(1.05);
+  box-shadow:
+    0 16px 32px rgba(0, 0, 0, 0.4),
+    0 0 24px color-mix(in srgb, var(--pillar-glow, #3db8d4) 18%, transparent);
+}
+
+[data-landing-variant='helix'] .gamemodel__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-inline: 0.15rem;
+}
+
+[data-landing-variant='helix'] .gamemodel__card-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+}
+
+[data-landing-variant='helix'] .gamemodel__tags {
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  border-radius: 2px;
+  background: rgba(16, 22, 30, 0.55);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 919px) {
+  [data-landing-variant='helix'] .gamemodel__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  [data-landing-variant='helix'] .gamemodel__grid::before {
+    display: none;
+  }
+
+  [data-landing-variant='helix'] .gamemodel__card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.42fr) minmax(0, 1fr);
+    grid-template-areas:
+      'step step'
+      'media copy';
+    gap: 0.55rem 1rem;
+    align-items: center;
+  }
+
+  [data-landing-variant='helix'] .gamemodel__step {
+    grid-area: step;
+  }
+
+  [data-landing-variant='helix'] .gamemodel__icon-wrap {
+    grid-area: media;
+    aspect-ratio: 1;
+  }
+
+  [data-landing-variant='helix'] .gamemodel__copy {
+    grid-area: copy;
+  }
+}
+
+@media (max-width: 520px) {
+  [data-landing-variant='helix'] .gamemodel__card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'step'
+      'media'
+      'copy';
+  }
+
+  [data-landing-variant='helix'] .gamemodel__icon-wrap {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* [data-landing-variant='helix'] :is(.collection, .pathways, .faq, .final-cta) .landing-shell {
+  padding-top: var(--helix-section-pad-y);
+  padding-bottom: var(--helix-section-pad-bottom);
+} */
+
+/* ── Collection: specimen scanner — rack left, inspection bezel right ── */
+
+[data-landing-variant='helix'] .collection__inner {
+  margin-top: 0;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-landing-variant='helix'] .collection__header {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 42rem;
+}
+
+[data-landing-variant='helix'] .collection__header .landing-section-title,
+[data-landing-variant='helix'] .collection__header .landing-section-lead {
+  text-align: left;
+  margin-inline: 0;
+}
+
+[data-landing-variant='helix'] .collection__eyebrow {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3db8d4;
+}
+
+/* Stats as a single telemetry strip (not 4 separate cards) */
+[data-landing-variant='helix'] .collection__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  border-radius: 2px;
+  background: rgba(16, 22, 30, 0.65);
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .collection__stat {
+  flex: 1 1 25%;
+  min-width: 7rem;
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid rgba(61, 184, 212, 0.18);
+  background: transparent;
+  box-shadow: none;
+  padding: 0.85rem 1rem;
+  align-items: flex-start;
+  text-align: left;
+}
+
+[data-landing-variant='helix'] .collection__stat:last-child {
+  border-right: none;
+}
+
+[data-landing-variant='helix'] .collection__stat-label {
+  text-align: left;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Collection — specimen scanner proportions (tune these vars)
+   --helix-catalog-rack   → left rack column flex weight
+   --helix-catalog-scan   → right scanner column flex weight
+   --helix-catalog-cols   → thumb grid columns in the rack
+   --helix-catalog-thumb  → mobile thumb max width (desktop fills rack height)
+   --helix-catalog-stage  → max width of the big preview card
+   --helix-catalog-gap    → gap between rack and scanner
+   --helix-catalog-col-gap / --helix-catalog-row-gap → rack spacing (row ~2× col)
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-landing-variant='helix'] .collection__showcase {
+  --helix-catalog-rack: 1fr;
+  --helix-catalog-scan: 1fr;
+  --helix-catalog-cols: 4;
+  --helix-catalog-thumb: 100px;
+  --helix-catalog-stage: 300px;
+  --helix-catalog-gap: clamp(1rem, 2.5vw, 1.75rem);
+  --helix-catalog-col-gap: 0.55rem;
+  --helix-catalog-row-gap: 1.1rem;
+  /* Equal columns → shared gap sits on the stats strip midline (tiers | strategies) */
+  grid-template-columns: minmax(0, var(--helix-catalog-rack)) minmax(0, var(--helix-catalog-scan));
+  gap: var(--helix-catalog-gap);
+  align-items: stretch;
+  width: 100%;
+}
+
+[data-landing-variant='helix'] .collection__picker {
+  display: grid;
+  grid-template-columns: repeat(var(--helix-catalog-cols), minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  column-gap: var(--helix-catalog-col-gap);
+  row-gap: var(--helix-catalog-row-gap);
+  justify-content: stretch;
+  order: 1;
+  align-content: stretch;
+  justify-items: stretch;
+  align-self: stretch;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 0.65rem;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  border-radius: 2px;
+  background: rgba(16, 22, 30, 0.72);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+[data-landing-variant='helix'] .collection__picker-item {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  max-width: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+[data-landing-variant='helix'] .collection__picker-item--active {
+  border-color: color-mix(in srgb, var(--collection-glow, #3db8d4) 55%, transparent);
+  background: rgba(61, 184, 212, 0.1);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--collection-glow, #3db8d4) 18%, transparent);
+}
+
+[data-landing-variant='helix'] .collection__picker-btn {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Scale thumbs to cell height (2:3) so the rack matches the specimen panel */
+[data-landing-variant='helix'] .collection__picker-btn .card {
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 2 / 3;
+}
+
+[data-landing-variant='helix'] .collection__preview {
+  order: 2;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 0;
+  max-width: none;
+  width: 100%;
+  height: auto;
+  justify-self: stretch;
+  align-self: stretch;
+  box-sizing: border-box;
+  padding: clamp(2.25rem, 3.5vw, 2.75rem) clamp(1.1rem, 2.5vw, 1.75rem) 1.15rem;
+  border-radius: 2px;
+  border: 1px solid rgba(61, 184, 212, 0.35);
+  background: #0a0e14;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .collection__preview-aura,
+[data-landing-variant='helix'] .collection__preview-ring {
+  display: none;
+}
+
+[data-landing-variant='helix'] .collection__scan-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .collection__scan-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(61, 184, 212, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 184, 212, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 45%, black 20%, transparent 75%);
+  opacity: 0.85;
+}
+
+[data-landing-variant='helix'] .collection__scan-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 14%;
+  top: -20%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(61, 184, 212, 0.08) 40%,
+    rgba(127, 216, 239, 0.22) 50%,
+    rgba(61, 184, 212, 0.08) 60%,
+    transparent 100%
+  );
+  animation: helix-specimen-scan 4.8s ease-in-out infinite;
+}
+
+@keyframes helix-specimen-scan {
+  0%,
+  100% {
+    top: -18%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: 95%;
+    opacity: 0;
+  }
+}
+
+/* Keep specimen card visible — column stack + fixed ratio so flex cannot collapse it */
+[data-landing-variant='helix'] .collection__preview-stage {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: calc(var(--helix-catalog-stage) * 1.5);
+}
+
+[data-landing-variant='helix'] .collection__preview-stack {
+  position: relative;
+  flex: 0 0 auto;
+  width: min(100%, var(--helix-catalog-stage));
+  aspect-ratio: 2 / 3;
+  min-height: calc(var(--helix-catalog-stage) * 1.5);
+  margin: 0 auto;
+}
+
+[data-landing-variant='helix'] .collection__preview-stack .card-preview-panel,
+[data-landing-variant='helix'] .collection__preview-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+[data-landing-variant='helix'] .collection__preview-stack .card-preview-panel {
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
+}
+
+[data-landing-variant='helix'] .collection__scan-label {
+  position: absolute;
+  z-index: 4;
+  top: 0.65rem;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  color: #3db8d4;
+  pointer-events: none;
+}
+
+[data-landing-variant='helix'] .collection__bracket {
+  position: absolute;
+  z-index: 4;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(61, 184, 212, 0.75);
+  pointer-events: none;
+}
+
+[data-landing-variant='helix'] .collection__bracket--tl {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+[data-landing-variant='helix'] .collection__bracket--tr {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+[data-landing-variant='helix'] .collection__bracket--bl {
+  bottom: 8px;
+  left: 8px;
+  border-right: none;
+  border-top: none;
+}
+
+[data-landing-variant='helix'] .collection__bracket--br {
+  bottom: 8px;
+  right: 8px;
+  border-left: none;
+  border-top: none;
+}
+
+[data-landing-variant='helix'] .collection__preview-caption {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.85rem;
+  padding-inline: 0.15rem;
+  flex: 0 0 auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-landing-variant='helix'] .collection__scan-beam {
+    animation: none;
+    top: 42%;
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 1100px) {
+  [data-landing-variant='helix'] .collection__showcase {
+    --helix-catalog-cols: 3;
+    --helix-catalog-thumb: 92px;
+    --helix-catalog-stage: 250px;
+  }
+}
+
+@media (max-width: 919px) {
+  [data-landing-variant='helix'] .collection__showcase {
+    grid-template-columns: 1fr;
+    align-items: start;
+    --helix-catalog-cols: 4;
+    --helix-catalog-stage: 240px;
+  }
+
+  [data-landing-variant='helix'] .collection__preview {
+    order: 1;
+    max-width: min(320px, 100%);
+    justify-self: center;
+    align-self: center;
+  }
+
+  [data-landing-variant='helix'] .collection__picker {
+    order: 2;
+    height: auto;
+    grid-auto-rows: auto;
+    align-content: start;
+    grid-template-columns: repeat(var(--helix-catalog-cols), minmax(0, var(--helix-catalog-thumb)));
+    justify-content: space-evenly;
+  }
+
+  [data-landing-variant='helix'] .collection__picker-item {
+    height: auto;
+  }
+
+  [data-landing-variant='helix'] .collection__picker-btn {
+    height: auto;
+  }
+
+  [data-landing-variant='helix'] .collection__picker-btn .card {
+    width: 100%;
+    height: auto;
+    max-width: var(--helix-catalog-thumb);
+  }
+
+  [data-landing-variant='helix'] .collection__preview-stage,
+  [data-landing-variant='helix'] .collection__preview-stack {
+    min-height: calc(var(--helix-catalog-stage) * 1.5);
+  }
+
+  [data-landing-variant='helix'] .collection__stat {
+    flex: 1 1 50%;
+    border-bottom: 1px solid rgba(61, 184, 212, 0.15);
+  }
+
+  [data-landing-variant='helix'] .collection__stat:nth-child(2n) {
+    border-right: none;
+  }
+
+  [data-landing-variant='helix'] .collection__stat:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 520px) {
+  [data-landing-variant='helix'] .collection__showcase {
+    --helix-catalog-cols: 2;
+    --helix-catalog-thumb: 110px;
+    --helix-catalog-stage: 220px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Pathways — trade protocol channel tiles (3-col grid) + print-grade + CTA
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-landing-variant='helix'] .pathways__inner {
+  margin-top: 0;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+[data-landing-variant='helix'] .pathways__header {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 42rem;
+}
+
+[data-landing-variant='helix'] .pathways__header .landing-section-title,
+[data-landing-variant='helix'] .pathways__header .landing-section-lead {
+  text-align: left;
+  margin-inline: 0;
+}
+
+[data-landing-variant='helix'] .pathways__eyebrow,
+[data-landing-variant='helix'] .pathways__grade-label {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3db8d4;
+}
+
+[data-landing-variant='helix'] .pathways__grade-label {
+  margin: clamp(0.35rem, 1.5vw, 0.75rem) 0 0;
+}
+
+/* Channel tiles — 3-col grid on desktop (6 ops → 3×2) */
+[data-landing-variant='helix'] .pathways__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.8vw, 1.15rem);
+  padding-left: 0;
+}
+
+[data-landing-variant='helix'] .pathways__item {
+  min-width: 0;
+}
+
+[data-landing-variant='helix'] .pathways__card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.55rem;
+  height: 100%;
+  padding: 0.65rem;
+  border-radius: 2px;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  background: rgba(16, 22, 30, 0.72);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+[data-landing-variant='helix'] .pathways__card:hover {
+  transform: none;
+  border-color: color-mix(in srgb, var(--feature-glow, #3db8d4) 55%, transparent);
+  background: rgba(18, 26, 36, 0.88);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.4),
+    0 0 20px color-mix(in srgb, var(--feature-glow, #3db8d4) 14%, transparent);
+}
+
+[data-landing-variant='helix'] .pathways__channel {
+  order: 2;
+  align-self: flex-start;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: color-mix(in srgb, var(--feature-glow, #3db8d4) 85%, #fff);
+}
+
+[data-landing-variant='helix'] .pathways__media-frame {
+  order: 1;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 2px;
+  border: 1px solid color-mix(in srgb, var(--feature-glow, #3db8d4) 35%, transparent);
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .pathways__card:hover .pathways__image {
+  transform: none;
+  filter: brightness(1.06);
+}
+
+[data-landing-variant='helix'] .pathways__copy {
+  order: 3;
+  gap: 0.3rem;
+  padding-block: 0.1rem;
+}
+
+[data-landing-variant='helix'] .pathways__feature-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.1em;
+}
+
+[data-landing-variant='helix'] .pathways__feature-desc {
+  max-width: none;
+}
+
+/* Print grade spectrum — one telemetry strip, not three cards */
+[data-landing-variant='helix'] .pathways__tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  width: 100%;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  border-radius: 2px;
+  background: rgba(16, 22, 30, 0.65);
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .pathways__tier {
+  flex: 1 1 33.333%;
+  min-width: 10rem;
+}
+
+[data-landing-variant='helix'] .pathways__tier-card {
+  height: 100%;
+  gap: 0.4rem;
+  padding: clamp(1rem, 2.5vw, 1.35rem) clamp(0.9rem, 2vw, 1.25rem);
+  border-radius: 0;
+  border: none;
+  border-right: 1px solid rgba(61, 184, 212, 0.18);
+  background: transparent;
+  box-shadow: none;
+  text-align: left;
+  align-items: flex-start;
+}
+
+[data-landing-variant='helix'] .pathways__tier:last-child .pathways__tier-card {
+  border-right: none;
+}
+
+[data-landing-variant='helix'] .pathways__tier-card:hover {
+  transform: none;
+  border-color: transparent;
+  box-shadow: none;
+  background: rgba(61, 184, 212, 0.06);
+}
+
+[data-landing-variant='helix'] .pathways__tier-rarity {
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+[data-landing-variant='helix'] .pathways__tier-title {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.08em;
+  text-align: left;
+}
+
+[data-landing-variant='helix'] .pathways__tier-desc {
+  text-align: left;
+}
+
+/* Command-rail CTA */
+[data-landing-variant='helix'] .pathways__cta {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding: clamp(0.85rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.35rem);
+  border-radius: 2px;
+  border: 1px solid rgba(61, 184, 212, 0.35);
+  background: #0a0e14;
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  text-align: left;
+}
+
+[data-landing-variant='helix'] .pathways__cta-tag {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #3db8d4;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(61, 184, 212, 0.4);
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+[data-landing-variant='helix'] .pathways__cta-lead {
+  margin: 0;
+  text-align: left;
+}
+
+[data-landing-variant='helix'] .pathways__cta-btn.vb-btn,
+[data-landing-variant='helix'] a.pathways__cta-btn,
+[data-landing-variant='helix'] button.pathways__cta-btn {
+  justify-self: end;
+  flex-shrink: 0;
+  border-radius: 6px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  font-family: var(--font-ui) !important;
+  font-size: clamp(0.72rem, 2vw, 0.82rem) !important;
+  padding: 0.85rem 1.75rem !important;
+  color: #0c1016 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 184, 212, 0.95) 0%,
+    rgba(42, 155, 184, 0.98) 100%
+  ) !important;
+  border-color: rgba(61, 184, 212, 0.65) !important;
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.28) !important;
+  animation: none !important;
+}
+
+[data-landing-variant='helix'] .pathways__cta-btn.vb-btn:hover:not(:disabled),
+[data-landing-variant='helix'] a.pathways__cta-btn:hover:not(:disabled),
+[data-landing-variant='helix'] button.pathways__cta-btn:hover:not(:disabled) {
+  color: #071016 !important;
+  border-color: rgba(127, 216, 239, 0.85) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(90, 200, 224, 0.98) 0%,
+    rgba(61, 184, 212, 1) 100%
+  ) !important;
+  box-shadow: 0 6px 22px rgba(61, 184, 212, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 919px) {
+  [data-landing-variant='helix'] .pathways__list {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  [data-landing-variant='helix'] .pathways__card {
+    display: grid;
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+    grid-template-areas:
+      'ch media'
+      'ch copy';
+    gap: 0.45rem 0.75rem;
+    padding: 0.55rem 0.7rem 0.55rem 0.35rem;
+  }
+
+  [data-landing-variant='helix'] .pathways__channel {
+    order: unset;
+    grid-area: ch;
+    align-self: start;
+    padding-top: 0.35rem;
+  }
+
+  [data-landing-variant='helix'] .pathways__media-frame {
+    order: unset;
+    grid-area: media;
+    aspect-ratio: 16 / 9;
+  }
+
+  [data-landing-variant='helix'] .pathways__copy {
+    order: unset;
+    grid-area: copy;
+  }
+
+  [data-landing-variant='helix'] .pathways__tier {
+    flex: 1 1 100%;
+  }
+
+  [data-landing-variant='helix'] .pathways__tier-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(61, 184, 212, 0.18);
+  }
+
+  [data-landing-variant='helix'] .pathways__tier:last-child .pathways__tier-card {
+    border-bottom: none;
+  }
+
+  [data-landing-variant='helix'] .pathways__cta {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'tag lead'
+      'btn btn';
+  }
+
+  [data-landing-variant='helix'] .pathways__cta-tag {
+    grid-area: tag;
+  }
+
+  [data-landing-variant='helix'] .pathways__cta-lead {
+    grid-area: lead;
+  }
+
+  [data-landing-variant='helix'] .pathways__cta-btn {
+    grid-area: btn;
+    justify-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  [data-landing-variant='helix'] .pathways__card {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'ch'
+      'media'
+      'copy';
+    padding: 0.7rem;
+  }
+
+  [data-landing-variant='helix'] .pathways__channel {
+    justify-self: start;
+    padding-top: 0;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Final CTA — deploy gate console (not centered voidborn column / iyashi split)
+   Brief + LCD readout rows + launch bar; Play Now = cyan market button
+   ═══════════════════════════════════════════════════════════════════════════ */
+[data-landing-variant='helix'] .final-cta__inner {
+  margin-top: 0;
+  align-items: stretch;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+  /* Base FinalCtaSection.css uses `padding: … 0` which kills landing-shell gutters */
+  padding-top: var(--helix-section-pad-y);
+  padding-bottom: var(--helix-section-pad-bottom);
+  padding-inline: var(--landing-gutter-x);
+}
+
+[data-landing-variant='helix'] .final-cta__gate {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 3vw, 1.75rem);
+  width: 100%;
+  padding: clamp(1.5rem, 3.5vw, 2.25rem) clamp(1.1rem, 3vw, 1.75rem);
+  border: 1px solid rgba(61, 184, 212, 0.35);
+  border-radius: 2px;
+  background: rgba(10, 14, 20, 0.82);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+[data-landing-variant='helix'] .final-cta__bracket {
+  position: absolute;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(61, 184, 212, 0.75);
+  pointer-events: none;
+}
+
+[data-landing-variant='helix'] .final-cta__bracket--tl {
+  top: 10px;
+  left: 10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+[data-landing-variant='helix'] .final-cta__bracket--tr {
+  top: 10px;
+  right: 10px;
+  border-left: none;
+  border-bottom: none;
+}
+
+[data-landing-variant='helix'] .final-cta__bracket--bl {
+  bottom: 10px;
+  left: 10px;
+  border-right: none;
+  border-top: none;
+}
+
+[data-landing-variant='helix'] .final-cta__bracket--br {
+  bottom: 10px;
+  right: 10px;
+  border-left: none;
+  border-top: none;
+}
+
+[data-landing-variant='helix'] .final-cta__eyebrow {
+  margin: 0;
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #3db8d4;
+}
+
+[data-landing-variant='helix'] .final-cta__copy {
+  align-items: flex-start;
+  text-align: left;
+  max-width: 40rem;
+  gap: 0.65rem;
+}
+
+[data-landing-variant='helix'] .final-cta__subtitle {
+  font-family: var(--font-heading, var(--font-fantasy));
+  letter-spacing: 0.14em;
+  color: rgba(200, 220, 230, 0.88);
+}
+
+[data-landing-variant='helix'] .final-cta__desc {
+  text-align: left;
+  max-width: 38rem;
+}
+
+/* LCD readout — stacked status rows (not a 3-up stat card) */
+[data-landing-variant='helix'] .final-cta__siege {
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 2px;
+  border: 1px solid rgba(61, 184, 212, 0.28);
+  background: rgba(8, 12, 18, 0.72);
+  box-shadow: none;
+}
+
+[data-landing-variant='helix'] .final-cta__siege-title {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid rgba(61, 184, 212, 0.18);
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-align: left;
+  color: #3db8d4;
+}
+
+[data-landing-variant='helix'] .final-cta__siege-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+[data-landing-variant='helix'] .final-cta__siege-stat {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid rgba(61, 184, 212, 0.12);
+  text-align: left;
+}
+
+[data-landing-variant='helix'] .final-cta__siege-stat:last-child {
+  border-bottom: none;
+}
+
+[data-landing-variant='helix'] .final-cta__siege-index {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(61, 184, 212, 0.75);
+}
+
+[data-landing-variant='helix'] .final-cta__siege-label {
+  justify-self: start;
+  text-align: left;
+  letter-spacing: 0.12em;
+  color: rgba(200, 214, 224, 0.7);
+}
+
+[data-landing-variant='helix'] .final-cta__siege-value {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+  letter-spacing: 0.06em;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: #7fd8ef;
+  text-align: right;
+}
+
+/* Launch bar */
+[data-landing-variant='helix'] .final-cta__launch {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  width: 100%;
+  padding: clamp(0.85rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.25rem);
+  border: 1px solid rgba(61, 184, 212, 0.4);
+  border-radius: 2px;
+  background: #0a0e14;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+[data-landing-variant='helix'] .final-cta__launch-tag {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #0c1016;
+  padding: 0.35rem 0.55rem;
+  border-radius: 2px;
+  background: #3db8d4;
+  white-space: nowrap;
+}
+
+[data-landing-variant='helix'] .final-cta__launch-note {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(0.78rem, 2vw, 0.9rem);
+  color: rgba(200, 214, 224, 0.78);
+  text-align: left;
+}
+
+/* Play Now — same cyan market button (beats FinalCtaSection.css !important gold) */
+[data-landing-variant='helix'] .final-cta__btn.vb-btn,
+[data-landing-variant='helix'] a.final-cta__btn,
+[data-landing-variant='helix'] button.final-cta__btn {
+  margin-top: 0;
+  justify-self: end;
+  flex-shrink: 0;
+  border-radius: 6px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase;
+  font-family: var(--font-ui) !important;
+  font-size: clamp(0.72rem, 2vw, 0.82rem) !important;
+  padding: 0.85rem 1.75rem !important;
+  color: #0c1016 !important;
+  background: linear-gradient(
+    135deg,
+    rgba(61, 184, 212, 0.95) 0%,
+    rgba(42, 155, 184, 0.98) 100%
+  ) !important;
+  border-color: rgba(61, 184, 212, 0.65) !important;
+  box-shadow: 0 4px 16px rgba(61, 184, 212, 0.28) !important;
+  animation: none !important;
+}
+
+[data-landing-variant='helix'] .final-cta__btn.vb-btn:hover:not(:disabled),
+[data-landing-variant='helix'] a.final-cta__btn:hover:not(:disabled),
+[data-landing-variant='helix'] button.final-cta__btn:hover:not(:disabled) {
+  color: #071016 !important;
+  border-color: rgba(127, 216, 239, 0.85) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(90, 200, 224, 0.98) 0%,
+    rgba(61, 184, 212, 1) 100%
+  ) !important;
+  box-shadow: 0 6px 22px rgba(61, 184, 212, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+
+@media (max-width: 719px) {
+  [data-landing-variant='helix'] .final-cta__launch {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas:
+      'tag note'
+      'btn btn';
+  }
+
+  [data-landing-variant='helix'] .final-cta__launch-tag {
+    grid-area: tag;
+  }
+
+  [data-landing-variant='helix'] .final-cta__launch-note {
+    grid-area: note;
+  }
+
+  [data-landing-variant='helix'] .final-cta__btn.vb-btn,
+  [data-landing-variant='helix'] a.final-cta__btn,
+  [data-landing-variant='helix'] button.final-cta__btn {
+    grid-area: btn;
+    justify-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  [data-landing-variant='helix'] .card__ability-text {
+  font-size: 0.7rem !important
+}
+
+}

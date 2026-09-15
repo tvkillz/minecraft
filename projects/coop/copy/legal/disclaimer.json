@@ -1,0 +1,17 @@
+{
+  "title": "Disclaimer",
+  "lastUpdated": "2026-09-15",
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "The Coop is not affiliated with Mojang, Microsoft, or Minecraft."
+    },
+    {
+      "type": "company",
+      "name": "The Coop",
+      "companyNumber": "",
+      "address": "",
+      "email": "support@coop.example.com"
+    }
+  ]
+}

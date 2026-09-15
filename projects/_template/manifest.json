@@ -1,0 +1,51 @@
+{
+  "id": "_template",
+  "siteUrl": "https://store.example.com",
+  "name": {
+    "display": "STORE",
+    "short": "Store",
+    "documentTitle": "STORE"
+  },
+  "routes": {
+    "home": "/",
+    "play": "/play",
+    "leaderboard": "/leaderboard",
+    "portal": "/portal",
+    "portalMarket": "/portal/market",
+    "portalVaults": "/portal/vaults",
+    "portalCollection": "/portal/collection",
+    "portalTransactions": "/portal/transactions",
+    "portalProfile": "/portal/profile",
+    "portalStore": "/portal/store",
+    "checkout": "/checkout",
+    "checkoutSuccess": "/portal/checkout/success",
+    "checkoutCancel": "/portal/checkout/cancel",
+    "withdrawalSuccess": "/portal/withdrawal/success",
+    "tutorial": "/tutorial"
+  },
+  "legal": {
+    "termsUrl": "/terms",
+    "privacyUrl": "/privacy",
+    "refundPolicyUrl": "/refund-policy"
+  },
+  "anchors": {
+    "play": "#ranks",
+    "market": "#coins",
+    "leaderboard": "#minigames"
+  },
+  "brand": {
+    "logo": "brand/gamelogo.png",
+    "logoAlt": "Store",
+    "headerLogo": "brand/header.png",
+    "headerLogoAlt": "Store",
+    "playLogo": "brand/gamelogo.png",
+    "playLogoAlt": "Store",
+    "playLobby": "brand/play-lobby.png"
+  },
+  "features": {
+    "requireSignInForPlay": true
+  },
+  "assets": {
+    "publicBase": "/assets"
+  }
+}

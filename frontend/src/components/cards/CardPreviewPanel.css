@@ -1,0 +1,97 @@
+.card-preview-panel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.card-preview-panel .card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transform: none;
+  animation: none;
+  filter: none;
+}
+
+.card-preview-panel .card:hover,
+.card-preview-panel .card.card--hovered {
+  transform: none;
+  filter: none;
+}
+
+.card-preview-panel--ready .card__art {
+  transition: opacity 0.12s ease;
+}
+
+.card-preview-panel .card--preview .card__stat--mana {
+  top: 10px;
+  left: 10px;
+  width: 40px;
+  height: 44px;
+  font-size: 0.95rem;
+}
+
+.card-preview-panel .card--preview .card__domain {
+  top: 12px;
+  right: 12px;
+  width: 30px;
+  height: 30px;
+}
+
+.card-preview-panel .card--preview .card__combat-stats {
+  padding: 0 10px;
+}
+
+.card-preview-panel .card--preview .card__stat--attack {
+  min-width: 40px;
+  min-height: 34px;
+  padding: 4px 8px 4px 6px;
+  font-size: 0.85rem;
+}
+
+.card-preview-panel .card--preview .card__stat--health {
+  min-width: 36px;
+  min-height: 42px;
+  padding: 4px 6px;
+  font-size: 0.9rem;
+}
+
+.card-preview-panel .card--preview .card__footer {
+  padding: 8px 10px 12px;
+  gap: 4px;
+}
+
+.card-preview-panel .card--preview .card__title {
+  font-size: 1rem;
+}
+
+[data-landing-variant='iyashikei'] .card--preview .card__ability-name {
+  display: none;
+}
+[data-landing-variant='iyashikei'] .card__ability {
+  background: rgba(10, 10, 12, 0.24);
+}
+[data-landing-variant='iyashikei'] .card__keywords li {
+  font-weight: 220;
+  border-radius: 33px;
+  background: rgba(10, 10, 12, 0.05);
+}
+
+.card-preview-panel .card--preview .card__ability-name {
+  font-size: 0.8rem;
+}
+
+.card-preview-panel .card--preview .card__ability-text {
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+.card-preview-panel .card--preview .card__keywords {
+  gap: 3px;
+}
+
+.card-preview-panel .card--preview .card__keywords li {
+  font-size: 0.8rem;
+}

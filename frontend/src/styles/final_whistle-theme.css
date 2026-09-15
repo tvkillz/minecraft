@@ -1,0 +1,151 @@
+/* Final Whistle — stadium night tokens (scoped to final_whistle variant) */
+
+[data-landing-variant='final_whistle'] {
+  --fw-pitch: #0a1210;
+  --fw-pitch-lift: #142018;
+  --fw-grass: #3d7a4a;
+  --fw-grass-bright: #7aab78;
+  --fw-gold: #e8c96a;
+  --fw-ember: #c4785a;
+  --fw-ink: #f2f0e8;
+  --fw-ink-muted: rgba(242, 240, 232, 0.72);
+  --fw-ink-soft: rgba(242, 240, 232, 0.52);
+  --fw-border: rgba(61, 122, 74, 0.35);
+  --fw-border-strong: rgba(232, 201, 106, 0.45);
+  --fw-panel: rgba(20, 32, 24, 0.88);
+  --fw-panel-strong: rgba(24, 38, 30, 0.94);
+  --fw-section-gradient: linear-gradient(180deg, #0a1210 0%, #142018 50%, #0a1210 100%);
+}
+
+[data-landing-variant='final_whistle'] .app {
+  background: var(--fw-pitch);
+  color: var(--text-primary);
+}
+
+[data-landing-variant='final_whistle'] :is(.landing-section-title, .locations__kicker, .fw-pressure__title, .fw-dominions__title, .fw-programme__title, .fw-catalog__title, .fw-transfer__title, .fw-faq__title, .fw-shape__title) {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--fw-heading-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: none;
+  animation: none;
+  text-align: left;
+}
+
+[data-landing-variant='final_whistle'] .landing-section-lead {
+  text-align: left;
+  color: var(--fw-ink-muted);
+}
+
+[data-landing-variant='final_whistle'] .landing-section-lead strong {
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .vb-btn {
+  border-radius: 2px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  font-weight: 700;
+}
+
+[data-landing-variant='final_whistle'] .vb-btn--primary {
+  background: linear-gradient(180deg, #e8c96a 0%, #c4a35a 100%);
+  border-color: rgba(232, 201, 106, 0.65);
+  color: #0a1210;
+  box-shadow: 0 4px 16px rgba(232, 201, 106, 0.22);
+}
+
+[data-landing-variant='final_whistle'] .vb-btn--primary:hover:not(:disabled) {
+  box-shadow: 0 6px 22px rgba(232, 201, 106, 0.35);
+}
+
+[data-landing-variant='final_whistle'] .vb-btn--secondary {
+  background: var(--fw-panel);
+  border-color: var(--fw-border);
+  color: var(--fw-ink);
+}
+
+[data-landing-variant='final_whistle'] .vb-btn--secondary:hover:not(:disabled) {
+  border-color: var(--fw-border-strong);
+}
+
+[data-landing-variant='final_whistle'] .site-footer {
+  background: #070d0b;
+  border-top: 1px solid var(--fw-border);
+  color: var(--fw-ink-muted);
+}
+
+/* ── Footer ── */
+
+[data-landing-variant='final_whistle'] .site-footer__heading {
+  font-family: var(--font-heading, var(--font-fantasy));
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fw-grass-bright);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__brand-tagline,
+[data-landing-variant='final_whistle'] .site-footer__link,
+[data-landing-variant='final_whistle'] .site-footer__cookie-btn,
+[data-landing-variant='final_whistle'] .site-footer__copyright,
+[data-landing-variant='final_whistle'] .site-footer__sub-copy {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__contact,
+[data-landing-variant='final_whistle'] .site-footer__contact li,
+[data-landing-variant='final_whistle'] .site-footer__contact-label {
+  color: var(--fw-ink-soft);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__link:hover,
+[data-landing-variant='final_whistle'] .site-footer__cookie-btn:hover {
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__cookie-btn {
+  border-color: var(--fw-border);
+  border-radius: 2px;
+  background: var(--fw-panel);
+  color: var(--fw-grass-bright);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+[data-landing-variant='final_whistle'] .site-footer__cookie-btn:hover {
+  border-color: var(--fw-border-strong);
+  background: var(--fw-panel-strong);
+  color: var(--fw-gold);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__sub {
+  border-top-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__payments {
+  border-top-color: var(--fw-border);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__social-icon {
+  background-color: rgba(61, 122, 74, 0.45);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__social-link:hover .site-footer__social-icon {
+  background-color: rgba(232, 201, 106, 0.35);
+}
+
+[data-landing-variant='final_whistle'] .site-footer__wordmark {
+  transform: translateX(-16px);
+}
+
+[data-landing-variant='final_whistle'] .fw-header__wordmark {
+  transform: translateX(-5px);
+}

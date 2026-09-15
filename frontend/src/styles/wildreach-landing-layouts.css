@@ -1,0 +1,383 @@
+/* WILDREACH landing — section spacing + constrained media (no ultra-wide sausage stretch) */
+
+[data-landing-variant='wildreach'] {
+  --wr-section-pad-y: clamp(1.75rem, 4vw, 3rem);
+  --wr-section-pad-bottom: clamp(1.75rem, 4vw, 3rem);
+  --landing-after-hero-gap: clamp(2.5rem, 7vw, 5rem);
+  --landing-content-max: 1200px;
+  --wr-media-aspect: 16 / 9;
+  --wr-media-max-h: 28rem;
+  /* Shared inset: matches .landing-shell content edge (max-width + gutter) */
+  --wr-content-inline: max(
+    var(--landing-gutter-x),
+    calc((100% - var(--landing-content-max)) / 2 + var(--landing-gutter-x))
+  );
+}
+
+[data-landing-variant='wildreach'] .landing-flow {
+  gap: 0;
+  padding-bottom: var(--wr-section-pad-bottom);
+}
+
+[data-landing-variant='wildreach'] .landing-flow > .wr-hero + .wr-atlas,
+[data-landing-variant='wildreach'] .landing-flow > .wr-atlas + .wr-survey,
+[data-landing-variant='wildreach'] .landing-flow > .wr-survey + .wr-protocol,
+[data-landing-variant='wildreach'] .landing-flow > .wr-protocol + .wr-catalog,
+[data-landing-variant='wildreach'] .landing-flow > .wr-catalog + .wr-pathways,
+[data-landing-variant='wildreach'] .landing-flow > .wr-pathways + .faq,
+[data-landing-variant='wildreach'] .landing-flow > .faq + .final-cta {
+  margin-top: 0;
+}
+
+/* Content shells: centered, capped — leave balanced side space on ultra-wide */
+[data-landing-variant='wildreach'] :is(
+  .wr-atlas,
+  .wr-survey,
+  .wr-protocol,
+  .wr-catalog,
+  .wr-pathways,
+  .faq,
+  .final-cta
+) > .landing-shell {
+  width: 100%;
+  max-width: var(--landing-content-max);
+  margin-inline: auto;
+}
+
+/* Atlas / Survey / Protocol: natural height, fixed media proportions */
+[data-landing-variant='wildreach'] :is(.wr-atlas, .wr-survey, .wr-protocol) {
+  box-sizing: border-box;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--wr-section-pad-y);
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] :is(.wr-atlas, .wr-survey, .wr-protocol) > .landing-shell {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+}
+
+[data-landing-variant='wildreach'] :is(
+  .wr-atlas__header,
+  .wr-survey__header,
+  .wr-protocol__header,
+  .wr-catalog__header
+) {
+  flex: 0 0 auto;
+  max-width: 42rem;
+}
+
+[data-landing-variant='wildreach'] :is(
+  .wr-atlas__title,
+  .wr-survey__title,
+  .wr-protocol__title,
+  .wr-catalog__title
+) {
+  margin: 0 0 0.45rem;
+}
+
+[data-landing-variant='wildreach'] :is(
+  .wr-atlas__lead,
+  .wr-survey__lead,
+  .wr-protocol__lead,
+  .wr-catalog__lead
+) {
+  margin: 0;
+  line-height: 1.5;
+}
+
+[data-landing-variant='wildreach'] :is(
+  .wr-atlas__eyebrow,
+  .wr-survey__eyebrow,
+  .wr-protocol__eyebrow,
+  .wr-catalog__eyebrow
+) {
+  margin: 0 0 0.4rem;
+}
+
+/* —— Range Atlas —— */
+[data-landing-variant='wildreach'] .wr-atlas__board {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  max-height: none;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+[data-landing-variant='wildreach'] .wr-atlas__legend {
+  min-height: 0;
+  max-height: none;
+  align-self: stretch;
+  height: auto;
+}
+
+[data-landing-variant='wildreach'] .wr-atlas__plate {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--wr-media-aspect);
+  max-height: var(--wr-media-max-h);
+}
+
+[data-landing-variant='wildreach'] .wr-atlas__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  aspect-ratio: auto;
+}
+
+/* —— Field Survey —— */
+[data-landing-variant='wildreach'] .wr-survey__stage {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+[data-landing-variant='wildreach'] .wr-survey__hide {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--wr-media-aspect);
+  max-height: var(--wr-media-max-h);
+}
+
+[data-landing-variant='wildreach'] .wr-survey__ledger {
+  height: auto;
+  max-height: var(--wr-media-max-h);
+  min-height: 0;
+  align-self: stretch;
+}
+
+[data-landing-variant='wildreach'] .wr-survey__transect {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* —— Hunt Protocol —— */
+[data-landing-variant='wildreach'] .wr-protocol__passes {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  align-items: start;
+  width: 100%;
+  max-width: 100%;
+}
+
+[data-landing-variant='wildreach'] .wr-protocol__pass {
+  height: auto;
+  min-height: 0;
+}
+
+[data-landing-variant='wildreach'] .wr-protocol__pass-art {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  min-height: 0;
+  aspect-ratio: var(--wr-media-aspect);
+  max-height: min(14rem, var(--wr-media-max-h));
+}
+
+[data-landing-variant='wildreach'] .wr-protocol__pass-copy {
+  flex: 0 0 auto;
+}
+
+[data-landing-variant='wildreach'] .wr-protocol__pass-desc {
+  line-height: 1.4;
+}
+
+/* Catalog keeps a taller panel feel but still capped to content max */
+[data-landing-variant='wildreach'] .wr-catalog {
+  box-sizing: border-box;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-block: var(--wr-section-pad-y);
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] .wr-catalog > .landing-shell {
+  flex: 0 1 auto;
+  min-height: 0;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.8vw, 1.35rem);
+}
+
+[data-landing-variant='wildreach'] .wr-catalog__board {
+  flex: 0 1 auto;
+  min-height: 0;
+}
+
+[data-landing-variant='wildreach'] .wr-catalog__ledger {
+  flex: 0 0 auto;
+}
+
+[data-landing-variant='wildreach'] .wr-hero__transition {
+  height: clamp(2rem, 5vw, 3.25rem);
+}
+
+[data-landing-variant='wildreach'] .wr-pathways {
+  box-sizing: border-box;
+  padding-block: var(--wr-section-pad-y);
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] .wr-pathways__shell {
+  gap: clamp(0.85rem, 2vw, 1.35rem);
+  max-width: var(--landing-content-max, 1200px);
+  margin-inline: auto;
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] .wr-pathways__header {
+  max-width: 42rem;
+}
+
+[data-landing-variant='wildreach'] .wr-pathways__gallery {
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] .faq,
+[data-landing-variant='wildreach'] .final-cta {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+[data-landing-variant='wildreach'] .landing-section-title {
+  text-align: initial;
+}
+
+@media (max-width: 900px) {
+  [data-landing-variant='wildreach'] :is(.wr-atlas, .wr-survey, .wr-protocol, .wr-catalog) {
+    height: auto;
+    max-height: none;
+    min-height: 0;
+    overflow: visible;
+    padding-block: clamp(1.75rem, 5vw, 2.75rem);
+  }
+
+  [data-landing-variant='wildreach'] :is(.wr-atlas, .wr-survey, .wr-protocol, .wr-catalog) > .landing-shell {
+    height: auto;
+    gap: 1rem;
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__board {
+    flex: none;
+    min-height: 0;
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__legend {
+    max-height: none;
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__plate {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    aspect-ratio: var(--wr-media-aspect);
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__frame {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    aspect-ratio: auto;
+  }
+
+  [data-landing-variant='wildreach'] .wr-survey__stage {
+    flex: none;
+    min-height: 0;
+  }
+
+  [data-landing-variant='wildreach'] .wr-survey__hide {
+    max-height: none;
+  }
+
+  [data-landing-variant='wildreach'] .wr-survey__ledger {
+    max-height: none;
+  }
+
+  [data-landing-variant='wildreach'] .wr-protocol__passes,
+  [data-landing-variant='wildreach'] .wr-catalog__board {
+    flex: none;
+  }
+
+  [data-landing-variant='wildreach'] .wr-protocol__pass-art {
+    max-height: none;
+  }
+
+  [data-landing-variant='wildreach'] .faq,
+  [data-landing-variant='wildreach'] .final-cta {
+    overflow: visible;
+  }
+
+  /* Keep pathways clipped so gallery cards never bleed into FAQ / catalog */
+  [data-landing-variant='wildreach'] .wr-pathways {
+    overflow: hidden;
+    padding-block: clamp(1.75rem, 5vw, 2.75rem);
+  }
+}
+
+@media (max-width: 700px) {
+  [data-landing-variant='wildreach'] .wr-atlas__board {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    min-height: 0;
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__legend {
+    flex: 0 0 auto;
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__plate {
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: var(--wr-media-aspect);
+  }
+
+  [data-landing-variant='wildreach'] .wr-atlas__frame {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+}
+
+@media (max-width: 1039px) {
+  [data-landing-variant='wildreach'] .wr-protocol__passes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  [data-landing-variant='wildreach'] .wr-protocol__pass {
+    min-height: 0;
+  }
+
+  [data-landing-variant='wildreach'] .wr-protocol__pass-art {
+    min-height: 0;
+    aspect-ratio: var(--wr-media-aspect);
+  }
+}

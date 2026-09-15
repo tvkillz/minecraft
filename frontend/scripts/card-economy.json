@@ -1,0 +1,39 @@
+{
+  "unitPrices": {
+    "mana": 18,
+    "attack": 14,
+    "health": 11,
+    "keyword": 40,
+    "abilityBase": 25
+  },
+  "keywordWeights": {
+    "Taunt": 1.0,
+    "Ward": 1.0,
+    "Charge": 1.15,
+    "Stealth": 1.2,
+    "Flying": 1.1,
+    "Lifesteal": 1.15,
+    "Deploy": 1.1,
+    "Press": 1.05,
+    "Marker": 1.1,
+    "Switch": 1.1,
+    "Hold": 1.0,
+    "Pulse": 1.05,
+    "Echo": 1.15
+  },
+  "rarityWeights": {
+    "common": 0.45,
+    "uncommon": 0.3,
+    "rare": 0.15,
+    "epic": 0.07,
+    "legendary": 0.03
+  },
+  "priceBands": {
+    "common": [50, 100],
+    "uncommon": [150, 250],
+    "rare": [400, 600],
+    "epic": [1000, 1500],
+    "legendary": [3000, 5000]
+  },
+  "clampPriceToRarityBand": true
+}

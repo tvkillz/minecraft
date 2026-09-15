@@ -1,0 +1,197 @@
+.deck-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.deck-modal--open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.deck-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  background: rgba(10, 10, 12, 0.72);
+  backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.deck-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 520px);
+  padding: 1.75rem 1.5rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid rgba(123, 77, 255, 0.45);
+  background: linear-gradient(
+    180deg,
+    rgba(18, 22, 38, 0.96) 0%,
+    rgba(10, 10, 12, 0.94) 100%
+  );
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px rgba(123, 77, 255, 0.15);
+  transform: translateY(16px) scale(0.97);
+  opacity: 0;
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.deck-modal--open .deck-modal__panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.deck-modal__title {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-fantasy);
+  font-size: 1.35rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #d4c8e8;
+}
+
+.deck-modal__mode {
+  margin: 0 0 1.25rem;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: rgba(232, 220, 200, 0.75);
+}
+
+.deck-modal__error {
+  margin: 0 0 1rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.35);
+  border: 1px solid rgba(248, 113, 113, 0.45);
+}
+
+.deck-modal__field {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.deck-modal__field-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.deck-modal__select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  border: 1px solid rgba(123, 77, 255, 0.35);
+  background: rgba(10, 10, 12, 0.6);
+}
+
+.deck-modal__select {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #f1e6c8;
+  font-family: var(--font-fantasy);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  outline: none;
+}
+
+.deck-modal__select option {
+  background: #0a0a0c;
+  color: #f1e6c8;
+}
+
+.deck-modal__count {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(232, 220, 200, 0.6);
+  white-space: nowrap;
+}
+
+.deck-modal__count--full {
+  color: #5ce08a;
+  text-shadow: 0 0 10px rgba(92, 224, 138, 0.35);
+}
+
+.deck-modal__actions {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  grid-template-rows: auto auto;
+  gap: 0.65rem 0.75rem;
+  align-items: center;
+}
+
+.deck-modal__manage {
+  grid-column: 1 / -1;
+  justify-self: end;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: color-mix(in srgb, var(--violet-accent) 78%, #c8b8e8);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.deck-modal__manage:hover {
+  color: #f0e0ff;
+  text-shadow: 0 0 12px color-mix(in srgb, var(--purple-glow) 35%, transparent);
+}
+
+.deck-modal .vb-btn {
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+  background: color-mix(in srgb, var(--void-black) 72%, transparent);
+  border-color: color-mix(in srgb, var(--purple-glow) 36%, transparent);
+  border-radius: 4px;
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--purple-glow) 12%, transparent),
+    inset 0 0 16px rgba(0, 0, 0, 0.45);
+}
+
+.deck-modal .vb-btn:hover:not(:disabled) {
+  color: #f0e0ff;
+  border-color: color-mix(in srgb, var(--violet-accent) 52%, transparent);
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--purple-glow) 24%, transparent),
+    inset 0 0 14px color-mix(in srgb, var(--purple-glow) 8%, transparent);
+  filter: none;
+}
+
+.deck-modal .vb-btn--primary,
+.deck-modal .vb-btn--secondary {
+  color: color-mix(in srgb, var(--text-primary) 88%, #c8b8e8);
+  background: color-mix(in srgb, var(--void-black) 72%, transparent);
+  border-color: color-mix(in srgb, var(--purple-glow) 36%, transparent);
+}
+
+.deck-modal .vb-btn--primary:hover:not(:disabled),
+.deck-modal .vb-btn--secondary:hover:not(:disabled) {
+  color: #f0e0ff;
+  background: color-mix(in srgb, var(--void-black) 64%, transparent);
+  border-color: color-mix(in srgb, var(--violet-accent) 52%, transparent);
+}

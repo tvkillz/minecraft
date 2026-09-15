@@ -1,0 +1,165 @@
+.payment-cards {
+  display: flex;
+  flex-direction: column;
+  min-height: 14rem;
+  max-height: 24rem;
+  overflow: hidden;
+}
+
+.payment-cards__header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.payment-cards__test-note {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 6px;
+  border: 1px dashed rgba(123, 77, 255, 0.35);
+  background: rgba(123, 77, 255, 0.06);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: rgba(232, 220, 200, 0.65);
+}
+[data-landing-variant='iyashikei'] .payment-cards__test-note {
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.payment-cards__redirect-message {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background: rgba(201, 162, 39, 0.08);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #f3d878;
+}
+
+.payment-cards__limit-note {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.payment-cards__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+}
+
+.payment-cards__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.payment-cards__item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.65rem;
+  border-radius: 8px;
+  border: 1px solid rgba(123, 77, 255, 0.22);
+  background: rgba(8, 8, 12, 0.55);
+}
+
+.payment-cards__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.payment-cards__remove {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.payment-cards__brand {
+  width: 2rem;
+  height: 1.25rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.payment-cards__brand--fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 1.25rem;
+  border-radius: 4px;
+  background: rgba(201, 162, 39, 0.15);
+  color: #f3d878;
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.payment-cards__pan {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  color: #f1e6c8;
+}
+
+.payment-cards__meta {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(232, 220, 200, 0.5);
+}
+
+.payment-cards__pagination {
+  flex-shrink: 0;
+  margin-top: 0.75rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(123, 77, 255, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.payment-cards__pagination-summary {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.55);
+}
+
+.payment-cards__pagination-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.payment-cards__pagination-page {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  color: rgba(232, 220, 200, 0.62);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .payment-cards__header-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .payment-cards__header-actions .btn {
+    flex: 1 1 auto;
+  }
+}

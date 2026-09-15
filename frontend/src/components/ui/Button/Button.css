@@ -1,0 +1,135 @@
+.vb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-family: var(--font-ui);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-primary);
+  background: color-mix(in srgb, var(--void-black) 55%, transparent);
+  border: 1px solid color-mix(in srgb, var(--purple-glow) 45%, transparent);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  box-shadow:
+    0 0 12px color-mix(in srgb, var(--purple-glow) 15%, transparent),
+    inset 0 0 16px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease,
+    transform 0.22s ease,
+    filter 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.vb-btn--fantasy {
+  font-family: var(--font-fantasy);
+  letter-spacing: 0.12em;
+}
+
+.vb-btn--sm {
+  padding: 0.4rem 0.85rem;
+  font-size: 0.68rem;
+}
+
+.vb-btn--md {
+  padding: 0.7rem 1rem;
+  font-size: 0.78rem;
+}
+
+.vb-btn--lg {
+  padding: 0.9rem 1.6rem;
+  font-size: 0.95rem;
+}
+
+.vb-btn:hover:not(:disabled) {
+  color: #fff;
+  border-color: color-mix(in srgb, var(--gold) 70%, transparent);
+  box-shadow:
+    0 0 22px color-mix(in srgb, var(--gold) 35%, transparent),
+    0 0 26px color-mix(in srgb, var(--purple-glow) 28%, transparent),
+    inset 0 0 20px color-mix(in srgb, var(--gold) 8%, transparent);
+  transform: translateY(-2px);
+}
+
+.vb-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+  transform: none;
+}
+
+.vb-btn--primary {
+  color: var(--play-cyan);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, #0e3958 95%, transparent),
+    color-mix(in srgb, #08283e 95%, transparent)
+  );
+  border-color: color-mix(in srgb, var(--cyan-glow) 45%, transparent);
+}
+
+.vb-btn--primary:hover:not(:disabled) {
+  color: #b7e9ff;
+  border-color: color-mix(in srgb, var(--gold) 78%, transparent);
+}
+
+.vb-btn--secondary,
+.vb-btn--ghost {
+  color: #f1e6c8;
+  background: color-mix(in srgb, var(--void-black) 50%, transparent);
+  border-color: color-mix(in srgb, var(--gold) 50%, transparent);
+}
+
+.vb-btn--gold {
+  color: #facc15;
+  border-color: color-mix(in srgb, #facc15 72%, transparent);
+}
+
+.vb-btn--gold:hover:not(:disabled) {
+  border-color: rgba(253, 224, 71, 0.95);
+  box-shadow: 0 0 16px rgba(250, 204, 21, 0.42);
+}
+
+.vb-btn--accent-cyan {
+  border-color: color-mix(in srgb, var(--cyan-glow) 40%, transparent);
+}
+
+.vb-btn--accent-ember {
+  border-color: color-mix(in srgb, var(--ember) 40%, transparent);
+}
+
+.vb-btn--trigger-orange {
+  color: #fdba74;
+  border-color: color-mix(in srgb, var(--trigger-orange) 62%, transparent);
+}
+
+.vb-btn--trigger-orange:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--trigger-orange) 95%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--trigger-orange) 38%, transparent);
+}
+
+.vb-btn--trigger-green {
+  color: #86efac;
+  border-color: color-mix(in srgb, var(--trigger-green) 62%, transparent);
+}
+
+.vb-btn--trigger-green:hover:not(:disabled) {
+  border-color: color-mix(in srgb, #4ade80 90%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--trigger-green) 34%, transparent);
+}
+
+.vb-btn--trigger-blue {
+  color: #93c5fd;
+  border-color: color-mix(in srgb, var(--trigger-blue) 62%, transparent);
+}
+
+.vb-btn--trigger-blue:hover:not(:disabled) {
+  border-color: color-mix(in srgb, #60a5fa 90%, transparent);
+  box-shadow: 0 0 16px color-mix(in srgb, var(--trigger-blue) 34%, transparent);
+}

@@ -1,0 +1,109 @@
+{
+  "hero": {
+    "headline": [
+      "A Minecraft minigames server.",
+      "Support the store. Unlock the perks."
+    ],
+    "subheadline": "Ranks, Victory Coins, and unique minigames — Survive Disasters, MineMart, and more. Java 1.20.4+.",
+    "joinIp": "play.example.com",
+    "joinHint": "Minecraft Java 1.20.4+",
+    "copyIpLabel": "Click to copy",
+    "copiedIpLabel": "Copied!",
+    "discordLabel": "Join our Discord"
+  },
+  "locations": {
+    "kicker": "Welcome to the official store",
+    "paragraphs": [
+      "Running a quality Minecraft server is not cheap. Hosting, development, builds, and ongoing updates all take time and resources. Purchases here directly support the server.",
+      "This server can be joined using <strong>Minecraft Java 1.20.4+</strong>. Not affiliated with Mojang, Microsoft, or Minecraft."
+    ]
+  },
+  "play": {
+    "screenLabel": "Store play screen",
+    "titleLine": "STORE",
+    "titleAccent": ""
+  },
+  "collections": "Your unlocked ranks and coin packs.",
+  "leaderboard": "Server standings — coming soon.",
+  "portal": {
+    "gateTitle": "Sign In Required",
+    "gateMessage": "Sign in to buy ranks, coins, and review your store history.",
+    "comingSoon": "This section is still being built.",
+    "buyCredits": "+ BUY",
+    "withdraw": "WITHDRAW",
+    "cart": "CART",
+    "currencyLabel": "EUR"
+  },
+  "credits": {
+    "title": "Victory Coins",
+    "subtitle": "Speed up progression — kits, extra inventory, and lobby cosmetics.",
+    "standardRate": "STANDARD RATE",
+    "popularBadge": "BEST DEAL",
+    "customAmount": "CUSTOM AMOUNT",
+    "amountToBuy": "AMOUNT TO BUY",
+    "amountPlaceholder": "Enter amount...",
+    "totalLabel": "TOTAL:",
+    "buy": "BUY",
+    "closeLabel": "Close"
+  },
+  "deckModal": {
+    "title": "Choose a loadout",
+    "deckPlaceholder": "Choose a loadout...",
+    "cancel": "Cancel",
+    "enterBattle": "Join",
+    "manageDecks": "Manage"
+  },
+  "header": {
+    "signIn": "Login",
+    "signOut": "Sign Out",
+    "signedInAs": "Signed in as"
+  },
+  "auth": {
+    "signInTitle": "Welcome back",
+    "signInSubtitle": "Sign in with your email and password to continue.",
+    "registerTitle": "Create your account",
+    "registerSubtitle": "Register to buy ranks and Victory Coins.",
+    "emailLabel": "Email",
+    "usernameLabel": "Username",
+    "passwordLabel": "Password",
+    "confirmPasswordLabel": "Confirm Password",
+    "signInSubmit": "Sign In",
+    "registerSubmit": "Create Account",
+    "switchToRegister": "New here? Register",
+    "switchToSignIn": "Already have an account? Sign In",
+    "forgotPasswordLink": "Forgot password?",
+    "forgotPasswordTitle": "Reset password",
+    "forgotPasswordSubtitle": "Enter your email and we will send a reset link.",
+    "forgotPasswordSubmit": "Send Reset Link",
+    "resetEmailSent": "Check your email for a password reset link.",
+    "resetFailed": "Could not send reset email. Try again later.",
+    "callbackLoading": "Verifying your link…",
+    "callbackRecoveryTitle": "Set a New Password",
+    "callbackRecoverySubtitle": "Choose a new password for your account.",
+    "callbackNewPasswordLabel": "New Password",
+    "callbackConfirmPasswordLabel": "Confirm New Password",
+    "callbackUpdatePasswordSubmit": "Update Password",
+    "callbackPasswordUpdated": "Password updated. You can sign in now.",
+    "callbackFailed": "This link is invalid or expired. Request a new one.",
+    "switchBackToSignIn": "Back to sign in",
+    "closeLabel": "Close",
+    "passwordHint": "At least 8 characters, one uppercase letter, and one symbol.",
+    "playGateTitle": "Sign In Required",
+    "playGateMessage": "Sign in before using the store portal.",
+    "playGateCta": "Sign In",
+    "loading": "Loading…",
+    "errors": {
+      "supabaseUnavailable": "Authentication is not configured. Set Supabase env vars on the server.",
+      "invalidEmail": "Enter a valid email address.",
+      "invalidUsername": "Username must be 3–24 characters (letters, numbers, underscore).",
+      "invalidPassword": "Password needs 8+ characters, one uppercase letter, and one symbol.",
+      "passwordMismatch": "Passwords do not match.",
+      "signInEmptyPassword": "Enter your password.",
+      "signInFailed": "Sign in failed. Please try again.",
+      "invalidCredentials": "Invalid email or password.",
+      "signUpFailed": "Registration failed. Try a different email or username.",
+      "emailConfirmation": "Check your email to confirm your account, then sign in.",
+      "emailNotConfirmed": "Confirm your email before signing in, or use Register if you have no account."
+    }
+  }
+}

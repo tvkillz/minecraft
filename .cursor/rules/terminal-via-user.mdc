@@ -1,0 +1,51 @@
+---
+description: Only the user runs VPS/server commands; the agent must not execute them
+alwaysApply: true
+---
+
+# Terminal commands — only the user runs VPS commands
+
+`backend/` and `sendmail/` may later be rclone mounts. The agent must **not** treat this folder as a live server.
+
+**Typical layout:**
+
+| Local | Remote (when mounted) | Host |
+|---|---|---|
+| `backend/` | `/root/constructor-files/backend` | API VPS — Docker / edge functions |
+| `sendmail/` | `/root/constructor-files/sendmail` | Frontend VPS — pm2 mail relay |
+| `projects/` | *(local in this repo)* | Content packs compiled into frontend |
+| `frontend/` | local clone or frontend VPS sync | pm2 + nginx |
+
+## Hard rule: do not run VPS or production commands
+
+**Only the user** may run commands on the VPS (SSH), in production Docker, pm2, production builds, seeds, migrations, or anything that affects the live server.
+
+The agent must **not** use the Shell tool for:
+
+- `npm run build`, `npm run start`, `pm2` (start / restart / logs on the server)
+- `npm run seed:cards:upload` or any seed/upload against production
+- Docker / Supabase (`docker compose`, DB migrations, resets, `functions` deploy)
+- Applying SQL on the production database
+- Installing system packages, nginx/cert changes on the host
+
+When server work is needed, **ask the user** to run it on the VPS. Use this format:
+
+> On the VPS, from `…`, run:
+> ```bash
+> …
+> ```
+
+Include cwd, what success looks like, and never paste secrets from `.env` files.
+
+## What the agent may run locally
+
+- Read / Grep / Glob / semantic search
+- Local lint or typecheck **only if** the user explicitly asks
+- Local `npm install` / compile in this repo when the user asks to run commands on their machine
+
+## After code changes that need deploy
+
+1. **Sync** frontend if using a remote clone
+2. **Frontend VPS:** `npm run build` + `pm2 restart …`
+3. **API VPS:** `docker compose up -d functions --force-recreate` (after `backend/` or `.env` changes)
+4. **Frontend VPS:** `npm install` + `pm2 restart` in `sendmail/` when invoice/mail code changes
