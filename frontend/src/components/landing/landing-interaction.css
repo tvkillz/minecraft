@@ -3,7 +3,11 @@
  * Scoped to main.landing-flow on the homepage.
  */
 .landing-flow .locations__item.vb-btn,
+.landing-flow .mc-hero__chip,
+.landing-flow .mc-hero__tile,
 .landing-flow .mc-perks__chip,
+.landing-flow .mc-perks__slot,
+.landing-flow .mc-perks__store,
 .landing-flow .mc-gallery__card,
 .landing-flow .helix-locations__channel,
 .landing-flow .wr-pathways__card,

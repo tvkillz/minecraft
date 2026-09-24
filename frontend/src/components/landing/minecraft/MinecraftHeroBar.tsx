@@ -1,29 +1,14 @@
-'use client'
-
-import { useState } from 'react'
 import { appConfig } from '@/config'
 
 export default function MinecraftHeroBar() {
   const { hero } = appConfig.descriptions
   const joinIp = hero.joinIp
   const discord = appConfig.descriptions.footer?.social?.find((item) => item.id === 'discord')
-  const [copied, setCopied] = useState(false)
-
-  const copyIp = async () => {
-    if (!joinIp) return
-    try {
-      await navigator.clipboard.writeText(joinIp)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1600)
-    } catch {
-      setCopied(false)
-    }
-  }
 
   return (
     <div className="mc-hero__bar">
       {joinIp ? (
-        <button type="button" className="mc-hero__chip mc-hero__chip--ip" onClick={() => void copyIp()}>
+        <div className="mc-hero__chip mc-hero__chip--ip">
           <span className="mc-hero__chip-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
               <circle cx="12" cy="8" r="3.2" stroke="currentColor" strokeWidth="1.7" />
@@ -37,11 +22,9 @@ export default function MinecraftHeroBar() {
           </span>
           <span className="mc-hero__chip-copy">
             <strong className="mc-hero__chip-title">{joinIp}</strong>
-            <span className="mc-hero__chip-hint">
-              {copied ? (hero.copiedIpLabel ?? 'Copied!') : (hero.copyIpLabel ?? 'Click to copy')}
-            </span>
+            <span className="mc-hero__chip-hint">{hero.joinHint ?? 'Minecraft Java'}</span>
           </span>
-        </button>
+        </div>
       ) : (
         <span />
       )}
@@ -56,11 +39,11 @@ export default function MinecraftHeroBar() {
         <p className="mc-hero__brand">{appConfig.name.display}</p>
       )}
 
-      {discord?.href ? (
-        <a className="mc-hero__chip mc-hero__chip--discord" href={discord.href}>
+      {discord ? (
+        <div className="mc-hero__chip mc-hero__chip--discord">
           <span className="mc-hero__chip-copy">
             <strong className="mc-hero__chip-title">{hero.discordLabel ?? discord.label}</strong>
-            <span className="mc-hero__chip-hint">Click to join</span>
+            <span className="mc-hero__chip-hint">Community</span>
           </span>
           <span className="mc-hero__chip-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
@@ -72,7 +55,7 @@ export default function MinecraftHeroBar() {
               />
             </svg>
           </span>
-        </a>
+        </div>
       ) : (
         <span />
       )}

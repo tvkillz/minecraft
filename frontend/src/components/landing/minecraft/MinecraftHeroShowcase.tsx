@@ -3,7 +3,6 @@
 import type { CSSProperties } from 'react'
 import { HERO_CARDS, LOCATIONS } from '@/config'
 import type { CardDisplayProps } from '@/components/CardPlaceholder/Card'
-import { mcItemHref } from './mc'
 
 function artForFeature(card: CardDisplayProps): string {
   if (card.artUrl) return card.artUrl
@@ -12,10 +11,6 @@ function artForFeature(card: CardDisplayProps): string {
   const cityImages = loc?.cities?.map((city) => city.image).filter(Boolean) ?? loc?.images ?? []
   const fromCities = cityImages[(card.fanIndex ?? 0) % Math.max(cityImages.length, 1)]
   return fromCities || loc?.image || loc?.backgroundImage || ''
-}
-
-function hrefForFeature(card: CardDisplayProps): string {
-  return mcItemHref(card)
 }
 
 export default function MinecraftHeroShowcase() {
@@ -28,18 +23,14 @@ export default function MinecraftHeroShowcase() {
         const image = artForFeature(card)
         return (
           <li key={card.id}>
-            <a
-              className="mc-hero__tile"
-              href={hrefForFeature(card)}
-              style={{ '--tile-glow': card.glowColor } as CSSProperties}
-            >
+            <div className="mc-hero__tile" style={{ '--tile-glow': card.glowColor } as CSSProperties}>
               <span className="mc-hero__tile-art" style={{ backgroundImage: image ? `url(${image})` : undefined }} />
               <span className="mc-hero__tile-body">
                 <span className="mc-hero__tile-kicker">{card.keywords?.[0] ?? card.domain}</span>
                 <strong className="mc-hero__tile-title">{card.title}</strong>
                 <span className="mc-hero__tile-text">{card.ability?.text}</span>
               </span>
-            </a>
+            </div>
           </li>
         )
       })}

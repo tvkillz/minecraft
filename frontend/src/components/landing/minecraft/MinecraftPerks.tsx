@@ -5,7 +5,6 @@ import { HERO_CARDS, LOCATIONS, appConfig } from '@/config'
 import type { CardDisplayProps } from '@/components/CardPlaceholder/Card'
 import type { LocationConfig } from '@/config/schema'
 import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
-import { mcHref, mcItemHref } from './mc'
 import { useSectionVisible } from './useSectionVisible'
 import './styles.css'
 import './sections.css'
@@ -19,8 +18,6 @@ type PerkRow = {
   text: string
   glow: string
   image?: string
-  href?: string
-  copyIp?: boolean
 }
 
 function artForCard(card: CardDisplayProps): string {
@@ -41,7 +38,6 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       text: card.ability?.text ?? location.short,
       glow: card.glowColor || location.glowColor,
       image: artForCard(card),
-      href: mcItemHref(card),
     }))
   }
 
@@ -54,10 +50,9 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       id: 'join-ip',
       kicker: hero.joinHint ?? 'Java',
       title: hero.joinIp,
-      text: hero.copyIpLabel ?? 'Click to copy the server address',
+      text: hero.joinHint ?? 'Minecraft Java server address',
       glow: location.glowColor,
       image: pathwayArt('copy-ip') || '/assets/cta1/copy-ip.png',
-      copyIp: true,
     })
   }
 
@@ -69,7 +64,6 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       text: 'Ranked chat, priority feedback, and patch notes.',
       glow: location.glowColor,
       image: pathwayArt('join-discord') || '/assets/cta1/join-discord.png',
-      href: discord.href,
     })
   }
 
@@ -80,7 +74,6 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
     text: location.short,
     glow: location.glowColor,
     image: location.image || '/assets/perks/spawn-lobby.png',
-    href: mcHref('games'),
   })
 
   return rows
@@ -94,8 +87,7 @@ export default function MinecraftPerks() {
   const { ref, visible } = useSectionVisible<HTMLElement>()
   const hoverTimer = useRef<number>(0)
   const [activeId, setActiveId] = useState<LocationId | undefined>(initialLocationId)
-  const [copied, setCopied] = useState(false)
-  const { locations: copy, hero } = appConfig.descriptions
+  const { locations: copy } = appConfig.descriptions
   const storeCta = appConfig.theme.heroCtas.find((cta) => cta.id === 'store')
 
   useEffect(() => () => window.clearTimeout(hoverTimer.current), [])
@@ -118,17 +110,6 @@ export default function MinecraftPerks() {
 
   const perks = perksForLocation(active)
   const featureArt = active.image || perks.find((row) => row.image)?.image || ''
-
-  const copyIp = async () => {
-    if (!hero.joinIp) return
-    try {
-      await navigator.clipboard.writeText(hero.joinIp)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1600)
-    } catch {
-      setCopied(false)
-    }
-  }
 
   return (
     <section
@@ -214,10 +195,9 @@ export default function MinecraftPerks() {
           <div className="mc-perks__locker">
             <p className="mc-perks__locker-kicker">What you unlock</p>
             <ul className="mc-perks__slots" role="list" key={active.id}>
-              {perks.map((perk) => {
-                const label = perk.copyIp && copied ? (hero.copiedIpLabel ?? 'Copied!') : perk.text
-                const body = (
-                  <>
+              {perks.map((perk) => (
+                <li key={perk.id}>
+                  <div className="mc-perks__slot" style={{ '--tile-glow': perk.glow } as CSSProperties}>
                     <span
                       className="mc-perks__slot-art"
                       style={{ backgroundImage: perk.image ? `url(${perk.image})` : undefined }}
@@ -226,44 +206,15 @@ export default function MinecraftPerks() {
                     <span className="mc-perks__slot-copy">
                       <span className="mc-perks__slot-kicker">{perk.kicker}</span>
                       <strong className="mc-perks__slot-title">{perk.title}</strong>
-                      <span className="mc-perks__slot-text">{label}</span>
+                      <span className="mc-perks__slot-text">{perk.text}</span>
                     </span>
-                  </>
-                )
-
-                if (perk.copyIp) {
-                  return (
-                    <li key={perk.id}>
-                      <button
-                        type="button"
-                        className="mc-perks__slot"
-                        style={{ '--tile-glow': perk.glow } as CSSProperties}
-                        onClick={() => void copyIp()}
-                      >
-                        {body}
-                      </button>
-                    </li>
-                  )
-                }
-
-                return (
-                  <li key={perk.id}>
-                    <a
-                      className="mc-perks__slot"
-                      href={perk.href ?? '#'}
-                      style={{ '--tile-glow': perk.glow } as CSSProperties}
-                    >
-                      {body}
-                    </a>
-                  </li>
-                )
-              })}
+                  </div>
+                </li>
+              ))}
             </ul>
 
             {storeCta ? (
-              <button type="button" className="mc-perks__store" aria-disabled="true">
-                {storeCta.label}
-              </button>
+              <span className="mc-perks__store">{storeCta.label}</span>
             ) : null}
           </div>
         </div>

@@ -10,8 +10,11 @@ import {
 } from 'react'
 import { appConfig } from '@/config'
 import type { CollectionCardDisplay } from '@/config/schema'
+import { SHOP_HASH_EVENT } from './mc'
 import { useSectionVisible } from './useSectionVisible'
 import './sections.css'
+
+const SHOP_HEADER_OFFSET = 88
 
 function prefersFinePointerHover() {
   return window.matchMedia('(hover: hover) and (pointer: fine)').matches
@@ -187,6 +190,20 @@ export default function MinecraftCatalog() {
     scrollSlideIntoView(next)
   }
 
+  const revealShop = (index: number, instant = false) => {
+    const next = Math.min(items.length - 1, Math.max(0, index))
+    activeIndexRef.current = next
+    setActiveIndex(next)
+    scrollSlideIntoView(next, instant)
+    const section = ref.current
+    if (!section) return
+    const top = Math.max(0, section.getBoundingClientRect().top + window.scrollY - SHOP_HEADER_OFFSET)
+    window.scrollTo({
+      top,
+      behavior: instant || prefersReducedMotion() ? 'auto' : 'smooth',
+    })
+  }
+
   useLayoutEffect(() => {
     if (!items.length) return
     const fromHash = firstIndexForHash(items, window.location.hash)
@@ -223,18 +240,29 @@ export default function MinecraftCatalog() {
   }, [items.length])
 
   useEffect(() => {
-    const applyHash = () => {
+    const applyHash = (instant = false) => {
       const index = firstIndexForHash(items, window.location.hash)
-      if (index < 0) return
-      ref.current?.scrollIntoView({
-        behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-        block: 'start',
-      })
-      activateIndex(index)
+      if (index >= 0) revealShop(index, instant)
     }
-    applyHash()
-    window.addEventListener('hashchange', applyHash)
-    return () => window.removeEventListener('hashchange', applyHash)
+
+    const previousRestoration = history.scrollRestoration
+    if (firstIndexForHash(items, window.location.hash) >= 0) {
+      history.scrollRestoration = 'manual'
+    }
+
+    applyHash(true)
+    const retry = window.setTimeout(() => applyHash(true), 180)
+    const onHash = () => applyHash(false)
+    window.addEventListener('hashchange', onHash)
+    window.addEventListener('popstate', onHash)
+    window.addEventListener(SHOP_HASH_EVENT, onHash)
+    return () => {
+      history.scrollRestoration = previousRestoration
+      window.clearTimeout(retry)
+      window.removeEventListener('hashchange', onHash)
+      window.removeEventListener('popstate', onHash)
+      window.removeEventListener(SHOP_HASH_EVENT, onHash)
+    }
   }, [items])
 
   const onPointerDown = (event: ReactPointerEvent<HTMLUListElement>) => {

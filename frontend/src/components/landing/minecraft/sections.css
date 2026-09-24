@@ -127,6 +127,7 @@ button.mc-cta-chip {
   width: 1px;
   height: 1px;
   overflow: hidden;
+  scroll-margin-top: 5.5rem;
 }
 
 .mc-gallery__rail {
