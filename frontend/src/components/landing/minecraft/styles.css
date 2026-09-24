@@ -396,6 +396,7 @@
   flex-direction: column;
   gap: 0.9rem;
   padding-block: clamp(3.2rem, 7vw, 5rem);
+  padding-inline: var(--landing-gutter-x, 1.5rem);
 }
 
 .mc-perks__copy {

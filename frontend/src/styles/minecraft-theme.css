@@ -1,4 +1,5 @@
 [data-landing-variant='minecraft'] {
+  --landing-content-max: none;
   --font-fantasy: 'Pixelify Sans', 'Inter', system-ui, sans-serif;
   --mc-void: #101010;
   --mc-void-lift: #161618;

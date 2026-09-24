@@ -45,7 +45,8 @@
   flex-direction: column;
   gap: 0.9rem;
   padding-block: clamp(3.2rem, 7vw, 5rem);
-  margin: 5rem 0;
+  padding-inline: var(--landing-gutter-x, 1.5rem);
+  margin-block: 5rem;
 }
 
 .mc-section__copy {
