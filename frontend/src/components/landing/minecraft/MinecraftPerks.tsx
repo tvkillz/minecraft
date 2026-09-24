@@ -27,6 +27,10 @@ function artForCard(card: CardDisplayProps): string {
   return card.artUrl || card.thumbUrl || ''
 }
 
+function pathwayArt(id: string): string {
+  return appConfig.descriptions.pathways?.features.find((feature) => feature.id === id)?.image ?? ''
+}
+
 function perksForLocation(location: LocationConfig): PerkRow[] {
   const cards = HERO_CARDS.filter((card) => card.domain === location.domainId)
   if (cards.length) {
@@ -52,6 +56,7 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       title: hero.joinIp,
       text: hero.copyIpLabel ?? 'Click to copy the server address',
       glow: location.glowColor,
+      image: pathwayArt('copy-ip') || '/assets/cta1/copy-ip.png',
       copyIp: true,
     })
   }
@@ -63,6 +68,7 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       title: hero.discordLabel ?? discord.label,
       text: 'Ranked chat, priority feedback, and patch notes.',
       glow: location.glowColor,
+      image: pathwayArt('join-discord') || '/assets/cta1/join-discord.png',
       href: discord.href,
     })
   }
@@ -73,6 +79,7 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
     title: location.name,
     text: location.short,
     glow: location.glowColor,
+    image: location.image || '/assets/perks/spawn-lobby.png',
     href: mcHref('games'),
   })
 

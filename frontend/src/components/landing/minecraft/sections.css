@@ -24,7 +24,14 @@
 
 .mc-section__wash {
   background:
-    linear-gradient(180deg, rgba(10, 10, 12, 0.42) 0%, rgba(10, 10, 12, 0.28) 40%, rgba(10, 10, 12, 0.88) 100%);
+    linear-gradient(
+      180deg,
+      var(--void-black) 0%,
+      rgba(10, 10, 12, 0.4) 16%,
+      rgba(10, 10, 12, 0.26) 42%,
+      rgba(10, 10, 12, 0.52) 80%,
+      var(--void-black) 100%
+    );
 }
 
 .mc-section__vignette {
@@ -366,7 +373,7 @@ button.mc-cta-chip {
 
 .mc-gallery__dot--active {
   background: var(--gold);
-  transform: scale(1.2);
+  /* transform: scale(1.2); */
 }
 
 .mc-section--center .mc-section__copy {
