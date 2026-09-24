@@ -77,3 +77,39 @@
     max-width: 2.55rem;
   }
 }
+
+[data-landing-variant='minecraft'] .header__nav-list a,
+[data-landing-variant='minecraft'] .header__nav-link,
+[data-landing-variant='minecraft'] .header__nav-btn {
+  color: var(--text-muted);
+}
+
+[data-landing-variant='minecraft'] .header__nav-list a:hover,
+[data-landing-variant='minecraft'] .header__nav-link:hover,
+[data-landing-variant='minecraft'] .header__nav-btn:hover {
+  background: color-mix(in srgb, var(--gold) 14%, transparent);
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+[data-landing-variant='minecraft'] .site-footer {
+  background: #101010;
+  border-top-color: rgba(232, 185, 35, 0.16);
+}
+
+[data-landing-variant='minecraft'] .site-footer__heading {
+  color: var(--gold);
+}
+
+[data-landing-variant='minecraft'] .site-footer__payments,
+[data-landing-variant='minecraft'] .site-footer__sub {
+  border-top-color: rgba(232, 185, 35, 0.12);
+}
+
+[data-landing-variant='minecraft'] .site-footer__cookie-btn {
+  border-color: rgba(232, 185, 35, 0.28);
+}
+
+[data-landing-variant='minecraft'] .landing-flow {
+  gap: clamp(2.5rem, 6vw, 4rem);
+}

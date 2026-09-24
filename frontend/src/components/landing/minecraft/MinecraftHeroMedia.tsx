@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
 import { LOCATION_SLIDES } from '@/config'
 
 const SLIDE_INTERVAL_MS = 7000
@@ -50,11 +51,12 @@ export default function MinecraftHeroMedia() {
   return (
     <div ref={rootRef} className="mc-hero__media-root">
       {activeImage ? (
-        <img
-          key={activeImage}
+        <ImageCrossfade
           src={activeImage}
-          alt=""
-          className="mc-hero__slide"
+          className="mc-hero__slides"
+          imageClassName="mc-hero__slide"
+          durationMs={900}
+          zoom={false}
           decoding="async"
         />
       ) : null}

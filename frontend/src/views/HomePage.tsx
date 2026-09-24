@@ -78,47 +78,53 @@ const FinalCtaSection = dynamic(
 
 const Footer = dynamic(() => import('@/components/Footer/Footer'), { ssr: true })
 
+const MinecraftLanding = dynamic(
+  () => import('@/components/landing/minecraft/MinecraftLanding'),
+  { ssr: true },
+)
+
 export default function HomePage() {
   const variant = appConfig.landing?.variant
   const isFinalWhistle = variant === 'final_whistle'
   const isWildreach = variant === 'wildreach'
+  const isMinecraft = variant === 'minecraft'
 
   return (
     <div className="app">
       <LandingHeader />
       <main className="landing-flow">
         <LandingHero />
-        <LandingLocations />
-        {isFinalWhistle ? (
+        {isMinecraft ? <MinecraftLanding /> : <LandingLocations />}
+        {isMinecraft ? null : isFinalWhistle ? (
           <FinalWhistleDominionsSection />
         ) : isWildreach ? (
           <WildreachFieldSurvey />
         ) : (
           <DominionsSection />
         )}
-        {isFinalWhistle ? (
+        {isMinecraft ? null : isFinalWhistle ? (
           <FinalWhistleGameModelSection />
         ) : isWildreach ? (
           <WildreachHuntProtocol />
         ) : (
           <GameModelSection />
         )}
-        {isFinalWhistle ? (
+        {isMinecraft ? null : isFinalWhistle ? (
           <FinalWhistleCatalogSection />
         ) : isWildreach ? (
           <WildreachCatalog />
         ) : (
           <CollectionSection />
         )}
-        {isFinalWhistle ? (
+        {isMinecraft ? null : isFinalWhistle ? (
           <FinalWhistlePathwaysSection />
         ) : isWildreach ? (
           <WildreachPathways />
         ) : (
           <PathwaysSection />
         )}
-        {isFinalWhistle ? <FinalWhistleFaqSection /> : <FaqSection />}
-        {isFinalWhistle ? <FinalWhistleShapeSection /> : <FinalCtaSection />}
+        {isMinecraft ? null : isFinalWhistle ? <FinalWhistleFaqSection /> : <FaqSection />}
+        {isMinecraft ? null : isFinalWhistle ? <FinalWhistleShapeSection /> : <FinalCtaSection />}
       </main>
       <Footer />
     </div>

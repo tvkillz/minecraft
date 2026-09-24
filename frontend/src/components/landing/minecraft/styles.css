@@ -309,3 +309,337 @@
     grid-template-columns: 1fr;
   }
 }
+
+.mc-perks {
+  position: relative;
+  overflow: hidden;
+  color: var(--text-primary);
+}
+
+.mc-perks__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #101010;
+}
+
+.mc-perks__bg-fade,
+.mc-perks__bg-image,
+.mc-perks__feature-fade,
+.mc-perks__feature-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mc-perks__bg-image,
+.mc-perks__feature-image {
+  object-fit: cover;
+}
+
+.mc-perks__wash,
+.mc-perks__vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mc-perks__wash {
+  background:
+    linear-gradient(180deg, rgba(10, 10, 12, 0.42) 0%, rgba(10, 10, 12, 0.28) 40%, rgba(10, 10, 12, 0.88) 100%);
+}
+
+.mc-perks__vignette {
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.55);
+}
+
+.mc-perks__stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding-block: clamp(3.2rem, 7vw, 5rem);
+}
+
+.mc-perks__copy {
+  max-width: 38rem;
+  padding: 0.85rem 1.1rem;
+  border-radius: 8px;
+  background: rgba(18, 18, 20, 0.78);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 420ms ease,
+    transform 420ms ease;
+}
+
+.mc-perks--visible .mc-perks__copy {
+  opacity: 1;
+  transform: none;
+}
+
+.mc-perks__eyebrow {
+  margin: 0 0 0.35rem;
+  color: var(--gold);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mc-perks__title {
+  margin: 0;
+  font-family: var(--font-fantasy);
+  font-size: clamp(1.45rem, 3vw, 2.2rem);
+  line-height: 1.12;
+}
+
+.mc-perks__lead {
+  display: grid;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.mc-perks__lead p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.mc-perks__lead strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.mc-perks__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.mc-perks__chip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  min-width: 9.5rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: rgba(12, 12, 14, 0.72);
+  color: inherit;
+  text-align: left;
+  cursor: default;
+  backdrop-filter: blur(8px);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.mc-perks__chip:hover,
+.mc-perks__chip--active {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--tile-glow, var(--gold)) 45%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--tile-glow, var(--gold)) 35%, transparent);
+}
+
+.mc-perks__chip-title {
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mc-perks__chip-hint {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.mc-perks__board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: 1rem;
+  min-height: 0;
+}
+
+.mc-perks__feature,
+.mc-perks__slot,
+.mc-perks__store {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(16, 16, 18, 0.88);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.mc-perks__feature {
+  display: flex;
+  min-height: 360px;
+  overflow: hidden;
+  flex-direction: column;
+}
+
+.mc-perks__feature-art {
+  position: relative;
+  display: block;
+  flex: 1 1 auto;
+  min-height: 220px;
+  overflow: hidden;
+  background-color: #1b1b1f;
+}
+
+.mc-perks__feature-body,
+.mc-perks__slots {
+  animation: mc-perk-in 520ms ease;
+}
+
+@keyframes mc-perk-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mc-perks__feature-body,
+  .mc-perks__slots,
+  .mc-perks__chip,
+  .mc-perks__slot,
+  .mc-perks__store {
+    animation: none;
+    transition: none;
+  }
+}
+
+.mc-perks__feature-body {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.55rem 0.8rem 0.75rem;
+}
+
+.mc-perks__feature-kicker,
+.mc-perks__locker-kicker,
+.mc-perks__slot-kicker {
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.mc-perks__feature-title,
+.mc-perks__slot-title {
+  font-family: var(--font-fantasy);
+  font-size: 1.15rem;
+}
+
+.mc-perks__feature-text,
+.mc-perks__slot-text {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.mc-perks__locker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 0;
+  min-height: 22rem;
+  padding: 0.85rem 1.1rem 1rem;
+  border-radius: 8px;
+  background: rgba(18, 18, 20, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+.mc-perks__locker-kicker {
+  margin: 0;
+}
+
+.mc-perks__slots {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mc-perks__slot {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mc-perks__slot:hover,
+.mc-perks__store:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px color-mix(in srgb, var(--tile-glow, var(--gold)) 45%, transparent);
+}
+
+.mc-perks__slot-art {
+  min-height: 72px;
+  background-color: #1b1b1f;
+  background-size: cover;
+  background-position: center;
+}
+
+.mc-perks__slot-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+  padding: 0.55rem 0.7rem 0.65rem;
+}
+
+.mc-perks__store {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  font-family: var(--font-fantasy);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 960px) {
+  .mc-perks__board {
+    grid-template-columns: 1fr;
+  }
+
+  .mc-perks__feature {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mc-perks__chips {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .mc-perks__chip {
+    min-width: 0;
+  }
+
+  .mc-perks__slot {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+}
