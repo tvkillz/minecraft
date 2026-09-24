@@ -653,6 +653,7 @@
   padding: 0.55rem 0.85rem;
   font-family: var(--font-fantasy);
   font-size: 0.95rem;
+  cursor: default;
 }
 
 @media (max-width: 960px) {

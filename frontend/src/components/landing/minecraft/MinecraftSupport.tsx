@@ -14,19 +14,15 @@ const FUND_KICKER: Record<string, string> = {
   'buy-coins': 'Spends in-game',
 }
 
-function fundHref(featureId: string, storeHref: string): string {
+function fundHref(featureId: string): string {
   if (featureId === 'buy-rank') return mcHref('ranks')
   if (featureId === 'buy-coins') return mcHref('coins')
-  return storeHref
+  return '#'
 }
 
 export default function MinecraftSupport() {
   const pathways = appConfig.descriptions.pathways
   const { ref, visible } = useSectionVisible<HTMLElement>()
-
-  const storeHref = pathways?.marketCta?.route
-    ? appConfig.domain.routes[pathways.marketCta.route]
-    : appConfig.domain.routes.portalStore
 
   const funds = useMemo(() => {
     const features = pathways?.features ?? []
@@ -73,7 +69,7 @@ export default function MinecraftSupport() {
             <a
               key={fund.id}
               className="mc-support__pledge"
-              href={fundHref(fund.id, storeHref)}
+              href={fundHref(fund.id)}
               style={{ '--tile-glow': fund.glowColor } as CSSProperties}
             >
               <span className="mc-support__pledge-art" aria-hidden="true">
@@ -108,9 +104,9 @@ export default function MinecraftSupport() {
 
         {pathways.marketCta ? (
           <p className="mc-support__close">
-            <a className="mc-cta-chip" href={storeHref}>
+            <button type="button" className="mc-cta-chip" aria-disabled="true">
               {pathways.marketCta.buttonLabel}
-            </a>
+            </button>
           </p>
         ) : null}
       </div>

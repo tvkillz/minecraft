@@ -1,8 +1,9 @@
 'use client'
 
 import type { CSSProperties } from 'react'
-import { HERO_CARDS, LOCATIONS, appConfig } from '@/config'
+import { HERO_CARDS, LOCATIONS } from '@/config'
 import type { CardDisplayProps } from '@/components/CardPlaceholder/Card'
+import { mcItemHref } from './mc'
 
 function artForFeature(card: CardDisplayProps): string {
   if (card.artUrl) return card.artUrl
@@ -14,10 +15,7 @@ function artForFeature(card: CardDisplayProps): string {
 }
 
 function hrefForFeature(card: CardDisplayProps): string {
-  if (card.domain === 'ranks') return appConfig.domain.anchors.play
-  if (card.domain === 'coins') return appConfig.domain.anchors.market
-  if (card.domain === 'games') return appConfig.domain.anchors.leaderboard
-  return appConfig.domain.routes.portalStore
+  return mcItemHref(card)
 }
 
 export default function MinecraftHeroShowcase() {

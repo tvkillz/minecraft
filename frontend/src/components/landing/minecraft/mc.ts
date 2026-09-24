@@ -1,8 +1,14 @@
 import { appConfig } from '@/config'
 
 export function mcHref(domainId: string): string {
-  if (domainId === 'ranks') return appConfig.domain.anchors.play
-  if (domainId === 'coins') return appConfig.domain.anchors.market
-  if (domainId === 'games' || domainId === 'minigames') return appConfig.domain.anchors.leaderboard
-  return appConfig.domain.routes.portalStore
+  if (domainId === 'ranks') return '#ranks'
+  if (domainId === 'coins') return '#coins'
+  if (domainId === 'games' || domainId === 'minigames') return '#minigames'
+  return '#'
+}
+
+export function mcItemHref(item: { slug?: string; id?: string; domain?: string }): string {
+  const key = item.slug || item.id
+  if (key) return `#${key}`
+  return mcHref(item.domain ?? '')
 }

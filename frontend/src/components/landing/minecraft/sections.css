@@ -106,11 +106,15 @@
     box-shadow 160ms ease;
 }
 
-.mc-cta-chip:hover {
+.mc-cta-chip:hover:not([aria-disabled='true']) {
   transform: translateY(-3px);
   box-shadow:
     0 14px 32px rgba(0, 0, 0, 0.35),
     0 0 0 1px color-mix(in srgb, var(--gold) 45%, transparent);
+}
+
+.mc-cta-chip[aria-disabled='true'] {
+  cursor: default;
 }
 
 button.mc-cta-chip {
@@ -632,7 +636,7 @@ button.mc-cta-chip {
   z-index: 1;
   display: grid;
   place-items: center;
-  width: 2.15rem;
+  width: 4.2rem;
   height: 2.15rem;
   border: 1px solid color-mix(in srgb, var(--tile-glow, var(--gold)) 55%, transparent);
   border-radius: 999px;

@@ -5,7 +5,7 @@ import { HERO_CARDS, LOCATIONS, appConfig } from '@/config'
 import type { CardDisplayProps } from '@/components/CardPlaceholder/Card'
 import type { LocationConfig } from '@/config/schema'
 import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
-import { mcHref } from './mc'
+import { mcHref, mcItemHref } from './mc'
 import { useSectionVisible } from './useSectionVisible'
 import './styles.css'
 import './sections.css'
@@ -41,7 +41,7 @@ function perksForLocation(location: LocationConfig): PerkRow[] {
       text: card.ability?.text ?? location.short,
       glow: card.glowColor || location.glowColor,
       image: artForCard(card),
-      href: mcHref(location.domainId),
+      href: mcItemHref(card),
     }))
   }
 
@@ -250,7 +250,7 @@ export default function MinecraftPerks() {
                   <li key={perk.id}>
                     <a
                       className="mc-perks__slot"
-                      href={perk.href ?? appConfig.domain.routes.portalStore}
+                      href={perk.href ?? '#'}
                       style={{ '--tile-glow': perk.glow } as CSSProperties}
                     >
                       {body}
@@ -261,9 +261,9 @@ export default function MinecraftPerks() {
             </ul>
 
             {storeCta ? (
-              <a className="mc-perks__store" href={appConfig.domain.routes.portalStore}>
+              <button type="button" className="mc-perks__store" aria-disabled="true">
                 {storeCta.label}
-              </a>
+              </button>
             ) : null}
           </div>
         </div>

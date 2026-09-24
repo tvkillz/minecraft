@@ -10,7 +10,6 @@ import {
 } from 'react'
 import { appConfig } from '@/config'
 import type { CollectionCardDisplay } from '@/config/schema'
-import { mcHref } from './mc'
 import { useSectionVisible } from './useSectionVisible'
 import './sections.css'
 
@@ -36,8 +35,11 @@ function startIndexForItems(items: CollectionCardDisplay[]) {
 }
 
 function firstIndexForHash(items: CollectionCardDisplay[], hash: string): number {
-  const domain =
-    hash === 'ranks' ? 'ranks' : hash === 'coins' ? 'coins' : hash === 'minigames' ? 'games' : ''
+  const id = hash.replace(/^#/, '')
+  if (!id) return -1
+  const exact = items.findIndex((item) => item.slug === id || item.id === id)
+  if (exact >= 0) return exact
+  const domain = id === 'ranks' ? 'ranks' : id === 'coins' ? 'coins' : id === 'minigames' ? 'games' : ''
   if (!domain) return -1
   return items.findIndex((item) => item.domain === domain)
 }
@@ -110,11 +112,6 @@ function GallerySlide({
           <span className="mc-gallery__kicker">{domainKicker(item.domain)}</span>
           <h3 className="mc-gallery__name">{item.title}</h3>
           {item.ability?.text ? <p className="mc-gallery__text">{item.ability.text}</p> : null}
-          {isActive ? (
-            <a className="mc-gallery__link" href={mcHref(item.domain)} onClick={(event) => event.stopPropagation()}>
-              View in store
-            </a>
-          ) : null}
         </div>
       </article>
     </li>
@@ -192,7 +189,8 @@ export default function MinecraftCatalog() {
 
   useLayoutEffect(() => {
     if (!items.length) return
-    const start = startIndexForItems(items)
+    const fromHash = firstIndexForHash(items, window.location.hash)
+    const start = fromHash >= 0 ? fromHash : startIndexForItems(items)
     activeIndexRef.current = start
     setActiveIndex(start)
 
@@ -226,8 +224,13 @@ export default function MinecraftCatalog() {
 
   useEffect(() => {
     const applyHash = () => {
-      const index = firstIndexForHash(items, window.location.hash.replace('#', ''))
-      if (index >= 0) activateIndex(index)
+      const index = firstIndexForHash(items, window.location.hash)
+      if (index < 0) return
+      ref.current?.scrollIntoView({
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+        block: 'start',
+      })
+      activateIndex(index)
     }
     applyHash()
     window.addEventListener('hashchange', applyHash)
