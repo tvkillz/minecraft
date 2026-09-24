@@ -1,5 +1,15 @@
 [data-landing-variant='minecraft'] {
   --font-fantasy: 'Pixelify Sans', 'Inter', system-ui, sans-serif;
+  --mc-void: #101010;
+  --mc-void-lift: #161618;
+  --mc-ink: #f4f4f5;
+  --mc-ink-muted: rgba(244, 244, 245, 0.78);
+  --mc-ink-soft: rgba(244, 244, 245, 0.55);
+  --mc-gold: #e8b923;
+  --mc-grass: #3d8f3d;
+  --mc-border: rgba(232, 185, 35, 0.28);
+  --mc-border-strong: rgba(232, 185, 35, 0.52);
+  --mc-panel: rgba(16, 16, 18, 0.92);
 }
 
 [data-landing-variant='minecraft'] .header__title,
@@ -98,7 +108,7 @@
 }
 
 [data-landing-variant='minecraft'] .site-footer__heading {
-  color: var(--gold);
+  color: var(--mc-gold);
 }
 
 [data-landing-variant='minecraft'] .site-footer__payments,
@@ -107,7 +117,59 @@
 }
 
 [data-landing-variant='minecraft'] .site-footer__cookie-btn {
-  border-color: rgba(232, 185, 35, 0.28);
+  border-color: var(--mc-border);
+  border-radius: 8px;
+  background: rgba(16, 16, 18, 0.72);
+}
+
+[data-landing-variant='minecraft'] .site-footer__cookie-btn:hover {
+  color: var(--mc-gold);
+  border-color: var(--mc-border-strong);
+}
+
+[data-landing-variant='minecraft'] .vb-btn {
+  border-radius: 8px;
+  border-color: var(--mc-border);
+  background: rgba(16, 16, 18, 0.88);
+  color: var(--mc-ink);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+  backdrop-filter: none;
+}
+
+[data-landing-variant='minecraft'] .vb-btn:hover:not(:disabled) {
+  color: var(--mc-ink);
+  border-color: var(--mc-border-strong);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.34),
+    0 0 0 1px color-mix(in srgb, var(--mc-gold) 35%, transparent);
+  filter: none;
+}
+
+[data-landing-variant='minecraft'] .vb-btn--primary,
+[data-landing-variant='minecraft'] .vb-btn--gold {
+  color: #16130a;
+  background: linear-gradient(180deg, #f0cc4a 0%, #e8b923 48%, #c49a1c 100%);
+  border-color: rgba(232, 185, 35, 0.72);
+  box-shadow:
+    0 8px 20px rgba(232, 185, 35, 0.22),
+    inset 0 1px 0 rgba(255, 244, 200, 0.35);
+}
+
+[data-landing-variant='minecraft'] .vb-btn--primary:hover:not(:disabled),
+[data-landing-variant='minecraft'] .vb-btn--gold:hover:not(:disabled) {
+  color: #16130a;
+  border-color: rgba(240, 204, 74, 0.9);
+  box-shadow:
+    0 10px 24px rgba(232, 185, 35, 0.32),
+    inset 0 1px 0 rgba(255, 244, 200, 0.42);
+}
+
+[data-landing-variant='minecraft'] .vb-btn--secondary,
+[data-landing-variant='minecraft'] .vb-btn--ghost {
+  color: var(--mc-ink);
+  background: rgba(16, 16, 18, 0.78);
+  border-color: var(--mc-border);
+  box-shadow: none;
 }
 
 [data-landing-variant='minecraft'] .landing-flow {

@@ -87,6 +87,11 @@ export function buildThemeCssVars(): Record<string, string> {
     vars['--font-heading'] = "'Bebas Neue', 'DM Sans', system-ui, sans-serif"
   }
 
+  if (variant === 'minecraft') {
+    vars['--headline-gradient'] =
+      'linear-gradient(105deg, #f4f4f5 0%, #e8b923 48%, #3d8f3d 100%)'
+  }
+
   if (variant === 'wildreach') {
     vars['--surface-paper'] = colors.voidBlack
     vars['--surface-ink'] = colors.textPrimary

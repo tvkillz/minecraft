@@ -1,6 +1,6 @@
 {
-  "title": "Support the server",
-  "description": "Hosting, builds, and updates are funded by this store. Pick a rank, grab coins, or just jump in and play.",
+  "title": "This store pays for the world",
+  "description": "Hosting, plugin work, and new maps come out of what people buy here. A rank stays with you. Coins spend in every minigame.",
   "features": [
     {
       "id": "join-discord",
@@ -55,7 +55,7 @@
     }
   ],
   "marketCta": {
-    "description": "Ready to support the server?",
+    "description": "Choose a rank or a coin pack.",
     "buttonLabel": "Open the store",
     "route": "portalStore"
   }

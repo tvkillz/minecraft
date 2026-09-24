@@ -1,0 +1,247 @@
+/* The Coop — store panels for cookies, auth, and checkout overlays. */
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__backdrop,
+    .credits-modal__backdrop,
+    .withdrawal-modal__backdrop,
+    .payment-method-modal__backdrop,
+    .buy-card-modal__backdrop,
+    .clear-deck-modal__backdrop,
+    .terms-sale-modal__backdrop,
+    .deck-modal__backdrop,
+    .cookie-consent__backdrop,
+    .market-cart__backdrop
+  ) {
+  background: rgba(8, 8, 10, 0.78);
+  backdrop-filter: blur(8px);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__panel,
+    .credits-modal__panel,
+    .withdrawal-modal__panel,
+    .payment-method-modal__panel,
+    .buy-card-modal__panel,
+    .clear-deck-modal__panel,
+    .terms-sale-modal__panel,
+    .deck-modal__panel,
+    .cookie-consent__panel,
+    .auth-gate__panel
+  ) {
+  border-radius: 8px;
+  border: 1px solid var(--mc-border, rgba(232, 185, 35, 0.28));
+  background:
+    linear-gradient(180deg, rgba(22, 22, 24, 0.96) 0%, rgba(12, 12, 14, 0.98) 100%);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 1px color-mix(in srgb, var(--mc-gold, #e8b923) 12%, transparent);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ) {
+  border: 1px solid var(--mc-border, rgba(232, 185, 35, 0.28));
+  border-radius: 8px;
+  background: rgba(16, 16, 18, 0.75);
+  color: var(--mc-ink-soft, rgba(244, 244, 245, 0.55));
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__close,
+    .credits-modal__close,
+    .withdrawal-modal__close,
+    .payment-method-modal__close,
+    .terms-sale-modal__close
+  ):hover:not(:disabled) {
+  color: var(--mc-gold, #e8b923);
+  background: rgba(22, 22, 24, 0.94);
+  border-color: var(--mc-border-strong, rgba(232, 185, 35, 0.52));
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__title,
+    .credits-modal__title,
+    .withdrawal-modal__title,
+    .payment-method-modal__title,
+    .buy-card-modal__title,
+    .clear-deck-modal__title,
+    .terms-sale-modal__title,
+    .deck-modal__title,
+    .cookie-consent__title,
+    .auth-gate__title,
+    .market-cart__title
+  ) {
+  font-family: var(--font-fantasy);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  color: var(--mc-ink, #f4f4f5);
+  text-shadow: none;
+  filter: none;
+}
+
+[data-landing-variant='minecraft'] .auth-gate__loading {
+  font-family: var(--font-fantasy);
+  color: var(--mc-gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__subtitle,
+    .auth-modal__label,
+    .auth-modal__text,
+    .credits-modal__subtitle,
+    .credits-modal__currency-label,
+    .withdrawal-modal__subtitle,
+    .withdrawal-modal__label,
+    .payment-method-modal__lead,
+    .buy-card-modal__copy,
+    .buy-card-modal__field-label,
+    .clear-deck-modal__copy,
+    .terms-sale-modal__updated,
+    .terms-sale-modal__body,
+    .terms-sale-modal__intro,
+    .deck-modal__mode,
+    .cookie-consent__text,
+    .cookie-consent__text--muted,
+    .auth-gate__message,
+    .auth-gate__text,
+    .withdrawal-modal__estimate,
+    .withdrawal-modal__pending-note
+  ) {
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__label,
+    .buy-card-modal__field-label,
+    .deck-modal__field-label,
+    .credits-modal__currency-label
+  ) {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mc-gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__input,
+    .buy-card-modal__input,
+    .withdrawal-modal__field input,
+    .credits-modal__currency select
+  ) {
+  border: 1px solid var(--mc-border, rgba(232, 185, 35, 0.28));
+  border-radius: 8px;
+  background: rgba(10, 10, 12, 0.72);
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__input:focus,
+    .buy-card-modal__input:focus,
+    .withdrawal-modal__field input:focus,
+    .credits-modal__currency select:focus
+  ) {
+  border-color: var(--mc-border-strong, rgba(232, 185, 35, 0.52));
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--mc-gold, #e8b923) 22%, transparent);
+  outline: none;
+}
+
+[data-landing-variant='minecraft'] .auth-modal__hint {
+  color: color-mix(in srgb, var(--mc-grass, #3d8f3d) 55%, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__switch-btn,
+    .auth-gate__register,
+    .cookie-consent__link
+  ) {
+  color: var(--mc-gold, #e8b923);
+  text-shadow: none;
+}
+
+[data-landing-variant='minecraft'] :is(
+    .auth-modal__switch-btn:hover:not(:disabled),
+    .auth-gate__register:hover,
+    .cookie-consent__link:hover
+  ) {
+  color: #f0cc4a;
+  text-shadow: none;
+}
+
+[data-landing-variant='minecraft'] .auth-modal__message--error {
+  background: rgba(184, 90, 58, 0.14);
+  border-color: rgba(184, 90, 58, 0.42);
+  color: #e8b09a;
+}
+
+[data-landing-variant='minecraft'] .auth-modal__message--info {
+  background: rgba(61, 143, 61, 0.16);
+  border-color: rgba(61, 143, 61, 0.42);
+  color: #b8ddb6;
+}
+
+[data-landing-variant='minecraft'] .auth-modal__message--success {
+  background: rgba(232, 185, 35, 0.14);
+  border-color: rgba(232, 185, 35, 0.45);
+  color: #f0d78a;
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__category {
+  border-radius: 8px;
+  border-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  background: rgba(12, 12, 14, 0.62);
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__category-label {
+  font-family: var(--font-fantasy);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__category-desc {
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__toggle-ui {
+  border-radius: 999px;
+  background: rgba(10, 10, 12, 0.85);
+  border-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__toggle input:checked + .cookie-consent__toggle-ui {
+  background: color-mix(in srgb, var(--mc-grass, #3d8f3d) 55%, rgba(10, 10, 12, 0.7));
+  border-color: color-mix(in srgb, var(--mc-gold, #e8b923) 55%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--mc-gold, #e8b923) 18%, transparent);
+}
+
+[data-landing-variant='minecraft'] .cookie-consent__toggle-ui::after {
+  background: #f4f4f5;
+}
+
+[data-landing-variant='minecraft'] :is(
+    .credits-modal__legal,
+    .credits-modal__custom-hint,
+    .credits-modal__terms
+  ) {
+  color: var(--mc-ink-soft, rgba(244, 244, 245, 0.55));
+}
+
+[data-landing-variant='minecraft'] .credits-modal__legal a {
+  color: var(--mc-gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] .credits-modal__legal a:hover {
+  color: #f0cc4a;
+}
+
+[data-landing-variant='minecraft'] .credits-modal__title {
+  background: none;
+  color: var(--mc-ink, #f4f4f5);
+}

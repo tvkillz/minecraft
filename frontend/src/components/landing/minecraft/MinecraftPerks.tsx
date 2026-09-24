@@ -138,15 +138,17 @@ export default function MinecraftPerks() {
     >
       <div className="mc-perks__bg" aria-hidden="true">
         {featureArt ? (
-          <ImageCrossfade
-            src={featureArt}
-            className="mc-perks__bg-fade"
-            imageClassName="mc-perks__bg-image"
-            durationMs={820}
-            zoom={false}
-            loading="lazy"
-            decoding="async"
-          />
+          <div key={active.id} className="mc-perks__bg-zoom">
+            <ImageCrossfade
+              src={featureArt}
+              className="mc-perks__bg-fade"
+              imageClassName="mc-perks__bg-image"
+              durationMs={820}
+              zoom={false}
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         ) : null}
         <div className="mc-perks__wash" />
         <div className="mc-perks__vignette" />

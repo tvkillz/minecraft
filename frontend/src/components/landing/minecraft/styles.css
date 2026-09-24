@@ -326,9 +326,11 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
   background-color: #101010;
 }
 
+.mc-perks__bg-zoom,
 .mc-perks__bg-fade,
 .mc-perks__bg-image,
 .mc-perks__feature-fade,
@@ -337,6 +339,25 @@
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+.mc-perks__bg-zoom {
+  transform-origin: 50% 45%;
+  will-change: transform;
+}
+
+.mc-perks--visible .mc-perks__bg-zoom {
+  animation: mc-perks-bg-zoom 18s ease-out forwards;
+}
+
+@keyframes mc-perks-bg-zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.12);
+  }
 }
 
 .mc-perks__bg-image,
@@ -527,6 +548,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .mc-perks__bg-zoom,
+  .mc-perks--visible .mc-perks__bg-zoom,
   .mc-perks__feature-body,
   .mc-perks__slots,
   .mc-perks__chip,

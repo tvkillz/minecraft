@@ -1,0 +1,178 @@
+/* The Coop — policy pages and portal chrome. */
+
+[data-landing-variant='minecraft'] .portal {
+  background: var(--mc-void, #101010);
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .portal__sticky-top {
+  background: #101010;
+}
+
+[data-landing-variant='minecraft'] .portal__header {
+  border-bottom-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  background: linear-gradient(180deg, rgba(16, 16, 18, 0.98) 0%, rgba(10, 10, 12, 0.94) 100%);
+}
+
+[data-landing-variant='minecraft'] .portal__brand-name {
+  font-family: var(--font-fantasy);
+  letter-spacing: 0.1em;
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .portal__logo {
+  border-radius: 8px;
+  border-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+}
+
+[data-landing-variant='minecraft'] .portal__menu-toggle {
+  border-left-color: color-mix(in srgb, var(--mc-gold, #e8b923) 40%, transparent);
+}
+
+[data-landing-variant='minecraft'] .portal__menu-toggle span {
+  background: var(--mc-gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] .portal__account {
+  border-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  border-radius: 8px;
+  background: rgba(16, 16, 18, 0.72);
+}
+
+[data-landing-variant='minecraft'] .portal__account-menu {
+  border-bottom-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  background: rgba(16, 16, 18, 0.96);
+}
+
+[data-landing-variant='minecraft'] .portal__account-menu-list a:hover,
+[data-landing-variant='minecraft'] .portal__account-menu-list button:hover {
+  background: color-mix(in srgb, var(--mc-gold, #e8b923) 14%, transparent);
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .portal__tabs {
+  border-bottom-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  background: rgba(16, 16, 18, 0.88);
+}
+
+[data-landing-variant='minecraft'] .portal__tab {
+  color: var(--mc-ink-soft, rgba(244, 244, 245, 0.55));
+}
+
+[data-landing-variant='minecraft'] .portal__tab:hover,
+[data-landing-variant='minecraft'] .portal__tab--active {
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .portal__tab--active::after {
+  background: var(--mc-gold, #e8b923);
+  box-shadow: none;
+}
+
+[data-landing-variant='minecraft'] .portal__section-title {
+  font-family: var(--font-fantasy);
+  color: var(--mc-ink, #f4f4f5);
+  text-shadow: none;
+}
+
+[data-landing-variant='minecraft'] .portal__mode-btn:hover:not(.portal__mode-btn--active) {
+  background: color-mix(in srgb, var(--mc-gold, #e8b923) 12%, transparent);
+  color: var(--mc-ink, #f4f4f5);
+}
+
+[data-landing-variant='minecraft'] .portal__buy-credits-btn {
+  color: #16130a !important;
+  background: linear-gradient(180deg, #f0cc4a 0%, #e8b923 48%, #c49a1c 100%) !important;
+  border-color: rgba(232, 185, 35, 0.72) !important;
+  box-shadow:
+    0 8px 20px rgba(232, 185, 35, 0.22),
+    inset 0 1px 0 rgba(255, 244, 200, 0.35) !important;
+  animation: none !important;
+}
+
+[data-landing-variant='minecraft'] .portal__buy-credits-btn:hover:not(:disabled) {
+  color: #16130a !important;
+  border-color: rgba(240, 204, 74, 0.9) !important;
+  box-shadow:
+    0 10px 24px rgba(232, 185, 35, 0.32),
+    inset 0 1px 0 rgba(255, 244, 200, 0.42) !important;
+}
+
+[data-landing-variant='minecraft'] .portal__currency select {
+  border-color: var(--mc-border, rgba(232, 185, 35, 0.28));
+  border-radius: 8px;
+  background: rgba(12, 12, 14, 0.82);
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] .legal-doc {
+  max-width: 46rem;
+  padding: 4.5rem 0 3rem;
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] .legal-doc__eyebrow {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--mc-gold, #e8b923);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+[data-landing-variant='minecraft'] .legal-doc__title {
+  font-family: var(--font-fantasy);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--mc-ink, #f4f4f5);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+[data-landing-variant='minecraft'] .legal-doc__updated {
+  color: var(--mc-ink-soft, rgba(244, 244, 245, 0.55));
+}
+
+[data-landing-variant='minecraft'] .legal-doc__paragraph,
+[data-landing-variant='minecraft'] .legal-doc__list {
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] .legal-doc__heading,
+[data-landing-variant='minecraft'] .legal-doc h2.legal-doc__heading,
+[data-landing-variant='minecraft'] .legal-doc h3.legal-doc__heading {
+  font-family: var(--font-fantasy);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--mc-gold, #e8b923);
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+[data-landing-variant='minecraft'] .legal-doc__company {
+  border-radius: 8px;
+  border: 1px solid var(--mc-border, rgba(232, 185, 35, 0.28));
+  background: rgba(16, 16, 18, 0.72);
+}
+
+[data-landing-variant='minecraft'] .legal-doc__company p {
+  color: var(--mc-ink-muted, rgba(244, 244, 245, 0.78));
+}
+
+[data-landing-variant='minecraft'] .legal-doc__company-name {
+  color: var(--mc-ink, #f4f4f5);
+  font-family: var(--font-fantasy);
+  font-weight: 600;
+}
+
+[data-landing-variant='minecraft'] .legal-doc__link {
+  color: var(--mc-gold, #e8b923);
+}
+
+[data-landing-variant='minecraft'] .legal-doc__link:hover {
+  color: #f0cc4a;
+}

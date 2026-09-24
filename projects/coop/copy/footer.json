@@ -56,8 +56,8 @@
   "crafted": "",
   "cookieSettingsLabel": "Cookie Settings",
   "cookies": {
-    "title": "Cookies",
-    "intro": "We use cookies to keep you signed in and understand store traffic.",
+    "title": "This store uses cookies",
+    "intro": "We use cookies to keep you signed in and see which store pages people use.",
     "policyNote": "See the cookie policy for details.",
     "consentNote": "You can change this later.",
     "manageIntro": "Choose which cookies to allow.",

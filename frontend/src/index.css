@@ -31,6 +31,8 @@
 @import './styles/wildreach-landing-layouts.css';
 @import './styles/wildreach-play.css';
 @import './styles/minecraft-theme.css';
+@import './styles/minecraft-modals.css';
+@import './styles/minecraft-pages.css';
 
 /* Color defaults — overridden at runtime by applyTheme(); fonts via next/font in app layout */
 :root {

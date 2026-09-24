@@ -1,15 +1,20 @@
 'use client'
 
-import { useMemo, useState, type CSSProperties } from 'react'
+import { useMemo, type CSSProperties } from 'react'
 import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
 import { appConfig } from '@/config'
 import { mcHref } from './mc'
 import { useSectionVisible } from './useSectionVisible'
 import './sections.css'
 
-function stepHref(featureId: string, storeHref: string): string {
-  const discord = appConfig.descriptions.footer?.social?.find((item) => item.id === 'discord')
-  if (featureId === 'join-discord' && discord?.href) return discord.href
+const FUND_IDS = new Set(['buy-rank', 'buy-coins'])
+
+const FUND_KICKER: Record<string, string> = {
+  'buy-rank': 'Stays forever',
+  'buy-coins': 'Spends in-game',
+}
+
+function fundHref(featureId: string, storeHref: string): string {
   if (featureId === 'buy-rank') return mcHref('ranks')
   if (featureId === 'buy-coins') return mcHref('coins')
   return storeHref
@@ -17,47 +22,33 @@ function stepHref(featureId: string, storeHref: string): string {
 
 export default function MinecraftSupport() {
   const pathways = appConfig.descriptions.pathways
-  const { hero } = appConfig.descriptions
   const { ref, visible } = useSectionVisible<HTMLElement>()
-  const [activeId, setActiveId] = useState(pathways?.features?.[0]?.id ?? '')
-  const [copied, setCopied] = useState(false)
 
   const storeHref = pathways?.marketCta?.route
     ? appConfig.domain.routes[pathways.marketCta.route]
     : appConfig.domain.routes.portalStore
 
-  const active = useMemo(
-    () => pathways?.features.find((feature) => feature.id === activeId) ?? pathways?.features[0],
-    [pathways, activeId],
-  )
+  const funds = useMemo(() => {
+    const features = pathways?.features ?? []
+    const picked = features.filter((feature) => FUND_IDS.has(feature.id))
+    return picked.length ? picked : features.slice(-2)
+  }, [pathways])
 
-  if (!pathways?.features?.length || !active) return null
+  const poster =
+    appConfig.descriptions.finalCta.backgroundImage || funds.find((fund) => fund.image)?.image || ''
 
-  const isCopyIp = active.id === 'copy-ip' && Boolean(hero.joinIp)
-  const actionHref = stepHref(active.id, storeHref)
-
-  const copyIp = async () => {
-    if (!hero.joinIp) return
-    try {
-      await navigator.clipboard.writeText(hero.joinIp)
-      setCopied(true)
-      window.setTimeout(() => setCopied(false), 1600)
-    } catch {
-      setCopied(false)
-    }
-  }
+  if (!pathways || funds.length === 0) return null
 
   return (
     <section
       ref={ref}
       className={`mc-section mc-support${visible ? ' mc-section--visible' : ''}`}
-      aria-label="Support the server"
-      style={{ '--tile-glow': active.glowColor } as CSSProperties}
+      aria-label="Server upkeep"
     >
       <div className="mc-section__bg" aria-hidden="true">
-        {active.image ? (
+        {poster ? (
           <ImageCrossfade
-            src={active.image}
+            src={poster}
             className="mc-support__bg-fade"
             imageClassName="mc-support__bg-image"
             durationMs={720}
@@ -68,92 +59,55 @@ export default function MinecraftSupport() {
         ) : null}
         <div className="mc-section__wash" />
         <div className="mc-section__vignette" />
-        <div className="mc-support__ambient" aria-hidden="true" />
       </div>
 
-      <div className="landing-shell mc-section__stage">
-        <header className="mc-section__copy">
-          <p className="mc-section__eyebrow">Keep the server online</p>
-          <h2 className="mc-section__title">{pathways.title}</h2>
-          <p className="mc-section__lead">{pathways.description}</p>
+      <div className="landing-shell mc-section__stage mc-support__stage">
+        <header className="mc-support__masthead">
+          <p className="mc-support__eyebrow">The upkeep</p>
+          <h2 className="mc-support__title">{pathways.title}</h2>
+          <p className="mc-support__lead">{pathways.description}</p>
         </header>
 
-        <div className="mc-support__board">
-          <div className="mc-support__rail" role="group" aria-label="Support steps">
-            {pathways.features.map((feature, index) => {
-              const isActive = feature.id === active.id
-              return (
-                <button
-                  key={feature.id}
-                  type="button"
-                  aria-pressed={isActive}
-                  className={`mc-support__chip${isActive ? ' mc-support__chip--active' : ''}`}
-                  style={{ '--tile-glow': feature.glowColor } as CSSProperties}
-                  onClick={() => setActiveId(feature.id)}
-                  onMouseEnter={() => setActiveId(feature.id)}
-                  onFocus={() => setActiveId(feature.id)}
-                >
-                  <span className="mc-support__chip-index">{String(index + 1).padStart(2, '0')}</span>
-                  <span className="mc-support__chip-copy">
-                    <strong>{feature.title}</strong>
-                    <span>{feature.description}</span>
-                  </span>
-                </button>
-              )
-            })}
-          </div>
-
-          <article className="mc-support__feature" style={{ '--tile-glow': active.glowColor } as CSSProperties}>
-            <div className="mc-support__feature-art">
-              {active.image ? (
-                <ImageCrossfade
-                  src={active.image}
-                  className="mc-support__feature-fade"
-                  imageClassName="mc-support__feature-image"
-                  durationMs={640}
-                  zoom={false}
-                  loading="lazy"
-                  decoding="async"
-                />
-              ) : null}
-            </div>
-            <div className="mc-support__feature-body" key={active.id}>
-              <p className="mc-support__feature-kicker">Next step</p>
-              <h3 className="mc-support__feature-title">{active.title}</h3>
-              <p className="mc-support__feature-text">{active.description}</p>
-              {isCopyIp ? (
-                <button type="button" className="mc-cta-chip" onClick={() => void copyIp()}>
-                  {copied ? (hero.copiedIpLabel ?? 'Copied!') : (hero.joinIp ?? 'Copy IP')}
-                </button>
-              ) : (
-                <a className="mc-cta-chip" href={actionHref}>
-                  {active.title}
-                </a>
-              )}
-            </div>
-          </article>
+        <div className="mc-support__funds">
+          {funds.map((fund) => (
+            <a
+              key={fund.id}
+              className="mc-support__pledge"
+              href={fundHref(fund.id, storeHref)}
+              style={{ '--tile-glow': fund.glowColor } as CSSProperties}
+            >
+              <span className="mc-support__pledge-art" aria-hidden="true">
+                {fund.image ? <img src={fund.image} alt="" /> : null}
+              </span>
+              <span className="mc-support__pledge-copy">
+                <span className="mc-support__pledge-kicker">
+                  {FUND_KICKER[fund.id] ?? 'Store'}
+                </span>
+                <strong className="mc-support__pledge-title">{fund.title}</strong>
+                <span className="mc-support__pledge-text">{fund.description}</span>
+              </span>
+            </a>
+          ))}
         </div>
 
         {pathways.tiers.length > 0 ? (
-          <div className="mc-ladder">
-            <p className="mc-ladder__kicker">Rank ladder</p>
-            <ul className="mc-ladder__list" role="list">
-              {pathways.tiers.map((tier) => (
-                <li key={tier.id}>
-                  <article className="mc-ladder__card" style={{ '--tile-glow': tier.glowColor } as CSSProperties}>
-                    <span className="mc-ladder__mark">{tier.rarityLabel}</span>
-                    <h3 className="mc-ladder__title">{tier.title}</h3>
-                    <p className="mc-ladder__text">{tier.description}</p>
-                  </article>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <ol className="mc-support__path" aria-label="Rank path">
+            {pathways.tiers.map((tier) => (
+              <li
+                key={tier.id}
+                className="mc-support__rung"
+                style={{ '--tile-glow': tier.glowColor } as CSSProperties}
+              >
+                <span className="mc-support__rung-mark">{tier.rarityLabel}</span>
+                <strong className="mc-support__rung-title">{tier.title}</strong>
+                <span className="mc-support__rung-text">{tier.description}</span>
+              </li>
+            ))}
+          </ol>
         ) : null}
 
         {pathways.marketCta ? (
-          <p className="mc-support-cta">
-            <span>{pathways.marketCta.description}</span>
+          <p className="mc-support__close">
             <a className="mc-cta-chip" href={storeHref}>
               {pathways.marketCta.buttonLabel}
             </a>
