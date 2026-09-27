@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { HERO_CARDS, LOCATIONS, appConfig } from '@/config'
 import type { CardDisplayProps } from '@/components/CardPlaceholder/Card'
 import type { LocationConfig } from '@/config/schema'
+import { useAuth } from '@/components/providers/AuthProvider'
 import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
 import { useSectionVisible } from './useSectionVisible'
 import './styles.css'
@@ -85,6 +86,7 @@ function initialLocationId(): LocationId {
 
 export default function MinecraftPerks() {
   const { ref, visible } = useSectionVisible<HTMLElement>()
+  const { requestAuthNavigation, loading: authLoading } = useAuth()
   const hoverTimer = useRef<number>(0)
   const [activeId, setActiveId] = useState<LocationId | undefined>(initialLocationId)
   const { locations: copy } = appConfig.descriptions
@@ -214,7 +216,14 @@ export default function MinecraftPerks() {
             </ul>
 
             {storeCta ? (
-              <span className="mc-perks__store">{storeCta.label}</span>
+              <button
+                type="button"
+                className="mc-perks__store"
+                disabled={authLoading}
+                onClick={() => requestAuthNavigation(appConfig.domain.routes.portalMarket)}
+              >
+                {storeCta.label}
+              </button>
             ) : null}
           </div>
         </div>

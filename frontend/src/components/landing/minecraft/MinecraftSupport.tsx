@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, type CSSProperties } from 'react'
+import { useAuth } from '@/components/providers/AuthProvider'
 import ImageCrossfade from '@/components/ui/ImageCrossfade/ImageCrossfade'
 import { appConfig } from '@/config'
 import { mcHref } from './mc'
@@ -23,6 +24,7 @@ function fundHref(featureId: string): string {
 export default function MinecraftSupport() {
   const pathways = appConfig.descriptions.pathways
   const { ref, visible } = useSectionVisible<HTMLElement>()
+  const { requestAuthNavigation, loading: authLoading } = useAuth()
 
   const funds = useMemo(() => {
     const features = pathways?.features ?? []
@@ -104,7 +106,12 @@ export default function MinecraftSupport() {
 
         {pathways.marketCta ? (
           <p className="mc-support__close">
-            <button type="button" className="mc-cta-chip" aria-disabled="true">
+            <button
+              type="button"
+              className="mc-cta-chip"
+              disabled={authLoading}
+              onClick={() => requestAuthNavigation(appConfig.domain.routes.portalMarket)}
+            >
               {pathways.marketCta.buttonLabel}
             </button>
           </p>

@@ -7,7 +7,6 @@
 .landing-flow .mc-hero__tile,
 .landing-flow .mc-perks__chip,
 .landing-flow .mc-perks__slot,
-.landing-flow .mc-perks__store,
 .landing-flow .mc-gallery__card,
 .landing-flow .helix-locations__channel,
 .landing-flow .wr-pathways__card,
@@ -26,8 +25,16 @@
   cursor: default;
 }
 
-.landing-flow .fw-dominions__zone-dot {
+.landing-flow .fw-dominions__zone-dot,
+.landing-flow button.mc-perks__store,
+.landing-flow button.mc-cta-chip {
   cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  .landing-flow .mc-gallery__card {
+    cursor: pointer;
+  }
 }
 
 .landing-flow .wr-catalog__specimen-btn .card,

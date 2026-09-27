@@ -57,6 +57,6 @@
   "marketCta": {
     "description": "Choose a rank or a coin pack.",
     "buttonLabel": "Open the store",
-    "route": "portalStore"
+    "route": "portalMarket"
   }
 }

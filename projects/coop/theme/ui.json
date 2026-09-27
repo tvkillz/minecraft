@@ -69,7 +69,7 @@
     {
       "id": "store",
       "label": "Open Store",
-      "route": "portalStore",
+      "route": "portalMarket",
       "accent": "ember"
     }
   ],

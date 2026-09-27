@@ -129,7 +129,13 @@ export default function MinecraftCatalog() {
   const trackRef = useRef<HTMLUListElement>(null)
   const ignoreScrollSyncRef = useRef(false)
   const scrollLockTimer = useRef(0)
-  const dragRef = useRef<{ pointerId: number; startX: number; startScroll: number; moved: boolean } | null>(null)
+  const dragRef = useRef<{
+    pointerId: number
+    startX: number
+    startScroll: number
+    moved: boolean
+    slideIndex: number
+  } | null>(null)
   const skipClickRef = useRef(false)
   const activeIndexRef = useRef(initialIndex)
   const [activeIndex, setActiveIndex] = useState(initialIndex)
@@ -265,6 +271,14 @@ export default function MinecraftCatalog() {
     }
   }, [items])
 
+  const slideIndexFromTarget = (target: EventTarget | null) => {
+    const track = trackRef.current
+    if (!track || !(target instanceof Element)) return -1
+    const slide = target.closest('.mc-gallery__slide')
+    if (!(slide instanceof HTMLElement) || !track.contains(slide)) return -1
+    return Array.from(track.querySelectorAll('.mc-gallery__slide')).indexOf(slide)
+  }
+
   const onPointerDown = (event: ReactPointerEvent<HTMLUListElement>) => {
     if (event.pointerType !== 'mouse' || event.button !== 0) return
     const track = trackRef.current
@@ -274,6 +288,7 @@ export default function MinecraftCatalog() {
       startX: event.clientX,
       startScroll: track.scrollLeft,
       moved: false,
+      slideIndex: slideIndexFromTarget(event.target),
     }
     ignoreScrollSyncRef.current = true
     track.setPointerCapture(event.pointerId)
@@ -292,6 +307,7 @@ export default function MinecraftCatalog() {
     const drag = dragRef.current
     if (!drag || drag.pointerId !== event.pointerId) return
     const moved = drag.moved
+    const slideIndex = drag.slideIndex
     dragRef.current = null
     ignoreScrollSyncRef.current = false
     if (moved) {
@@ -301,6 +317,10 @@ export default function MinecraftCatalog() {
       }, 80)
       syncActiveFromScroll()
       scrollSlideIntoView(activeIndexRef.current)
+      return
+    }
+    if (window.matchMedia('(min-width: 700px)').matches && slideIndex >= 0) {
+      activateIndex(slideIndex)
     }
   }
 

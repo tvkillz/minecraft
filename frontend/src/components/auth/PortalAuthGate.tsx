@@ -4,7 +4,6 @@ import { usePathname } from 'next/navigation'
 import { appConfig } from '@/config'
 import { Button } from '@/components/ui/Button/Button'
 import { useAuth } from '@/components/providers/AuthProvider'
-import { isAuthRequired } from '@/lib/auth/guards'
 import './AuthGate.css'
 
 type PortalAuthGateProps = {
@@ -17,7 +16,7 @@ export default function PortalAuthGate({ children }: PortalAuthGateProps) {
   const promptSignIn = () => requestAuthNavigation(pathname)
   const copy = appConfig.descriptions.portal
 
-  if (!isAuthRequired()) {
+  if (!appConfig.auth.requireSignInForPlay) {
     return children
   }
 

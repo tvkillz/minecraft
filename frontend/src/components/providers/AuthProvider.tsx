@@ -136,10 +136,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const requestAuthNavigation = useCallback(
     (path: string): boolean => {
-      if (!isSupabaseConfigured()) {
-        router.push(path)
-        return true
-      }
       if (loading) return false
       if (session) {
         router.push(path)
