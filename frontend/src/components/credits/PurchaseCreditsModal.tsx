@@ -3,9 +3,10 @@
 import { useEffect, useId, useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { appConfig } from '@/config'
-import { creditsToEur, formatCredits } from '@/config/selectors'
+import { creditsToEur } from '@/config/selectors'
+import { formatMarketMoney } from '@/lib/market/currency'
 import { useSyncedMarketCurrency } from '@/hooks/useMarketCurrency'
-import { formatEurAmount, MARKET_CURRENCIES } from '@/lib/market/currency'
+import { MARKET_CURRENCIES } from '@/lib/market/currency'
 import {
   MAX_CUSTOM_CREDITS,
   MIN_CUSTOM_CREDITS,
@@ -13,30 +14,31 @@ import {
 } from '@/lib/commerce/creditCheckoutLimits'
 import { Button } from '@/components/ui/Button/Button'
 import TermsOfSaleAgreement from '@/components/checkout/TermsOfSaleAgreement'
-import '@/styles/coin-stack-icon.css'
 import './PurchaseCreditsModal.css'
+
+const DEPOSIT_CENTS = [500, 1000, 2000, 5000]
 
 type PurchaseCreditsModalProps = {
   isOpen: boolean
   onClose: () => void
-}
-
-function CoinIcon() {
-  return <span className="coin-stack-icon" aria-hidden="true" />
+  /** Wallet units to prefill. 100 = €1. */
+  initialCents?: number | null
+  note?: string | null
 }
 
 export default function PurchaseCreditsModal({
   isOpen,
   onClose,
+  initialCents = null,
+  note = null,
 }: PurchaseCreditsModalProps) {
   const copy = appConfig.descriptions.credits
-  const { packages, creditsPerEur } = appConfig.credits
+  const { creditsPerEur } = appConfig.credits
   const { legal } = appConfig.domain
   const titleId = useId()
   const router = useRouter()
   const { currency, setCurrency } = useSyncedMarketCurrency()
 
-  const [selectedPackId, setSelectedPackId] = useState<string | null>(null)
   const [customCredits, setCustomCredits] = useState('')
   const [checkoutError, setCheckoutError] = useState<string | null>(null)
   const [agreedToTerms, setAgreedToTerms] = useState(false)
@@ -44,35 +46,26 @@ export default function PurchaseCreditsModal({
 
   useEffect(() => {
     if (!isOpen) return
-    setSelectedPackId(null)
-    setCustomCredits('')
     setAgreedToTerms(false)
     setCheckoutError(null)
-  }, [isOpen])
+    if (initialCents && initialCents > 0) {
+      setCustomCredits((initialCents / creditsPerEur).toFixed(2))
+    } else {
+      setCustomCredits('')
+    }
+  }, [isOpen, initialCents, creditsPerEur])
 
   const customAmount = useMemo(() => {
-    const parsed = Number.parseInt(customCredits.replace(/\D/g, ''), 10)
-    return Number.isFinite(parsed) && parsed > 0 ? parsed : 0
-  }, [customCredits])
+    const euros = Number.parseFloat(customCredits.replace(/[^\d.]/g, ''))
+    if (!Number.isFinite(euros) || euros <= 0) return 0
+    return Math.round(euros * creditsPerEur)
+  }, [customCredits, creditsPerEur])
 
-  const selectedPack = packages.find((p) => p.id === selectedPackId)
-
-  const totalEur = useMemo(() => {
-    if (selectedPack) return selectedPack.priceEur
-    if (customAmount > 0) return creditsToEur(customAmount)
-    return 0
-  }, [selectedPack, customAmount])
-
-  const customValidation = useMemo(() => {
-    if (selectedPack) return { ok: true as const }
-    if (customAmount <= 0) return { ok: false as const, reason: 'empty' as const }
-    return validateCustomCreditAmount(customAmount)
-  }, [selectedPack, customAmount])
-
-  const canBuy =
-    agreedToTerms &&
-    totalEur > 0 &&
-    (Boolean(selectedPack) || (customAmount > 0 && validateCustomCreditAmount(customAmount).ok))
+  const totalEur = customAmount > 0 ? creditsToEur(customAmount) : 0
+  const customValidation =
+    customAmount <= 0
+      ? ({ ok: false as const, reason: 'empty' as const })
+      : validateCustomCreditAmount(customAmount)
 
   const goToCheckout = (creditAmount: number) => {
     if (!agreedToTerms) {
@@ -84,8 +77,8 @@ export default function PurchaseCreditsModal({
     if (!check.ok) {
       setCheckoutError(
         check.reason === 'min'
-          ? `Minimum purchase is ${formatCredits(MIN_CUSTOM_CREDITS)} credits.`
-          : `Maximum custom purchase is ${formatCredits(MAX_CUSTOM_CREDITS)} credits.`,
+          ? `Minimum top-up is ${formatMarketMoney(MIN_CUSTOM_CREDITS, currency)}.`
+          : `Maximum top-up is ${formatMarketMoney(MAX_CUSTOM_CREDITS, currency)}.`,
       )
       return
     }
@@ -98,30 +91,6 @@ export default function PurchaseCreditsModal({
     onClose()
     const checkoutPath = appConfig.domain.routes.checkout ?? '/checkout'
     router.push(`${checkoutPath}?${params.toString()}`)
-  }
-
-  const handleSelectPack = (packId: string) => {
-    const pack = packages.find((p) => p.id === packId)
-    if (!pack) {
-      setCheckoutError('This pack is unavailable. Try again or enter a custom amount.')
-      return
-    }
-    goToCheckout(pack.credits)
-  }
-
-  const handleCustomChange = (value: string) => {
-    setCustomCredits(value)
-    setSelectedPackId(null)
-    setCheckoutError(null)
-  }
-
-  const handleBuy = () => {
-    if (!canBuy) return
-    if (selectedPack) {
-      goToCheckout(selectedPack.credits)
-    } else if (customAmount > 0) {
-      goToCheckout(customAmount)
-    }
   }
 
   return (
@@ -151,17 +120,11 @@ export default function PurchaseCreditsModal({
 
         <header className="credits-modal__header">
           <div className="credits-modal__title-row">
-            <span className="credits-modal__title-coins" aria-hidden="true">
-              <CoinIcon />
-              <CoinIcon />
-            </span>
             <h2 id={titleId} className="credits-modal__title">
               {copy.title}
             </h2>
           </div>
-          <p className="credits-modal__subtitle">
-            {creditsPerEur} credits = {formatEurAmount(1, currency)}
-          </p>
+          <p className="credits-modal__subtitle">{copy.subtitle}</p>
           <label className="credits-modal__currency">
             <span className="credits-modal__currency-label">Currency</span>
             <select
@@ -178,30 +141,20 @@ export default function PurchaseCreditsModal({
           </label>
         </header>
 
-        <div className="credits-modal__grid">
-          {packages.map((pack) => (
+        {note ? <p className="credits-modal__note">{note}</p> : null}
+
+        <div className="credits-modal__amounts">
+          {DEPOSIT_CENTS.map((cents) => (
             <button
-              key={pack.id}
+              key={cents}
               type="button"
-              className={`credits-modal__pack${
-                selectedPackId === pack.id ? ' credits-modal__pack--selected' : ''
-              }${pack.popular ? ' credits-modal__pack--popular' : ''}`}
-              disabled={!agreedToTerms}
-              onClick={() => handleSelectPack(pack.id)}
+              className="credits-modal__amount"
+              onClick={() => {
+                setCustomCredits((cents / creditsPerEur).toFixed(2))
+                setCheckoutError(null)
+              }}
             >
-              {pack.popular && (
-                <span className="credits-modal__popular">{copy.popularBadge}</span>
-              )}
-              <div className="credits-modal__pack-top">
-                <span className="credits-modal__pack-credits">
-                  <CoinIcon />
-                  {formatCredits(pack.credits)}
-                </span>
-                <span className="credits-modal__pack-price">
-                  {formatEurAmount(pack.priceEur, currency)}
-                </span>
-              </div>
-              <span className="credits-modal__pack-rate">{copy.standardRate}</span>
+              {formatMarketMoney(cents, currency)}
             </button>
           ))}
         </div>
@@ -212,59 +165,43 @@ export default function PurchaseCreditsModal({
             <label className="credits-modal__custom-field">
               <span className="credits-modal__custom-field-label">{copy.amountToBuy}</span>
               <div className="credits-modal__custom-input-wrap">
-                <CoinIcon />
                 <input
                   type="number"
-                  min={MIN_CUSTOM_CREDITS}
-                  max={MAX_CUSTOM_CREDITS}
-                  step={1}
+                  min={MIN_CUSTOM_CREDITS / creditsPerEur}
+                  max={MAX_CUSTOM_CREDITS / creditsPerEur}
+                  step="0.01"
                   className="credits-modal__custom-input"
                   placeholder={copy.amountPlaceholder}
                   value={customCredits}
-                  onChange={(e) => handleCustomChange(e.target.value)}
-                  aria-invalid={customAmount > 0 && !selectedPack && !validateCustomCreditAmount(customAmount).ok}
+                  onChange={(e) => {
+                    setCustomCredits(e.target.value)
+                    setCheckoutError(null)
+                  }}
+                  aria-invalid={customAmount > 0 && !customValidation.ok}
                   aria-describedby={
-                    customAmount > 0 && !selectedPack && !validateCustomCreditAmount(customAmount).ok
-                      ? 'credits-custom-limit-hint'
-                      : undefined
+                    customAmount > 0 && !customValidation.ok ? 'credits-custom-limit-hint' : undefined
                   }
                 />
               </div>
             </label>
-            <div className="credits-modal__total">
-              <span className="credits-modal__total-label">{copy.totalLabel}</span>
-              <strong className="credits-modal__total-value">
-                {formatEurAmount(totalEur, currency)}
-              </strong>
-            </div>
             <Button
               type="button"
               variant="primary"
               size="md"
-              fantasy
               className="credits-modal__buy"
-              disabled={!canBuy}
-              onClick={handleBuy}
+              disabled={customAmount <= 0 || !customValidation.ok || !agreedToTerms}
+              onClick={() => goToCheckout(customAmount)}
             >
-              {copy.buy}
+              {customAmount > 0 ? `Add ${formatMarketMoney(customAmount, currency)}` : copy.buy}
             </Button>
           </div>
-          {customAmount > 0 && !selectedPack && !validateCustomCreditAmount(customAmount).ok ? (
-            <p
-              id="credits-custom-limit-hint"
-              className="credits-modal__warning"
-              role="alert"
-            >
+          {customAmount > 0 && !customValidation.ok ? (
+            <p id="credits-custom-limit-hint" className="credits-modal__warning" role="alert">
               {customValidation.reason === 'min'
-                ? `Minimum custom purchase is ${formatCredits(MIN_CUSTOM_CREDITS)} credits. Choose a pack above or enter at least ${formatCredits(MIN_CUSTOM_CREDITS)}.`
-                : `Maximum custom purchase is ${formatCredits(MAX_CUSTOM_CREDITS)} credits.`}
+                ? `Minimum top-up is ${formatMarketMoney(MIN_CUSTOM_CREDITS, currency)}.`
+                : `Maximum top-up is ${formatMarketMoney(MAX_CUSTOM_CREDITS, currency)}.`}
             </p>
           ) : null}
-          {customAmount > 0 && (selectedPack || validateCustomCreditAmount(customAmount).ok) && (
-            <p className="credits-modal__custom-hint">
-              {formatCredits(customAmount)} credits @ {creditsPerEur} / {formatEurAmount(1, currency)}
-            </p>
-          )}
         </div>
 
         <TermsOfSaleAgreement

@@ -2,31 +2,9 @@
   "creditsPerEur": 100,
   "currencySymbol": "€",
   "packages": [
-    {
-      "id": "coins-100",
-      "credits": 100,
-      "priceEur": 1
-    },
-    {
-      "id": "coins-500",
-      "credits": 500,
-      "priceEur": 4
-    },
-    {
-      "id": "coins-1000",
-      "credits": 1000,
-      "priceEur": 7,
-      "popular": true
-    },
-    {
-      "id": "coins-5000",
-      "credits": 5000,
-      "priceEur": 30
-    },
-    {
-      "id": "coins-10000",
-      "credits": 10000,
-      "priceEur": 55
-    }
+    { "id": "balance-5", "credits": 500, "priceEur": 5 },
+    { "id": "balance-10", "credits": 1000, "priceEur": 10 },
+    { "id": "balance-20", "credits": 2000, "priceEur": 20 },
+    { "id": "balance-50", "credits": 5000, "priceEur": 50 }
   ]
 }

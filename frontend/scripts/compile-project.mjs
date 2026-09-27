@@ -1329,6 +1329,9 @@ async function compileCards({
         name: asset.ability.name,
         text: asset.ability.text,
       },
+      features: Array.isArray(asset.features)
+        ? asset.features.filter((line) => typeof line === 'string' && line.trim())
+        : [],
       glowColor: domainGlow[domain],
       priceCents,
       sourceAssetPath: asset.path,

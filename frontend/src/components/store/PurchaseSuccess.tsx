@@ -2,15 +2,18 @@
 
 import { useEffect, useState } from 'react'
 
-import { appConfig, formatCredits } from '@/config'
+import { appConfig } from '@/config'
 import { Button } from '@/components/ui/Button/Button'
 import { invalidatePlayerInventoryCache, usePlayerInventory } from '@/hooks/usePlayerInventory'
+import { useMarketCurrency } from '@/hooks/useMarketCurrency'
 import { useWallet } from '@/hooks/useWallet'
+import { formatMarketMoney } from '@/lib/market/currency'
 
 type SuccessKind = 'credits' | 'cards'
 
 export default function PurchaseSuccess() {
   const { balanceCredits, refresh, loading } = useWallet()
+  const { currency } = useMarketCurrency()
   const { refresh: refreshInventory } = usePlayerInventory()
   const [invoiceWarning, setInvoiceWarning] = useState<string | null>(null)
   const [successKind, setSuccessKind] = useState<SuccessKind>('credits')
@@ -77,14 +80,13 @@ export default function PurchaseSuccess() {
         <>
           {!loading && (
             <p className="checkout-result__balance">
-              Current balance: <strong>{formatCredits(balanceCredits)}</strong> credits
+              Current balance: <strong>{formatMarketMoney(balanceCredits, currency)}</strong>
             </p>
           )}
           <Button
             type="button"
             variant="secondary"
             size="md"
-            fantasy
             className="checkout-result__refresh"
             disabled={loading}
             onClick={() => void refresh()}

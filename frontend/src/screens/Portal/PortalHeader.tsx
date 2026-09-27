@@ -3,15 +3,12 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
-import {
-  appConfig,
-  formatCredits,
-  resolveAccountMenuHref,
-} from '@/config'
+import { appConfig, resolveAccountMenuHref } from '@/config'
 import PurchaseCreditsModal from '@/components/credits/PurchaseCreditsModal'
 import { useAuth } from '@/components/providers/AuthProvider'
 import { useWallet } from '@/hooks/useWallet'
-import '@/styles/coin-stack-icon.css'
+import { useSyncedMarketCurrency } from '@/hooks/useMarketCurrency'
+import { formatMarketMoney } from '@/lib/market/currency'
 
 type PortalHeaderProps = {
   /** When set, purchase-credits actions delegate to the parent (portal toolbar). */
@@ -34,7 +31,8 @@ export default function PortalHeader({ onPurchaseCredits }: PortalHeaderProps) {
       : appConfig.domain.routes.home
 
   const { balanceCredits, loading: walletLoading, refresh: refreshWallet } = useWallet()
-  const creditsLabel = walletLoading ? '…' : formatCredits(balanceCredits)
+  const { currency } = useSyncedMarketCurrency()
+  const balanceLabel = walletLoading ? '…' : formatMarketMoney(balanceCredits, currency)
 
   const openCredits = () => {
     if (onPurchaseCredits) onPurchaseCredits()
@@ -59,10 +57,7 @@ export default function PortalHeader({ onPurchaseCredits }: PortalHeaderProps) {
         <div className="portal__account">
           <div className="portal__account-info">
             <span className="portal__account-name">{username}</span>
-            <span className="portal__account-credits">
-              <span className="coin-stack-icon coin-stack-icon--sm" aria-hidden="true" />
-              {creditsLabel}
-            </span>
+            <span className="portal__account-credits">{balanceLabel}</span>
           </div>
           <button
             type="button"

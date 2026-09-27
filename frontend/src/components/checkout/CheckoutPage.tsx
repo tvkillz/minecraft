@@ -560,7 +560,6 @@ export default function CheckoutPage() {
               type="button"
               variant="gold"
               size="lg"
-              fantasy
               className="checkout-page__pay-btn"
               disabled={paying || isPaid}
               onClick={handleOpenPaymentMethods}

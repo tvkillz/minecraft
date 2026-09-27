@@ -1,5 +1,5 @@
-import PortalCollection from '@/screens/Portal/PortalCollection'
+import CoopUnlocks from '@/screens/Portal/CoopUnlocks'
 
 export default function PortalCollectionPage() {
-  return <PortalCollection />
+  return <CoopUnlocks />
 }

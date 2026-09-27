@@ -7,6 +7,12 @@
       "role": "Rank",
       "rarity": "common",
       "path": "cards/ranks/ranks_card_01_pro.png",
+      "priceEur": 4.99,
+      "features": [
+        "[Pro] chat prefix",
+        "One lobby particle",
+        "5th MineMart slot unlocked early"
+      ],
       "stats": {
         "mana": 2,
         "attack": 2,
@@ -28,6 +34,13 @@
       "role": "Rank",
       "rarity": "uncommon",
       "path": "cards/ranks/ranks_card_02_ace.png",
+      "priceEur": 9.99,
+      "features": [
+        "[Ace] chat prefix",
+        "Two lobby particles",
+        "100 bonus Victory Coins",
+        "Extra ranked maps"
+      ],
       "stats": {
         "mana": 4,
         "attack": 4,
@@ -49,6 +62,13 @@
       "role": "Rank",
       "rarity": "epic",
       "path": "cards/ranks/ranks_card_03_legend.png",
+      "priceEur": 19.99,
+      "features": [
+        "[Legend] chat prefix",
+        "Three lobby particles",
+        "1,000 bonus Victory Coins",
+        "Most ranked maps"
+      ],
       "stats": {
         "mana": 8,
         "attack": 8,
@@ -70,6 +90,11 @@
       "role": "Currency pack",
       "rarity": "uncommon",
       "path": "cards/coins/coins_card_01_bag.png",
+      "priceEur": 4.99,
+      "features": [
+        "1,000 Victory Coins on your server account",
+        "Spend them on kits, extra inventory, and lobby cosmetics"
+      ],
       "stats": {
         "mana": 3,
         "attack": 3,
@@ -91,6 +116,11 @@
       "role": "Minigame",
       "rarity": "rare",
       "path": "cards/games/games_card_01_disasters.png",
+      "priceEur": 2.99,
+      "features": [
+        "Survive Disasters kit on your server account",
+        "Ranked maps can appear when a ranked player is in the round"
+      ],
       "stats": {
         "mana": 5,
         "attack": 5,
@@ -112,6 +142,11 @@
       "role": "Minigame",
       "rarity": "rare",
       "path": "cards/games/games_card_02_minemart.png",
+      "priceEur": 2.99,
+      "features": [
+        "MineMart kit on your server account",
+        "Ranks unlock the 5th inventory slot early"
+      ],
       "stats": {
         "mana": 5,
         "attack": 5,

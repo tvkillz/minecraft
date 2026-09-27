@@ -1,0 +1,124 @@
+.coop-store {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.coop-store__notice,
+.coop-store__error {
+  margin: 0;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.coop-store__notice {
+  background: rgba(61, 143, 61, 0.16);
+  color: #d7f5d4;
+}
+
+.coop-store__error {
+  background: rgba(140, 40, 40, 0.28);
+  color: #ffd0d0;
+}
+
+.coop-store__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.coop-store__filter {
+  padding: 0.4rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.coop-store__filter--active {
+  border-color: color-mix(in srgb, var(--gold, #e8b923) 70%, transparent);
+  color: var(--gold, #e8b923);
+}
+
+.coop-store__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coop-store__card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(16, 16, 18, 0.72);
+}
+
+.coop-store__art {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.coop-store__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem 1rem;
+}
+
+.coop-store__kicker {
+  margin: 0;
+  color: var(--gold, #e8b923);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.coop-store__title {
+  margin: 0;
+  font-family: var(--font-fantasy, inherit);
+  font-size: 1.2rem;
+}
+
+.coop-store__features {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--text-muted, rgba(255, 255, 255, 0.72));
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.coop-store__features li + li {
+  margin-top: 0.25rem;
+}
+
+.coop-store__buy {
+  margin-top: auto;
+  padding: 0.55rem 0.8rem;
+  border: 0;
+  border-radius: 6px;
+  background: var(--gold, #e8b923);
+  color: #1a1404;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.coop-store__buy:disabled {
+  opacity: 0.55;
+  cursor: default;
+}

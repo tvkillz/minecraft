@@ -1,5 +1,5 @@
-import PortalMarketGrid from '@/screens/Portal/PortalMarketGrid'
+import CoopStore from '@/screens/Portal/CoopStore'
 
 export default function PortalMarketPage() {
-  return <PortalMarketGrid />
+  return <CoopStore />
 }

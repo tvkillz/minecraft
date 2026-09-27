@@ -44,7 +44,7 @@
     },
     {
       "id": "credits",
-      "label": "Buy Coins",
+      "label": "Top up balance",
       "action": "purchaseCredits"
     },
     {

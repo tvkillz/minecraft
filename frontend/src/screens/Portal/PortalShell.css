@@ -255,12 +255,11 @@
 
 .portal__section-title {
   margin: 0 0 0.35rem;
-  font-family: var(--font-fantasy);
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #f1e6c8;
-  text-shadow: 0 0 20px rgba(201, 162, 39, 0.2);
+  font-family: var(--font-ui);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: #f4f4f5;
 }
 
 .portal__section-subtitle {

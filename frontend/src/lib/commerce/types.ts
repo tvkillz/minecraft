@@ -35,6 +35,15 @@ export interface WalletTransaction {
   stripe_checkout_session_id?: string | null
 }
 
+export interface CoopEntitlement {
+  id: string
+  product_slug: string
+  title: string
+  features: string[]
+  price_cents: number
+  created_at: string
+}
+
 export interface CheckoutLineItem {
   title: string
   quantity: number
@@ -110,6 +119,8 @@ export type CommerceAction =
   | { type: 'withdrawal_test'; withdrawalId: string; outcome: 'success' | 'failure'; rejectReason?: string }
   | { type: 'admin_transactions' }
   | { type: 'admin_products_upsert'; product: Record<string, unknown> }
+  | { type: 'coop_purchase'; slug: string }
+  | { type: 'coop_entitlements_list' }
 
 export interface CommerceResponse {
   products?: StoreProduct[]
@@ -140,6 +151,8 @@ export interface CommerceResponse {
   emailSent?: boolean
   emailReason?: string | null
   withdrawal?: unknown
+  entitlements?: CoopEntitlement[]
+  entitlement?: CoopEntitlement
   error?: string
   message?: string
   minCredits?: number

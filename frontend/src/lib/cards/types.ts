@@ -22,6 +22,8 @@ export interface CardRecord {
   stats: { mana: number; attack: number; health: number }
   keywords: string[]
   ability: CardAbility
+  /** What this purchase applies on the player's server account. */
+  features?: string[]
   glowColor: string
   /** Shop price in cents (from DB or game/cards.json). */
   priceCents?: number | null

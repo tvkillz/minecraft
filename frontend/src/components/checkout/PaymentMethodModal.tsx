@@ -129,7 +129,6 @@ export default function PaymentMethodModal({
             type="button"
             variant="gold"
             size="md"
-            fantasy
             disabled={!selectedId || confirming}
             onClick={onConfirm}
           >
